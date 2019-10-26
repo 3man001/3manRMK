@@ -295,7 +295,7 @@ namespace _3manRMK_0
                 Drv.TagValueStr = tbFIO.Text;
                 Drv.FNSendTag();
 
-                Drv.TagNumber = 1023; //это ИНН кассира    
+                Drv.TagNumber = 1203; //это ИНН кассира    
                 Drv.TagType = 7; // тип "строка" 
                 Drv.TagValueStr = tbINN.Text;
                 Drv.FNSendTag();
@@ -312,6 +312,11 @@ namespace _3manRMK_0
         private void отменаЧекаToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Drv.CancelCheck (); //Отмена чека
+        }
+
+        private void btnLogOut_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
