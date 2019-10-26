@@ -112,6 +112,7 @@
             this.tbFIO.Size = new System.Drawing.Size(250, 22);
             this.tbFIO.TabIndex = 3;
             this.tbFIO.Text = "Тестировщик Иванов";
+            this.tbFIO.TextChanged += new System.EventHandler(this.tbFIO_TextChanged);
             // 
             // button4
             // 
@@ -269,7 +270,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(385, 30);
+            this.label4.Location = new System.Drawing.Point(384, 30);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(35, 13);
             this.label4.TabIndex = 13;
@@ -284,6 +285,7 @@
             this.tbINN.Size = new System.Drawing.Size(105, 22);
             this.tbINN.TabIndex = 14;
             this.tbINN.Text = "123456789012";
+            this.tbINN.TextChanged += new System.EventHandler(this.tbINN_TextChanged);
             // 
             // tbNameProduct_1
             // 
@@ -500,6 +502,7 @@
             this.btnLogin.TabIndex = 39;
             this.btnLogin.Text = "Login";
             this.btnLogin.UseVisualStyleBackColor = true;
+            this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
             // 
             // btnLogOut
             // 
@@ -510,6 +513,7 @@
             this.btnLogOut.TabIndex = 40;
             this.btnLogOut.Text = "LogOut";
             this.btnLogOut.UseVisualStyleBackColor = true;
+            this.btnLogOut.Visible = false;
             this.btnLogOut.Click += new System.EventHandler(this.btnLogOut_Click);
             // 
             // comboBox1
@@ -591,6 +595,7 @@
             this.button6.TabIndex = 47;
             this.button6.Text = "-";
             this.button6.UseVisualStyleBackColor = true;
+            this.button6.Visible = false;
             // 
             // button7
             // 
@@ -601,6 +606,7 @@
             this.button7.TabIndex = 55;
             this.button7.Text = "-";
             this.button7.UseVisualStyleBackColor = true;
+            this.button7.Visible = false;
             // 
             // button8
             // 
@@ -697,6 +703,7 @@
             this.button9.TabIndex = 63;
             this.button9.Text = "-";
             this.button9.UseVisualStyleBackColor = true;
+            this.button9.Visible = false;
             // 
             // button10
             // 

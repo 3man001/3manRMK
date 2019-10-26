@@ -16,46 +16,65 @@ namespace _3manRMK_0
         DrvFR Drv; //Создание обьекта драйвера ФР
 
         ////////////Блок Функций/////////////
-        private string CheckFIO() //Проверка ФИО на посторонние символы
+        private bool CheckSimbols (string ChSimbol, string typeSim) //Строки на посторонние символы
         {
-            string simbols = " ёйцукенгшщзхъфывапролджэячсмитьбюЁЙЦУКЕНГШЩЗХЪФЫВАПРОЛДЖЭЯЧСМИТЬБЮ";
-            string fio = tbFIO.Text;
-            if (fio[0] == ' ')
+            string DataSimbol = "";
+            if (typeSim == "ФИО")
             {
-                return "пробел";
+                DataSimbol = " ёйцукенгшщзхъфывапролджэячсмитьбюЁЙЦУКЕНГШЩЗХЪФЫВАПРОЛДЖЭЯЧСМИТЬБЮ";
             }
-            for (int i = 0; i < fio.Length; i++)
+            if (typeSim == "Число")
             {
-                if (simbols.IndexOf(fio[i]) < 0)
+                DataSimbol = "1234567890,";
+            }
+            if (typeSim == "ИНН")
+            {
+                if (ChSimbol == "")
                 {
-                    return "Incorrect";
+                    return true;
+                }
+                DataSimbol = "1234567890";
+            }
+
+            if (ChSimbol[0] == ' ')
+            {
+                return false;
+            }
+            for (int i = 0; i < ChSimbol.Length; i++)
+            {
+                if (DataSimbol.IndexOf(ChSimbol[i]) < 0)
+                {
+                    return false;
                 }
             }
-            return "ФИО проверено";
+            return true;
         }
-        private string CheckINN(string inn) //Проверка ИНН Физ.Лица на корректность
+        private bool CheckINN(string inn) //Проверка ИНН Физ.Лица на корректность
         {
             if (inn.Length == 12)
             {
-                int b2, b1;
-                b2 = ((int)inn[0] * 7 + (int)inn[1] * 2 + (int)inn[2] * 4 +
-                    (int)inn[3] * 10 + (int)inn[4] * 3 + (int)inn[5] * 5 +
-                    (int)inn[6] * 9 + (int)inn[7] * 4 + (int)inn[8] * 6 + (int)inn[9] * 8) % 11;
-                b1 = ((int)inn[0] * 3 + (int)inn[1] * 7 + (int)inn[2] * 2 +
-                    (int)inn[3] * 4 + (int)inn[4] * 10 + (int)inn[5] * 3 +
-                    (int)inn[6] * 5 + (int)inn[7] * 9 + (int)inn[8] * 4 + (int)inn[9] * 6 + (int)inn[10] * 8) % 11;
-                if (b2 == (int)inn[10] | (b2 == 10 & (int)inn[10] == 0))
+                int b2 = ((int)char.GetNumericValue(inn[0]) * 7 + (int)char.GetNumericValue(inn[1]) * 2 + (int)char.GetNumericValue(inn[2]) * 4 +
+                    (int)char.GetNumericValue(inn[3]) * 10 + (int)char.GetNumericValue(inn[4]) * 3 + (int)char.GetNumericValue(inn[5]) * 5 +
+                    (int)char.GetNumericValue(inn[6]) * 9 + (int)char.GetNumericValue(inn[7]) * 4 + (int)char.GetNumericValue(inn[8]) * 6 + (int)char.GetNumericValue(inn[9]) * 8) % 11;
+                int b1 = ((int)char.GetNumericValue(inn[0]) * 3 + (int)char.GetNumericValue(inn[1]) * 7 + (int)char.GetNumericValue(inn[2]) * 2 +
+                    (int)char.GetNumericValue(inn[3]) * 4 + (int)char.GetNumericValue(inn[4]) * 10 + (int)char.GetNumericValue(inn[5]) * 3 +
+                    (int)char.GetNumericValue(inn[6]) * 5 + (int)char.GetNumericValue(inn[7]) * 9 + (int)char.GetNumericValue(inn[8]) * 4 + (int)char.GetNumericValue(inn[9]) * 6 + (int)char.GetNumericValue(inn[10]) * 8) % 11;
+
+                if ((b2 == (int)char.GetNumericValue(inn[10])) | ((b2 == 10) & ((int)char.GetNumericValue(inn[10]) == 0)))
                 {
-                    if (b1 == (int)inn[11] | (b1 == 10 & (int)inn[11] == 0))
-                    { return "Correct"; }
+                    if ((b1 == (int)char.GetNumericValue(inn[11])) | ((b1 == 10) & ((int)char.GetNumericValue(inn[11]) == 0)))
+                    {
+                        return true; }
                     else
-                    { return "InCorrect"; }
+                    {
+                        return false; }
                 }
                 else
-                { return "InCorrect"; }
+                {
+                    return false; }
             }
             else
-            { return "lenINN < 12"; }
+            { return false; }
         }
         private void UpdateResult() //Проверка состояния ККТ
         {
@@ -150,14 +169,8 @@ namespace _3manRMK_0
             { UpdateResult(); }
             UpdateResult();
         }
-        private bool CheckInputValues (string Value, int Typ) //1-ИНН, 2-Число, 3-Текст
+        private bool CheckInputValues (string Value, int Typ) //1, 2-Число, 3-Текст
         {
-            if (Typ == 1)
-            {
-                CheckINN(Value);
-
-                return true;
-            }
             if (Typ == 2)
             {
                 return true;
@@ -290,16 +303,20 @@ namespace _3manRMK_0
 
                 RegPosition(CheckType, NameProduct, Price, Quantity, Summ1, Tax1, PaymentItemSign); //Регистрация позиции
 
-                Drv.TagNumber = 1021; //это ФИО кассира    
-                Drv.TagType = 7; // тип "строка" 
-                Drv.TagValueStr = tbFIO.Text;
-                Drv.FNSendTag();
-
-                Drv.TagNumber = 1203; //это ИНН кассира    
-                Drv.TagType = 7; // тип "строка" 
-                Drv.TagValueStr = tbINN.Text;
-                Drv.FNSendTag();
-
+                if (tbFIO.ReadOnly)
+                {
+                    Drv.TagNumber = 1021; //это ФИО кассира    
+                    Drv.TagType = 7; // тип "строка" 
+                    Drv.TagValueStr = tbFIO.Text;
+                    Drv.FNSendTag();
+                    if (tbINN.Text != "")
+                    {
+                        Drv.TagNumber = 1203; //это ИНН кассира    
+                        Drv.TagType = 7; // тип "строка" 
+                        Drv.TagValueStr = tbINN.Text;
+                        Drv.FNSendTag();
+                    }
+                }
                 CloseChek(); // Формируем закрытие чека
             }
         }
@@ -316,7 +333,54 @@ namespace _3manRMK_0
 
         private void btnLogOut_Click(object sender, EventArgs e)
         {
+            btnLogOut.Visible = false;
+            btnLogin.Visible = true;
+            tbFIO.ReadOnly = false;
+            tbINN.ReadOnly = false;
+        }
 
+        private void btnLogin_Click(object sender, EventArgs e)
+        {
+            tbFIO_TextChanged(sender, e);
+            tbINN_TextChanged(sender, e);
+            if ((tbFIO.BackColor == Color.Snow)&(tbINN.BackColor == Color.Snow))
+            {
+                btnLogOut.Visible = true;
+                btnLogin.Visible = false;
+                tbFIO.ReadOnly = true;
+                tbINN.ReadOnly = true;
+            }
+        }
+
+        private void tbFIO_TextChanged(object sender, EventArgs e)
+        {
+            if (CheckSimbols(tbFIO.Text, "ФИО"))
+            {
+                tbFIO.BackColor = Color.Snow;
+            }
+            else
+            {
+                tbFIO.BackColor = Color.LightCoral;
+            }
+        }
+
+        private void tbINN_TextChanged(object sender, EventArgs e)
+        {
+            if (CheckSimbols (tbINN.Text, "ИНН"))
+            {
+                if (CheckINN (tbINN.Text)|(tbINN.Text == ""))
+                {
+                    tbINN.BackColor = Color.Snow;
+                }
+                else
+                {
+                    tbINN.BackColor = Color.LightCoral;
+                }
+            }
+            else
+            {
+                tbINN.BackColor = Color.LightCoral;
+            }
         }
     }
 }
