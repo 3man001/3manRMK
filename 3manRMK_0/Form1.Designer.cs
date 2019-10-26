@@ -69,6 +69,8 @@
             this.cbPaymentItemSign_1 = new System.Windows.Forms.ComboBox();
             this.tbSumm1_1 = new System.Windows.Forms.TextBox();
             this.tbSummAll = new System.Windows.Forms.TextBox();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.отменаЧекаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -161,7 +163,8 @@
             // кассовыеОперацииToolStripMenuItem
             // 
             this.кассовыеОперацииToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.внесениеToolStripMenuItem});
+            this.внесениеToolStripMenuItem,
+            this.отменаЧекаToolStripMenuItem});
             this.кассовыеОперацииToolStripMenuItem.Name = "кассовыеОперацииToolStripMenuItem";
             this.кассовыеОперацииToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
             this.кассовыеОперацииToolStripMenuItem.Text = "Кассовые операции";
@@ -269,7 +272,7 @@
             this.tbPrice_1.Name = "tbPrice_1";
             this.tbPrice_1.Size = new System.Drawing.Size(77, 20);
             this.tbPrice_1.TabIndex = 17;
-            this.tbPrice_1.Text = "12345670,94";
+            this.tbPrice_1.Text = "1,00";
             this.tbPrice_1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.tbPrice_1.TextChanged += new System.EventHandler(this.tbPrice_1_TextChanged);
             // 
@@ -280,7 +283,7 @@
             this.tbQuantity_1.Name = "tbQuantity_1";
             this.tbQuantity_1.Size = new System.Drawing.Size(77, 20);
             this.tbQuantity_1.TabIndex = 18;
-            this.tbQuantity_1.Text = "1234567,914";
+            this.tbQuantity_1.Text = "1,000";
             this.tbQuantity_1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.tbQuantity_1.TextChanged += new System.EventHandler(this.tbQuantity_TextChanged);
             // 
@@ -337,7 +340,7 @@
             this.tbSumm1.Name = "tbSumm1";
             this.tbSumm1.Size = new System.Drawing.Size(77, 20);
             this.tbSumm1.TabIndex = 24;
-            this.tbSumm1.Text = "1,1";
+            this.tbSumm1.Text = "1,00";
             this.tbSumm1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // tbSumm2
@@ -347,7 +350,7 @@
             this.tbSumm2.Name = "tbSumm2";
             this.tbSumm2.Size = new System.Drawing.Size(77, 20);
             this.tbSumm2.TabIndex = 25;
-            this.tbSumm2.Text = "1,1";
+            this.tbSumm2.Text = "1,00";
             this.tbSumm2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.tbSumm2.TextChanged += new System.EventHandler(this.tbSumm2_TextChanged);
             // 
@@ -362,18 +365,18 @@
             // 
             // cbTax1_1
             // 
-            this.cbTax1_1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbTax1_1.Items.AddRange(new object[] {
-            "НДС 20%",
-            "НДС 10%",
-            "НДС 0%",
             "Без НДС",
-            "НДС 20/120",
-            "НДС 10/110"});
+            "НДС 0%",
+            "НДС 10%",
+            "НДС 10/110",
+            "НДС 20%",
+            "НДС 20/120"});
             this.cbTax1_1.Location = new System.Drawing.Point(818, 55);
             this.cbTax1_1.Name = "cbTax1_1";
             this.cbTax1_1.Size = new System.Drawing.Size(73, 21);
             this.cbTax1_1.TabIndex = 27;
+            this.cbTax1_1.Text = "Без НДС";
             // 
             // label9
             // 
@@ -413,7 +416,6 @@
             // 
             // cbPaymentItemSign_1
             // 
-            this.cbPaymentItemSign_1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbPaymentItemSign_1.FormattingEnabled = true;
             this.cbPaymentItemSign_1.Items.AddRange(new object[] {
             "Товар",
@@ -423,6 +425,7 @@
             this.cbPaymentItemSign_1.Name = "cbPaymentItemSign_1";
             this.cbPaymentItemSign_1.Size = new System.Drawing.Size(121, 21);
             this.cbPaymentItemSign_1.TabIndex = 34;
+            this.cbPaymentItemSign_1.Text = "Товар";
             // 
             // tbSumm1_1
             // 
@@ -433,7 +436,7 @@
             this.tbSumm1_1.ReadOnly = true;
             this.tbSumm1_1.Size = new System.Drawing.Size(114, 20);
             this.tbSumm1_1.TabIndex = 35;
-            this.tbSumm1_1.Text = "99999999,99";
+            this.tbSumm1_1.Text = "2,00";
             this.tbSumm1_1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.tbSumm1_1.TextChanged += new System.EventHandler(this.tbSumm1_1_TextChanged);
             // 
@@ -446,14 +449,32 @@
             this.tbSummAll.ReadOnly = true;
             this.tbSummAll.Size = new System.Drawing.Size(114, 20);
             this.tbSummAll.TabIndex = 37;
-            this.tbSummAll.Text = "99999999,99";
+            this.tbSummAll.Text = "2,00";
             this.tbSummAll.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            "вавыаыва"});
+            this.comboBox1.Location = new System.Drawing.Point(701, 190);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(121, 21);
+            this.comboBox1.TabIndex = 38;
+            // 
+            // отменаЧекаToolStripMenuItem
+            // 
+            this.отменаЧекаToolStripMenuItem.Name = "отменаЧекаToolStripMenuItem";
+            this.отменаЧекаToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.отменаЧекаToolStripMenuItem.Text = "Отмена чека";
+            this.отменаЧекаToolStripMenuItem.Click += new System.EventHandler(this.отменаЧекаToolStripMenuItem_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1041, 290);
+            this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.tbSummAll);
             this.Controls.Add(this.tbSumm1_1);
             this.Controls.Add(this.cbPaymentItemSign_1);
@@ -534,6 +555,8 @@
         private System.Windows.Forms.ToolStripMenuItem внесениеToolStripMenuItem;
         private System.Windows.Forms.TextBox tbSumm2;
         private System.Windows.Forms.TextBox tbSummAll;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ToolStripMenuItem отменаЧекаToolStripMenuItem;
     }
 }
 

@@ -279,12 +279,26 @@ namespace _3manRMK_0
                 int Tax1 = EnterItems(cbTax1_1.Text); //Налоговая ставка 0..6 (0-БезНДС)
                 int PaymentItemSign = EnterItems(cbPaymentItemSign_1.Text); // Признак предмета расчета 1..19 (1-Товар)
 
+                
+
                 try
                 { Drv.Connect(); }
                 catch
                 { UpdateResult(); }
 
+                
+
                 RegPosition(CheckType, NameProduct, Price, Quantity, Summ1, Tax1, PaymentItemSign); //Регистрация позиции
+
+                Drv.TagNumber = 1021; //это ФИО кассира    
+                Drv.TagType = 7; // тип "строка" 
+                Drv.TagValueStr = tbFIO.Text;
+                Drv.FNSendTag();
+
+                Drv.TagNumber = 1023; //это ИНН кассира    
+                Drv.TagType = 7; // тип "строка" 
+                Drv.TagValueStr = tbINN.Text;
+                Drv.FNSendTag();
 
                 CloseChek(); // Формируем закрытие чека
             }
@@ -293,6 +307,11 @@ namespace _3manRMK_0
         {
             AboutBox1 AboutBox = new AboutBox1();
             AboutBox.ShowDialog(this);
+        }
+
+        private void отменаЧекаToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Drv.CancelCheck (); //Отмена чека
         }
     }
 }
