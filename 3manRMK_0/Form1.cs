@@ -55,7 +55,7 @@ namespace _3manRMK_0
                 { return "InCorrect"; }
             }
             else
-            { return "len INN <> 12 InCorrect"; }
+            { return "lenINN < 12"; }
         }
         private void UpdateResult() //Проверка состояния ККТ
         {
@@ -93,7 +93,7 @@ namespace _3manRMK_0
             if (k > 1) //Проверка на повтор разделителей
             { return ""; }
             try
-            { return Math.Round(Convert.ToDecimal(Str), ndp).ToString(); }
+            { return Math.Round(Convert.ToDecimal(Str) * 1.000000m, ndp).ToString(); }
             catch
             { return ""; }
         }
@@ -117,11 +117,73 @@ namespace _3manRMK_0
             catch
             { UpdateResult(); }
         }
+        private void CloseChek() // Формируем закрытие чека
+        {
+            Drv.Summ1 = Convert.ToDecimal(tbSumm1.Text); // Наличные
+            Drv.Summ2 = Convert.ToDecimal(tbSumm2.Text); // Остальные типы оплаты нулевые, но их необходимо заполнить
+            Drv.Summ3 = 0;
+            Drv.Summ4 = 0;
+            Drv.Summ5 = 0;
+            Drv.Summ6 = 0;
+            Drv.Summ7 = 0;
+            Drv.Summ8 = 0;
+            Drv.Summ9 = 0;
+            Drv.Summ10 = 0;
+            Drv.Summ11 = 0;
+            Drv.Summ12 = 0;
+            Drv.Summ13 = 0;
+            Drv.Summ14 = 0;
+            Drv.Summ15 = 0;
+            Drv.Summ16 = 0;
+            Drv.RoundingSumm = 0; // Сумма округления
+            Drv.TaxValue1 = 0; // Налоги мы не считаем
+            Drv.TaxValue2 = 0;
+            Drv.TaxValue3 = 0;
+            Drv.TaxValue4 = 0;
+            Drv.TaxValue5 = 0;
+            Drv.TaxValue6 = 0;
+            Drv.TaxType = 1; // Основная система налогообложения
+            Drv.StringForPrinting = "";
+            try
+            { Drv.FNCloseCheckEx(); } //Закрытие чека
+            catch
+            { UpdateResult(); }
+            UpdateResult();
+        }
+        private bool CheckInputValues (string Value, int Typ) //1-ИНН, 2-Число, 3-Текст
+        {
+            if (Typ == 1)
+            {
+                CheckINN(Value);
+
+                return true;
+            }
+            if (Typ == 2)
+            {
+                return true;
+            }
+            if (Typ == 3)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
         ////////////Конец Блок Функций/////////////
         ///////////////////////////////////////////
         //////Начало Блока триггер виджета/////////
         private void tbPrice_1_TextChanged(object sender, EventArgs e)
         {
+            string c = CheckNumber(tbPrice_1.Text, 2);
+            if (c == "")
+            { tbPrice_1.BackColor = Color.LightCoral; }
+            else
+            {
+                tbPrice_1.BackColor = Color.Snow;
+                tbPrice_1.Text = c;
+            }
             try
             {
                 tbSumm1_1.Text = Convert.ToString(
@@ -131,6 +193,46 @@ namespace _3manRMK_0
             {
 
             }            
+        }
+        private void tbQuantity_TextChanged(object sender, EventArgs e) //Измениение строки с ценой
+        {
+            string c = CheckNumber(tbQuantity_1.Text, 3);
+            if (c == "")
+            { tbQuantity_1.BackColor = Color.LightCoral; }
+            else
+            {
+                tbQuantity_1.BackColor = Color.Snow;
+                tbQuantity_1.Text = c;
+            }
+            try
+            {
+                tbSumm1_1.Text = Convert.ToString(
+                    Math.Round(Convert.ToDecimal(tbPrice_1.Text) * Convert.ToDecimal(tbQuantity_1.Text), 2));
+            }
+            catch
+            {
+
+            }
+        }
+        private void tbSumm2_TextChanged(object sender, EventArgs e) //Контроль ввода безналичной оплаты
+        {
+            string c = CheckNumber(tbSumm2.Text, 2);
+            if (c == "")
+            { tbSumm2.BackColor = Color.LightCoral; }
+            else
+            {
+                tbSumm2.BackColor = Color.Snow;
+                tbSumm2.Text = c;
+                if (Convert.ToDecimal(tbSumm2.Text) > Convert.ToDecimal(tbSummAll.Text))
+                {
+                    tbSumm2.BackColor = Color.LightCoral;
+                }
+            }
+            
+        }
+        private void tbSumm1_1_TextChanged(object sender, EventArgs e)
+        {
+            tbSummAll.Text = tbSumm1_1.Text;
         }
         ///////Конец Блока триггер виджета/////////
 
@@ -163,74 +265,34 @@ namespace _3manRMK_0
         }
         private void button4_Click(object sender, EventArgs e) //Продажа тестового товара
         {
-            int CheckType = 1; //Операция приход(1-продажа, 3-возвр продажи)
-            string NameProduct = tbNameProduct_1.Text; //Наименование товара
-            Decimal Price = Math.Round(Convert.ToDecimal(tbPrice_1.Text), 2); //Цена за еденицу товара с учетом скидки
-            Double Quantity = Math.Round(Convert.ToDouble(tbQuantity_1.Text), 3); //Кол-во (Диапазон 0,001 до 9.999.999,999)
-            Decimal Summ1 = Convert.ToDecimal(tbSumm1_1.Text); //Сумма позиции
-            int Tax1 = EnterItems(cbTax1_1.Text); //Налоговая ставка 0..6 (0-БезНДС)
-            int PaymentItemSign = EnterItems(cbPaymentItemSign_1.Text); // Признак предмета расчета 1..19 (1-Товар)
+            if (Convert.ToDecimal(tbSumm2.Text) > Convert.ToDecimal(tbSummAll.Text))
+            {
+                tbSumm2.BackColor = Color.LightCoral;
+            }
+            else
+            {
+                int CheckType = 1; //Операция приход(1-продажа, 3-возвр продажи)
+                string NameProduct = tbNameProduct_1.Text; //Наименование товара
+                Decimal Price = Math.Round(Convert.ToDecimal(tbPrice_1.Text), 2); //Цена за еденицу товара с учетом скидки
+                Double Quantity = Math.Round(Convert.ToDouble(tbQuantity_1.Text), 3); //Кол-во (Диапазон 0,001 до 9.999.999,999)
+                Decimal Summ1 = Convert.ToDecimal(tbSumm1_1.Text); //Сумма позиции
+                int Tax1 = EnterItems(cbTax1_1.Text); //Налоговая ставка 0..6 (0-БезНДС)
+                int PaymentItemSign = EnterItems(cbPaymentItemSign_1.Text); // Признак предмета расчета 1..19 (1-Товар)
 
-            try
-            { Drv.Connect(); }
-            catch
-            { UpdateResult(); }
+                try
+                { Drv.Connect(); }
+                catch
+                { UpdateResult(); }
 
-            RegPosition (CheckType, NameProduct, Price, Quantity, Summ1, Tax1, PaymentItemSign); //Регистрация позиции
-            // Формируем закрытие чека
-            Drv.Summ1 = Convert.ToDecimal(tbSumm1.Text); // Наличные
-            Drv.Summ2 = Convert.ToDecimal(tbSumm2.Text); // Остальные типы оплаты нулевые, но их необходимо заполнить
-            Drv.Summ3 = 0;
-            Drv.Summ4 = 0;
-            Drv.Summ5 = 0;
-            Drv.Summ6 = 0;
-            Drv.Summ7 = 0;
-            Drv.Summ8 = 0;
-            Drv.Summ9 = 0;
-            Drv.Summ10 = 0;
-            Drv.Summ11 = 0;
-            Drv.Summ12 = 0;
-            Drv.Summ13 = 0;
-            Drv.Summ14 = 0;
-            Drv.Summ15 = 0;
-            Drv.Summ16 = 0;
-            Drv.RoundingSumm = 0; // Сумма округления
-            Drv.TaxValue1 = 0; // Налоги мы не считаем
-            Drv.TaxValue2 = 0;
-            Drv.TaxValue3 = 0;
-            Drv.TaxValue4 = 0;
-            Drv.TaxValue5 = 0;
-            Drv.TaxValue6 = 0;
-            Drv.TaxType = 1; // Основная система налогообложения
-            Drv.StringForPrinting = "";
+                RegPosition(CheckType, NameProduct, Price, Quantity, Summ1, Tax1, PaymentItemSign); //Регистрация позиции
 
-            try
-            { Drv.FNCloseCheckEx(); } //Закрытие чека
-            catch
-            { UpdateResult(); }
-            UpdateResult();
+                CloseChek(); // Формируем закрытие чека
+            }
         }
         private void оПрограммеToolStripMenuItem_Click(object sender, EventArgs e) //Показать информацию о программе
         {
             AboutBox1 AboutBox = new AboutBox1();
             AboutBox.ShowDialog(this);
         }
-        private void button1_Click(object sender, EventArgs e)
-        {
-
-        }
-        private void tbQuantity_TextChanged(object sender, EventArgs e)
-        {
-            string c = CheckNumber(tbQuantity_1.Text, 3);
-            if (c == "")
-            { tbQuantity_1.BackColor = Color.LightCoral; }
-            else
-            {
-                tbQuantity_1.BackColor = Color.Snow;
-                tbQuantity_1.Text = c;
-            }
-        }
-
-
     }
 }
