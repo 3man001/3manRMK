@@ -378,6 +378,7 @@
             this.tbSumm1.TabIndex = 24;
             this.tbSumm1.Text = "1,00";
             this.tbSumm1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.tbSumm1.TextChanged += new System.EventHandler(this.tbSumm1_TextChanged);
             // 
             // tbSumm2
             // 
@@ -495,24 +496,26 @@
             // 
             // btnLogin
             // 
+            this.btnLogin.BackColor = System.Drawing.Color.Lime;
             this.btnLogin.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.btnLogin.Location = new System.Drawing.Point(538, 25);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(75, 25);
             this.btnLogin.TabIndex = 39;
             this.btnLogin.Text = "Login";
-            this.btnLogin.UseVisualStyleBackColor = true;
+            this.btnLogin.UseVisualStyleBackColor = false;
             this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
             // 
             // btnLogOut
             // 
+            this.btnLogOut.BackColor = System.Drawing.SystemColors.Highlight;
             this.btnLogOut.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btnLogOut.Location = new System.Drawing.Point(616, 25);
+            this.btnLogOut.Location = new System.Drawing.Point(547, 25);
             this.btnLogOut.Name = "btnLogOut";
             this.btnLogOut.Size = new System.Drawing.Size(75, 25);
             this.btnLogOut.TabIndex = 40;
             this.btnLogOut.Text = "LogOut";
-            this.btnLogOut.UseVisualStyleBackColor = true;
+            this.btnLogOut.UseVisualStyleBackColor = false;
             this.btnLogOut.Visible = false;
             this.btnLogOut.Click += new System.EventHandler(this.btnLogOut_Click);
             // 
@@ -545,6 +548,7 @@
             this.button1.TabIndex = 42;
             this.button1.Text = "ОплатаНал";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Visible = false;
             // 
             // button2
             // 
@@ -555,6 +559,7 @@
             this.button2.TabIndex = 43;
             this.button2.Text = "ОплБезНал";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Visible = false;
             // 
             // button3
             // 
@@ -565,6 +570,7 @@
             this.button3.TabIndex = 44;
             this.button3.Text = "СмешОпл";
             this.button3.UseVisualStyleBackColor = true;
+            this.button3.Visible = false;
             // 
             // label13
             // 
@@ -617,6 +623,7 @@
             this.button8.TabIndex = 54;
             this.button8.Text = "+";
             this.button8.UseVisualStyleBackColor = true;
+            this.button8.Visible = false;
             // 
             // textBox1
             // 
@@ -630,6 +637,7 @@
             this.textBox1.TabIndex = 53;
             this.textBox1.Text = "1,00";
             this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.textBox1.Visible = false;
             // 
             // comboBox2
             // 
@@ -644,6 +652,7 @@
             this.comboBox2.Size = new System.Drawing.Size(75, 24);
             this.comboBox2.TabIndex = 52;
             this.comboBox2.Text = "Товар";
+            this.comboBox2.Visible = false;
             // 
             // comboBox3
             // 
@@ -660,6 +669,7 @@
             this.comboBox3.Size = new System.Drawing.Size(105, 24);
             this.comboBox3.TabIndex = 51;
             this.comboBox3.Text = "Без НДС";
+            this.comboBox3.Visible = false;
             // 
             // textBox2
             // 
@@ -671,6 +681,7 @@
             this.textBox2.TabIndex = 50;
             this.textBox2.Text = "1,000";
             this.textBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.textBox2.Visible = false;
             // 
             // textBox3
             // 
@@ -683,6 +694,7 @@
             this.textBox3.TabIndex = 48;
             this.textBox3.Text = "1,00";
             this.textBox3.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.textBox3.Visible = false;
             // 
             // textBox4
             // 
@@ -693,6 +705,7 @@
             this.textBox4.Size = new System.Drawing.Size(271, 23);
             this.textBox4.TabIndex = 49;
             this.textBox4.Text = "Офисный принтер Панасоник RGB 15";
+            this.textBox4.Visible = false;
             // 
             // button9
             // 
@@ -714,6 +727,7 @@
             this.button10.TabIndex = 62;
             this.button10.Text = "+";
             this.button10.UseVisualStyleBackColor = true;
+            this.button10.Visible = false;
             // 
             // textBox5
             // 
@@ -727,6 +741,7 @@
             this.textBox5.TabIndex = 61;
             this.textBox5.Text = "1,00";
             this.textBox5.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.textBox5.Visible = false;
             // 
             // comboBox4
             // 
@@ -741,6 +756,7 @@
             this.comboBox4.Size = new System.Drawing.Size(75, 24);
             this.comboBox4.TabIndex = 60;
             this.comboBox4.Text = "Товар";
+            this.comboBox4.Visible = false;
             // 
             // comboBox5
             // 
@@ -757,6 +773,7 @@
             this.comboBox5.Size = new System.Drawing.Size(105, 24);
             this.comboBox5.TabIndex = 59;
             this.comboBox5.Text = "Без НДС";
+            this.comboBox5.Visible = false;
             // 
             // textBox6
             // 
@@ -768,6 +785,7 @@
             this.textBox6.TabIndex = 58;
             this.textBox6.Text = "1,000";
             this.textBox6.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.textBox6.Visible = false;
             // 
             // textBox7
             // 
@@ -780,6 +798,7 @@
             this.textBox7.TabIndex = 56;
             this.textBox7.Text = "1,00";
             this.textBox7.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.textBox7.Visible = false;
             // 
             // textBox8
             // 
@@ -790,6 +809,7 @@
             this.textBox8.Size = new System.Drawing.Size(271, 23);
             this.textBox8.TabIndex = 57;
             this.textBox8.Text = "Офисный принтер Панасоник RGB 15";
+            this.textBox8.Visible = false;
             // 
             // label14
             // 
@@ -819,6 +839,7 @@
             this.label16.Size = new System.Drawing.Size(21, 16);
             this.label16.TabIndex = 66;
             this.label16.Text = "2.";
+            this.label16.Visible = false;
             // 
             // label17
             // 
@@ -829,6 +850,7 @@
             this.label17.Size = new System.Drawing.Size(21, 16);
             this.label17.TabIndex = 67;
             this.label17.Text = "3.";
+            this.label17.Visible = false;
             // 
             // Form1
             // 

@@ -16,7 +16,7 @@ namespace _3manRMK_0
         DrvFR Drv; //Создание обьекта драйвера ФР
 
         ////////////Блок Функций/////////////
-        private bool CheckSimbols (string ChSimbol, string typeSim) //Строки на посторонние символы
+        private bool CheckSimbols (string ChSimbol, string typeSim) //Проверка строки на посторонние символы
         {
             string DataSimbol = "";
             if (typeSim == "ФИО")
@@ -169,21 +169,6 @@ namespace _3manRMK_0
             { UpdateResult(); }
             UpdateResult();
         }
-        private bool CheckInputValues (string Value, int Typ) //1, 2-Число, 3-Текст
-        {
-            if (Typ == 2)
-            {
-                return true;
-            }
-            if (Typ == 3)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
         ////////////Конец Блок Функций/////////////
         ///////////////////////////////////////////
         //////Начало Блока триггер виджета/////////
@@ -227,6 +212,17 @@ namespace _3manRMK_0
 
             }
         }
+        private void tbSumm1_TextChanged(object sender, EventArgs e)
+        {
+            string c = CheckNumber(tbSumm1.Text, 2);
+            if (c == "")
+            { tbSumm1.BackColor = Color.LightCoral; }
+            else
+            {
+                tbSumm1.BackColor = Color.Snow;
+                tbSumm1.Text = c;
+            }
+        }
         private void tbSumm2_TextChanged(object sender, EventArgs e) //Контроль ввода безналичной оплаты
         {
             string c = CheckNumber(tbSumm2.Text, 2);
@@ -247,8 +243,38 @@ namespace _3manRMK_0
         {
             tbSummAll.Text = tbSumm1_1.Text;
         }
+        private void tbFIO_TextChanged(object sender, EventArgs e)
+        {
+            if (CheckSimbols(tbFIO.Text, "ФИО"))
+            {
+                tbFIO.BackColor = Color.Snow;
+            }
+            else
+            {
+                tbFIO.BackColor = Color.LightCoral;
+            }
+        }
+        private void tbINN_TextChanged(object sender, EventArgs e)
+        {
+            if (CheckSimbols(tbINN.Text, "ИНН"))
+            {
+                if (CheckINN(tbINN.Text) | (tbINN.Text == ""))
+                {
+                    tbINN.BackColor = Color.Snow;
+                }
+                else
+                {
+                    tbINN.BackColor = Color.LightCoral;
+                }
+            }
+            else
+            {
+                tbINN.BackColor = Color.LightCoral;
+            }
+        }
         ///////Конец Блока триггер виджета/////////
 
+        ///////////Начало Блок МЕНЮ////////////////
         private void подключитьФРToolStripMenuItem_Click(object sender, EventArgs e) //Показать свойство оборуования
         {
             Drv.ShowProperties();
@@ -276,6 +302,17 @@ namespace _3manRMK_0
             { UpdateResult(); }
             UpdateResult();
         }
+        private void отменаЧекаToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Drv.CancelCheck(); //Отмена чека
+        }
+        private void оПрограммеToolStripMenuItem_Click(object sender, EventArgs e) //Показать информацию о программе
+        {
+            AboutBox1 AboutBox = new AboutBox1();
+            AboutBox.ShowDialog(this);
+        }
+        ////////////Конец Блок МЕНЮ////////////////
+
         private void button4_Click(object sender, EventArgs e) //Продажа тестового товара
         {
             if (Convert.ToDecimal(tbSumm2.Text) > Convert.ToDecimal(tbSummAll.Text))
@@ -320,17 +357,6 @@ namespace _3manRMK_0
                 CloseChek(); // Формируем закрытие чека
             }
         }
-        private void оПрограммеToolStripMenuItem_Click(object sender, EventArgs e) //Показать информацию о программе
-        {
-            AboutBox1 AboutBox = new AboutBox1();
-            AboutBox.ShowDialog(this);
-        }
-
-        private void отменаЧекаToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Drv.CancelCheck (); //Отмена чека
-        }
-
         private void btnLogOut_Click(object sender, EventArgs e)
         {
             btnLogOut.Visible = false;
@@ -338,7 +364,6 @@ namespace _3manRMK_0
             tbFIO.ReadOnly = false;
             tbINN.ReadOnly = false;
         }
-
         private void btnLogin_Click(object sender, EventArgs e)
         {
             tbFIO_TextChanged(sender, e);
@@ -352,35 +377,6 @@ namespace _3manRMK_0
             }
         }
 
-        private void tbFIO_TextChanged(object sender, EventArgs e)
-        {
-            if (CheckSimbols(tbFIO.Text, "ФИО"))
-            {
-                tbFIO.BackColor = Color.Snow;
-            }
-            else
-            {
-                tbFIO.BackColor = Color.LightCoral;
-            }
-        }
-
-        private void tbINN_TextChanged(object sender, EventArgs e)
-        {
-            if (CheckSimbols (tbINN.Text, "ИНН"))
-            {
-                if (CheckINN (tbINN.Text)|(tbINN.Text == ""))
-                {
-                    tbINN.BackColor = Color.Snow;
-                }
-                else
-                {
-                    tbINN.BackColor = Color.LightCoral;
-                }
-            }
-            else
-            {
-                tbINN.BackColor = Color.LightCoral;
-            }
-        }
+        
     }
 }
