@@ -78,7 +78,14 @@ namespace _3manRMK_0
         }
         private void UpdateResult() //Проверка состояния ККТ
         {
-            toolStripStatusLabel1.Text = string.Format("Результат: {0}, {1}", Drv.ResultCode, Drv.ResultCodeDescription);
+            int ResultCode = Drv.ResultCode;
+            string ResultCodeDesc = Drv.ResultCodeDescription;
+
+            toolStripStatusLabel1.Text = string.Format("Результат: {0}, {1}", ResultCode, ResultCodeDesc);
+            Drv.GetShortECRStatus(); //Запрос состояния ФР
+            ErrorsForm ErorrsformP = new ErrorsForm(ResultCode, ResultCodeDesc, Drv.ECRMode, Drv.ECRModeDescription, Drv.ECRMode8Status, Drv.ECRModeStatus, Drv.ECRAdvancedMode, Drv.ECRAdvancedModeDescription);
+            ErorrsformP.ShowDialog(this);
+
         }
         private int EnterItems(string Item) //Проверка выбираемых значений
         {
@@ -295,7 +302,6 @@ namespace _3manRMK_0
         {
             try
             {
-                // Drv.FNBeginCloseSession(); //Начать закрытие смены
                 Drv.FNCloseSession();
             }
             catch
@@ -304,7 +310,15 @@ namespace _3manRMK_0
         }
         private void отменаЧекаToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Drv.CancelCheck(); //Отмена чека
+            try
+            {
+                Drv.CancelCheck(); //Отмена чека
+            }
+            catch
+            {
+                UpdateResult();
+            }
+            UpdateResult();
         }
         private void оПрограммеToolStripMenuItem_Click(object sender, EventArgs e) //Показать информацию о программе
         {
