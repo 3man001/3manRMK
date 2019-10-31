@@ -5,6 +5,12 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+
+using System.Net;
+using System.IO;
+using System.Threading.Tasks;
+using System.Net.Mail;
+
 using System.Windows.Forms;
 
 namespace _3manRMK_0
@@ -16,6 +22,27 @@ namespace _3manRMK_0
         int ECRMode8Status;
         int ECRModeStatus;
         int ECRAdvancedMode;
+        private void SendMail(string message)
+        {
+            // отправитель - устанавливаем адрес и отображаемое в письме имя
+            MailAddress from = new MailAddress("feedback@3man001.ru", "3manRMK");
+            // кому отправляем
+            MailAddress to = new MailAddress("igor-viv001@yandex.ru");
+            // создаем объект сообщения
+            MailMessage m = new MailMessage(from, to);
+            // тема письма
+            m.Subject = "Ошибка работы";
+            // текст письма
+            m.Body = "<h2> "+message+" </h2>";
+            // письмо представляет код html
+            m.IsBodyHtml = true;
+            // адрес smtp-сервера и порт, с которого будем отправлять письмо
+            SmtpClient smtp = new SmtpClient("mail.3man001.ru", 25);
+            // логин и пароль
+            smtp.Credentials = new NetworkCredential("feedback@3man001.ru", "W1h7A4a4");
+            smtp.EnableSsl = false;
+            smtp.Send(m);
+        }
         public ErrorsForm(int ResultCodeIn, string ResultCodeDesc, int ModeIn, string ModeIndesc, int ECRMode8StatusIn, int ECRModeStatusIn, int ECRAdvancedModeIn, string ECRAdvancedModeDescription)
         {
             InitializeComponent();
@@ -28,31 +55,33 @@ namespace _3manRMK_0
             ECRAdvancedMode = ECRAdvancedModeIn; //Код Статуса Расширенного Подрежима ККМ
             LAdvancedmode.Text = string.Format("Расширенный Режим = {0}, {1}", ECRAdvancedMode, ECRAdvancedModeDescription); //Описание подрежима ККМ
             LAllCode.Text = string.Format("Список всех кодов: Ошибка={0}; Режим={1};Режим8={2};Режим13_14={3};Подрежим={4}", ResultCode, Mode, ECRMode8Status, ECRModeStatus, ECRAdvancedMode);
-            ProcessError();
+            LSD.Text = ProcessError();
+            
         }
-        private void ProcessError()
+        private string ProcessError()
         {
             string MessageBack = "Решения проблемы нет в базе, отправьте запрос в СТП приложите скрин. e-mail: igor@3man001.ru";
 
             if (ResultCode == 0)
             {
-                LSD.Text = "Ошибок нет, все хорошо :)";
+                return "Ошибок нет, все хорошо :)";
             }
             if (ResultCode == 115)
             {
                 if (Mode == 4)
                 {
-                    LSD.Text = "В кассовом аппарате закрыта смена, для перехода в рабочий режим её нужно открыть.";
+                    return "В кассовом аппарате закрыта смена, для перехода в рабочий режим её нужно открыть.";
                 }
                 else
-                { LSD.Text = MessageBack; }   
+                { return MessageBack; }   
             }
             else
-            { LSD.Text = MessageBack; }
+            { return MessageBack; }
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
+            SendMail(LAllCode.Text);
             this.Close();
         }
     }

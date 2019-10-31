@@ -82,10 +82,15 @@ namespace _3manRMK_0
             string ResultCodeDesc = Drv.ResultCodeDescription;
 
             toolStripStatusLabel1.Text = string.Format("Результат: {0}, {1}", ResultCode, ResultCodeDesc);
-            Drv.GetShortECRStatus(); //Запрос состояния ФР
-            ErrorsForm ErorrsformP = new ErrorsForm(ResultCode, ResultCodeDesc, Drv.ECRMode, Drv.ECRModeDescription, Drv.ECRMode8Status, Drv.ECRModeStatus, Drv.ECRAdvancedMode, Drv.ECRAdvancedModeDescription);
-            ErorrsformP.ShowDialog(this);
-
+            if (ResultCode != 0)
+            {
+                Drv.GetShortECRStatus(); //Запрос состояния ФР
+                ErrorsForm ErorrsformP = new ErrorsForm(ResultCode, ResultCodeDesc, Drv.ECRMode, Drv.ECRModeDescription, Drv.ECRMode8Status, Drv.ECRModeStatus, Drv.ECRAdvancedMode, Drv.ECRAdvancedModeDescription);
+                ErorrsformP.ShowDialog(this);
+            }
+            Drv.FNGetInfoExchangeStatus();
+            toolStripStatusLabel4.Text = "Не отправлено документов = " + Convert.ToString(Drv.MessageCount);
+            toolStripStatusLabel2.Text = "||" + Convert.ToString(Drv.Date);
         }
         private int EnterItems(string Item) //Проверка выбираемых значений
         {
@@ -303,22 +308,22 @@ namespace _3manRMK_0
             try
             {
                 Drv.FNCloseSession();
+                UpdateResult();
             }
             catch
             { UpdateResult(); }
-            UpdateResult();
         }
         private void отменаЧекаToolStripMenuItem_Click(object sender, EventArgs e)
         {
             try
             {
                 Drv.CancelCheck(); //Отмена чека
+                UpdateResult();
             }
             catch
             {
                 UpdateResult();
             }
-            UpdateResult();
         }
         private void оПрограммеToolStripMenuItem_Click(object sender, EventArgs e) //Показать информацию о программе
         {
@@ -391,6 +396,17 @@ namespace _3manRMK_0
             }
         }
 
-        
+        private void xотчетToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Drv.PrintReportWithoutCleaning(); //Отчет без гашения
+                UpdateResult();
+            }
+            catch
+            {
+                UpdateResult();
+            }
+        }
     }
 }
