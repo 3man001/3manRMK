@@ -47,6 +47,7 @@
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel3 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel4 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
             this.label4 = new System.Windows.Forms.Label();
             this.tbINN = new System.Windows.Forms.TextBox();
             this.tbNameProduct_1 = new System.Windows.Forms.TextBox();
@@ -98,7 +99,6 @@
             this.label15 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
-            this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -189,7 +189,7 @@
             // xотчетToolStripMenuItem
             // 
             this.xотчетToolStripMenuItem.Name = "xотчетToolStripMenuItem";
-            this.xотчетToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.xотчетToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
             this.xотчетToolStripMenuItem.Text = "Дневной X - отчет";
             this.xотчетToolStripMenuItem.Click += new System.EventHandler(this.xотчетToolStripMenuItem_Click);
             // 
@@ -220,6 +220,7 @@
             this.обратнаяСвязьToolStripMenuItem.Name = "обратнаяСвязьToolStripMenuItem";
             this.обратнаяСвязьToolStripMenuItem.Size = new System.Drawing.Size(104, 20);
             this.обратнаяСвязьToolStripMenuItem.Text = "Обратная связь";
+            this.обратнаяСвязьToolStripMenuItem.Click += new System.EventHandler(this.обратнаяСвязьToolStripMenuItem_Click);
             // 
             // оПрограммеToolStripMenuItem
             // 
@@ -261,6 +262,12 @@
             this.toolStripStatusLabel4.Name = "toolStripStatusLabel4";
             this.toolStripStatusLabel4.Size = new System.Drawing.Size(180, 17);
             this.toolStripStatusLabel4.Text = "Не отправлено документов = 5";
+            // 
+            // toolStripStatusLabel2
+            // 
+            this.toolStripStatusLabel2.Name = "toolStripStatusLabel2";
+            this.toolStripStatusLabel2.Size = new System.Drawing.Size(93, 17);
+            this.toolStripStatusLabel2.Text = "12:06:2019_23:28";
             // 
             // label4
             // 
@@ -846,12 +853,6 @@
             this.label17.TabIndex = 67;
             this.label17.Text = "3.";
             this.label17.Visible = false;
-            // 
-            // toolStripStatusLabel2
-            // 
-            this.toolStripStatusLabel2.Name = "toolStripStatusLabel2";
-            this.toolStripStatusLabel2.Size = new System.Drawing.Size(93, 17);
-            this.toolStripStatusLabel2.Text = "12:06:2019_23:28";
             // 
             // Form1
             // 

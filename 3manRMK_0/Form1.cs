@@ -3,6 +3,8 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
+using System.Net;
+using System.Net.Mail;
 
 namespace _3manRMK_0
 {
@@ -407,6 +409,12 @@ namespace _3manRMK_0
             {
                 UpdateResult();
             }
+        }
+
+        private void обратнаяСвязьToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Feedback Feedback1 = new Feedback();
+            Feedback1.ShowDialog(this);
         }
     }
 }

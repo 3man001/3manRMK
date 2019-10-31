@@ -1,17 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-
-using System.Net;
-using System.IO;
-using System.Threading.Tasks;
-using System.Net.Mail;
-
 using System.Windows.Forms;
+using System.Net;
+using System.Net.Mail;
 
 namespace _3manRMK_0
 {
@@ -24,22 +14,14 @@ namespace _3manRMK_0
         int ECRAdvancedMode;
         private void SendMail(string message)
         {
-            // отправитель - устанавливаем адрес и отображаемое в письме имя
-            MailAddress from = new MailAddress("feedback@3man001.ru", "3manRMK");
-            // кому отправляем
-            MailAddress to = new MailAddress("igor-viv001@yandex.ru");
-            // создаем объект сообщения
-            MailMessage m = new MailMessage(from, to);
-            // тема письма
-            m.Subject = "Ошибка работы";
-            // текст письма
-            m.Body = "<h2> "+message+" </h2>";
-            // письмо представляет код html
-            m.IsBodyHtml = true;
-            // адрес smtp-сервера и порт, с которого будем отправлять письмо
-            SmtpClient smtp = new SmtpClient("mail.3man001.ru", 25);
-            // логин и пароль
-            smtp.Credentials = new NetworkCredential("feedback@3man001.ru", "W1h7A4a4");
+            MailAddress from = new MailAddress("feedback@3man001.ru", "3manRMK"); //Отправитель - Адресс и отображаемое Имя
+            MailAddress to = new MailAddress("igor-viv001@yandex.ru"); //Адрес получателя
+            MailMessage m = new MailMessage(from, to); // создаем объект сообщения
+            m.Subject = "Ошибка работы"; // тема письма
+            m.Body = "<h2> "+message+" </h2>"; // текст письма
+            m.IsBodyHtml = true; // письмо представляет код html
+            SmtpClient smtp = new SmtpClient("mail.3man001.ru", 25); // адрес smtp-сервера и порт отправки письма
+            smtp.Credentials = new NetworkCredential("feedback@3man001.ru", "W1h7A4a4"); // логин и пароль
             smtp.EnableSsl = false;
             smtp.Send(m);
         }
