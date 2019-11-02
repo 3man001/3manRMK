@@ -1,0 +1,67 @@
+﻿Операторы:
+	using = https://docs.microsoft.com/ru-ru/dotnet/csharp/language-reference/keywords/using-statement
+	namespace = 
+	public = 
+	partial = 
+	private = 
+	from = 
+	new = 
+	true = 
+	false =
+Ключевые слова:
+	class = 
+	int = 
+	void = 
+	string = 
+Классы:
+	DrvFRLib = Драйвер ККТ Штрих-М
+		Connect() = производит подключение к ККТ для взаимодействия с ним
+		FNGetFiscalizationResult () = 
+		PrintReportWithoutCleaning () = Печать отчета без гашения
+		CloseChek() = Закрывает чек
+		CancelCheck() = Отменяет чек
+		FNCloseSession() = Закрывает смену + печатает отчет с гашеним
+		FNOpenSession() = Открывает смену
+		ShowProperties() = Выводит диалоговое окно для подлючения к ККТ
+		FNSendTag() = отправка тега ФН
+			TagNumber = номер тега
+			TagType = тип тега
+			TagValueStr = значение тега
+		FNGetFiscalizationResult() = запрашивает итоги последней регистрации\перегистрации
+		GetShortECRStatus() = Запрос состояния ККТ
+			ResultCode =
+			ResultCodeDescription = 
+			ECRMode = 
+			ECRModeDescription
+			ECRMode8Status = 
+			ECRModeStatus = 
+			ECRAdvancedMode = 
+			ECRAdvancedModeDescription = 
+		FNGetInfoExchangeStatus() = Запрашивает состояние обмена ФН с ОФД
+			MessageCount = Кол-во не отправленных документов в ОФД
+			Date = Дата первого не отправленного документа
+		FNOperation() = Регистрация позиции в чеке
+			CheckType = Тип чека
+            Price = Цена позиции
+            Quantity = Кол-во
+            Summ1Enabled = Указывает кто считает сумму позиции ПО или ККТ
+            Summ1 = Сумма позиции
+            TaxValueEnabled = Указывает кто считает налог ПО или ККТ
+            Tax1 = Налог
+            Department = № оттдела
+            PaymentTypeSign = Признак способа расчета
+            PaymentItemSign = Признак предмета расчета
+            StringForPrinting = Наименование позиции
+	System = https://docs.microsoft.com/ru-ru/dotnet/api/system?view=netframework-4.8
+		Math.Round() = Производит округление числа
+	System.Net = 
+	System.Net.Mail = 
+	System.Collections.Generic = 
+	System.Collections.Generic = 
+	System.Drawing = 
+	System.Windows.Forms = 
+		ReadOnly = Атрибут виджета, включает и отключает редактирование его содержимого
+		Visible = Атрибут виджета, включает и отключает видимость его видимость
+		BackColor = Атрибут виджета ответает за цвет Фона
+	System.IO = https://docs.microsoft.com/ru-ru/dotnet/api/system.io?view=netframework-4.8
+		File.WriteAllText() = производит создание\перезаписывает содержимое файла
