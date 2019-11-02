@@ -3,8 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
-using System.Net;
-using System.Net.Mail;
+using System.IO;
 
 namespace _3manRMK_0
 {
@@ -14,10 +13,30 @@ namespace _3manRMK_0
         {
             InitializeComponent();
             Drv = new DrvFR();
+            InitialRMK();
         }
         DrvFR Drv; //Создание обьекта драйвера ФР
 
         ////////////Блок Функций/////////////
+        private void InitialRMK ()
+        {
+            FileOperation ("ComNumber=" + Drv.ComNumber +
+                            "\nBaudRate=" + Drv.BaudRate +
+                            "\nTimeout=" + Drv.Timeout +
+                            "\nComputerName=" + Drv.ComputerName +
+                            "\nProtocolType=" + Drv.ProtocolType +
+                            "\nConnectionType=" + Drv.ConnectionType +
+                            "\nTCPPort=" + Drv.TCPPort +
+                            "\nIPAddress=" + Drv.IPAddress +
+                            "\nUseIPAddress=" + Drv.UseIPAddress, "connect.ini");
+            Drv.FNGetFiscalizationResult();
+            FileOperation("ИНН=" + Drv.INN + 
+                            "\nСНО=" + Convert.ToString(Drv.TaxType, 2), "aboutkkt.ini");
+        }
+        static void FileOperation (string InText, string NameFile)
+        {
+            File.WriteAllText(NameFile, InText);
+        }
         private bool CheckSimbols (string ChSimbol, string typeSim) //Проверка строки на посторонние символы
         {
             string DataSimbol = "";
@@ -397,7 +416,6 @@ namespace _3manRMK_0
                 tbINN.ReadOnly = true;
             }
         }
-
         private void xотчетToolStripMenuItem_Click(object sender, EventArgs e)
         {
             try

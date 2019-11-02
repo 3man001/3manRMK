@@ -99,6 +99,7 @@
             this.label15 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -286,7 +287,6 @@
             this.tbINN.Name = "tbINN";
             this.tbINN.Size = new System.Drawing.Size(105, 22);
             this.tbINN.TabIndex = 14;
-            this.tbINN.Text = "123456789012";
             this.tbINN.TextChanged += new System.EventHandler(this.tbINN_TextChanged);
             // 
             // tbNameProduct_1
@@ -493,7 +493,7 @@
             this.tbSummAll.ReadOnly = true;
             this.tbSummAll.Size = new System.Drawing.Size(110, 26);
             this.tbSummAll.TabIndex = 37;
-            this.tbSummAll.Text = "12111111,00";
+            this.tbSummAll.Text = "1,00";
             this.tbSummAll.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // btnLogin
@@ -854,12 +854,22 @@
             this.label17.Text = "3.";
             this.label17.Visible = false;
             // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(156, 60);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(41, 13);
+            this.label18.TabIndex = 68;
+            this.label18.Text = "label18";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.ClientSize = new System.Drawing.Size(858, 334);
+            this.Controls.Add(this.label18);
             this.Controls.Add(this.label17);
             this.Controls.Add(this.label16);
             this.Controls.Add(this.label15);
@@ -999,6 +1009,7 @@
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel2;
+        private System.Windows.Forms.Label label18;
     }
 }
 
