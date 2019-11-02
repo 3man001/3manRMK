@@ -2,8 +2,8 @@
 using System;
 using System.Collections.Generic;
 using System.Drawing;
-using System.Windows.Forms;
 using System.IO;
+using System.Windows.Forms;
 
 namespace _3manRMK_0
 {
@@ -18,9 +18,9 @@ namespace _3manRMK_0
         DrvFR Drv; //Создание обьекта драйвера ФР
 
         ////////////Блок Функций/////////////
-        private void InitialRMK ()
+        private void InitialRMK()
         {
-            FileOperation ("ComNumber=" + Drv.ComNumber +
+            FileOperation("ComNumber=" + Drv.ComNumber +
                             "\nBaudRate=" + Drv.BaudRate +
                             "\nTimeout=" + Drv.Timeout +
                             "\nComputerName=" + Drv.ComputerName +
@@ -30,14 +30,14 @@ namespace _3manRMK_0
                             "\nIPAddress=" + Drv.IPAddress +
                             "\nUseIPAddress=" + Drv.UseIPAddress, "connect.ini");
             Drv.FNGetFiscalizationResult();
-            FileOperation("ИНН=" + Drv.INN + 
+            FileOperation("ИНН=" + Drv.INN +
                             "\nСНО=" + Convert.ToString(Drv.TaxType, 2), "aboutkkt.ini");
         }
-        static void FileOperation (string InText, string NameFile)
+        static void FileOperation(string InText, string NameFile)
         {
             File.WriteAllText(NameFile, InText);
         }
-        private bool CheckSimbols (string ChSimbol, string typeSim) //Проверка строки на посторонние символы
+        private bool CheckSimbols(string ChSimbol, string typeSim) //Проверка строки на посторонние символы
         {
             string DataSimbol = "";
             if (typeSim == "ФИО")
@@ -85,14 +85,17 @@ namespace _3manRMK_0
                 {
                     if ((b1 == (int)char.GetNumericValue(inn[11])) | ((b1 == 10) & ((int)char.GetNumericValue(inn[11]) == 0)))
                     {
-                        return true; }
+                        return true;
+                    }
                     else
                     {
-                        return false; }
+                        return false;
+                    }
                 }
                 else
                 {
-                    return false; }
+                    return false;
+                }
             }
             else
             { return false; }
@@ -218,12 +221,12 @@ namespace _3manRMK_0
             try
             {
                 tbSumm1_1.Text = Convert.ToString(
-                    Math.Round(Convert.ToDecimal(tbPrice_1.Text) * Convert.ToDecimal(tbQuantity_1.Text),2));
+                    Math.Round(Convert.ToDecimal(tbPrice_1.Text) * Convert.ToDecimal(tbQuantity_1.Text), 2));
             }
             catch
             {
 
-            }            
+            }
         }
         private void tbQuantity_TextChanged(object sender, EventArgs e) //Измениение строки с ценой
         {
@@ -270,7 +273,7 @@ namespace _3manRMK_0
                     tbSumm2.BackColor = Color.LightCoral;
                 }
             }
-            
+
         }
         private void tbSumm1_1_TextChanged(object sender, EventArgs e)
         {
@@ -369,14 +372,14 @@ namespace _3manRMK_0
                 int Tax1 = EnterItems(cbTax1_1.Text); //Налоговая ставка 0..6 (0-БезНДС)
                 int PaymentItemSign = EnterItems(cbPaymentItemSign_1.Text); // Признак предмета расчета 1..19 (1-Товар)
 
-                
+
 
                 try
                 { Drv.Connect(); }
                 catch
                 { UpdateResult(); }
 
-                
+
 
                 RegPosition(CheckType, NameProduct, Price, Quantity, Summ1, Tax1, PaymentItemSign); //Регистрация позиции
 
@@ -408,7 +411,7 @@ namespace _3manRMK_0
         {
             tbFIO_TextChanged(sender, e);
             tbINN_TextChanged(sender, e);
-            if ((tbFIO.BackColor == Color.Snow)&(tbINN.BackColor == Color.Snow))
+            if ((tbFIO.BackColor == Color.Snow) & (tbINN.BackColor == Color.Snow))
             {
                 btnLogOut.Visible = true;
                 btnLogin.Visible = false;

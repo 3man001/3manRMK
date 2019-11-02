@@ -1,7 +1,7 @@
 ﻿using System;
-using System.Windows.Forms;
 using System.Net;
 using System.Net.Mail;
+using System.Windows.Forms;
 
 namespace _3manRMK_0
 {
@@ -18,7 +18,7 @@ namespace _3manRMK_0
             MailAddress to = new MailAddress("igor-viv001@yandex.ru"); //Адрес получателя
             MailMessage m = new MailMessage(from, to); // создаем объект сообщения
             m.Subject = "Ошибка работы"; // тема письма
-            m.Body = "<h2> "+message+" </h2>"; // текст письма
+            m.Body = "<h2> " + message + " </h2>"; // текст письма
             m.IsBodyHtml = true; // письмо представляет код html
             SmtpClient smtp = new SmtpClient("mail.3man001.ru", 25); // адрес smtp-сервера и порт отправки письма
             smtp.Credentials = new NetworkCredential("feedback@3man001.ru", "W1h7A4a4"); // логин и пароль
@@ -38,7 +38,7 @@ namespace _3manRMK_0
             LAdvancedmode.Text = string.Format("Расширенный Режим = {0}, {1}", ECRAdvancedMode, ECRAdvancedModeDescription); //Описание подрежима ККМ
             LAllCode.Text = string.Format("Список всех кодов: Ошибка={0}; Режим={1};Режим8={2};Режим13_14={3};Подрежим={4}", ResultCode, Mode, ECRMode8Status, ECRModeStatus, ECRAdvancedMode);
             LSD.Text = ProcessError();
-            
+
         }
         private string ProcessError()
         {
@@ -59,7 +59,7 @@ namespace _3manRMK_0
                     return "В кассовом аппарате закрыта смена, для перехода в рабочий режим её нужно открыть.";
                 }
                 else
-                { return MessageBack; }   
+                { return MessageBack; }
             }
             else
             { return MessageBack; }
