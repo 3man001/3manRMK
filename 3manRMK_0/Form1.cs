@@ -437,5 +437,35 @@ namespace _3manRMK_0
             Feedback Feedback1 = new Feedback();
             Feedback1.ShowDialog(this);
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            tbSumm1.Text = "0,00";
+            tbSumm1.Visible = true;
+            label6.Visible = true;
+            tbSumm2.Text = "0,00";
+            tbSumm2.Visible = false;
+            label7.Visible = false;
+
+        }
+        private void button2_Click(object sender, EventArgs e)
+        {
+            tbSumm1.Text = "0,00";
+            tbSumm1.Visible = false;
+            label6.Visible = false;
+            tbSumm2.Text = "0,00";
+            tbSumm2.Visible = true;
+            label7.Visible = true;
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            tbSumm1.Text = "0,00";
+            tbSumm1.Visible = true;
+            label6.Visible = true;
+            tbSumm2.Text = "0,00";
+            tbSumm2.Visible = true;
+            label7.Visible = true;
+        }
     }
 }

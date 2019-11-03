@@ -64,7 +64,6 @@
             this.cbTax1_1 = new System.Windows.Forms.ComboBox();
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.cbPaymentItemSign_1 = new System.Windows.Forms.ComboBox();
             this.tbSumm1_1 = new System.Windows.Forms.TextBox();
@@ -99,14 +98,20 @@
             this.label15 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
+            this.groupBox3.SuspendLayout();
+            this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // tbFIO
             // 
             this.tbFIO.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.tbFIO.Location = new System.Drawing.Point(125, 25);
+            this.tbFIO.Location = new System.Drawing.Point(126, 11);
             this.tbFIO.MaxLength = 64;
             this.tbFIO.Name = "tbFIO";
             this.tbFIO.Size = new System.Drawing.Size(250, 22);
@@ -117,7 +122,7 @@
             // button4
             // 
             this.button4.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.Location = new System.Drawing.Point(68, 280);
+            this.button4.Location = new System.Drawing.Point(66, 100);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(155, 25);
             this.button4.TabIndex = 4;
@@ -134,7 +139,7 @@
             this.оПрограммеToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(858, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(848, 24);
             this.menuStrip1.TabIndex = 5;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -236,9 +241,9 @@
             this.toolStripStatusLabel3,
             this.toolStripStatusLabel4,
             this.toolStripStatusLabel2});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 312);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 414);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(858, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(848, 22);
             this.statusStrip1.TabIndex = 6;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -272,7 +277,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(384, 30);
+            this.label4.Location = new System.Drawing.Point(385, 16);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(35, 13);
             this.label4.TabIndex = 13;
@@ -281,7 +286,7 @@
             // tbINN
             // 
             this.tbINN.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbINN.Location = new System.Drawing.Point(425, 25);
+            this.tbINN.Location = new System.Drawing.Point(426, 11);
             this.tbINN.MaxLength = 12;
             this.tbINN.Name = "tbINN";
             this.tbINN.Size = new System.Drawing.Size(105, 22);
@@ -291,7 +296,7 @@
             // tbNameProduct_1
             // 
             this.tbNameProduct_1.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.tbNameProduct_1.Location = new System.Drawing.Point(115, 130);
+            this.tbNameProduct_1.Location = new System.Drawing.Point(111, 86);
             this.tbNameProduct_1.MaxLength = 128;
             this.tbNameProduct_1.Name = "tbNameProduct_1";
             this.tbNameProduct_1.Size = new System.Drawing.Size(271, 23);
@@ -302,7 +307,7 @@
             // 
             this.tbPrice_1.BackColor = System.Drawing.SystemColors.Window;
             this.tbPrice_1.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbPrice_1.Location = new System.Drawing.Point(390, 130);
+            this.tbPrice_1.Location = new System.Drawing.Point(386, 86);
             this.tbPrice_1.MaxLength = 11;
             this.tbPrice_1.Name = "tbPrice_1";
             this.tbPrice_1.Size = new System.Drawing.Size(95, 23);
@@ -314,7 +319,7 @@
             // tbQuantity_1
             // 
             this.tbQuantity_1.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.tbQuantity_1.Location = new System.Drawing.Point(489, 130);
+            this.tbQuantity_1.Location = new System.Drawing.Point(485, 86);
             this.tbQuantity_1.MaxLength = 9;
             this.tbQuantity_1.Name = "tbQuantity_1";
             this.tbQuantity_1.Size = new System.Drawing.Size(75, 23);
@@ -326,7 +331,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(117, 110);
+            this.label2.Location = new System.Drawing.Point(113, 66);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(102, 13);
             this.label2.TabIndex = 19;
@@ -335,7 +340,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(389, 110);
+            this.label3.Location = new System.Drawing.Point(385, 66);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(76, 13);
             this.label3.TabIndex = 20;
@@ -344,7 +349,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(500, 110);
+            this.label5.Location = new System.Drawing.Point(496, 66);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(59, 13);
             this.label5.TabIndex = 21;
@@ -353,50 +358,54 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(65, 229);
+            this.label6.Location = new System.Drawing.Point(63, 14);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(58, 13);
             this.label6.TabIndex = 22;
             this.label6.Text = "Наличные";
+            this.label6.Visible = false;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(171, 229);
+            this.label7.Location = new System.Drawing.Point(169, 14);
             this.label7.Name = "label7";
             this.label7.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.label7.Size = new System.Drawing.Size(83, 13);
             this.label7.TabIndex = 23;
             this.label7.Text = "Безналичными";
+            this.label7.Visible = false;
             // 
             // tbSumm1
             // 
             this.tbSumm1.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.tbSumm1.Location = new System.Drawing.Point(62, 245);
+            this.tbSumm1.Location = new System.Drawing.Point(60, 30);
             this.tbSumm1.MaxLength = 11;
             this.tbSumm1.Name = "tbSumm1";
             this.tbSumm1.Size = new System.Drawing.Size(95, 23);
             this.tbSumm1.TabIndex = 24;
-            this.tbSumm1.Text = "1,00";
+            this.tbSumm1.Text = "0,00";
             this.tbSumm1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.tbSumm1.Visible = false;
             this.tbSumm1.TextChanged += new System.EventHandler(this.tbSumm1_TextChanged);
             // 
             // tbSumm2
             // 
             this.tbSumm2.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.tbSumm2.Location = new System.Drawing.Point(168, 245);
+            this.tbSumm2.Location = new System.Drawing.Point(166, 30);
             this.tbSumm2.MaxLength = 11;
             this.tbSumm2.Name = "tbSumm2";
             this.tbSumm2.Size = new System.Drawing.Size(95, 23);
             this.tbSumm2.TabIndex = 25;
             this.tbSumm2.Text = "0,00";
             this.tbSumm2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.tbSumm2.Visible = false;
             this.tbSumm2.TextChanged += new System.EventHandler(this.tbSumm2_TextChanged);
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(682, 110);
+            this.label8.Location = new System.Drawing.Point(678, 66);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(64, 13);
             this.label8.TabIndex = 26;
@@ -412,7 +421,7 @@
             "НДС 10/110",
             "НДС 20%",
             "НДС 20/120"});
-            this.cbTax1_1.Location = new System.Drawing.Point(568, 130);
+            this.cbTax1_1.Location = new System.Drawing.Point(564, 86);
             this.cbTax1_1.Name = "cbTax1_1";
             this.cbTax1_1.Size = new System.Drawing.Size(105, 24);
             this.cbTax1_1.TabIndex = 27;
@@ -421,7 +430,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(599, 110);
+            this.label9.Location = new System.Drawing.Point(595, 66);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(31, 13);
             this.label9.TabIndex = 28;
@@ -430,25 +439,16 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(5, 30);
+            this.label10.Location = new System.Drawing.Point(6, 16);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(117, 13);
             this.label10.TabIndex = 30;
             this.label10.Text = "Должность Фамилия";
             // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(3, 251);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(55, 13);
-            this.label11.TabIndex = 31;
-            this.label11.Text = "Получено";
-            // 
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(37, 110);
+            this.label12.Location = new System.Drawing.Point(33, 66);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(71, 13);
             this.label12.TabIndex = 33;
@@ -462,7 +462,7 @@
             "Товар",
             "Работа",
             "Услуга"});
-            this.cbPaymentItemSign_1.Location = new System.Drawing.Point(37, 130);
+            this.cbPaymentItemSign_1.Location = new System.Drawing.Point(33, 86);
             this.cbPaymentItemSign_1.Name = "cbPaymentItemSign_1";
             this.cbPaymentItemSign_1.Size = new System.Drawing.Size(75, 24);
             this.cbPaymentItemSign_1.TabIndex = 34;
@@ -472,7 +472,7 @@
             // 
             this.tbSumm1_1.BackColor = System.Drawing.SystemColors.Window;
             this.tbSumm1_1.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.tbSumm1_1.Location = new System.Drawing.Point(677, 130);
+            this.tbSumm1_1.Location = new System.Drawing.Point(673, 86);
             this.tbSumm1_1.MaxLength = 11;
             this.tbSumm1_1.Name = "tbSumm1_1";
             this.tbSumm1_1.ReadOnly = true;
@@ -486,7 +486,7 @@
             // 
             this.tbSummAll.BackColor = System.Drawing.SystemColors.Window;
             this.tbSummAll.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.tbSummAll.Location = new System.Drawing.Point(645, 70);
+            this.tbSummAll.Location = new System.Drawing.Point(641, 26);
             this.tbSummAll.MaxLength = 11;
             this.tbSummAll.Name = "tbSummAll";
             this.tbSummAll.ReadOnly = true;
@@ -499,7 +499,7 @@
             // 
             this.btnLogin.BackColor = System.Drawing.Color.Lime;
             this.btnLogin.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btnLogin.Location = new System.Drawing.Point(538, 25);
+            this.btnLogin.Location = new System.Drawing.Point(539, 11);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(75, 25);
             this.btnLogin.TabIndex = 39;
@@ -511,7 +511,7 @@
             // 
             this.btnLogOut.BackColor = System.Drawing.SystemColors.Highlight;
             this.btnLogOut.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btnLogOut.Location = new System.Drawing.Point(547, 25);
+            this.btnLogOut.Location = new System.Drawing.Point(548, 11);
             this.btnLogOut.Name = "btnLogOut";
             this.btnLogOut.Size = new System.Drawing.Size(75, 25);
             this.btnLogOut.TabIndex = 40;
@@ -526,7 +526,7 @@
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Items.AddRange(new object[] {
             "вавыаыва"});
-            this.comboBox1.Location = new System.Drawing.Point(5, 75);
+            this.comboBox1.Location = new System.Drawing.Point(1, 31);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(121, 24);
             this.comboBox1.TabIndex = 38;
@@ -534,7 +534,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(10, 60);
+            this.label1.Location = new System.Drawing.Point(6, 16);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(52, 13);
             this.label1.TabIndex = 41;
@@ -543,41 +543,41 @@
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button1.Location = new System.Drawing.Point(229, 281);
+            this.button1.Location = new System.Drawing.Point(13, 66);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(93, 23);
             this.button1.TabIndex = 42;
             this.button1.Text = "ОплатаНал";
             this.button1.UseVisualStyleBackColor = true;
-            this.button1.Visible = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // button2
             // 
             this.button2.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button2.Location = new System.Drawing.Point(324, 280);
+            this.button2.Location = new System.Drawing.Point(112, 66);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(95, 23);
             this.button2.TabIndex = 43;
             this.button2.Text = "ОплБезНал";
             this.button2.UseVisualStyleBackColor = true;
-            this.button2.Visible = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button3
             // 
             this.button3.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button3.Location = new System.Drawing.Point(423, 281);
+            this.button3.Location = new System.Drawing.Point(213, 66);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(93, 23);
             this.button3.TabIndex = 44;
             this.button3.Text = "СмешОпл";
             this.button3.UseVisualStyleBackColor = true;
-            this.button3.Visible = false;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // label13
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label13.Location = new System.Drawing.Point(575, 75);
+            this.label13.Location = new System.Drawing.Point(571, 31);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(66, 18);
             this.label13.TabIndex = 45;
@@ -586,7 +586,7 @@
             // button5
             // 
             this.button5.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button5.Location = new System.Drawing.Point(778, 130);
+            this.button5.Location = new System.Drawing.Point(774, 86);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(25, 25);
             this.button5.TabIndex = 46;
@@ -596,7 +596,7 @@
             // button6
             // 
             this.button6.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button6.Location = new System.Drawing.Point(805, 130);
+            this.button6.Location = new System.Drawing.Point(801, 86);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(25, 25);
             this.button6.TabIndex = 47;
@@ -607,7 +607,7 @@
             // button7
             // 
             this.button7.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button7.Location = new System.Drawing.Point(805, 159);
+            this.button7.Location = new System.Drawing.Point(801, 115);
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(25, 25);
             this.button7.TabIndex = 55;
@@ -618,7 +618,7 @@
             // button8
             // 
             this.button8.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button8.Location = new System.Drawing.Point(778, 159);
+            this.button8.Location = new System.Drawing.Point(774, 115);
             this.button8.Name = "button8";
             this.button8.Size = new System.Drawing.Size(25, 25);
             this.button8.TabIndex = 54;
@@ -630,7 +630,7 @@
             // 
             this.textBox1.BackColor = System.Drawing.SystemColors.Window;
             this.textBox1.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox1.Location = new System.Drawing.Point(677, 159);
+            this.textBox1.Location = new System.Drawing.Point(673, 115);
             this.textBox1.MaxLength = 11;
             this.textBox1.Name = "textBox1";
             this.textBox1.ReadOnly = true;
@@ -648,7 +648,7 @@
             "Товар",
             "Работа",
             "Услуга"});
-            this.comboBox2.Location = new System.Drawing.Point(37, 159);
+            this.comboBox2.Location = new System.Drawing.Point(33, 115);
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(75, 24);
             this.comboBox2.TabIndex = 52;
@@ -665,7 +665,7 @@
             "НДС 10/110",
             "НДС 20%",
             "НДС 20/120"});
-            this.comboBox3.Location = new System.Drawing.Point(568, 159);
+            this.comboBox3.Location = new System.Drawing.Point(564, 115);
             this.comboBox3.Name = "comboBox3";
             this.comboBox3.Size = new System.Drawing.Size(105, 24);
             this.comboBox3.TabIndex = 51;
@@ -675,7 +675,7 @@
             // textBox2
             // 
             this.textBox2.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox2.Location = new System.Drawing.Point(489, 159);
+            this.textBox2.Location = new System.Drawing.Point(485, 115);
             this.textBox2.MaxLength = 9;
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(75, 23);
@@ -688,7 +688,7 @@
             // 
             this.textBox3.BackColor = System.Drawing.SystemColors.Window;
             this.textBox3.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox3.Location = new System.Drawing.Point(390, 159);
+            this.textBox3.Location = new System.Drawing.Point(386, 115);
             this.textBox3.MaxLength = 11;
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(95, 23);
@@ -700,7 +700,7 @@
             // textBox4
             // 
             this.textBox4.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox4.Location = new System.Drawing.Point(115, 159);
+            this.textBox4.Location = new System.Drawing.Point(111, 115);
             this.textBox4.MaxLength = 128;
             this.textBox4.Name = "textBox4";
             this.textBox4.Size = new System.Drawing.Size(271, 23);
@@ -711,7 +711,7 @@
             // button9
             // 
             this.button9.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button9.Location = new System.Drawing.Point(805, 188);
+            this.button9.Location = new System.Drawing.Point(801, 144);
             this.button9.Name = "button9";
             this.button9.Size = new System.Drawing.Size(25, 25);
             this.button9.TabIndex = 63;
@@ -722,7 +722,7 @@
             // button10
             // 
             this.button10.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button10.Location = new System.Drawing.Point(778, 188);
+            this.button10.Location = new System.Drawing.Point(774, 144);
             this.button10.Name = "button10";
             this.button10.Size = new System.Drawing.Size(25, 25);
             this.button10.TabIndex = 62;
@@ -734,7 +734,7 @@
             // 
             this.textBox5.BackColor = System.Drawing.SystemColors.Window;
             this.textBox5.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox5.Location = new System.Drawing.Point(677, 188);
+            this.textBox5.Location = new System.Drawing.Point(673, 144);
             this.textBox5.MaxLength = 11;
             this.textBox5.Name = "textBox5";
             this.textBox5.ReadOnly = true;
@@ -752,7 +752,7 @@
             "Товар",
             "Работа",
             "Услуга"});
-            this.comboBox4.Location = new System.Drawing.Point(37, 188);
+            this.comboBox4.Location = new System.Drawing.Point(33, 144);
             this.comboBox4.Name = "comboBox4";
             this.comboBox4.Size = new System.Drawing.Size(75, 24);
             this.comboBox4.TabIndex = 60;
@@ -769,7 +769,7 @@
             "НДС 10/110",
             "НДС 20%",
             "НДС 20/120"});
-            this.comboBox5.Location = new System.Drawing.Point(568, 188);
+            this.comboBox5.Location = new System.Drawing.Point(564, 144);
             this.comboBox5.Name = "comboBox5";
             this.comboBox5.Size = new System.Drawing.Size(105, 24);
             this.comboBox5.TabIndex = 59;
@@ -779,7 +779,7 @@
             // textBox6
             // 
             this.textBox6.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox6.Location = new System.Drawing.Point(489, 188);
+            this.textBox6.Location = new System.Drawing.Point(485, 144);
             this.textBox6.MaxLength = 9;
             this.textBox6.Name = "textBox6";
             this.textBox6.Size = new System.Drawing.Size(75, 23);
@@ -792,7 +792,7 @@
             // 
             this.textBox7.BackColor = System.Drawing.SystemColors.Window;
             this.textBox7.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox7.Location = new System.Drawing.Point(390, 188);
+            this.textBox7.Location = new System.Drawing.Point(386, 144);
             this.textBox7.MaxLength = 11;
             this.textBox7.Name = "textBox7";
             this.textBox7.Size = new System.Drawing.Size(95, 23);
@@ -804,7 +804,7 @@
             // textBox8
             // 
             this.textBox8.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox8.Location = new System.Drawing.Point(115, 188);
+            this.textBox8.Location = new System.Drawing.Point(111, 144);
             this.textBox8.MaxLength = 128;
             this.textBox8.Name = "textBox8";
             this.textBox8.Size = new System.Drawing.Size(271, 23);
@@ -815,7 +815,7 @@
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(10, 110);
+            this.label14.Location = new System.Drawing.Point(6, 66);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(18, 13);
             this.label14.TabIndex = 64;
@@ -825,7 +825,7 @@
             // 
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label15.Location = new System.Drawing.Point(10, 135);
+            this.label15.Location = new System.Drawing.Point(6, 91);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(21, 16);
             this.label15.TabIndex = 65;
@@ -835,7 +835,7 @@
             // 
             this.label16.AutoSize = true;
             this.label16.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label16.Location = new System.Drawing.Point(10, 164);
+            this.label16.Location = new System.Drawing.Point(6, 120);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(21, 16);
             this.label16.TabIndex = 66;
@@ -846,73 +846,106 @@
             // 
             this.label17.AutoSize = true;
             this.label17.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label17.Location = new System.Drawing.Point(10, 193);
+            this.label17.Location = new System.Drawing.Point(6, 149);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(21, 16);
             this.label17.TabIndex = 67;
             this.label17.Text = "3.";
             this.label17.Visible = false;
             // 
+            // groupBox3
+            // 
+            this.groupBox3.BackColor = System.Drawing.SystemColors.Window;
+            this.groupBox3.Controls.Add(this.tbSumm2);
+            this.groupBox3.Controls.Add(this.button4);
+            this.groupBox3.Controls.Add(this.label6);
+            this.groupBox3.Controls.Add(this.label7);
+            this.groupBox3.Controls.Add(this.tbSumm1);
+            this.groupBox3.Controls.Add(this.button1);
+            this.groupBox3.Controls.Add(this.button2);
+            this.groupBox3.Controls.Add(this.button3);
+            this.groupBox3.Location = new System.Drawing.Point(20, 252);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(314, 133);
+            this.groupBox3.TabIndex = 68;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Оплата";
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.BackColor = System.Drawing.SystemColors.ButtonShadow;
+            this.groupBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.groupBox1.Controls.Add(this.label10);
+            this.groupBox1.Controls.Add(this.tbFIO);
+            this.groupBox1.Controls.Add(this.btnLogOut);
+            this.groupBox1.Controls.Add(this.label4);
+            this.groupBox1.Controls.Add(this.tbINN);
+            this.groupBox1.Controls.Add(this.btnLogin);
+            this.groupBox1.Location = new System.Drawing.Point(0, 27);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(630, 40);
+            this.groupBox1.TabIndex = 69;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Авторизация";
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.groupBox2.Controls.Add(this.label1);
+            this.groupBox2.Controls.Add(this.tbNameProduct_1);
+            this.groupBox2.Controls.Add(this.tbPrice_1);
+            this.groupBox2.Controls.Add(this.tbQuantity_1);
+            this.groupBox2.Controls.Add(this.label2);
+            this.groupBox2.Controls.Add(this.label17);
+            this.groupBox2.Controls.Add(this.label3);
+            this.groupBox2.Controls.Add(this.label16);
+            this.groupBox2.Controls.Add(this.label5);
+            this.groupBox2.Controls.Add(this.label15);
+            this.groupBox2.Controls.Add(this.label8);
+            this.groupBox2.Controls.Add(this.label14);
+            this.groupBox2.Controls.Add(this.cbTax1_1);
+            this.groupBox2.Controls.Add(this.button9);
+            this.groupBox2.Controls.Add(this.label9);
+            this.groupBox2.Controls.Add(this.button10);
+            this.groupBox2.Controls.Add(this.label12);
+            this.groupBox2.Controls.Add(this.textBox5);
+            this.groupBox2.Controls.Add(this.cbPaymentItemSign_1);
+            this.groupBox2.Controls.Add(this.comboBox4);
+            this.groupBox2.Controls.Add(this.tbSumm1_1);
+            this.groupBox2.Controls.Add(this.comboBox5);
+            this.groupBox2.Controls.Add(this.tbSummAll);
+            this.groupBox2.Controls.Add(this.textBox6);
+            this.groupBox2.Controls.Add(this.comboBox1);
+            this.groupBox2.Controls.Add(this.textBox7);
+            this.groupBox2.Controls.Add(this.label13);
+            this.groupBox2.Controls.Add(this.textBox8);
+            this.groupBox2.Controls.Add(this.button5);
+            this.groupBox2.Controls.Add(this.button7);
+            this.groupBox2.Controls.Add(this.button6);
+            this.groupBox2.Controls.Add(this.button8);
+            this.groupBox2.Controls.Add(this.textBox4);
+            this.groupBox2.Controls.Add(this.textBox1);
+            this.groupBox2.Controls.Add(this.textBox3);
+            this.groupBox2.Controls.Add(this.comboBox2);
+            this.groupBox2.Controls.Add(this.textBox2);
+            this.groupBox2.Controls.Add(this.comboBox3);
+            this.groupBox2.Location = new System.Drawing.Point(0, 73);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(838, 176);
+            this.groupBox2.TabIndex = 70;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Регистрация позиций";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.ClientSize = new System.Drawing.Size(858, 334);
-            this.Controls.Add(this.label17);
-            this.Controls.Add(this.label16);
-            this.Controls.Add(this.label15);
-            this.Controls.Add(this.label14);
-            this.Controls.Add(this.button9);
-            this.Controls.Add(this.button10);
-            this.Controls.Add(this.textBox5);
-            this.Controls.Add(this.comboBox4);
-            this.Controls.Add(this.comboBox5);
-            this.Controls.Add(this.textBox6);
-            this.Controls.Add(this.textBox7);
-            this.Controls.Add(this.textBox8);
-            this.Controls.Add(this.button7);
-            this.Controls.Add(this.button8);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.comboBox2);
-            this.Controls.Add(this.comboBox3);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox4);
-            this.Controls.Add(this.button6);
-            this.Controls.Add(this.button5);
-            this.Controls.Add(this.label13);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.btnLogOut);
-            this.Controls.Add(this.btnLogin);
-            this.Controls.Add(this.comboBox1);
-            this.Controls.Add(this.tbSummAll);
-            this.Controls.Add(this.tbSumm1_1);
-            this.Controls.Add(this.cbPaymentItemSign_1);
-            this.Controls.Add(this.label12);
-            this.Controls.Add(this.label11);
-            this.Controls.Add(this.label10);
-            this.Controls.Add(this.label9);
-            this.Controls.Add(this.cbTax1_1);
-            this.Controls.Add(this.label8);
-            this.Controls.Add(this.tbSumm2);
-            this.Controls.Add(this.tbSumm1);
-            this.Controls.Add(this.label7);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.tbQuantity_1);
-            this.Controls.Add(this.tbPrice_1);
-            this.Controls.Add(this.tbNameProduct_1);
+            this.ClientSize = new System.Drawing.Size(848, 436);
+            this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.statusStrip1);
-            this.Controls.Add(this.tbINN);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.tbFIO);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
@@ -921,6 +954,12 @@
             this.menuStrip1.PerformLayout();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -958,7 +997,6 @@
         private System.Windows.Forms.ToolStripMenuItem отчетыToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem xотчетToolStripMenuItem;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.ComboBox cbPaymentItemSign_1;
         private System.Windows.Forms.TextBox tbSumm1_1;
@@ -998,6 +1036,9 @@
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel2;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox groupBox2;
     }
 }
 
