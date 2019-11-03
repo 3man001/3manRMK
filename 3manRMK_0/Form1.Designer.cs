@@ -76,31 +76,33 @@
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.label13 = new System.Windows.Forms.Label();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
-            this.button8 = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.button9 = new System.Windows.Forms.Button();
-            this.button10 = new System.Windows.Forms.Button();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.comboBox4 = new System.Windows.Forms.ComboBox();
-            this.comboBox5 = new System.Windows.Forms.ComboBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.textBox7 = new System.Windows.Forms.TextBox();
-            this.textBox8 = new System.Windows.Forms.TextBox();
+            this.bPlus1 = new System.Windows.Forms.Button();
+            this.bMinus1 = new System.Windows.Forms.Button();
+            this.bMinus2 = new System.Windows.Forms.Button();
+            this.bPlus2 = new System.Windows.Forms.Button();
+            this.tbSumm1_2 = new System.Windows.Forms.TextBox();
+            this.cbPaymentItemSign_2 = new System.Windows.Forms.ComboBox();
+            this.cbTax1_2 = new System.Windows.Forms.ComboBox();
+            this.tbQuantity_2 = new System.Windows.Forms.TextBox();
+            this.tbPrice_2 = new System.Windows.Forms.TextBox();
+            this.tbNameProduct_2 = new System.Windows.Forms.TextBox();
+            this.bMinus3 = new System.Windows.Forms.Button();
+            this.bPlus3 = new System.Windows.Forms.Button();
+            this.tbSumm1_3 = new System.Windows.Forms.TextBox();
+            this.cbPaymentItemSign_3 = new System.Windows.Forms.ComboBox();
+            this.cbTax1_3 = new System.Windows.Forms.ComboBox();
+            this.tbQuantity_3 = new System.Windows.Forms.TextBox();
+            this.tbPrice_3 = new System.Windows.Forms.TextBox();
+            this.tbNameProduct_3 = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.button12 = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.button11 = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -122,7 +124,7 @@
             // button4
             // 
             this.button4.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.Location = new System.Drawing.Point(66, 100);
+            this.button4.Location = new System.Drawing.Point(287, 98);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(155, 25);
             this.button4.TabIndex = 4;
@@ -139,7 +141,7 @@
             this.оПрограммеToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(848, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(839, 24);
             this.menuStrip1.TabIndex = 5;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -241,9 +243,9 @@
             this.toolStripStatusLabel3,
             this.toolStripStatusLabel4,
             this.toolStripStatusLabel2});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 414);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 379);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(848, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(839, 22);
             this.statusStrip1.TabIndex = 6;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -358,7 +360,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(63, 14);
+            this.label6.Location = new System.Drawing.Point(284, 12);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(58, 13);
             this.label6.TabIndex = 22;
@@ -368,7 +370,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(169, 14);
+            this.label7.Location = new System.Drawing.Point(390, 12);
             this.label7.Name = "label7";
             this.label7.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.label7.Size = new System.Drawing.Size(83, 13);
@@ -379,7 +381,7 @@
             // tbSumm1
             // 
             this.tbSumm1.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.tbSumm1.Location = new System.Drawing.Point(60, 30);
+            this.tbSumm1.Location = new System.Drawing.Point(281, 28);
             this.tbSumm1.MaxLength = 11;
             this.tbSumm1.Name = "tbSumm1";
             this.tbSumm1.Size = new System.Drawing.Size(95, 23);
@@ -392,7 +394,7 @@
             // tbSumm2
             // 
             this.tbSumm2.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.tbSumm2.Location = new System.Drawing.Point(166, 30);
+            this.tbSumm2.Location = new System.Drawing.Point(387, 28);
             this.tbSumm2.MaxLength = 11;
             this.tbSumm2.Name = "tbSumm2";
             this.tbSumm2.Size = new System.Drawing.Size(95, 23);
@@ -486,7 +488,7 @@
             // 
             this.tbSummAll.BackColor = System.Drawing.SystemColors.Window;
             this.tbSummAll.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.tbSummAll.Location = new System.Drawing.Point(641, 26);
+            this.tbSummAll.Location = new System.Drawing.Point(726, 9);
             this.tbSummAll.MaxLength = 11;
             this.tbSummAll.Name = "tbSummAll";
             this.tbSummAll.ReadOnly = true;
@@ -494,6 +496,7 @@
             this.tbSummAll.TabIndex = 37;
             this.tbSummAll.Text = "1,00";
             this.tbSummAll.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.tbSummAll.Visible = false;
             // 
             // btnLogin
             // 
@@ -543,7 +546,7 @@
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button1.Location = new System.Drawing.Point(13, 66);
+            this.button1.Location = new System.Drawing.Point(234, 64);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(93, 23);
             this.button1.TabIndex = 42;
@@ -554,7 +557,7 @@
             // button2
             // 
             this.button2.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button2.Location = new System.Drawing.Point(112, 66);
+            this.button2.Location = new System.Drawing.Point(333, 64);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(95, 23);
             this.button2.TabIndex = 43;
@@ -565,7 +568,7 @@
             // button3
             // 
             this.button3.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button3.Location = new System.Drawing.Point(213, 66);
+            this.button3.Location = new System.Drawing.Point(434, 64);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(93, 23);
             this.button3.TabIndex = 44;
@@ -577,240 +580,247 @@
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label13.Location = new System.Drawing.Point(571, 31);
+            this.label13.Location = new System.Drawing.Point(656, 14);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(66, 18);
             this.label13.TabIndex = 45;
             this.label13.Text = "ИТОГ =";
+            this.label13.Visible = false;
             // 
-            // button5
+            // bPlus1
             // 
-            this.button5.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button5.Location = new System.Drawing.Point(774, 86);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(25, 25);
-            this.button5.TabIndex = 46;
-            this.button5.Text = "+";
-            this.button5.UseVisualStyleBackColor = true;
+            this.bPlus1.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.bPlus1.Location = new System.Drawing.Point(774, 86);
+            this.bPlus1.Name = "bPlus1";
+            this.bPlus1.Size = new System.Drawing.Size(25, 25);
+            this.bPlus1.TabIndex = 46;
+            this.bPlus1.Text = "+";
+            this.bPlus1.UseVisualStyleBackColor = true;
+            this.bPlus1.Click += new System.EventHandler(this.bPlus1_Click);
             // 
-            // button6
+            // bMinus1
             // 
-            this.button6.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button6.Location = new System.Drawing.Point(801, 86);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(25, 25);
-            this.button6.TabIndex = 47;
-            this.button6.Text = "-";
-            this.button6.UseVisualStyleBackColor = true;
-            this.button6.Visible = false;
+            this.bMinus1.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.bMinus1.Location = new System.Drawing.Point(802, 86);
+            this.bMinus1.Name = "bMinus1";
+            this.bMinus1.Size = new System.Drawing.Size(25, 25);
+            this.bMinus1.TabIndex = 47;
+            this.bMinus1.Text = "-";
+            this.bMinus1.UseVisualStyleBackColor = true;
+            this.bMinus1.Visible = false;
+            this.bMinus1.Click += new System.EventHandler(this.bMinus1_Click);
             // 
-            // button7
+            // bMinus2
             // 
-            this.button7.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button7.Location = new System.Drawing.Point(801, 115);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(25, 25);
-            this.button7.TabIndex = 55;
-            this.button7.Text = "-";
-            this.button7.UseVisualStyleBackColor = true;
-            this.button7.Visible = false;
+            this.bMinus2.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.bMinus2.Location = new System.Drawing.Point(801, 115);
+            this.bMinus2.Name = "bMinus2";
+            this.bMinus2.Size = new System.Drawing.Size(25, 25);
+            this.bMinus2.TabIndex = 55;
+            this.bMinus2.Text = "-";
+            this.bMinus2.UseVisualStyleBackColor = true;
+            this.bMinus2.Visible = false;
+            this.bMinus2.Click += new System.EventHandler(this.bMinus2_Click);
             // 
-            // button8
+            // bPlus2
             // 
-            this.button8.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button8.Location = new System.Drawing.Point(774, 115);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(25, 25);
-            this.button8.TabIndex = 54;
-            this.button8.Text = "+";
-            this.button8.UseVisualStyleBackColor = true;
-            this.button8.Visible = false;
+            this.bPlus2.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.bPlus2.Location = new System.Drawing.Point(774, 115);
+            this.bPlus2.Name = "bPlus2";
+            this.bPlus2.Size = new System.Drawing.Size(25, 25);
+            this.bPlus2.TabIndex = 54;
+            this.bPlus2.Text = "+";
+            this.bPlus2.UseVisualStyleBackColor = true;
+            this.bPlus2.Visible = false;
+            this.bPlus2.Click += new System.EventHandler(this.bPlus2_Click);
             // 
-            // textBox1
+            // tbSumm1_2
             // 
-            this.textBox1.BackColor = System.Drawing.SystemColors.Window;
-            this.textBox1.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox1.Location = new System.Drawing.Point(673, 115);
-            this.textBox1.MaxLength = 11;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(95, 23);
-            this.textBox1.TabIndex = 53;
-            this.textBox1.Text = "1,00";
-            this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.textBox1.Visible = false;
+            this.tbSumm1_2.BackColor = System.Drawing.SystemColors.Window;
+            this.tbSumm1_2.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.tbSumm1_2.Location = new System.Drawing.Point(673, 115);
+            this.tbSumm1_2.MaxLength = 11;
+            this.tbSumm1_2.Name = "tbSumm1_2";
+            this.tbSumm1_2.ReadOnly = true;
+            this.tbSumm1_2.Size = new System.Drawing.Size(95, 23);
+            this.tbSumm1_2.TabIndex = 53;
+            this.tbSumm1_2.Text = "1,00";
+            this.tbSumm1_2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.tbSumm1_2.Visible = false;
             // 
-            // comboBox2
+            // cbPaymentItemSign_2
             // 
-            this.comboBox2.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Items.AddRange(new object[] {
+            this.cbPaymentItemSign_2.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.cbPaymentItemSign_2.FormattingEnabled = true;
+            this.cbPaymentItemSign_2.Items.AddRange(new object[] {
             "Товар",
             "Работа",
             "Услуга"});
-            this.comboBox2.Location = new System.Drawing.Point(33, 115);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(75, 24);
-            this.comboBox2.TabIndex = 52;
-            this.comboBox2.Text = "Товар";
-            this.comboBox2.Visible = false;
+            this.cbPaymentItemSign_2.Location = new System.Drawing.Point(33, 115);
+            this.cbPaymentItemSign_2.Name = "cbPaymentItemSign_2";
+            this.cbPaymentItemSign_2.Size = new System.Drawing.Size(75, 24);
+            this.cbPaymentItemSign_2.TabIndex = 52;
+            this.cbPaymentItemSign_2.Text = "Товар";
+            this.cbPaymentItemSign_2.Visible = false;
             // 
-            // comboBox3
+            // cbTax1_2
             // 
-            this.comboBox3.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.comboBox3.Items.AddRange(new object[] {
+            this.cbTax1_2.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.cbTax1_2.Items.AddRange(new object[] {
             "Без НДС",
             "НДС 0%",
             "НДС 10%",
             "НДС 10/110",
             "НДС 20%",
             "НДС 20/120"});
-            this.comboBox3.Location = new System.Drawing.Point(564, 115);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(105, 24);
-            this.comboBox3.TabIndex = 51;
-            this.comboBox3.Text = "Без НДС";
-            this.comboBox3.Visible = false;
+            this.cbTax1_2.Location = new System.Drawing.Point(564, 115);
+            this.cbTax1_2.Name = "cbTax1_2";
+            this.cbTax1_2.Size = new System.Drawing.Size(105, 24);
+            this.cbTax1_2.TabIndex = 51;
+            this.cbTax1_2.Text = "Без НДС";
+            this.cbTax1_2.Visible = false;
             // 
-            // textBox2
+            // tbQuantity_2
             // 
-            this.textBox2.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox2.Location = new System.Drawing.Point(485, 115);
-            this.textBox2.MaxLength = 9;
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(75, 23);
-            this.textBox2.TabIndex = 50;
-            this.textBox2.Text = "1,000";
-            this.textBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.textBox2.Visible = false;
+            this.tbQuantity_2.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.tbQuantity_2.Location = new System.Drawing.Point(485, 115);
+            this.tbQuantity_2.MaxLength = 9;
+            this.tbQuantity_2.Name = "tbQuantity_2";
+            this.tbQuantity_2.Size = new System.Drawing.Size(75, 23);
+            this.tbQuantity_2.TabIndex = 50;
+            this.tbQuantity_2.Text = "1,000";
+            this.tbQuantity_2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.tbQuantity_2.Visible = false;
             // 
-            // textBox3
+            // tbPrice_2
             // 
-            this.textBox3.BackColor = System.Drawing.SystemColors.Window;
-            this.textBox3.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox3.Location = new System.Drawing.Point(386, 115);
-            this.textBox3.MaxLength = 11;
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(95, 23);
-            this.textBox3.TabIndex = 48;
-            this.textBox3.Text = "1,00";
-            this.textBox3.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.textBox3.Visible = false;
+            this.tbPrice_2.BackColor = System.Drawing.SystemColors.Window;
+            this.tbPrice_2.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbPrice_2.Location = new System.Drawing.Point(386, 115);
+            this.tbPrice_2.MaxLength = 11;
+            this.tbPrice_2.Name = "tbPrice_2";
+            this.tbPrice_2.Size = new System.Drawing.Size(95, 23);
+            this.tbPrice_2.TabIndex = 48;
+            this.tbPrice_2.Text = "1,00";
+            this.tbPrice_2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.tbPrice_2.Visible = false;
             // 
-            // textBox4
+            // tbNameProduct_2
             // 
-            this.textBox4.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox4.Location = new System.Drawing.Point(111, 115);
-            this.textBox4.MaxLength = 128;
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(271, 23);
-            this.textBox4.TabIndex = 49;
-            this.textBox4.Text = "Офисный принтер Панасоник RGB 15";
-            this.textBox4.Visible = false;
+            this.tbNameProduct_2.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.tbNameProduct_2.Location = new System.Drawing.Point(111, 115);
+            this.tbNameProduct_2.MaxLength = 128;
+            this.tbNameProduct_2.Name = "tbNameProduct_2";
+            this.tbNameProduct_2.Size = new System.Drawing.Size(271, 23);
+            this.tbNameProduct_2.TabIndex = 49;
+            this.tbNameProduct_2.Text = "Офисный принтер Панасоник RGB 15";
+            this.tbNameProduct_2.Visible = false;
             // 
-            // button9
+            // bMinus3
             // 
-            this.button9.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button9.Location = new System.Drawing.Point(801, 144);
-            this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(25, 25);
-            this.button9.TabIndex = 63;
-            this.button9.Text = "-";
-            this.button9.UseVisualStyleBackColor = true;
-            this.button9.Visible = false;
+            this.bMinus3.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.bMinus3.Location = new System.Drawing.Point(801, 144);
+            this.bMinus3.Name = "bMinus3";
+            this.bMinus3.Size = new System.Drawing.Size(25, 25);
+            this.bMinus3.TabIndex = 63;
+            this.bMinus3.Text = "-";
+            this.bMinus3.UseVisualStyleBackColor = true;
+            this.bMinus3.Visible = false;
+            this.bMinus3.Click += new System.EventHandler(this.bMinus3_Click);
             // 
-            // button10
+            // bPlus3
             // 
-            this.button10.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button10.Location = new System.Drawing.Point(774, 144);
-            this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(25, 25);
-            this.button10.TabIndex = 62;
-            this.button10.Text = "+";
-            this.button10.UseVisualStyleBackColor = true;
-            this.button10.Visible = false;
+            this.bPlus3.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.bPlus3.Location = new System.Drawing.Point(774, 144);
+            this.bPlus3.Name = "bPlus3";
+            this.bPlus3.Size = new System.Drawing.Size(25, 25);
+            this.bPlus3.TabIndex = 62;
+            this.bPlus3.Text = "+";
+            this.bPlus3.UseVisualStyleBackColor = true;
+            this.bPlus3.Visible = false;
+            this.bPlus3.Click += new System.EventHandler(this.bPlus3_Click);
             // 
-            // textBox5
+            // tbSumm1_3
             // 
-            this.textBox5.BackColor = System.Drawing.SystemColors.Window;
-            this.textBox5.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox5.Location = new System.Drawing.Point(673, 144);
-            this.textBox5.MaxLength = 11;
-            this.textBox5.Name = "textBox5";
-            this.textBox5.ReadOnly = true;
-            this.textBox5.Size = new System.Drawing.Size(95, 23);
-            this.textBox5.TabIndex = 61;
-            this.textBox5.Text = "1,00";
-            this.textBox5.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.textBox5.Visible = false;
+            this.tbSumm1_3.BackColor = System.Drawing.SystemColors.Window;
+            this.tbSumm1_3.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.tbSumm1_3.Location = new System.Drawing.Point(673, 144);
+            this.tbSumm1_3.MaxLength = 11;
+            this.tbSumm1_3.Name = "tbSumm1_3";
+            this.tbSumm1_3.ReadOnly = true;
+            this.tbSumm1_3.Size = new System.Drawing.Size(95, 23);
+            this.tbSumm1_3.TabIndex = 61;
+            this.tbSumm1_3.Text = "1,00";
+            this.tbSumm1_3.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.tbSumm1_3.Visible = false;
             // 
-            // comboBox4
+            // cbPaymentItemSign_3
             // 
-            this.comboBox4.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.comboBox4.FormattingEnabled = true;
-            this.comboBox4.Items.AddRange(new object[] {
+            this.cbPaymentItemSign_3.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.cbPaymentItemSign_3.FormattingEnabled = true;
+            this.cbPaymentItemSign_3.Items.AddRange(new object[] {
             "Товар",
             "Работа",
             "Услуга"});
-            this.comboBox4.Location = new System.Drawing.Point(33, 144);
-            this.comboBox4.Name = "comboBox4";
-            this.comboBox4.Size = new System.Drawing.Size(75, 24);
-            this.comboBox4.TabIndex = 60;
-            this.comboBox4.Text = "Товар";
-            this.comboBox4.Visible = false;
+            this.cbPaymentItemSign_3.Location = new System.Drawing.Point(33, 144);
+            this.cbPaymentItemSign_3.Name = "cbPaymentItemSign_3";
+            this.cbPaymentItemSign_3.Size = new System.Drawing.Size(75, 24);
+            this.cbPaymentItemSign_3.TabIndex = 60;
+            this.cbPaymentItemSign_3.Text = "Товар";
+            this.cbPaymentItemSign_3.Visible = false;
             // 
-            // comboBox5
+            // cbTax1_3
             // 
-            this.comboBox5.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.comboBox5.Items.AddRange(new object[] {
+            this.cbTax1_3.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.cbTax1_3.Items.AddRange(new object[] {
             "Без НДС",
             "НДС 0%",
             "НДС 10%",
             "НДС 10/110",
             "НДС 20%",
             "НДС 20/120"});
-            this.comboBox5.Location = new System.Drawing.Point(564, 144);
-            this.comboBox5.Name = "comboBox5";
-            this.comboBox5.Size = new System.Drawing.Size(105, 24);
-            this.comboBox5.TabIndex = 59;
-            this.comboBox5.Text = "Без НДС";
-            this.comboBox5.Visible = false;
+            this.cbTax1_3.Location = new System.Drawing.Point(564, 144);
+            this.cbTax1_3.Name = "cbTax1_3";
+            this.cbTax1_3.Size = new System.Drawing.Size(105, 24);
+            this.cbTax1_3.TabIndex = 59;
+            this.cbTax1_3.Text = "Без НДС";
+            this.cbTax1_3.Visible = false;
             // 
-            // textBox6
+            // tbQuantity_3
             // 
-            this.textBox6.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox6.Location = new System.Drawing.Point(485, 144);
-            this.textBox6.MaxLength = 9;
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(75, 23);
-            this.textBox6.TabIndex = 58;
-            this.textBox6.Text = "1,000";
-            this.textBox6.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.textBox6.Visible = false;
+            this.tbQuantity_3.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.tbQuantity_3.Location = new System.Drawing.Point(485, 144);
+            this.tbQuantity_3.MaxLength = 9;
+            this.tbQuantity_3.Name = "tbQuantity_3";
+            this.tbQuantity_3.Size = new System.Drawing.Size(75, 23);
+            this.tbQuantity_3.TabIndex = 58;
+            this.tbQuantity_3.Text = "1,000";
+            this.tbQuantity_3.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.tbQuantity_3.Visible = false;
             // 
-            // textBox7
+            // tbPrice_3
             // 
-            this.textBox7.BackColor = System.Drawing.SystemColors.Window;
-            this.textBox7.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox7.Location = new System.Drawing.Point(386, 144);
-            this.textBox7.MaxLength = 11;
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(95, 23);
-            this.textBox7.TabIndex = 56;
-            this.textBox7.Text = "1,00";
-            this.textBox7.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.textBox7.Visible = false;
+            this.tbPrice_3.BackColor = System.Drawing.SystemColors.Window;
+            this.tbPrice_3.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbPrice_3.Location = new System.Drawing.Point(386, 144);
+            this.tbPrice_3.MaxLength = 11;
+            this.tbPrice_3.Name = "tbPrice_3";
+            this.tbPrice_3.Size = new System.Drawing.Size(95, 23);
+            this.tbPrice_3.TabIndex = 56;
+            this.tbPrice_3.Text = "1,00";
+            this.tbPrice_3.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.tbPrice_3.Visible = false;
             // 
-            // textBox8
+            // tbNameProduct_3
             // 
-            this.textBox8.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox8.Location = new System.Drawing.Point(111, 144);
-            this.textBox8.MaxLength = 128;
-            this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(271, 23);
-            this.textBox8.TabIndex = 57;
-            this.textBox8.Text = "Офисный принтер Панасоник RGB 15";
-            this.textBox8.Visible = false;
+            this.tbNameProduct_3.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.tbNameProduct_3.Location = new System.Drawing.Point(111, 144);
+            this.tbNameProduct_3.MaxLength = 128;
+            this.tbNameProduct_3.Name = "tbNameProduct_3";
+            this.tbNameProduct_3.Size = new System.Drawing.Size(271, 23);
+            this.tbNameProduct_3.TabIndex = 57;
+            this.tbNameProduct_3.Text = "Офисный принтер Панасоник RGB 15";
+            this.tbNameProduct_3.Visible = false;
             // 
             // label14
             // 
@@ -856,6 +866,7 @@
             // groupBox3
             // 
             this.groupBox3.BackColor = System.Drawing.SystemColors.Window;
+            this.groupBox3.Controls.Add(this.button12);
             this.groupBox3.Controls.Add(this.tbSumm2);
             this.groupBox3.Controls.Add(this.button4);
             this.groupBox3.Controls.Add(this.label6);
@@ -864,12 +875,24 @@
             this.groupBox3.Controls.Add(this.button1);
             this.groupBox3.Controls.Add(this.button2);
             this.groupBox3.Controls.Add(this.button3);
-            this.groupBox3.Location = new System.Drawing.Point(20, 252);
+            this.groupBox3.Location = new System.Drawing.Point(0, 245);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(314, 133);
+            this.groupBox3.Size = new System.Drawing.Size(840, 180);
             this.groupBox3.TabIndex = 68;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Оплата";
+            this.groupBox3.Visible = false;
+            // 
+            // button12
+            // 
+            this.button12.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button12.Location = new System.Drawing.Point(728, 10);
+            this.button12.Name = "button12";
+            this.button12.Size = new System.Drawing.Size(108, 37);
+            this.button12.TabIndex = 72;
+            this.button12.Text = "Позиции";
+            this.button12.UseVisualStyleBackColor = true;
+            this.button12.Click += new System.EventHandler(this.button12_Click);
             // 
             // groupBox1
             // 
@@ -881,9 +904,11 @@
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.tbINN);
             this.groupBox1.Controls.Add(this.btnLogin);
-            this.groupBox1.Location = new System.Drawing.Point(0, 27);
+            this.groupBox1.Controls.Add(this.tbSummAll);
+            this.groupBox1.Controls.Add(this.label13);
+            this.groupBox1.Location = new System.Drawing.Point(0, 25);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(630, 40);
+            this.groupBox1.Size = new System.Drawing.Size(840, 40);
             this.groupBox1.TabIndex = 69;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Авторизация";
@@ -891,6 +916,7 @@
             // groupBox2
             // 
             this.groupBox2.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.groupBox2.Controls.Add(this.button11);
             this.groupBox2.Controls.Add(this.label1);
             this.groupBox2.Controls.Add(this.tbNameProduct_1);
             this.groupBox2.Controls.Add(this.tbPrice_1);
@@ -904,48 +930,58 @@
             this.groupBox2.Controls.Add(this.label8);
             this.groupBox2.Controls.Add(this.label14);
             this.groupBox2.Controls.Add(this.cbTax1_1);
-            this.groupBox2.Controls.Add(this.button9);
+            this.groupBox2.Controls.Add(this.bMinus3);
             this.groupBox2.Controls.Add(this.label9);
-            this.groupBox2.Controls.Add(this.button10);
+            this.groupBox2.Controls.Add(this.bPlus3);
             this.groupBox2.Controls.Add(this.label12);
-            this.groupBox2.Controls.Add(this.textBox5);
+            this.groupBox2.Controls.Add(this.tbSumm1_3);
             this.groupBox2.Controls.Add(this.cbPaymentItemSign_1);
-            this.groupBox2.Controls.Add(this.comboBox4);
+            this.groupBox2.Controls.Add(this.cbPaymentItemSign_3);
             this.groupBox2.Controls.Add(this.tbSumm1_1);
-            this.groupBox2.Controls.Add(this.comboBox5);
-            this.groupBox2.Controls.Add(this.tbSummAll);
-            this.groupBox2.Controls.Add(this.textBox6);
+            this.groupBox2.Controls.Add(this.cbTax1_3);
+            this.groupBox2.Controls.Add(this.tbQuantity_3);
             this.groupBox2.Controls.Add(this.comboBox1);
-            this.groupBox2.Controls.Add(this.textBox7);
-            this.groupBox2.Controls.Add(this.label13);
-            this.groupBox2.Controls.Add(this.textBox8);
-            this.groupBox2.Controls.Add(this.button5);
-            this.groupBox2.Controls.Add(this.button7);
-            this.groupBox2.Controls.Add(this.button6);
-            this.groupBox2.Controls.Add(this.button8);
-            this.groupBox2.Controls.Add(this.textBox4);
-            this.groupBox2.Controls.Add(this.textBox1);
-            this.groupBox2.Controls.Add(this.textBox3);
-            this.groupBox2.Controls.Add(this.comboBox2);
-            this.groupBox2.Controls.Add(this.textBox2);
-            this.groupBox2.Controls.Add(this.comboBox3);
-            this.groupBox2.Location = new System.Drawing.Point(0, 73);
+            this.groupBox2.Controls.Add(this.tbPrice_3);
+            this.groupBox2.Controls.Add(this.tbNameProduct_3);
+            this.groupBox2.Controls.Add(this.bPlus1);
+            this.groupBox2.Controls.Add(this.bMinus2);
+            this.groupBox2.Controls.Add(this.bMinus1);
+            this.groupBox2.Controls.Add(this.bPlus2);
+            this.groupBox2.Controls.Add(this.tbNameProduct_2);
+            this.groupBox2.Controls.Add(this.tbSumm1_2);
+            this.groupBox2.Controls.Add(this.tbPrice_2);
+            this.groupBox2.Controls.Add(this.cbPaymentItemSign_2);
+            this.groupBox2.Controls.Add(this.tbQuantity_2);
+            this.groupBox2.Controls.Add(this.cbTax1_2);
+            this.groupBox2.Location = new System.Drawing.Point(0, 65);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(838, 176);
+            this.groupBox2.Size = new System.Drawing.Size(840, 180);
             this.groupBox2.TabIndex = 70;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Регистрация позиций";
+            this.groupBox2.Visible = false;
+            // 
+            // button11
+            // 
+            this.button11.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button11.Location = new System.Drawing.Point(744, 11);
+            this.button11.Name = "button11";
+            this.button11.Size = new System.Drawing.Size(92, 32);
+            this.button11.TabIndex = 71;
+            this.button11.Text = "Оплата";
+            this.button11.UseVisualStyleBackColor = true;
+            this.button11.Click += new System.EventHandler(this.button11_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.ClientSize = new System.Drawing.Size(848, 436);
+            this.ClientSize = new System.Drawing.Size(839, 401);
+            this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.groupBox3);
-            this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
@@ -1013,24 +1049,24 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.Button button8;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.ComboBox comboBox3;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.Button button9;
-        private System.Windows.Forms.Button button10;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.ComboBox comboBox4;
-        private System.Windows.Forms.ComboBox comboBox5;
-        private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.TextBox textBox7;
-        private System.Windows.Forms.TextBox textBox8;
+        private System.Windows.Forms.Button bPlus1;
+        private System.Windows.Forms.Button bMinus1;
+        private System.Windows.Forms.Button bMinus2;
+        private System.Windows.Forms.Button bPlus2;
+        private System.Windows.Forms.TextBox tbSumm1_2;
+        private System.Windows.Forms.ComboBox cbPaymentItemSign_2;
+        private System.Windows.Forms.ComboBox cbTax1_2;
+        private System.Windows.Forms.TextBox tbQuantity_2;
+        private System.Windows.Forms.TextBox tbPrice_2;
+        private System.Windows.Forms.TextBox tbNameProduct_2;
+        private System.Windows.Forms.Button bMinus3;
+        private System.Windows.Forms.Button bPlus3;
+        private System.Windows.Forms.TextBox tbSumm1_3;
+        private System.Windows.Forms.ComboBox cbPaymentItemSign_3;
+        private System.Windows.Forms.ComboBox cbTax1_3;
+        private System.Windows.Forms.TextBox tbQuantity_3;
+        private System.Windows.Forms.TextBox tbPrice_3;
+        private System.Windows.Forms.TextBox tbNameProduct_3;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label16;
@@ -1039,6 +1075,8 @@
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.Button button12;
+        private System.Windows.Forms.Button button11;
     }
 }
 

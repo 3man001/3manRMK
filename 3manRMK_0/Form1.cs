@@ -13,7 +13,8 @@ namespace _3manRMK_0
         {
             InitializeComponent();
             Drv = new DrvFR();
-            InitialRMK();
+            this.Size = new Size(855, 300);
+            groupBox3.Location = new Point(0, 65);
         }
         DrvFR Drv; //Создание обьекта драйвера ФР
 
@@ -406,6 +407,10 @@ namespace _3manRMK_0
             btnLogin.Visible = true;
             tbFIO.ReadOnly = false;
             tbINN.ReadOnly = false;
+            label13.Visible = false;
+            tbSummAll.Visible = false;
+            groupBox2.Visible = false;
+            groupBox3.Visible = false;
         }
         private void btnLogin_Click(object sender, EventArgs e)
         {
@@ -418,6 +423,10 @@ namespace _3manRMK_0
                 tbFIO.ReadOnly = true;
                 tbINN.ReadOnly = true;
             }
+            //InitialRMK();
+            label13.Visible = true;
+            tbSummAll.Visible = true;
+            groupBox2.Visible = true;
         }
         private void xотчетToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -466,6 +475,67 @@ namespace _3manRMK_0
             tbSumm2.Text = "0,00";
             tbSumm2.Visible = true;
             label7.Visible = true;
+        }
+
+        private void button11_Click(object sender, EventArgs e)
+        {
+            groupBox3.Visible = true;
+            groupBox2.Visible = false;
+        }
+
+        private void button12_Click(object sender, EventArgs e)
+        {
+            groupBox3.Visible = false;
+            groupBox2.Visible = true;
+        }
+
+
+
+        //+++++++++++++++++++++++++++//
+        private void bPlus1_Click(object sender, EventArgs e)
+        {
+            bPlus1.Visible = false;
+            bMinus1.Visible = true;
+            if (!label16.Visible)
+            {
+                bPlus2.Visible = true;
+                label16.Visible = true;
+            }
+            
+
+        }
+        private void bMinus1_Click(object sender, EventArgs e)
+        {
+            bPlus1.Visible = true;
+            bMinus1.Visible = false;
+            cbPaymentItemSign_1.Font = new Font(cbPaymentItemSign_1.Font, FontStyle.Strikeout);
+            
+        }
+        private void bPlus2_Click(object sender, EventArgs e)
+        {
+            bPlus2.Visible = false;
+            bMinus2.Visible = true;
+            if (!label17.Visible)
+            {
+                bPlus3.Visible = true;
+                label17.Visible = true;
+            } 
+        }
+        private void bMinus2_Click(object sender, EventArgs e)
+        {
+            bPlus2.Visible = true;
+            bMinus2.Visible = false;
+        }
+
+        private void bPlus3_Click(object sender, EventArgs e)
+        {
+            bPlus3.Visible = false;
+            bMinus3.Visible = true;
+        }
+        private void bMinus3_Click(object sender, EventArgs e)
+        {
+            bPlus3.Visible = true;
+            bMinus3.Visible = false;
         }
     }
 }
