@@ -103,6 +103,8 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.button11 = new System.Windows.Forms.Button();
+            this.tbChange = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -124,12 +126,13 @@
             // button4
             // 
             this.button4.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.Location = new System.Drawing.Point(287, 98);
+            this.button4.Location = new System.Drawing.Point(280, 10);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(155, 25);
+            this.button4.Size = new System.Drawing.Size(205, 25);
             this.button4.TabIndex = 4;
             this.button4.Text = "Оформить продажу";
             this.button4.UseVisualStyleBackColor = true;
+            this.button4.Visible = false;
             this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // menuStrip1
@@ -243,7 +246,7 @@
             this.toolStripStatusLabel3,
             this.toolStripStatusLabel4,
             this.toolStripStatusLabel2});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 379);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 406);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(839, 22);
             this.statusStrip1.TabIndex = 6;
@@ -360,7 +363,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(284, 12);
+            this.label6.Location = new System.Drawing.Point(285, 42);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(58, 13);
             this.label6.TabIndex = 22;
@@ -370,7 +373,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(390, 12);
+            this.label7.Location = new System.Drawing.Point(390, 42);
             this.label7.Name = "label7";
             this.label7.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.label7.Size = new System.Drawing.Size(83, 13);
@@ -381,7 +384,7 @@
             // tbSumm1
             // 
             this.tbSumm1.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.tbSumm1.Location = new System.Drawing.Point(281, 28);
+            this.tbSumm1.Location = new System.Drawing.Point(280, 62);
             this.tbSumm1.MaxLength = 11;
             this.tbSumm1.Name = "tbSumm1";
             this.tbSumm1.Size = new System.Drawing.Size(95, 23);
@@ -394,7 +397,7 @@
             // tbSumm2
             // 
             this.tbSumm2.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.tbSumm2.Location = new System.Drawing.Point(387, 28);
+            this.tbSumm2.Location = new System.Drawing.Point(390, 62);
             this.tbSumm2.MaxLength = 11;
             this.tbSumm2.Name = "tbSumm2";
             this.tbSumm2.Size = new System.Drawing.Size(95, 23);
@@ -546,9 +549,9 @@
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button1.Location = new System.Drawing.Point(234, 64);
+            this.button1.Location = new System.Drawing.Point(280, 97);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(93, 23);
+            this.button1.Size = new System.Drawing.Size(95, 23);
             this.button1.TabIndex = 42;
             this.button1.Text = "ОплатаНал";
             this.button1.UseVisualStyleBackColor = true;
@@ -557,7 +560,7 @@
             // button2
             // 
             this.button2.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button2.Location = new System.Drawing.Point(333, 64);
+            this.button2.Location = new System.Drawing.Point(390, 97);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(95, 23);
             this.button2.TabIndex = 43;
@@ -568,7 +571,7 @@
             // button3
             // 
             this.button3.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button3.Location = new System.Drawing.Point(434, 64);
+            this.button3.Location = new System.Drawing.Point(335, 127);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(93, 23);
             this.button3.TabIndex = 44;
@@ -596,6 +599,7 @@
             this.bPlus1.TabIndex = 46;
             this.bPlus1.Text = "+";
             this.bPlus1.UseVisualStyleBackColor = true;
+            this.bPlus1.Visible = false;
             this.bPlus1.Click += new System.EventHandler(this.bPlus1_Click);
             // 
             // bMinus1
@@ -866,7 +870,9 @@
             // groupBox3
             // 
             this.groupBox3.BackColor = System.Drawing.SystemColors.Window;
+            this.groupBox3.Controls.Add(this.tbChange);
             this.groupBox3.Controls.Add(this.button12);
+            this.groupBox3.Controls.Add(this.label11);
             this.groupBox3.Controls.Add(this.tbSumm2);
             this.groupBox3.Controls.Add(this.button4);
             this.groupBox3.Controls.Add(this.label6);
@@ -972,12 +978,36 @@
             this.button11.UseVisualStyleBackColor = true;
             this.button11.Click += new System.EventHandler(this.button11_Click);
             // 
+            // tbChange
+            // 
+            this.tbChange.BackColor = System.Drawing.SystemColors.Window;
+            this.tbChange.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.tbChange.Location = new System.Drawing.Point(82, 14);
+            this.tbChange.MaxLength = 11;
+            this.tbChange.Name = "tbChange";
+            this.tbChange.ReadOnly = true;
+            this.tbChange.Size = new System.Drawing.Size(110, 26);
+            this.tbChange.TabIndex = 46;
+            this.tbChange.Text = "0,00";
+            this.tbChange.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.tbChange.TextChanged += new System.EventHandler(this.tbChange_TextChanged);
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label11.Location = new System.Drawing.Point(12, 19);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(61, 18);
+            this.label11.TabIndex = 47;
+            this.label11.Text = "СДАЧА";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.ClientSize = new System.Drawing.Size(839, 401);
+            this.ClientSize = new System.Drawing.Size(839, 428);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
@@ -1077,6 +1107,8 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Button button12;
         private System.Windows.Forms.Button button11;
+        private System.Windows.Forms.TextBox tbChange;
+        private System.Windows.Forms.Label label11;
     }
 }
 

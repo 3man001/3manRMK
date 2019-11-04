@@ -253,25 +253,41 @@ namespace _3manRMK_0
         {
             string c = CheckNumber(tbSumm1.Text, 2);
             if (c == "")
-            { tbSumm1.BackColor = Color.LightCoral; }
+            { 
+                tbSumm1.BackColor = Color.LightCoral;
+                tbChange.Visible = false;
+                button4.Visible = false;
+            }
             else
             {
                 tbSumm1.BackColor = Color.Snow;
                 tbSumm1.Text = c;
+                decimal Change = Convert.ToDecimal(tbSummAll.Text) - Convert.ToDecimal(tbSumm2.Text) - Convert.ToDecimal(tbSumm1.Text);
+                tbChange.Text = Convert.ToString(Change);
+                tbChange.Visible = true;
             }
         }
         private void tbSumm2_TextChanged(object sender, EventArgs e) //Контроль ввода безналичной оплаты
         {
             string c = CheckNumber(tbSumm2.Text, 2);
             if (c == "")
-            { tbSumm2.BackColor = Color.LightCoral; }
+            {
+                tbSumm2.BackColor = Color.LightCoral;
+                tbChange.Visible = false;
+                button4.Visible = false;
+            }
             else
             {
                 tbSumm2.BackColor = Color.Snow;
+                decimal Change = Convert.ToDecimal(tbSummAll.Text) - Convert.ToDecimal(tbSumm2.Text) - Convert.ToDecimal(tbSumm1.Text);
+                tbChange.Text = Convert.ToString(Change);
+                tbChange.Visible = true;
                 tbSumm2.Text = c;
                 if (Convert.ToDecimal(tbSumm2.Text) > Convert.ToDecimal(tbSummAll.Text))
                 {
                     tbSumm2.BackColor = Color.LightCoral;
+                    tbChange.Visible = false;
+                    button4.Visible = false;
                 }
             }
 
@@ -422,11 +438,12 @@ namespace _3manRMK_0
                 btnLogin.Visible = false;
                 tbFIO.ReadOnly = true;
                 tbINN.ReadOnly = true;
+
+                //InitialRMK();
+                label13.Visible = true;
+                tbSummAll.Visible = true;
+                groupBox2.Visible = true;
             }
-            //InitialRMK();
-            label13.Visible = true;
-            tbSummAll.Visible = true;
-            groupBox2.Visible = true;
         }
         private void xотчетToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -536,6 +553,18 @@ namespace _3manRMK_0
         {
             bPlus3.Visible = true;
             bMinus3.Visible = false;
+        }
+
+        private void tbChange_TextChanged(object sender, EventArgs e)
+        {
+            if (Convert.ToDecimal (tbChange.Text) <= 0)
+            {
+                    button4.Visible = true;
+            }
+            else
+            {
+                button4.Visible = false;
+            }
         }
     }
 }
