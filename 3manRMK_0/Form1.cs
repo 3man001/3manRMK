@@ -15,6 +15,7 @@ namespace _3manRMK_0
             Drv = new DrvFR();
             this.Size = new Size(855, 300);
             groupBox3.Location = new Point(0, 65);
+            groupBox4.Location = new Point (0, 65);
         }
         DrvFR Drv; //Создание обьекта драйвера ФР
 
@@ -34,7 +35,7 @@ namespace _3manRMK_0
             FileOperation("ИНН=" + Drv.INN +
                             "\nСНО=" + Convert.ToString(Drv.TaxType, 2), "aboutkkt.ini");
         }
-        static void FileOperation(string InText, string NameFile)
+        static void FileOperation(string InText, string NameFile) //Работа с файлами
         {
             File.WriteAllText(NameFile, InText);
         }
@@ -263,7 +264,7 @@ namespace _3manRMK_0
                 tbSumm1.BackColor = Color.Snow;
                 tbSumm1.Text = c;
                 decimal Change = Convert.ToDecimal(tbSummAll.Text) - Convert.ToDecimal(tbSumm2.Text) - Convert.ToDecimal(tbSumm1.Text);
-                tbChange.Text = Convert.ToString(Change);
+                tbChange.Text = Convert.ToString(Change*-1);
                 tbChange.Visible = true;
             }
         }
@@ -280,7 +281,7 @@ namespace _3manRMK_0
             {
                 tbSumm2.BackColor = Color.Snow;
                 decimal Change = Convert.ToDecimal(tbSummAll.Text) - Convert.ToDecimal(tbSumm2.Text) - Convert.ToDecimal(tbSumm1.Text);
-                tbChange.Text = Convert.ToString(Change);
+                tbChange.Text = Convert.ToString(Change * -1);
                 tbChange.Visible = true;
                 tbSumm2.Text = c;
                 if (Convert.ToDecimal(tbSumm2.Text) > Convert.ToDecimal(tbSummAll.Text))
@@ -389,14 +390,13 @@ namespace _3manRMK_0
                 int Tax1 = EnterItems(cbTax1_1.Text); //Налоговая ставка 0..6 (0-БезНДС)
                 int PaymentItemSign = EnterItems(cbPaymentItemSign_1.Text); // Признак предмета расчета 1..19 (1-Товар)
 
-
-
                 try
                 { Drv.Connect(); }
                 catch
                 { UpdateResult(); }
 
-
+                groupBox3.Visible = false;
+                groupBox4.Visible = true;
 
                 RegPosition(CheckType, NameProduct, Price, Quantity, Summ1, Tax1, PaymentItemSign); //Регистрация позиции
 
@@ -414,7 +414,13 @@ namespace _3manRMK_0
                         Drv.FNSendTag();
                     }
                 }
-                CloseChek(); // Формируем закрытие чека
+                CloseChek(); // Формирует закрытие чека
+                tbSumm1.Text = "0,00";
+                tbSumm2.Text = "0,00";
+                tbSumm1.Visible = false;
+                tbSumm2.Visible = false;
+                groupBox2.Visible = true;
+                groupBox4.Visible = false;
             }
         }
         private void btnLogOut_Click(object sender, EventArgs e)
@@ -557,12 +563,13 @@ namespace _3manRMK_0
 
         private void tbChange_TextChanged(object sender, EventArgs e)
         {
-            if (Convert.ToDecimal (tbChange.Text) <= 0)
+            if (Convert.ToDecimal (tbChange.Text) >= 0)
             {
-                    button4.Visible = true;
+                button4.Visible = true;
             }
             else
             {
+                
                 button4.Visible = false;
             }
         }

@@ -99,17 +99,20 @@
             this.label16 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.tbChange = new System.Windows.Forms.TextBox();
             this.button12 = new System.Windows.Forms.Button();
+            this.label11 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.button11 = new System.Windows.Forms.Button();
-            this.tbChange = new System.Windows.Forms.TextBox();
-            this.label11 = new System.Windows.Forms.Label();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.label18 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            this.groupBox4.SuspendLayout();
             this.SuspendLayout();
             // 
             // tbFIO
@@ -246,7 +249,7 @@
             this.toolStripStatusLabel3,
             this.toolStripStatusLabel4,
             this.toolStripStatusLabel2});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 406);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 610);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(839, 22);
             this.statusStrip1.TabIndex = 6;
@@ -271,13 +274,13 @@
             this.toolStripStatusLabel4.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.toolStripStatusLabel4.Name = "toolStripStatusLabel4";
             this.toolStripStatusLabel4.Size = new System.Drawing.Size(180, 17);
-            this.toolStripStatusLabel4.Text = "Не отправлено документов = 5";
+            this.toolStripStatusLabel4.Text = "Не отправлено документов = *";
             // 
             // toolStripStatusLabel2
             // 
             this.toolStripStatusLabel2.Name = "toolStripStatusLabel2";
-            this.toolStripStatusLabel2.Size = new System.Drawing.Size(93, 17);
-            this.toolStripStatusLabel2.Text = "12:06:2019_23:28";
+            this.toolStripStatusLabel2.Size = new System.Drawing.Size(81, 17);
+            this.toolStripStatusLabel2.Text = "**:**:****_**:**";
             // 
             // label4
             // 
@@ -889,6 +892,20 @@
             this.groupBox3.Text = "Оплата";
             this.groupBox3.Visible = false;
             // 
+            // tbChange
+            // 
+            this.tbChange.BackColor = System.Drawing.SystemColors.Window;
+            this.tbChange.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.tbChange.Location = new System.Drawing.Point(82, 14);
+            this.tbChange.MaxLength = 11;
+            this.tbChange.Name = "tbChange";
+            this.tbChange.ReadOnly = true;
+            this.tbChange.Size = new System.Drawing.Size(110, 26);
+            this.tbChange.TabIndex = 46;
+            this.tbChange.Text = "0,00";
+            this.tbChange.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.tbChange.TextChanged += new System.EventHandler(this.tbChange_TextChanged);
+            // 
             // button12
             // 
             this.button12.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -899,6 +916,16 @@
             this.button12.Text = "Позиции";
             this.button12.UseVisualStyleBackColor = true;
             this.button12.Click += new System.EventHandler(this.button12_Click);
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label11.Location = new System.Drawing.Point(12, 19);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(61, 18);
+            this.label11.TabIndex = 47;
+            this.label11.Text = "СДАЧА";
             // 
             // groupBox1
             // 
@@ -978,36 +1005,35 @@
             this.button11.UseVisualStyleBackColor = true;
             this.button11.Click += new System.EventHandler(this.button11_Click);
             // 
-            // tbChange
+            // groupBox4
             // 
-            this.tbChange.BackColor = System.Drawing.SystemColors.Window;
-            this.tbChange.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.tbChange.Location = new System.Drawing.Point(82, 14);
-            this.tbChange.MaxLength = 11;
-            this.tbChange.Name = "tbChange";
-            this.tbChange.ReadOnly = true;
-            this.tbChange.Size = new System.Drawing.Size(110, 26);
-            this.tbChange.TabIndex = 46;
-            this.tbChange.Text = "0,00";
-            this.tbChange.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.tbChange.TextChanged += new System.EventHandler(this.tbChange_TextChanged);
+            this.groupBox4.BackColor = System.Drawing.Color.Orange;
+            this.groupBox4.Controls.Add(this.label18);
+            this.groupBox4.Location = new System.Drawing.Point(0, 430);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(840, 180);
+            this.groupBox4.TabIndex = 71;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Ожидание";
+            this.groupBox4.Visible = false;
             // 
-            // label11
+            // label18
             // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label11.Location = new System.Drawing.Point(12, 19);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(61, 18);
-            this.label11.TabIndex = 47;
-            this.label11.Text = "СДАЧА";
+            this.label18.AutoSize = true;
+            this.label18.Font = new System.Drawing.Font("Arial", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label18.Location = new System.Drawing.Point(216, 68);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(464, 34);
+            this.label18.TabIndex = 0;
+            this.label18.Text = "Идет Работат с ККТ, подождите";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.ClientSize = new System.Drawing.Size(839, 428);
+            this.ClientSize = new System.Drawing.Size(839, 632);
+            this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
@@ -1026,6 +1052,8 @@
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1109,6 +1137,8 @@
         private System.Windows.Forms.Button button11;
         private System.Windows.Forms.TextBox tbChange;
         private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.Label label18;
     }
 }
 
