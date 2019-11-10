@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
-using System.Windows.Forms;
+using System.Windows.Forms;  //Подключение библиотек
 
 namespace _3manRMK_0
 {
@@ -18,7 +18,6 @@ namespace _3manRMK_0
             groupBox4.Location = new Point (0, 65);
         }
         DrvFR Drv; //Создание обьекта драйвера ФР
-
         ////////////Блок Функций/////////////
         private void InitialRMK()
         {
@@ -169,7 +168,6 @@ namespace _3manRMK_0
             Drv.PaymentTypeSign = 4; // Признак способа расчета 1..7 (4-Полный расчет)
             Drv.PaymentItemSign = PaymentItemSign;
             Drv.StringForPrinting = NameProduct;
-
             try
             { Drv.FNOperation(); } // Пробиваем позицию
             catch
@@ -374,7 +372,6 @@ namespace _3manRMK_0
             AboutBox.ShowDialog(this);
         }
         ////////////Конец Блок МЕНЮ////////////////
-
         private void button4_Click(object sender, EventArgs e) //Продажа тестового товара
         {
             if (Convert.ToDecimal(tbSumm2.Text) > Convert.ToDecimal(tbSummAll.Text))
@@ -474,13 +471,11 @@ namespace _3manRMK_0
                 UpdateResult();
             }
         }
-
         private void обратнаяСвязьToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Feedback Feedback1 = new Feedback();
             Feedback1.ShowDialog(this);
         }
-
         private void button1_Click(object sender, EventArgs e)
         {
             tbSumm1.Text = "0,00";
@@ -500,7 +495,6 @@ namespace _3manRMK_0
             tbSumm2.Visible = true;
             label7.Visible = true;
         }
-
         private void button3_Click(object sender, EventArgs e)
         {
             tbSumm1.Text = "0,00";
@@ -510,21 +504,16 @@ namespace _3manRMK_0
             tbSumm2.Visible = true;
             label7.Visible = true;
         }
-
         private void button11_Click(object sender, EventArgs e)
         {
             groupBox3.Visible = true;
             groupBox2.Visible = false;
         }
-
         private void button12_Click(object sender, EventArgs e)
         {
             groupBox3.Visible = false;
             groupBox2.Visible = true;
         }
-
-
-
         //+++++++++++++++++++++++++++//
         private void bPlus1_Click(object sender, EventArgs e)
         {
@@ -560,7 +549,6 @@ namespace _3manRMK_0
             bPlus2.Visible = true;
             bMinus2.Visible = false;
         }
-
         private void bPlus3_Click(object sender, EventArgs e)
         {
             bPlus3.Visible = false;
@@ -571,7 +559,6 @@ namespace _3manRMK_0
             bPlus3.Visible = true;
             bMinus3.Visible = false;
         }
-
         private void tbChange_TextChanged(object sender, EventArgs e)
         {
             if (Convert.ToDecimal (tbChange.Text) >= 0)
@@ -614,6 +601,38 @@ namespace _3manRMK_0
                 {
                     maskTBPhone.BackColor = Color.LightGreen;
                 }
+            }
+        }
+        private void tbEmail_TextChanged(object sender, EventArgs e)
+        {
+            string s = tbEmail.Text;
+            if (CheckSimbols(s, "Email"))
+            {
+                int I = s.IndexOf('@');
+                if ((I < 0)| (s.Length < 3))
+                {
+                    tbEmail.BackColor = Color.LightCoral;
+                }
+                else
+                {
+                    s = s.Substring(0, I) + s.Substring(I+1, s.Length - I-1);
+                    if (s.IndexOf('@') > 0)
+                    {
+                        tbEmail.BackColor = Color.LightCoral;
+                    }
+                    else
+                    {
+                        tbEmail.BackColor = Color.LightGreen;
+                    }
+                }
+            }
+            else
+            {
+                tbEmail.BackColor = Color.LightCoral;
+            }
+            if (s == "")
+            {
+                tbEmail.BackColor = Color.Snow;
             }
         }
     }

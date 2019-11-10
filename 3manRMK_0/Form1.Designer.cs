@@ -907,6 +907,7 @@
             this.tbEmail.Size = new System.Drawing.Size(180, 23);
             this.tbEmail.TabIndex = 74;
             this.tbEmail.Text = "igor-viv001@yandex.ru";
+            this.tbEmail.TextChanged += new System.EventHandler(this.tbEmail_TextChanged);
             // 
             // tbChange
             // 
