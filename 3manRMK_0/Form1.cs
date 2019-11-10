@@ -43,9 +43,7 @@ namespace _3manRMK_0
             string DataSimbol = "";
             if (typeSim == "ФИО")
             {
-                if (ChSimbol == "")
-                    { return false; }
-                if (ChSimbol[0] == ' ')
+                if ( (ChSimbol == "") | (ChSimbol[0] == ' ') )
                     { return false; }
                 DataSimbol = " ёйцукенгшщзхъфывапролджэячсмитьбюЁЙЦУКЕНГШЩЗХЪФЫВАПРОЛДЖЭЯЧСМИТЬБЮ";
             }
@@ -61,9 +59,21 @@ namespace _3manRMK_0
             }
             if (typeSim == "Email")
             {
-                if (ChSimbol == "")
-                { return true; }
-                DataSimbol = "1234567890qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM@.-";
+                DataSimbol = "1234567890qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM.-";
+                int I = ChSimbol.IndexOf('@');
+                int L = ChSimbol.Length;
+                if ((I <= 0) | (L < 3) | (I+1 == L))
+                    { return false; }
+                else
+                {
+                    ChSimbol = ChSimbol.Substring(0,I) + ChSimbol.Substring(I+1, L-I-1);
+                    for (int i = 0; i < L-1; i++)
+                    {
+                        if (DataSimbol.IndexOf(ChSimbol[i]) < 0)
+                        { return false; }
+                    }
+                    return true;
+                }
             }
             for (int i = 0; i < ChSimbol.Length; i++)
             {
@@ -603,37 +613,14 @@ namespace _3manRMK_0
                 }
             }
         }
-        private void tbEmail_TextChanged(object sender, EventArgs e)
+        private void tbEmail_TextChanged(object sender, EventArgs e) //Проверка Email на корректность
         {
-            string s = tbEmail.Text;
-            if (CheckSimbols(s, "Email"))
-            {
-                int I = s.IndexOf('@');
-                if ((I < 0)| (s.Length < 3))
-                {
-                    tbEmail.BackColor = Color.LightCoral;
-                }
-                else
-                {
-                    s = s.Substring(0, I) + s.Substring(I+1, s.Length - I-1);
-                    if (s.IndexOf('@') > 0)
-                    {
-                        tbEmail.BackColor = Color.LightCoral;
-                    }
-                    else
-                    {
-                        tbEmail.BackColor = Color.LightGreen;
-                    }
-                }
-            }
+            if (CheckSimbols(tbEmail.Text, "Email"))
+                { tbEmail.BackColor = Color.LightGreen; }
             else
-            {
-                tbEmail.BackColor = Color.LightCoral;
-            }
-            if (s == "")
-            {
-                tbEmail.BackColor = Color.Snow;
-            }
+                { tbEmail.BackColor = Color.LightCoral; }
+            if (tbEmail.Text == "")
+                { tbEmail.BackColor = Color.Snow; }
         }
     }
 }
