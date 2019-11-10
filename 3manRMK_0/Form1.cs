@@ -44,6 +44,10 @@ namespace _3manRMK_0
             string DataSimbol = "";
             if (typeSim == "ФИО")
             {
+                if (ChSimbol == "")
+                    { return false; }
+                if (ChSimbol[0] == ' ')
+                    { return false; }
                 DataSimbol = " ёйцукенгшщзхъфывапролджэячсмитьбюЁЙЦУКЕНГШЩЗХЪФЫВАПРОЛДЖЭЯЧСМИТЬБЮ";
             }
             if (typeSim == "Число")
@@ -53,22 +57,19 @@ namespace _3manRMK_0
             if (typeSim == "ИНН")
             {
                 if (ChSimbol == "")
-                {
-                    return true;
-                }
+                    { return true; }
                 DataSimbol = "1234567890";
             }
-
-            if (ChSimbol[0] == ' ')
+            if (typeSim == "Email")
             {
-                return false;
+                if (ChSimbol == "")
+                { return true; }
+                DataSimbol = "1234567890qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM@.-";
             }
             for (int i = 0; i < ChSimbol.Length; i++)
             {
                 if (DataSimbol.IndexOf(ChSimbol[i]) < 0)
-                {
-                    return false;
-                }
+                    { return false; }
             }
             return true;
         }
@@ -414,6 +415,16 @@ namespace _3manRMK_0
                         Drv.FNSendTag();
                     }
                 }
+                if (maskTBPhone.BackColor == Color.LightGreen) //Отправка чека СМС если есть номер
+                {
+                    Drv.CustomerEmail = maskTBPhone.Text;
+                    Drv.FNSendCustomerEmail();
+                }
+                if (tbEmail.BackColor == Color.LightGreen) //Отправка чека на Email если введен адрес
+                {
+                    Drv.CustomerEmail = tbEmail.Text;
+                    Drv.FNSendCustomerEmail();
+                }
                 CloseChek(); // Формирует закрытие чека
                 tbSumm1.Text = "0,00";
                 tbSumm2.Text = "0,00";
@@ -571,6 +582,38 @@ namespace _3manRMK_0
             {
                 
                 button4.Visible = false;
+            }
+        }
+        private void maskTBPhone_MaskInputRejected(object sender, EventArgs e)
+        {
+            string s = maskTBPhone.Text;
+            if (maskTBPhone.Text.Length == 15)
+            {
+                s = (s.Substring(3, 3) + s.Substring(8, 3) + s.Substring(12, 2)).Trim ();
+                if (s == "")
+                {
+                    maskTBPhone.BackColor = Color.Snow;
+                }
+                else
+                {
+                    maskTBPhone.BackColor = Color.LightCoral;
+                }
+            }
+            if (maskTBPhone.Text.Length == 16)
+            {
+                maskTBPhone.BackColor = Color.LightCoral;
+            }
+            if (maskTBPhone.Text.Length == 17)
+            {
+                s = s.Substring(0, 2) + s.Substring(3, 3) + s.Substring(8, 3) + s.Substring(12, 2) + s.Substring(15, 2);
+                if (s.IndexOf(' ' ) > 0)
+                {
+                    maskTBPhone.BackColor = Color.LightCoral;
+                }
+                else
+                {
+                    maskTBPhone.BackColor = Color.LightGreen;
+                }
             }
         }
     }

@@ -99,6 +99,7 @@
             this.label16 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.tbEmail = new System.Windows.Forms.TextBox();
             this.tbChange = new System.Windows.Forms.TextBox();
             this.button12 = new System.Windows.Forms.Button();
             this.label11 = new System.Windows.Forms.Label();
@@ -107,6 +108,8 @@
             this.button11 = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.label18 = new System.Windows.Forms.Label();
+            this.maskTBPhone = new System.Windows.Forms.MaskedTextBox();
+            this.label19 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -873,6 +876,9 @@
             // groupBox3
             // 
             this.groupBox3.BackColor = System.Drawing.SystemColors.Window;
+            this.groupBox3.Controls.Add(this.label19);
+            this.groupBox3.Controls.Add(this.maskTBPhone);
+            this.groupBox3.Controls.Add(this.tbEmail);
             this.groupBox3.Controls.Add(this.tbChange);
             this.groupBox3.Controls.Add(this.button12);
             this.groupBox3.Controls.Add(this.label11);
@@ -891,6 +897,16 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Оплата";
             this.groupBox3.Visible = false;
+            // 
+            // tbEmail
+            // 
+            this.tbEmail.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.tbEmail.Location = new System.Drawing.Point(12, 97);
+            this.tbEmail.MaxLength = 254;
+            this.tbEmail.Name = "tbEmail";
+            this.tbEmail.Size = new System.Drawing.Size(180, 23);
+            this.tbEmail.TabIndex = 74;
+            this.tbEmail.Text = "igor-viv001@yandex.ru";
             // 
             // tbChange
             // 
@@ -1027,6 +1043,26 @@
             this.label18.TabIndex = 0;
             this.label18.Text = "Идет Работат с ККТ, подождите";
             // 
+            // maskTBPhone
+            // 
+            this.maskTBPhone.BackColor = System.Drawing.SystemColors.Window;
+            this.maskTBPhone.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.maskTBPhone.Location = new System.Drawing.Point(49, 71);
+            this.maskTBPhone.Mask = "+7(000) 000-00-00";
+            this.maskTBPhone.Name = "maskTBPhone";
+            this.maskTBPhone.Size = new System.Drawing.Size(143, 23);
+            this.maskTBPhone.TabIndex = 75;
+            this.maskTBPhone.TextChanged += new System.EventHandler(this.maskTBPhone_MaskInputRejected);
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(46, 127);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(41, 13);
+            this.label19.TabIndex = 76;
+            this.label19.Text = "label19";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1139,6 +1175,9 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.TextBox tbEmail;
+        private System.Windows.Forms.MaskedTextBox maskTBPhone;
+        private System.Windows.Forms.Label label19;
     }
 }
 
