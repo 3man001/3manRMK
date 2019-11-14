@@ -38,24 +38,85 @@ namespace _3manRMK_0
         {
             File.WriteAllText(NameFile, InText);
         }
-        private bool CheckSimbols(string ChSimbol, string typeSim) //Проверка строки на посторонние символы
+        private string CheckNumber(string Str, int ndp) //Проверка строкии с числом
         {
+            if (Str == "")
+            { return ""; }
+            string simbols = "1234567890,";
+            int k = 0;
+            for (int i = 0; i < Str.Length; i++) // проверка на посторонние символы
+            {
+                if (simbols.IndexOf(Str[i]) < 0)
+                { return ""; }
+                if (Str[i] == ',')
+                    { k++; }
+                if (k > 1)
+                { return ""; }
+            }
+            try
+                { return Math.Round(Convert.ToDecimal(Str) * 1.000000m, ndp).ToString(); }
+            catch
+                { return ""; }
+        }
+        private bool CheckSimbols(string ChSimbol, string typeSim)  //Проверка строки
+        {
+            if (ChSimbol == "")
+                { return false; }
             string DataSimbol = "";
+            if (typeSim == "Число")
+            {
+                DataSimbol = "1234567890";
+                int I = ChSimbol.IndexOf(',');
+                int L = ChSimbol.Length;
+                if (I == 0)
+                    { return false; }
+                else
+                {
+                    if (I > 0)
+                    {
+                        ChSimbol = ChSimbol.Substring(0, I) + ChSimbol.Substring(I + 1, L - I - 1);
+                    }
+                    for (int i = 0; i < L-1; i++)
+                    {
+                        if (DataSimbol.IndexOf(ChSimbol[i]) < 0)
+                        { return false; }
+                    }
+                    return true;
+                }
+            }
             if (typeSim == "ФИО")
             {
-                if ( (ChSimbol == "") | (ChSimbol[0] == ' ') )
+                if (ChSimbol[0] == ' ')
                     { return false; }
                 DataSimbol = " ёйцукенгшщзхъфывапролджэячсмитьбюЁЙЦУКЕНГШЩЗХЪФЫВАПРОЛДЖЭЯЧСМИТЬБЮ";
             }
-            if (typeSim == "Число")
+            if (typeSim == "ИНН")   //Проверка ИНН Физ.Лица на корректность
             {
-                DataSimbol = "1234567890,";
-            }
-            if (typeSim == "ИНН")
-            {
-                if (ChSimbol == "")
-                    { return true; }
-                DataSimbol = "1234567890";
+                string inn = ChSimbol;
+                if (inn.Length == 12)
+                {
+                    int N0 = (int)char.GetNumericValue(inn[0]); int N1 = (int)char.GetNumericValue(inn[1]);
+                    int N2 = (int)char.GetNumericValue(inn[2]); int N3 = (int)char.GetNumericValue(inn[3]);
+                    int N4 = (int)char.GetNumericValue(inn[4]); int N5 = (int)char.GetNumericValue(inn[5]);
+                    int N6 = (int)char.GetNumericValue(inn[6]); int N7 = (int)char.GetNumericValue(inn[7]);
+                    int N8 = (int)char.GetNumericValue(inn[8]); int N9 = (int)char.GetNumericValue(inn[9]);
+                    int N10 = (int)char.GetNumericValue(inn[10]);   int N11 = (int)char.GetNumericValue(inn[11]);
+
+                    int b2 = (N0*7 + N1*2 + N2*4 + N3*10 + N4*3 + N5*5 + N6*9 + N7*4 + N8*6 + N9*8) % 11;
+                    int b1 = (N0*3 + N1*7 + N2*2 + N3*4 + N4*10 + N5*3 + N6*5 + N7*9 + N8*4 + N9*6 + N10*8) % 11;
+
+                    if ((b2 == N10) | ((b2 == 10) & (N10 == 0)))
+                    {
+                        if ((b1 == N11) | ((b1 == 10) & (N11 == 0)))
+                            { return true; }
+                        else
+                            { return false; }
+                    }
+                    else
+                        { return false; }
+                }
+                else
+                    { return false; }
             }
             if (typeSim == "Email")
             {
@@ -97,36 +158,6 @@ namespace _3manRMK_0
             }
             return true;
         }
-        private bool CheckINN(string inn) //Проверка ИНН Физ.Лица на корректность
-        {
-            if (inn.Length == 12)
-            {
-                int b2 = ((int)char.GetNumericValue(inn[0]) * 7 + (int)char.GetNumericValue(inn[1]) * 2 + (int)char.GetNumericValue(inn[2]) * 4 +
-                    (int)char.GetNumericValue(inn[3]) * 10 + (int)char.GetNumericValue(inn[4]) * 3 + (int)char.GetNumericValue(inn[5]) * 5 +
-                    (int)char.GetNumericValue(inn[6]) * 9 + (int)char.GetNumericValue(inn[7]) * 4 + (int)char.GetNumericValue(inn[8]) * 6 + (int)char.GetNumericValue(inn[9]) * 8) % 11;
-                int b1 = ((int)char.GetNumericValue(inn[0]) * 3 + (int)char.GetNumericValue(inn[1]) * 7 + (int)char.GetNumericValue(inn[2]) * 2 +
-                    (int)char.GetNumericValue(inn[3]) * 4 + (int)char.GetNumericValue(inn[4]) * 10 + (int)char.GetNumericValue(inn[5]) * 3 +
-                    (int)char.GetNumericValue(inn[6]) * 5 + (int)char.GetNumericValue(inn[7]) * 9 + (int)char.GetNumericValue(inn[8]) * 4 + (int)char.GetNumericValue(inn[9]) * 6 + (int)char.GetNumericValue(inn[10]) * 8) % 11;
-
-                if ((b2 == (int)char.GetNumericValue(inn[10])) | ((b2 == 10) & ((int)char.GetNumericValue(inn[10]) == 0)))
-                {
-                    if ((b1 == (int)char.GetNumericValue(inn[11])) | ((b1 == 10) & ((int)char.GetNumericValue(inn[11]) == 0)))
-                    {
-                        return true;
-                    }
-                    else
-                    {
-                        return false;
-                    }
-                }
-                else
-                {
-                    return false;
-                }
-            }
-            else
-            { return false; }
-        }
         private void UpdateResult() //Проверка состояния ККТ
         {
             int ResultCode = Drv.ResultCode;
@@ -138,6 +169,7 @@ namespace _3manRMK_0
                 Drv.GetShortECRStatus(); //Запрос состояния ФР
                 ErrorsForm ErorrsformP = new ErrorsForm(ResultCode, ResultCodeDesc, Drv.ECRMode, Drv.ECRModeDescription, Drv.ECRMode8Status, Drv.ECRModeStatus, Drv.ECRAdvancedMode, Drv.ECRAdvancedModeDescription);
                 ErorrsformP.ShowDialog(this);
+                ErorrsformP.Dispose();
             }
             Drv.FNGetInfoExchangeStatus();
             toolStripStatusLabel4.Text = "Не отправлено документов = " + Convert.ToString(Drv.MessageCount);
@@ -159,26 +191,7 @@ namespace _3manRMK_0
             Items.Add("НДС 10/110", 6);
             return Items[Item];
         }
-        private string CheckNumber(string Str, int ndp) //Проверка строкии с числом
-        {
-            if (Str == "")
-            { return ""; }
-            string simbols = "1234567890,";
-            int k = 0;
-            for (int i = 0; i < Str.Length; i++) // проверка на посторонние символы
-            {
-                if (simbols.IndexOf(Str[i]) < 0)
-                { return ""; }
-                if ((Str[i] == '.') | (Str[i] == ','))
-                { k++; }
-            }
-            if (k > 1) //Проверка на повтор разделителей
-            { return ""; }
-            try
-            { return Math.Round(Convert.ToDecimal(Str) * 1.000000m, ndp).ToString(); }
-            catch
-            { return ""; }
-        }
+        
         private void RegPosition(int CheckType, string NameProduct, Decimal Price, Double Quantity,
             Decimal Summ1, int Tax1, int PaymentItemSign) //Регистрация позиции в чеке
         {
@@ -236,22 +249,15 @@ namespace _3manRMK_0
         //////Начало Блока триггер виджета/////////
         private void tbPrice_1_TextChanged(object sender, EventArgs e)
         {
-            string c = CheckNumber(tbPrice_1.Text, 2);
-            if (c == "")
-            { tbPrice_1.BackColor = Color.LightCoral; }
-            else
+            if (CheckSimbols(tbPrice_1.Text, "Число"))
             {
                 tbPrice_1.BackColor = Color.Snow;
-                tbPrice_1.Text = c;
+                tbPrice_1.Text = Convert.ToString(Math.Round(Convert.ToDecimal(tbPrice_1.Text) * 1.000m, 2));
+                tbSumm1_1.Text = Convert.ToString(Math.Round(Convert.ToDecimal(tbPrice_1.Text) * Convert.ToDecimal(tbQuantity_1.Text), 2));
             }
-            try
+            else
             {
-                tbSumm1_1.Text = Convert.ToString(
-                    Math.Round(Convert.ToDecimal(tbPrice_1.Text) * Convert.ToDecimal(tbQuantity_1.Text), 2));
-            }
-            catch
-            {
-
+                tbPrice_1.BackColor = Color.LightCoral;
             }
         }
         private void tbQuantity_TextChanged(object sender, EventArgs e) //Измениение строки с ценой
@@ -336,18 +342,15 @@ namespace _3manRMK_0
         {
             if (CheckSimbols(tbINN.Text, "ИНН"))
             {
-                if (CheckINN(tbINN.Text) | (tbINN.Text == ""))
-                {
-                    tbINN.BackColor = Color.Snow;
-                }
-                else
-                {
-                    tbINN.BackColor = Color.LightCoral;
-                }
+                tbINN.BackColor = Color.LightGreen;
             }
             else
             {
                 tbINN.BackColor = Color.LightCoral;
+                if (tbINN.Text == "")
+                {
+                    tbINN.BackColor = Color.Snow;
+                }
             }
         }
         ///////Конец Блока триггер виджета/////////
@@ -395,6 +398,7 @@ namespace _3manRMK_0
         {
             AboutBox1 AboutBox = new AboutBox1();
             AboutBox.ShowDialog(this);
+            AboutBox.Dispose();
         }
         ////////////Конец Блок МЕНЮ////////////////
         private void button4_Click(object sender, EventArgs e) //Продажа тестового товара
@@ -502,6 +506,7 @@ namespace _3manRMK_0
         {
             Feedback Feedback1 = new Feedback();
             Feedback1.ShowDialog(this);
+            Feedback1.Dispose();
         }
         private void button1_Click(object sender, EventArgs e)
         {
@@ -618,6 +623,13 @@ namespace _3manRMK_0
                 { tbEmail.BackColor = Color.LightCoral; }
             if (tbEmail.Text == "")
                 { tbEmail.BackColor = Color.Snow; }
+        }
+
+        private void настройкиToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Setting Setting1 = new Setting();
+            Setting1.ShowDialog(this);
+            Setting1.Dispose();
         }
     }
 }

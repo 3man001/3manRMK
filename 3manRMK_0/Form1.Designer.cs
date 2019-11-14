@@ -49,7 +49,6 @@
             this.toolStripStatusLabel4 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
             this.label4 = new System.Windows.Forms.Label();
-            this.tbINN = new System.Windows.Forms.TextBox();
             this.tbNameProduct_1 = new System.Windows.Forms.TextBox();
             this.tbPrice_1 = new System.Windows.Forms.TextBox();
             this.tbQuantity_1 = new System.Windows.Forms.TextBox();
@@ -99,17 +98,18 @@
             this.label16 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.maskTBPhone = new System.Windows.Forms.MaskedTextBox();
             this.tbEmail = new System.Windows.Forms.TextBox();
             this.tbChange = new System.Windows.Forms.TextBox();
             this.button12 = new System.Windows.Forms.Button();
             this.label11 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.tbINN = new System.Windows.Forms.MaskedTextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.button11 = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.label18 = new System.Windows.Forms.Label();
-            this.maskTBPhone = new System.Windows.Forms.MaskedTextBox();
-            this.label19 = new System.Windows.Forms.Label();
+            this.настройкиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -162,7 +162,8 @@
             this.закрытьСменуToolStripMenuItem,
             this.возвратToolStripMenuItem,
             this.отчетыToolStripMenuItem,
-            this.кассовыеОперацииToolStripMenuItem});
+            this.кассовыеОперацииToolStripMenuItem,
+            this.настройкиToolStripMenuItem});
             this.сервисToolStripMenuItem.Name = "сервисToolStripMenuItem";
             this.сервисToolStripMenuItem.Size = new System.Drawing.Size(59, 20);
             this.сервисToolStripMenuItem.Text = "Сервис";
@@ -293,16 +294,6 @@
             this.label4.Size = new System.Drawing.Size(35, 13);
             this.label4.TabIndex = 13;
             this.label4.Text = "ИНН*";
-            // 
-            // tbINN
-            // 
-            this.tbINN.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbINN.Location = new System.Drawing.Point(426, 11);
-            this.tbINN.MaxLength = 12;
-            this.tbINN.Name = "tbINN";
-            this.tbINN.Size = new System.Drawing.Size(105, 22);
-            this.tbINN.TabIndex = 14;
-            this.tbINN.TextChanged += new System.EventHandler(this.tbINN_TextChanged);
             // 
             // tbNameProduct_1
             // 
@@ -875,8 +866,8 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.AccessibleRole = System.Windows.Forms.AccessibleRole.Table;
             this.groupBox3.BackColor = System.Drawing.SystemColors.Window;
-            this.groupBox3.Controls.Add(this.label19);
             this.groupBox3.Controls.Add(this.maskTBPhone);
             this.groupBox3.Controls.Add(this.tbEmail);
             this.groupBox3.Controls.Add(this.tbChange);
@@ -898,15 +889,26 @@
             this.groupBox3.Text = "Оплата";
             this.groupBox3.Visible = false;
             // 
+            // maskTBPhone
+            // 
+            this.maskTBPhone.BackColor = System.Drawing.SystemColors.Window;
+            this.maskTBPhone.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.maskTBPhone.Location = new System.Drawing.Point(49, 71);
+            this.maskTBPhone.Mask = "+7(000) 000-00-00";
+            this.maskTBPhone.Name = "maskTBPhone";
+            this.maskTBPhone.Size = new System.Drawing.Size(143, 23);
+            this.maskTBPhone.TabIndex = 75;
+            this.maskTBPhone.TextChanged += new System.EventHandler(this.maskTBPhone_MaskInputRejected);
+            // 
             // tbEmail
             // 
+            this.tbEmail.AccessibleDescription = "";
             this.tbEmail.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.tbEmail.Location = new System.Drawing.Point(12, 97);
             this.tbEmail.MaxLength = 254;
             this.tbEmail.Name = "tbEmail";
             this.tbEmail.Size = new System.Drawing.Size(180, 23);
             this.tbEmail.TabIndex = 74;
-            this.tbEmail.Text = "igor-viv001@yandex.ru";
             this.tbEmail.TextChanged += new System.EventHandler(this.tbEmail_TextChanged);
             // 
             // tbChange
@@ -948,11 +950,11 @@
             // 
             this.groupBox1.BackColor = System.Drawing.SystemColors.ButtonShadow;
             this.groupBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.groupBox1.Controls.Add(this.tbINN);
             this.groupBox1.Controls.Add(this.label10);
             this.groupBox1.Controls.Add(this.tbFIO);
             this.groupBox1.Controls.Add(this.btnLogOut);
             this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Controls.Add(this.tbINN);
             this.groupBox1.Controls.Add(this.btnLogin);
             this.groupBox1.Controls.Add(this.tbSummAll);
             this.groupBox1.Controls.Add(this.label13);
@@ -962,6 +964,17 @@
             this.groupBox1.TabIndex = 69;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Авторизация";
+            // 
+            // tbINN
+            // 
+            this.tbINN.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.tbINN.Location = new System.Drawing.Point(426, 11);
+            this.tbINN.Mask = "000000000000";
+            this.tbINN.Name = "tbINN";
+            this.tbINN.PromptChar = '-';
+            this.tbINN.Size = new System.Drawing.Size(105, 23);
+            this.tbINN.TabIndex = 72;
+            this.tbINN.TextChanged += new System.EventHandler(this.tbINN_TextChanged);
             // 
             // groupBox2
             // 
@@ -1044,25 +1057,12 @@
             this.label18.TabIndex = 0;
             this.label18.Text = "Идет Работат с ККТ, подождите";
             // 
-            // maskTBPhone
+            // настройкиToolStripMenuItem
             // 
-            this.maskTBPhone.BackColor = System.Drawing.SystemColors.Window;
-            this.maskTBPhone.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.maskTBPhone.Location = new System.Drawing.Point(49, 71);
-            this.maskTBPhone.Mask = "+7(000) 000-00-00";
-            this.maskTBPhone.Name = "maskTBPhone";
-            this.maskTBPhone.Size = new System.Drawing.Size(143, 23);
-            this.maskTBPhone.TabIndex = 75;
-            this.maskTBPhone.TextChanged += new System.EventHandler(this.maskTBPhone_MaskInputRejected);
-            // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(46, 127);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(41, 13);
-            this.label19.TabIndex = 76;
-            this.label19.Text = "label19";
+            this.настройкиToolStripMenuItem.Name = "настройкиToolStripMenuItem";
+            this.настройкиToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
+            this.настройкиToolStripMenuItem.Text = "Настройки";
+            this.настройкиToolStripMenuItem.Click += new System.EventHandler(this.настройкиToolStripMenuItem_Click);
             // 
             // Form1
             // 
@@ -1106,7 +1106,6 @@
         private System.Windows.Forms.ToolStripMenuItem оПрограммеToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem обратнаяСвязьToolStripMenuItem;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox tbINN;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel3;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel4;
         private System.Windows.Forms.TextBox tbNameProduct_1;
@@ -1178,7 +1177,8 @@
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.TextBox tbEmail;
         private System.Windows.Forms.MaskedTextBox maskTBPhone;
-        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.MaskedTextBox tbINN;
+        private System.Windows.Forms.ToolStripMenuItem настройкиToolStripMenuItem;
     }
 }
 
