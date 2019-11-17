@@ -191,7 +191,6 @@ namespace _3manRMK_0
             Items.Add("НДС 10/110", 6);
             return Items[Item];
         }
-        
         private void RegPosition(int CheckType, string NameProduct, Decimal Price, Double Quantity,
             Decimal Summ1, int Tax1, int PaymentItemSign) //Регистрация позиции в чеке
         {
@@ -244,8 +243,24 @@ namespace _3manRMK_0
             { UpdateResult(); }
             UpdateResult();
         }
-        ////////////Конец Блок Функций/////////////
-        ///////////////////////////////////////////
+        private void SendFIO()
+        {
+            if (tbFIO.ReadOnly)
+            {
+                Drv.TagNumber = 1021; //Отправка Должности и Фамилии кассира
+                Drv.TagType = 7;
+                Drv.TagValueStr = tbFIO.Text;
+                Drv.FNSendTag();
+                if (tbINN.BackColor == Color.LightGreen)
+                {
+                    Drv.TagNumber = 1203; //Отправка ИНН кассира
+                    Drv.TagType = 7;
+                    Drv.TagValueStr = tbINN.Text;
+                    Drv.FNSendTag();
+                }
+            }
+        }
+        //////////////Конец Блок Функций/////////////
         //////Начало Блока триггер виджета/////////
         private void tbPrice_1_TextChanged(object sender, EventArgs e)
         {
@@ -365,7 +380,8 @@ namespace _3manRMK_0
         {
             try
             {
-                //Drv.FNBeginOpenSession(); //Начать отткрытие смены
+                Drv.FNBeginOpenSession();
+                SendFIO();
                 Drv.FNOpenSession();
             }
             catch
@@ -376,6 +392,8 @@ namespace _3manRMK_0
         {
             try
             {
+                Drv.FNBeginCloseSession();
+                SendFIO();
                 Drv.FNCloseSession();
                 UpdateResult();
             }
@@ -418,7 +436,14 @@ namespace _3manRMK_0
                 int PaymentItemSign = EnterItems(cbPaymentItemSign_1.Text); // Признак предмета расчета 1..19 (1-Товар)
 
                 try
-                { Drv.Connect(); }
+                {
+                    Drv.Connect();
+                    Drv.GetShortECRStatus();
+                    if (Drv.ECRMode == 4)
+                    {
+                        открытьСменуToolStripMenuItem_Click(sender, e);
+                    }
+                }
                 catch
                 { UpdateResult(); }
 
@@ -427,20 +452,8 @@ namespace _3manRMK_0
 
                 RegPosition(CheckType, NameProduct, Price, Quantity, Summ1, Tax1, PaymentItemSign); //Регистрация позиции
 
-                if (tbFIO.ReadOnly)
-                {
-                    Drv.TagNumber = 1021; //это ФИО кассира    
-                    Drv.TagType = 7; // тип "строка" 
-                    Drv.TagValueStr = tbFIO.Text;
-                    Drv.FNSendTag();
-                    if (tbINN.Text != "")
-                    {
-                        Drv.TagNumber = 1203; //это ИНН кассира    
-                        Drv.TagType = 7; // тип "строка" 
-                        Drv.TagValueStr = tbINN.Text;
-                        Drv.FNSendTag();
-                    }
-                }
+                SendFIO();
+                
                 if (maskTBPhone.BackColor == Color.LightGreen) //Отправка чека СМС если есть номер
                 {
                     string s = maskTBPhone.Text;
@@ -624,7 +637,6 @@ namespace _3manRMK_0
             if (tbEmail.Text == "")
                 { tbEmail.BackColor = Color.Snow; }
         }
-
         private void настройкиToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Setting Setting1 = new Setting();
