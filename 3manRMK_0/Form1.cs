@@ -13,11 +13,42 @@ namespace _3manRMK_0
         {
             InitializeComponent();
             Drv = new DrvFR();
-            this.Size = new Size(855, 300);
+            this.Size = new Size(875, 300);
             groupBox3.Location = new Point(0, 65);
-            groupBox4.Location = new Point (0, 65);
+            groupBox4.Location = new Point(0, 65);
+            
+            Array.Resize(ref CBox, 1);
+            CBox[0] = checkBox2;
+            Array.Resize(ref sLabel, 1);
+            sLabel[0] = label15;
+            Array.Resize(ref PaymentItemSign, 1);
+            PaymentItemSign[0] = cbPaymentItemSign_1;
+                PaymentItemSign[0].Items.CopyTo(PaymentItemSignItems, 0);
+            Array.Resize(ref NameProduct, 1);
+            NameProduct[0] = tbNameProduct_1;
+            Array.Resize(ref Price, 1);
+            Price[0] = tbPrice_1;
+            Array.Resize(ref Quantity, 1);
+            Quantity[0] = tbQuantity_1;
+            Array.Resize(ref Tax, 1);
+            Tax[0] = cbTax1_1;
+                Tax[0].Items.CopyTo(TaxItems, 0);
+            Array.Resize(ref Summ, 1);
+            Summ[0] = tbSumm1_1;
         }
         DrvFR Drv; //Создание обьекта драйвера ФР
+
+        CheckBox[] CBox = new CheckBox [] {};
+        Label[] sLabel = new Label[] { };
+        ComboBox[] PaymentItemSign = new ComboBox[] { };
+            Object[] PaymentItemSignItems = new Object[3];
+        TextBox[] NameProduct = new TextBox[] { };
+        TextBox[] Price = new TextBox[] { };
+        TextBox[] Quantity = new TextBox[] { };
+        ComboBox[] Tax = new ComboBox[] { };
+            Object[] TaxItems = new Object[6];
+        TextBox[] Summ = new TextBox[] { };
+
         ////////////Блок Функций/////////////
         private void InitialRMK()
         {
@@ -243,7 +274,7 @@ namespace _3manRMK_0
             { UpdateResult(); }
             UpdateResult();
         }
-        private void SendFIO()
+        private void SendFIO() //Указывает Зарегестрированного кассира в документах
         {
             if (tbFIO.ReadOnly)
             {
@@ -260,40 +291,79 @@ namespace _3manRMK_0
                 }
             }
         }
-        //////////////Конец Блок Функций/////////////
         //////Начало Блока триггер виджета/////////
-        private void tbPrice_1_TextChanged(object sender, EventArgs e)
+        private void tbFIO_TextChanged(object sender, EventArgs e)
         {
-            if (CheckSimbols(tbPrice_1.Text, "Число"))
+            if (CheckSimbols(tbFIO.Text, "ФИО"))
             {
-                tbPrice_1.BackColor = Color.Snow;
-                tbPrice_1.Text = Convert.ToString(Math.Round(Convert.ToDecimal(tbPrice_1.Text) * 1.000m, 2));
-                tbSumm1_1.Text = Convert.ToString(Math.Round(Convert.ToDecimal(tbPrice_1.Text) * Convert.ToDecimal(tbQuantity_1.Text), 2));
+                tbFIO.BackColor = Color.Snow;
             }
             else
             {
-                tbPrice_1.BackColor = Color.LightCoral;
+                tbFIO.BackColor = Color.LightCoral;
             }
         }
-        private void tbQuantity_TextChanged(object sender, EventArgs e) //Измениение строки с ценой
+        private void tbINN_TextChanged(object sender, EventArgs e)
         {
-            string c = CheckNumber(tbQuantity_1.Text, 3);
-            if (c == "")
-            { tbQuantity_1.BackColor = Color.LightCoral; }
+            if (CheckSimbols(tbINN.Text, "ИНН"))
+            {
+                tbINN.BackColor = Color.LightGreen;
+            }
             else
             {
-                tbQuantity_1.BackColor = Color.Snow;
-                tbQuantity_1.Text = c;
+                tbINN.BackColor = Color.LightCoral;
+                if (tbINN.Text == "")
+                {
+                    tbINN.BackColor = Color.Snow;
+                }
             }
-            try
+        }
+        private void tbPrice_TextChanged(object sender, EventArgs e) //Изменение строки с ценой
+        {
+            for (int i=0; i<CBox.Length; i++)
             {
-                tbSumm1_1.Text = Convert.ToString(
-                    Math.Round(Convert.ToDecimal(tbPrice_1.Text) * Convert.ToDecimal(tbQuantity_1.Text), 2));
+                if (CBox[i].Checked)
+                {
+                    if (CheckSimbols(Price[i].Text, "Число"))
+                    {
+                        Price[i].BackColor = Color.Snow;
+                        Price[i].Text = Convert.ToString(Math.Round(Convert.ToDecimal(Price[i].Text) * 1.000m, 2));
+                        Summ[i].Text = Convert.ToString(Math.Round(Convert.ToDecimal(Price[i].Text) * Convert.ToDecimal(Quantity[i].Text), 2));
+                    }
+                    else
+                    {
+                        Price[i].BackColor = Color.LightCoral;
+                    }
+                }
             }
-            catch
+        }
+        private void tbQuantity_TextChanged(object sender, EventArgs e) //Измениение строки с кол-вом
+        {
+            for (int i = 0; i < CBox.Length; i++)
             {
-
+                if (CBox[i].Checked)
+                {
+                    if (CheckSimbols(Quantity[i].Text, "Число"))
+                    {
+                        Quantity[i].BackColor = Color.Snow;
+                        Quantity[i].Text = Convert.ToString(Math.Round(Convert.ToDecimal(Quantity[i].Text) * 1.0000m, 3));
+                        Summ[i].Text = Convert.ToString(Math.Round(Convert.ToDecimal(Price[i].Text) * Convert.ToDecimal(Quantity[i].Text), 2));
+                    }
+                    else
+                    {
+                        Quantity[i].BackColor = Color.LightCoral;
+                    }
+                }
+            }       
+        }
+        private void tbSumm_TextChanged(object sender, EventArgs e)
+        {
+            decimal S = 0.00m;
+            for (int i = 0; i < Summ.Length; i++)
+            {
+                S = S + Convert.ToDecimal(Summ[i].Text);
             }
+            tbSummAll.Text = Convert.ToString(S); //tbSumm1_1.Text;
         }
         private void tbSumm1_TextChanged(object sender, EventArgs e)
         {
@@ -338,38 +408,39 @@ namespace _3manRMK_0
             }
 
         }
-        private void tbSumm1_1_TextChanged(object sender, EventArgs e)
+        private void tbChange_TextChanged(object sender, EventArgs e)
         {
-            tbSummAll.Text = tbSumm1_1.Text;
-        }
-        private void tbFIO_TextChanged(object sender, EventArgs e)
-        {
-            if (CheckSimbols(tbFIO.Text, "ФИО"))
+            if (Convert.ToDecimal(tbChange.Text) >= 0)
             {
-                tbFIO.BackColor = Color.Snow;
+                button4.Visible = true;
             }
             else
             {
-                tbFIO.BackColor = Color.LightCoral;
-            }
-        }
-        private void tbINN_TextChanged(object sender, EventArgs e)
-        {
-            if (CheckSimbols(tbINN.Text, "ИНН"))
-            {
-                tbINN.BackColor = Color.LightGreen;
-            }
-            else
-            {
-                tbINN.BackColor = Color.LightCoral;
-                if (tbINN.Text == "")
-                {
-                    tbINN.BackColor = Color.Snow;
-                }
-            }
-        }
-        ///////Конец Блока триггер виджета/////////
 
+                button4.Visible = false;
+            }
+        }
+        private void maskTBPhone_MaskInputRejected(object sender, EventArgs e) //Проверка тел. на корректность
+        {
+            string s = maskTBPhone.Text;
+            if (CheckSimbols(maskTBPhone.Text, "Phone"))
+            { maskTBPhone.BackColor = Color.LightGreen; }
+            else
+            {
+                maskTBPhone.BackColor = Color.LightCoral;
+                if ((maskTBPhone.Text.Length == 15) & ((s.Substring(3, 3) + s.Substring(8, 3) + s.Substring(12, 2)).Trim() == ""))
+                { maskTBPhone.BackColor = Color.Snow; }
+            }
+        }
+        private void tbEmail_TextChanged(object sender, EventArgs e) //Проверка Email на корректность
+        {
+            if (CheckSimbols(tbEmail.Text, "Email"))
+            { tbEmail.BackColor = Color.LightGreen; }
+            else
+            { tbEmail.BackColor = Color.LightCoral; }
+            if (tbEmail.Text == "")
+            { tbEmail.BackColor = Color.Snow; }
+        }
         ///////////Начало Блок МЕНЮ////////////////
         private void подключитьФРToolStripMenuItem_Click(object sender, EventArgs e) //Показать свойство оборуования
         {
@@ -400,7 +471,7 @@ namespace _3manRMK_0
             catch
             { UpdateResult(); }
         }
-        private void отменаЧекаToolStripMenuItem_Click(object sender, EventArgs e)
+        private void отменаЧекаToolStripMenuItem_Click(object sender, EventArgs e) //Отмена чека в ККТ
         {
             try
             {
@@ -428,12 +499,12 @@ namespace _3manRMK_0
             else
             {
                 int CheckType = 1; //Операция приход(1-продажа, 3-возвр продажи)
-                string NameProduct = tbNameProduct_1.Text; //Наименование товара
-                Decimal Price = Math.Round(Convert.ToDecimal(tbPrice_1.Text), 2); //Цена за еденицу товара с учетом скидки
-                Double Quantity = Math.Round(Convert.ToDouble(tbQuantity_1.Text), 3); //Кол-во (Диапазон 0,001 до 9.999.999,999)
-                Decimal Summ1 = Convert.ToDecimal(tbSumm1_1.Text); //Сумма позиции
-                int Tax1 = EnterItems(cbTax1_1.Text); //Налоговая ставка 0..6 (0-БезНДС)
-                int PaymentItemSign = EnterItems(cbPaymentItemSign_1.Text); // Признак предмета расчета 1..19 (1-Товар)
+                string NameProduct0 = tbNameProduct_1.Text; //Наименование товара
+                Decimal Price0 = Math.Round(Convert.ToDecimal(tbPrice_1.Text), 2); //Цена за еденицу товара с учетом скидки
+                Double Quantity0 = Math.Round(Convert.ToDouble(tbQuantity_1.Text), 3); //Кол-во (Диапазон 0,001 до 9.999.999,999)
+                Decimal Summ10 = Convert.ToDecimal(tbSumm1_1.Text); //Сумма позиции
+                int Tax10 = EnterItems(cbTax1_1.Text); //Налоговая ставка 0..6 (0-БезНДС)
+                int PaymentItemSign0 = EnterItems(cbPaymentItemSign_1.Text); // Признак предмета расчета 1..19 (1-Товар)
 
                 try
                 {
@@ -449,9 +520,20 @@ namespace _3manRMK_0
 
                 groupBox3.Visible = false;
                 groupBox4.Visible = true;
+                for (int i=0; i<CBox.Length; i++)
+                {
+                    if (CBox[i].Checked)
+                    {
+                        NameProduct0 = NameProduct[i].Text; //Наименование товара
+                        Price0 = Math.Round(Convert.ToDecimal(Price[i].Text), 2); //Цена за еденицу товара с учетом скидки
+                        Quantity0 = Math.Round(Convert.ToDouble(Quantity[i].Text), 3); //Кол-во (Диапазон 0,001 до 9.999.999,999)
+                        Summ10 = Convert.ToDecimal(Summ[i].Text); //Сумма позиции
+                        Tax10 = EnterItems(Tax[i].Text); //Налоговая ставка 0..6 (0-БезНДС)
+                        PaymentItemSign0 = EnterItems(PaymentItemSign[i].Text); // Признак предмета расчета 1..19 (1-Товар)
 
-                RegPosition(CheckType, NameProduct, Price, Quantity, Summ1, Tax1, PaymentItemSign); //Регистрация позиции
-
+                        RegPosition(CheckType, NameProduct0, Price0, Quantity0, Summ10, Tax10, PaymentItemSign0); //Регистрация позиции
+                    }
+                }
                 SendFIO();
                 
                 if (maskTBPhone.BackColor == Color.LightGreen) //Отправка чека СМС если есть номер
@@ -475,7 +557,7 @@ namespace _3manRMK_0
                 groupBox4.Visible = false;
             }
         }
-        private void btnLogOut_Click(object sender, EventArgs e)
+        private void btnLogOut_Click(object sender, EventArgs e) //Регистрация кассира
         {
             btnLogOut.Visible = false;
             btnLogin.Visible = true;
@@ -486,7 +568,7 @@ namespace _3manRMK_0
             groupBox2.Visible = false;
             groupBox3.Visible = false;
         }
-        private void btnLogin_Click(object sender, EventArgs e)
+        private void btnLogin_Click(object sender, EventArgs e) //Отключение кассира
         {
             tbFIO_TextChanged(sender, e);
             tbINN_TextChanged(sender, e);
@@ -503,7 +585,7 @@ namespace _3manRMK_0
                 groupBox2.Visible = true;
             }
         }
-        private void xотчетToolStripMenuItem_Click(object sender, EventArgs e)
+        private void xотчетToolStripMenuItem_Click(object sender, EventArgs e) //Снять Х-Отчет
         {
             try
             {
@@ -515,13 +597,19 @@ namespace _3manRMK_0
                 UpdateResult();
             }
         }
-        private void обратнаяСвязьToolStripMenuItem_Click(object sender, EventArgs e)
+        private void настройкиToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Setting Setting1 = new Setting();
+            Setting1.ShowDialog(this);
+            Setting1.Dispose();
+        }
+        private void обратнаяСвязьToolStripMenuItem_Click(object sender, EventArgs e) //Открыть формк обратной связи
         {
             Feedback Feedback1 = new Feedback();
             Feedback1.ShowDialog(this);
             Feedback1.Dispose();
         }
-        private void button1_Click(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e) //Оплата Наличными
         {
             tbSumm1.Text = "0,00";
             tbSumm1.Visible = true;
@@ -531,7 +619,7 @@ namespace _3manRMK_0
             label7.Visible = false;
 
         }
-        private void button2_Click(object sender, EventArgs e)
+        private void button2_Click(object sender, EventArgs e) //Оплат безналичными
         {
             tbSumm1.Text = "0,00";
             tbSumm1.Visible = false;
@@ -540,7 +628,7 @@ namespace _3manRMK_0
             tbSumm2.Visible = true;
             label7.Visible = true;
         }
-        private void button3_Click(object sender, EventArgs e)
+        private void button3_Click(object sender, EventArgs e) //Смешанная оплата
         {
             tbSumm1.Text = "0,00";
             tbSumm1.Visible = true;
@@ -549,99 +637,78 @@ namespace _3manRMK_0
             tbSumm2.Visible = true;
             label7.Visible = true;
         }
-        private void button11_Click(object sender, EventArgs e)
+        private void button11_Click(object sender, EventArgs e) //Перейти к оплате
         {
             groupBox3.Visible = true;
             groupBox2.Visible = false;
         }
-        private void button12_Click(object sender, EventArgs e)
+        private void button12_Click(object sender, EventArgs e) //Перейти к позициям
         {
             groupBox3.Visible = false;
             groupBox2.Visible = true;
         }
-        //+++++++++++++++++++++++++++//
-        private void bPlus1_Click(object sender, EventArgs e)
-        {
-            bPlus1.Visible = false;
-            bMinus1.Visible = true;
-            if (!label16.Visible)
-            {
-                bPlus2.Visible = true;
-                label16.Visible = true;
-            }
-            
 
-        }
-        private void bMinus1_Click(object sender, EventArgs e)
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
-            bPlus1.Visible = true;
-            bMinus1.Visible = false;
-            cbPaymentItemSign_1.Font = new Font(cbPaymentItemSign_1.Font, FontStyle.Strikeout);
-            
-        }
-        private void bPlus2_Click(object sender, EventArgs e)
-        {
-            bPlus2.Visible = false;
-            bMinus2.Visible = true;
-            if (!label17.Visible)
+            for (int i = 0; i< CBox.Length; i++)
             {
-                bPlus3.Visible = true;
-                label17.Visible = true;
-            } 
-        }
-        private void bMinus2_Click(object sender, EventArgs e)
-        {
-            bPlus2.Visible = true;
-            bMinus2.Visible = false;
-        }
-        private void bPlus3_Click(object sender, EventArgs e)
-        {
-            bPlus3.Visible = false;
-            bMinus3.Visible = true;
-        }
-        private void bMinus3_Click(object sender, EventArgs e)
-        {
-            bPlus3.Visible = true;
-            bMinus3.Visible = false;
-        }
-        private void tbChange_TextChanged(object sender, EventArgs e)
-        {
-            if (Convert.ToDecimal (tbChange.Text) >= 0)
-            {
-                button4.Visible = true;
-            }
-            else
-            {
-                
-                button4.Visible = false;
+                CBox[i].Checked = checkBox1.Checked;
             }
         }
-        private void maskTBPhone_MaskInputRejected(object sender, EventArgs e) //Проверка тел. на корректность
+
+        private void bAdd_Click(object sender, EventArgs e)
         {
-            string s = maskTBPhone.Text;
-            if (CheckSimbols(maskTBPhone.Text, "Phone"))
-                { maskTBPhone.BackColor = Color.LightGreen; }
-            else
-            {
-                maskTBPhone.BackColor = Color.LightCoral;
-                if ((maskTBPhone.Text.Length == 15) &((s.Substring(3, 3) + s.Substring(8, 3) + s.Substring(12, 2)).Trim() == ""))
-                    { maskTBPhone.BackColor = Color.Snow; }
-            }
-        }
-        private void tbEmail_TextChanged(object sender, EventArgs e) //Проверка Email на корректность
-        {
-            if (CheckSimbols(tbEmail.Text, "Email"))
-                { tbEmail.BackColor = Color.LightGreen; }
-            else
-                { tbEmail.BackColor = Color.LightCoral; }
-            if (tbEmail.Text == "")
-                { tbEmail.BackColor = Color.Snow; }
-        }
-        private void настройкиToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Setting Setting1 = new Setting();
-            Setting1.ShowDialog(this);
-            Setting1.Dispose();
+            int Poz = CBox.Length;
+            Array.Resize(ref CBox, Poz + 1);
+            CBox[Poz] = new CheckBox {Size = CBox[0].Size, 
+                                      Checked = true, 
+                                      Location = new Point(CBox[0].Location.X, bAdd.Location.Y) };
+            Array.Resize(ref sLabel, Poz + 1);
+            sLabel[Poz] = new Label {Size = sLabel[0].Size,
+                                    Text = Convert.ToString(Poz+1)+'.',
+                                    Location = new Point(sLabel[0].Location.X, bAdd.Location.Y) };
+            Array.Resize(ref PaymentItemSign, Poz + 1);
+            PaymentItemSign[Poz] = new ComboBox { Size = PaymentItemSign[0].Size,
+                                                  Location = new Point(PaymentItemSign[0].Location.X, bAdd.Location.Y),
+                                                  Text = PaymentItemSign[0].Text };
+                PaymentItemSign[Poz].Items.AddRange(PaymentItemSignItems);
+            Array.Resize(ref NameProduct, Poz + 1);
+            NameProduct[Poz] = new TextBox {Size = NameProduct[0].Size,
+                                            Location = new Point(NameProduct[0].Location.X, bAdd.Location.Y)};
+            Array.Resize(ref Price, Poz + 1);
+            Price[Poz] = new TextBox {Size = Price[0].Size,
+                                      Location = new Point(Price[0].Location.X, bAdd.Location.Y),
+                                      Text = "0,00"};
+            Price[Poz].TextChanged += new EventHandler(tbPrice_TextChanged);
+            Array.Resize(ref Quantity, Poz + 1);
+            Quantity[Poz] = new TextBox {Size = Quantity[0].Size,
+                                        Location = new Point(Quantity[0].Location.X, bAdd.Location.Y),
+                                        Text = "0,000"};
+            Quantity[Poz].TextChanged += new EventHandler(tbQuantity_TextChanged);
+            Array.Resize(ref Tax, Poz + 1);
+            Tax[Poz] = new ComboBox {Size = Tax[0].Size,
+                                    Location = new Point(Tax[0].Location.X, bAdd.Location.Y),
+                                    Text = Tax[0].Text};
+                Tax[Poz].Items.AddRange(TaxItems);
+            Array.Resize(ref Summ, Poz + 1);
+            Summ[Poz] = new TextBox {Size = Summ[0].Size,
+                                    Location = new Point(Summ[0].Location.X, bAdd.Location.Y),
+                                    ReadOnly = true,
+                                    Text = "0,00"};
+            Summ[Poz].TextChanged += new EventHandler(tbSumm_TextChanged);
+
+            SuspendLayout();
+            groupBox2.Controls.Add(CBox[Poz]);
+            groupBox2.Controls.Add(sLabel[Poz]);
+            groupBox2.Controls.Add(PaymentItemSign[Poz]);
+            groupBox2.Controls.Add(NameProduct[Poz]);
+            groupBox2.Controls.Add(Price[Poz]);
+            groupBox2.Controls.Add(Quantity[Poz]);
+            groupBox2.Controls.Add(Tax[Poz]);
+            groupBox2.Controls.Add(Summ[Poz]);
+            ResumeLayout(false);
+            PerformLayout();
+            bAdd.Location = new Point(bAdd.Location.X, bAdd.Location.Y+30);
         }
     }
 }

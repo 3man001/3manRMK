@@ -41,6 +41,7 @@
             this.кассовыеОперацииToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.внесениеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.отменаЧекаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.настройкиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.обратнаяСвязьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.оПрограммеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
@@ -75,28 +76,8 @@
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.label13 = new System.Windows.Forms.Label();
-            this.bPlus1 = new System.Windows.Forms.Button();
-            this.bMinus1 = new System.Windows.Forms.Button();
-            this.bMinus2 = new System.Windows.Forms.Button();
-            this.bPlus2 = new System.Windows.Forms.Button();
-            this.tbSumm1_2 = new System.Windows.Forms.TextBox();
-            this.cbPaymentItemSign_2 = new System.Windows.Forms.ComboBox();
-            this.cbTax1_2 = new System.Windows.Forms.ComboBox();
-            this.tbQuantity_2 = new System.Windows.Forms.TextBox();
-            this.tbPrice_2 = new System.Windows.Forms.TextBox();
-            this.tbNameProduct_2 = new System.Windows.Forms.TextBox();
-            this.bMinus3 = new System.Windows.Forms.Button();
-            this.bPlus3 = new System.Windows.Forms.Button();
-            this.tbSumm1_3 = new System.Windows.Forms.TextBox();
-            this.cbPaymentItemSign_3 = new System.Windows.Forms.ComboBox();
-            this.cbTax1_3 = new System.Windows.Forms.ComboBox();
-            this.tbQuantity_3 = new System.Windows.Forms.TextBox();
-            this.tbPrice_3 = new System.Windows.Forms.TextBox();
-            this.tbNameProduct_3 = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
-            this.label16 = new System.Windows.Forms.Label();
-            this.label17 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.maskTBPhone = new System.Windows.Forms.MaskedTextBox();
             this.tbEmail = new System.Windows.Forms.TextBox();
@@ -109,7 +90,9 @@
             this.button11 = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.label18 = new System.Windows.Forms.Label();
-            this.настройкиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.checkBox2 = new System.Windows.Forms.CheckBox();
+            this.bAdd = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -150,7 +133,7 @@
             this.оПрограммеToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(839, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(842, 24);
             this.menuStrip1.TabIndex = 5;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -232,6 +215,13 @@
             this.отменаЧекаToolStripMenuItem.Text = "Отмена чека";
             this.отменаЧекаToolStripMenuItem.Click += new System.EventHandler(this.отменаЧекаToolStripMenuItem_Click);
             // 
+            // настройкиToolStripMenuItem
+            // 
+            this.настройкиToolStripMenuItem.Name = "настройкиToolStripMenuItem";
+            this.настройкиToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
+            this.настройкиToolStripMenuItem.Text = "Настройки";
+            this.настройкиToolStripMenuItem.Click += new System.EventHandler(this.настройкиToolStripMenuItem_Click);
+            // 
             // обратнаяСвязьToolStripMenuItem
             // 
             this.обратнаяСвязьToolStripMenuItem.Name = "обратнаяСвязьToolStripMenuItem";
@@ -255,7 +245,7 @@
             this.toolStripStatusLabel2});
             this.statusStrip1.Location = new System.Drawing.Point(0, 610);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(839, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(842, 22);
             this.statusStrip1.TabIndex = 6;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -298,7 +288,7 @@
             // tbNameProduct_1
             // 
             this.tbNameProduct_1.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.tbNameProduct_1.Location = new System.Drawing.Point(111, 86);
+            this.tbNameProduct_1.Location = new System.Drawing.Point(131, 86);
             this.tbNameProduct_1.MaxLength = 128;
             this.tbNameProduct_1.Name = "tbNameProduct_1";
             this.tbNameProduct_1.Size = new System.Drawing.Size(271, 23);
@@ -309,19 +299,19 @@
             // 
             this.tbPrice_1.BackColor = System.Drawing.SystemColors.Window;
             this.tbPrice_1.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbPrice_1.Location = new System.Drawing.Point(386, 86);
+            this.tbPrice_1.Location = new System.Drawing.Point(406, 86);
             this.tbPrice_1.MaxLength = 11;
             this.tbPrice_1.Name = "tbPrice_1";
             this.tbPrice_1.Size = new System.Drawing.Size(95, 23);
             this.tbPrice_1.TabIndex = 11;
             this.tbPrice_1.Text = "1,00";
             this.tbPrice_1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.tbPrice_1.TextChanged += new System.EventHandler(this.tbPrice_1_TextChanged);
+            this.tbPrice_1.TextChanged += new System.EventHandler(this.tbPrice_TextChanged);
             // 
             // tbQuantity_1
             // 
             this.tbQuantity_1.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.tbQuantity_1.Location = new System.Drawing.Point(485, 86);
+            this.tbQuantity_1.Location = new System.Drawing.Point(505, 86);
             this.tbQuantity_1.MaxLength = 9;
             this.tbQuantity_1.Name = "tbQuantity_1";
             this.tbQuantity_1.Size = new System.Drawing.Size(75, 23);
@@ -333,7 +323,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(113, 66);
+            this.label2.Location = new System.Drawing.Point(133, 66);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(102, 13);
             this.label2.TabIndex = 19;
@@ -342,7 +332,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(385, 66);
+            this.label3.Location = new System.Drawing.Point(405, 66);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(76, 13);
             this.label3.TabIndex = 20;
@@ -351,7 +341,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(496, 66);
+            this.label5.Location = new System.Drawing.Point(516, 66);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(59, 13);
             this.label5.TabIndex = 21;
@@ -407,7 +397,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(678, 66);
+            this.label8.Location = new System.Drawing.Point(698, 66);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(64, 13);
             this.label8.TabIndex = 26;
@@ -423,7 +413,7 @@
             "НДС 10/110",
             "НДС 20%",
             "НДС 20/120"});
-            this.cbTax1_1.Location = new System.Drawing.Point(564, 86);
+            this.cbTax1_1.Location = new System.Drawing.Point(584, 86);
             this.cbTax1_1.Name = "cbTax1_1";
             this.cbTax1_1.Size = new System.Drawing.Size(105, 24);
             this.cbTax1_1.TabIndex = 27;
@@ -432,7 +422,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(595, 66);
+            this.label9.Location = new System.Drawing.Point(615, 66);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(31, 13);
             this.label9.TabIndex = 28;
@@ -450,7 +440,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(33, 66);
+            this.label12.Location = new System.Drawing.Point(53, 66);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(71, 13);
             this.label12.TabIndex = 33;
@@ -464,7 +454,7 @@
             "Товар",
             "Работа",
             "Услуга"});
-            this.cbPaymentItemSign_1.Location = new System.Drawing.Point(33, 86);
+            this.cbPaymentItemSign_1.Location = new System.Drawing.Point(53, 86);
             this.cbPaymentItemSign_1.Name = "cbPaymentItemSign_1";
             this.cbPaymentItemSign_1.Size = new System.Drawing.Size(75, 24);
             this.cbPaymentItemSign_1.TabIndex = 34;
@@ -474,7 +464,7 @@
             // 
             this.tbSumm1_1.BackColor = System.Drawing.SystemColors.Window;
             this.tbSumm1_1.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.tbSumm1_1.Location = new System.Drawing.Point(673, 86);
+            this.tbSumm1_1.Location = new System.Drawing.Point(693, 86);
             this.tbSumm1_1.MaxLength = 11;
             this.tbSumm1_1.Name = "tbSumm1_1";
             this.tbSumm1_1.ReadOnly = true;
@@ -482,7 +472,7 @@
             this.tbSumm1_1.TabIndex = 35;
             this.tbSumm1_1.Text = "1,00";
             this.tbSumm1_1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.tbSumm1_1.TextChanged += new System.EventHandler(this.tbSumm1_1_TextChanged);
+            this.tbSumm1_1.TextChanged += new System.EventHandler(this.tbSumm_TextChanged);
             // 
             // tbSummAll
             // 
@@ -587,246 +577,10 @@
             this.label13.Text = "ИТОГ =";
             this.label13.Visible = false;
             // 
-            // bPlus1
-            // 
-            this.bPlus1.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.bPlus1.Location = new System.Drawing.Point(774, 86);
-            this.bPlus1.Name = "bPlus1";
-            this.bPlus1.Size = new System.Drawing.Size(25, 25);
-            this.bPlus1.TabIndex = 46;
-            this.bPlus1.Text = "+";
-            this.bPlus1.UseVisualStyleBackColor = true;
-            this.bPlus1.Visible = false;
-            this.bPlus1.Click += new System.EventHandler(this.bPlus1_Click);
-            // 
-            // bMinus1
-            // 
-            this.bMinus1.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.bMinus1.Location = new System.Drawing.Point(802, 86);
-            this.bMinus1.Name = "bMinus1";
-            this.bMinus1.Size = new System.Drawing.Size(25, 25);
-            this.bMinus1.TabIndex = 47;
-            this.bMinus1.Text = "-";
-            this.bMinus1.UseVisualStyleBackColor = true;
-            this.bMinus1.Visible = false;
-            this.bMinus1.Click += new System.EventHandler(this.bMinus1_Click);
-            // 
-            // bMinus2
-            // 
-            this.bMinus2.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.bMinus2.Location = new System.Drawing.Point(801, 115);
-            this.bMinus2.Name = "bMinus2";
-            this.bMinus2.Size = new System.Drawing.Size(25, 25);
-            this.bMinus2.TabIndex = 55;
-            this.bMinus2.Text = "-";
-            this.bMinus2.UseVisualStyleBackColor = true;
-            this.bMinus2.Visible = false;
-            this.bMinus2.Click += new System.EventHandler(this.bMinus2_Click);
-            // 
-            // bPlus2
-            // 
-            this.bPlus2.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.bPlus2.Location = new System.Drawing.Point(774, 115);
-            this.bPlus2.Name = "bPlus2";
-            this.bPlus2.Size = new System.Drawing.Size(25, 25);
-            this.bPlus2.TabIndex = 54;
-            this.bPlus2.Text = "+";
-            this.bPlus2.UseVisualStyleBackColor = true;
-            this.bPlus2.Visible = false;
-            this.bPlus2.Click += new System.EventHandler(this.bPlus2_Click);
-            // 
-            // tbSumm1_2
-            // 
-            this.tbSumm1_2.BackColor = System.Drawing.SystemColors.Window;
-            this.tbSumm1_2.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.tbSumm1_2.Location = new System.Drawing.Point(673, 115);
-            this.tbSumm1_2.MaxLength = 11;
-            this.tbSumm1_2.Name = "tbSumm1_2";
-            this.tbSumm1_2.ReadOnly = true;
-            this.tbSumm1_2.Size = new System.Drawing.Size(95, 23);
-            this.tbSumm1_2.TabIndex = 53;
-            this.tbSumm1_2.Text = "1,00";
-            this.tbSumm1_2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.tbSumm1_2.Visible = false;
-            // 
-            // cbPaymentItemSign_2
-            // 
-            this.cbPaymentItemSign_2.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.cbPaymentItemSign_2.FormattingEnabled = true;
-            this.cbPaymentItemSign_2.Items.AddRange(new object[] {
-            "Товар",
-            "Работа",
-            "Услуга"});
-            this.cbPaymentItemSign_2.Location = new System.Drawing.Point(33, 115);
-            this.cbPaymentItemSign_2.Name = "cbPaymentItemSign_2";
-            this.cbPaymentItemSign_2.Size = new System.Drawing.Size(75, 24);
-            this.cbPaymentItemSign_2.TabIndex = 52;
-            this.cbPaymentItemSign_2.Text = "Товар";
-            this.cbPaymentItemSign_2.Visible = false;
-            // 
-            // cbTax1_2
-            // 
-            this.cbTax1_2.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.cbTax1_2.Items.AddRange(new object[] {
-            "Без НДС",
-            "НДС 0%",
-            "НДС 10%",
-            "НДС 10/110",
-            "НДС 20%",
-            "НДС 20/120"});
-            this.cbTax1_2.Location = new System.Drawing.Point(564, 115);
-            this.cbTax1_2.Name = "cbTax1_2";
-            this.cbTax1_2.Size = new System.Drawing.Size(105, 24);
-            this.cbTax1_2.TabIndex = 51;
-            this.cbTax1_2.Text = "Без НДС";
-            this.cbTax1_2.Visible = false;
-            // 
-            // tbQuantity_2
-            // 
-            this.tbQuantity_2.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.tbQuantity_2.Location = new System.Drawing.Point(485, 115);
-            this.tbQuantity_2.MaxLength = 9;
-            this.tbQuantity_2.Name = "tbQuantity_2";
-            this.tbQuantity_2.Size = new System.Drawing.Size(75, 23);
-            this.tbQuantity_2.TabIndex = 50;
-            this.tbQuantity_2.Text = "1,000";
-            this.tbQuantity_2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.tbQuantity_2.Visible = false;
-            // 
-            // tbPrice_2
-            // 
-            this.tbPrice_2.BackColor = System.Drawing.SystemColors.Window;
-            this.tbPrice_2.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbPrice_2.Location = new System.Drawing.Point(386, 115);
-            this.tbPrice_2.MaxLength = 11;
-            this.tbPrice_2.Name = "tbPrice_2";
-            this.tbPrice_2.Size = new System.Drawing.Size(95, 23);
-            this.tbPrice_2.TabIndex = 48;
-            this.tbPrice_2.Text = "1,00";
-            this.tbPrice_2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.tbPrice_2.Visible = false;
-            // 
-            // tbNameProduct_2
-            // 
-            this.tbNameProduct_2.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.tbNameProduct_2.Location = new System.Drawing.Point(111, 115);
-            this.tbNameProduct_2.MaxLength = 128;
-            this.tbNameProduct_2.Name = "tbNameProduct_2";
-            this.tbNameProduct_2.Size = new System.Drawing.Size(271, 23);
-            this.tbNameProduct_2.TabIndex = 49;
-            this.tbNameProduct_2.Text = "Офисный принтер Панасоник RGB 15";
-            this.tbNameProduct_2.Visible = false;
-            // 
-            // bMinus3
-            // 
-            this.bMinus3.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.bMinus3.Location = new System.Drawing.Point(801, 144);
-            this.bMinus3.Name = "bMinus3";
-            this.bMinus3.Size = new System.Drawing.Size(25, 25);
-            this.bMinus3.TabIndex = 63;
-            this.bMinus3.Text = "-";
-            this.bMinus3.UseVisualStyleBackColor = true;
-            this.bMinus3.Visible = false;
-            this.bMinus3.Click += new System.EventHandler(this.bMinus3_Click);
-            // 
-            // bPlus3
-            // 
-            this.bPlus3.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.bPlus3.Location = new System.Drawing.Point(774, 144);
-            this.bPlus3.Name = "bPlus3";
-            this.bPlus3.Size = new System.Drawing.Size(25, 25);
-            this.bPlus3.TabIndex = 62;
-            this.bPlus3.Text = "+";
-            this.bPlus3.UseVisualStyleBackColor = true;
-            this.bPlus3.Visible = false;
-            this.bPlus3.Click += new System.EventHandler(this.bPlus3_Click);
-            // 
-            // tbSumm1_3
-            // 
-            this.tbSumm1_3.BackColor = System.Drawing.SystemColors.Window;
-            this.tbSumm1_3.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.tbSumm1_3.Location = new System.Drawing.Point(673, 144);
-            this.tbSumm1_3.MaxLength = 11;
-            this.tbSumm1_3.Name = "tbSumm1_3";
-            this.tbSumm1_3.ReadOnly = true;
-            this.tbSumm1_3.Size = new System.Drawing.Size(95, 23);
-            this.tbSumm1_3.TabIndex = 61;
-            this.tbSumm1_3.Text = "1,00";
-            this.tbSumm1_3.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.tbSumm1_3.Visible = false;
-            // 
-            // cbPaymentItemSign_3
-            // 
-            this.cbPaymentItemSign_3.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.cbPaymentItemSign_3.FormattingEnabled = true;
-            this.cbPaymentItemSign_3.Items.AddRange(new object[] {
-            "Товар",
-            "Работа",
-            "Услуга"});
-            this.cbPaymentItemSign_3.Location = new System.Drawing.Point(33, 144);
-            this.cbPaymentItemSign_3.Name = "cbPaymentItemSign_3";
-            this.cbPaymentItemSign_3.Size = new System.Drawing.Size(75, 24);
-            this.cbPaymentItemSign_3.TabIndex = 60;
-            this.cbPaymentItemSign_3.Text = "Товар";
-            this.cbPaymentItemSign_3.Visible = false;
-            // 
-            // cbTax1_3
-            // 
-            this.cbTax1_3.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.cbTax1_3.Items.AddRange(new object[] {
-            "Без НДС",
-            "НДС 0%",
-            "НДС 10%",
-            "НДС 10/110",
-            "НДС 20%",
-            "НДС 20/120"});
-            this.cbTax1_3.Location = new System.Drawing.Point(564, 144);
-            this.cbTax1_3.Name = "cbTax1_3";
-            this.cbTax1_3.Size = new System.Drawing.Size(105, 24);
-            this.cbTax1_3.TabIndex = 59;
-            this.cbTax1_3.Text = "Без НДС";
-            this.cbTax1_3.Visible = false;
-            // 
-            // tbQuantity_3
-            // 
-            this.tbQuantity_3.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.tbQuantity_3.Location = new System.Drawing.Point(485, 144);
-            this.tbQuantity_3.MaxLength = 9;
-            this.tbQuantity_3.Name = "tbQuantity_3";
-            this.tbQuantity_3.Size = new System.Drawing.Size(75, 23);
-            this.tbQuantity_3.TabIndex = 58;
-            this.tbQuantity_3.Text = "1,000";
-            this.tbQuantity_3.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.tbQuantity_3.Visible = false;
-            // 
-            // tbPrice_3
-            // 
-            this.tbPrice_3.BackColor = System.Drawing.SystemColors.Window;
-            this.tbPrice_3.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbPrice_3.Location = new System.Drawing.Point(386, 144);
-            this.tbPrice_3.MaxLength = 11;
-            this.tbPrice_3.Name = "tbPrice_3";
-            this.tbPrice_3.Size = new System.Drawing.Size(95, 23);
-            this.tbPrice_3.TabIndex = 56;
-            this.tbPrice_3.Text = "1,00";
-            this.tbPrice_3.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.tbPrice_3.Visible = false;
-            // 
-            // tbNameProduct_3
-            // 
-            this.tbNameProduct_3.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.tbNameProduct_3.Location = new System.Drawing.Point(111, 144);
-            this.tbNameProduct_3.MaxLength = 128;
-            this.tbNameProduct_3.Name = "tbNameProduct_3";
-            this.tbNameProduct_3.Size = new System.Drawing.Size(271, 23);
-            this.tbNameProduct_3.TabIndex = 57;
-            this.tbNameProduct_3.Text = "Офисный принтер Панасоник RGB 15";
-            this.tbNameProduct_3.Visible = false;
-            // 
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(6, 66);
+            this.label14.Location = new System.Drawing.Point(26, 66);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(18, 13);
             this.label14.TabIndex = 64;
@@ -836,33 +590,11 @@
             // 
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label15.Location = new System.Drawing.Point(6, 91);
+            this.label15.Location = new System.Drawing.Point(26, 91);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(21, 16);
             this.label15.TabIndex = 65;
             this.label15.Text = "1.";
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label16.Location = new System.Drawing.Point(6, 120);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(21, 16);
-            this.label16.TabIndex = 66;
-            this.label16.Text = "2.";
-            this.label16.Visible = false;
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label17.Location = new System.Drawing.Point(6, 149);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(21, 16);
-            this.label17.TabIndex = 67;
-            this.label17.Text = "3.";
-            this.label17.Visible = false;
             // 
             // groupBox3
             // 
@@ -979,43 +711,26 @@
             // groupBox2
             // 
             this.groupBox2.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.groupBox2.Controls.Add(this.bAdd);
+            this.groupBox2.Controls.Add(this.checkBox2);
+            this.groupBox2.Controls.Add(this.checkBox1);
             this.groupBox2.Controls.Add(this.button11);
             this.groupBox2.Controls.Add(this.label1);
             this.groupBox2.Controls.Add(this.tbNameProduct_1);
             this.groupBox2.Controls.Add(this.tbPrice_1);
             this.groupBox2.Controls.Add(this.tbQuantity_1);
             this.groupBox2.Controls.Add(this.label2);
-            this.groupBox2.Controls.Add(this.label17);
             this.groupBox2.Controls.Add(this.label3);
-            this.groupBox2.Controls.Add(this.label16);
             this.groupBox2.Controls.Add(this.label5);
             this.groupBox2.Controls.Add(this.label15);
             this.groupBox2.Controls.Add(this.label8);
             this.groupBox2.Controls.Add(this.label14);
             this.groupBox2.Controls.Add(this.cbTax1_1);
-            this.groupBox2.Controls.Add(this.bMinus3);
             this.groupBox2.Controls.Add(this.label9);
-            this.groupBox2.Controls.Add(this.bPlus3);
             this.groupBox2.Controls.Add(this.label12);
-            this.groupBox2.Controls.Add(this.tbSumm1_3);
             this.groupBox2.Controls.Add(this.cbPaymentItemSign_1);
-            this.groupBox2.Controls.Add(this.cbPaymentItemSign_3);
             this.groupBox2.Controls.Add(this.tbSumm1_1);
-            this.groupBox2.Controls.Add(this.cbTax1_3);
-            this.groupBox2.Controls.Add(this.tbQuantity_3);
             this.groupBox2.Controls.Add(this.comboBox1);
-            this.groupBox2.Controls.Add(this.tbPrice_3);
-            this.groupBox2.Controls.Add(this.tbNameProduct_3);
-            this.groupBox2.Controls.Add(this.bPlus1);
-            this.groupBox2.Controls.Add(this.bMinus2);
-            this.groupBox2.Controls.Add(this.bMinus1);
-            this.groupBox2.Controls.Add(this.bPlus2);
-            this.groupBox2.Controls.Add(this.tbNameProduct_2);
-            this.groupBox2.Controls.Add(this.tbSumm1_2);
-            this.groupBox2.Controls.Add(this.tbPrice_2);
-            this.groupBox2.Controls.Add(this.cbPaymentItemSign_2);
-            this.groupBox2.Controls.Add(this.tbQuantity_2);
-            this.groupBox2.Controls.Add(this.cbTax1_2);
             this.groupBox2.Location = new System.Drawing.Point(0, 65);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(840, 180);
@@ -1057,19 +772,46 @@
             this.label18.TabIndex = 0;
             this.label18.Text = "Идет Работат с ККТ, подождите";
             // 
-            // настройкиToolStripMenuItem
+            // checkBox1
             // 
-            this.настройкиToolStripMenuItem.Name = "настройкиToolStripMenuItem";
-            this.настройкиToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
-            this.настройкиToolStripMenuItem.Text = "Настройки";
-            this.настройкиToolStripMenuItem.Click += new System.EventHandler(this.настройкиToolStripMenuItem_Click);
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(6, 66);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(15, 14);
+            this.checkBox1.TabIndex = 72;
+            this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            // 
+            // checkBox2
+            // 
+            this.checkBox2.AutoSize = true;
+            this.checkBox2.Checked = true;
+            this.checkBox2.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox2.Location = new System.Drawing.Point(6, 91);
+            this.checkBox2.Name = "checkBox2";
+            this.checkBox2.Size = new System.Drawing.Size(15, 14);
+            this.checkBox2.TabIndex = 73;
+            this.checkBox2.UseVisualStyleBackColor = true;
+            // 
+            // bAdd
+            // 
+            this.bAdd.BackColor = System.Drawing.Color.LimeGreen;
+            this.bAdd.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.bAdd.Location = new System.Drawing.Point(6, 116);
+            this.bAdd.Name = "bAdd";
+            this.bAdd.Size = new System.Drawing.Size(41, 25);
+            this.bAdd.TabIndex = 74;
+            this.bAdd.Text = "Add";
+            this.bAdd.UseVisualStyleBackColor = false;
+            this.bAdd.Click += new System.EventHandler(this.bAdd_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.ClientSize = new System.Drawing.Size(839, 632);
+            this.ClientSize = new System.Drawing.Size(859, 631);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.groupBox2);
@@ -1143,28 +885,8 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.Button bPlus1;
-        private System.Windows.Forms.Button bMinus1;
-        private System.Windows.Forms.Button bMinus2;
-        private System.Windows.Forms.Button bPlus2;
-        private System.Windows.Forms.TextBox tbSumm1_2;
-        private System.Windows.Forms.ComboBox cbPaymentItemSign_2;
-        private System.Windows.Forms.ComboBox cbTax1_2;
-        private System.Windows.Forms.TextBox tbQuantity_2;
-        private System.Windows.Forms.TextBox tbPrice_2;
-        private System.Windows.Forms.TextBox tbNameProduct_2;
-        private System.Windows.Forms.Button bMinus3;
-        private System.Windows.Forms.Button bPlus3;
-        private System.Windows.Forms.TextBox tbSumm1_3;
-        private System.Windows.Forms.ComboBox cbPaymentItemSign_3;
-        private System.Windows.Forms.ComboBox cbTax1_3;
-        private System.Windows.Forms.TextBox tbQuantity_3;
-        private System.Windows.Forms.TextBox tbPrice_3;
-        private System.Windows.Forms.TextBox tbNameProduct_3;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.Label label17;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel2;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.GroupBox groupBox1;
@@ -1179,6 +901,9 @@
         private System.Windows.Forms.MaskedTextBox maskTBPhone;
         private System.Windows.Forms.MaskedTextBox tbINN;
         private System.Windows.Forms.ToolStripMenuItem настройкиToolStripMenuItem;
+        private System.Windows.Forms.CheckBox checkBox2;
+        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.Button bAdd;
     }
 }
 
