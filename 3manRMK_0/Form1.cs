@@ -13,8 +13,8 @@ namespace _3manRMK_0
         {
             InitializeComponent();
             Drv = new DrvFR();
-            this.Size = new Size(875, 300);
-            groupBox2.Size = new Size(840,768);
+            Size = new Size(873, 300);// 871;670
+            //groupBox2.Size = new Size(857,180);
             groupBox3.Location = new Point(0, 65);
             groupBox4.Location = new Point(0, 65);
             
@@ -675,16 +675,17 @@ namespace _3manRMK_0
                 PaymentItemSign[Poz].Items.AddRange(PaymentItemSignItems);
             Array.Resize(ref NameProduct, Poz + 1);
             NameProduct[Poz] = new TextBox {Size = NameProduct[0].Size,
-                                            Location = new Point(NameProduct[0].Location.X, bAdd.Location.Y)};
+                                            Location = new Point(NameProduct[0].Location.X, bAdd.Location.Y),
+                                            Text = Convert.ToString(Poz)+". "+NameProduct[0].Text};
             Array.Resize(ref Price, Poz + 1);
             Price[Poz] = new TextBox {Size = Price[0].Size,
                                       Location = new Point(Price[0].Location.X, bAdd.Location.Y),
-                                      Text = "0,00"};
+                                      Text = Price[0].Text};
             Price[Poz].TextChanged += new EventHandler(tbPrice_TextChanged);
             Array.Resize(ref Quantity, Poz + 1);
             Quantity[Poz] = new TextBox {Size = Quantity[0].Size,
                                         Location = new Point(Quantity[0].Location.X, bAdd.Location.Y),
-                                        Text = "0,000"};
+                                        Text = Quantity[0].Text};
             Quantity[Poz].TextChanged += new EventHandler(tbQuantity_TextChanged);
             Array.Resize(ref Tax, Poz + 1);
             Tax[Poz] = new ComboBox {Size = Tax[0].Size,
@@ -695,7 +696,7 @@ namespace _3manRMK_0
             Summ[Poz] = new TextBox {Size = Summ[0].Size,
                                     Location = new Point(Summ[0].Location.X, bAdd.Location.Y),
                                     ReadOnly = true,
-                                    Text = "0,00"};
+                                    Text = Summ[0].Text};
             Summ[Poz].TextChanged += new EventHandler(tbSumm_TextChanged);
 
             SuspendLayout();
