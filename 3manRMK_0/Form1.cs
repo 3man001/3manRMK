@@ -14,6 +14,7 @@ namespace _3manRMK_0
             InitializeComponent();
             Drv = new DrvFR();
             this.Size = new Size(875, 300);
+            groupBox2.Size = new Size(840,768);
             groupBox3.Location = new Point(0, 65);
             groupBox4.Location = new Point(0, 65);
             
