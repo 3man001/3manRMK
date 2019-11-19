@@ -309,6 +309,7 @@ namespace _3manRMK_0
             Array.Resize(ref Tax, 1);
             Array.Resize(ref Summ, 1);
             bAdd.Location = new Point(6, 116);
+            bAdd.Visible = true;
             groupBox2.Size = new Size(860, 180);
         }
         //////Начало Блока триггер виджета/////////
@@ -671,7 +672,12 @@ namespace _3manRMK_0
 
         private void bAdd_Click(object sender, EventArgs e)
         {
+            
             int Poz = CBox.Length;
+            if (Poz >= 50)
+            {
+                bAdd.Visible = false;
+            }
             int Y = bAdd.Location.Y;
             Array.Resize(ref CBox, Poz + 1);
             Array.Resize(ref sLabel, Poz + 1);
@@ -724,11 +730,6 @@ namespace _3manRMK_0
             ResumeLayout(false);
             PerformLayout();
             bAdd.Location = new Point(bAdd.Location.X, bAdd.Location.Y+30);
-        }
-
-        private void button5_Click(object sender, EventArgs e)
-        {
-            InitialArrays();
         }
     }
 }

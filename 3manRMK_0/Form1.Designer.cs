@@ -99,7 +99,6 @@
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.toolTip2 = new System.Windows.Forms.ToolTip(this.components);
             this.toolTip3 = new System.Windows.Forms.ToolTip(this.components);
-            this.button5 = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -714,7 +713,6 @@
             // 
             this.groupBox2.AutoSize = true;
             this.groupBox2.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            this.groupBox2.Controls.Add(this.button5);
             this.groupBox2.Controls.Add(this.label19);
             this.groupBox2.Controls.Add(this.bAdd);
             this.groupBox2.Controls.Add(this.checkBox2);
@@ -821,16 +819,6 @@
             this.label18.TabIndex = 0;
             this.label18.Text = "Идет Работат с ККТ, подождите";
             // 
-            // button5
-            // 
-            this.button5.Location = new System.Drawing.Point(299, 20);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(75, 23);
-            this.button5.TabIndex = 76;
-            this.button5.Text = "button5";
-            this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -936,7 +924,6 @@
         private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.ToolTip toolTip2;
         private System.Windows.Forms.ToolTip toolTip3;
-        private System.Windows.Forms.Button button5;
     }
 }
 
