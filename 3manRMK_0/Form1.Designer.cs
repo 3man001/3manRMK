@@ -70,7 +70,6 @@
             this.tbSumm1_1 = new System.Windows.Forms.TextBox();
             this.tbSummAll = new System.Windows.Forms.TextBox();
             this.btnLogin = new System.Windows.Forms.Button();
-            this.btnLogOut = new System.Windows.Forms.Button();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
@@ -141,7 +140,7 @@
             this.оПрограммеToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(892, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(875, 24);
             this.menuStrip1.TabIndex = 5;
             this.menuStrip1.Text = "Меню";
             // 
@@ -253,7 +252,7 @@
             this.toolStripStatusLabel2});
             this.statusStrip1.Location = new System.Drawing.Point(0, 610);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(892, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(875, 22);
             this.statusStrip1.TabIndex = 6;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -498,19 +497,6 @@
             this.btnLogin.UseVisualStyleBackColor = false;
             this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
             // 
-            // btnLogOut
-            // 
-            this.btnLogOut.BackColor = System.Drawing.SystemColors.Highlight;
-            this.btnLogOut.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btnLogOut.Location = new System.Drawing.Point(548, 11);
-            this.btnLogOut.Name = "btnLogOut";
-            this.btnLogOut.Size = new System.Drawing.Size(75, 25);
-            this.btnLogOut.TabIndex = 40;
-            this.btnLogOut.Text = "LogOut";
-            this.btnLogOut.UseVisualStyleBackColor = false;
-            this.btnLogOut.Visible = false;
-            this.btnLogOut.Click += new System.EventHandler(this.btnLogOut_Click);
-            // 
             // comboBox1
             // 
             this.comboBox1.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -702,7 +688,6 @@
             this.groupBox1.Controls.Add(this.tbINN);
             this.groupBox1.Controls.Add(this.label10);
             this.groupBox1.Controls.Add(this.tbFIO);
-            this.groupBox1.Controls.Add(this.btnLogOut);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.btnLogin);
             this.groupBox1.Controls.Add(this.tbSummAll);
@@ -852,7 +837,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.ClientSize = new System.Drawing.Size(909, 631);
+            this.ClientSize = new System.Drawing.Size(892, 631);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.statusStrip1);
@@ -920,7 +905,6 @@
         private System.Windows.Forms.TextBox tbSummAll;
         private System.Windows.Forms.ToolStripMenuItem отменаЧекаToolStripMenuItem;
         private System.Windows.Forms.Button btnLogin;
-        private System.Windows.Forms.Button btnLogOut;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button button1;

@@ -575,32 +575,24 @@ namespace _3manRMK_0
                 groupBox4.Visible = false;
             }
         }
-        private void btnLogOut_Click(object sender, EventArgs e) //Регистрация кассира
+        private void btnLogin_Click(object sender, EventArgs e) //Регистрация кассира
         {
-            btnLogOut.Visible = false;
-            btnLogin.Visible = true;
-            tbFIO.ReadOnly = false;
-            tbINN.ReadOnly = false;
-            label13.Visible = false;
-            tbSummAll.Visible = false;
-            groupBox2.Visible = false;
-            groupBox3.Visible = false;
-        }
-        private void btnLogin_Click(object sender, EventArgs e) //Отключение кассира
-        {
-            tbFIO_TextChanged(sender, e);
-            tbINN_TextChanged(sender, e);
-            if ((tbFIO.BackColor == Color.Snow) & (tbINN.BackColor == Color.Snow))
+            if (btnLogin.BackColor == Color.Lime)
             {
-                btnLogOut.Visible = true;
-                btnLogin.Visible = false;
-                tbFIO.ReadOnly = true;
-                tbINN.ReadOnly = true;
-
-                //InitialRMK();
-                label13.Visible = true;
-                tbSummAll.Visible = true;
-                groupBox2.Visible = true;
+                tbFIO_TextChanged(sender, e);
+                tbINN_TextChanged(sender, e);
+                if ((tbFIO.BackColor == Color.Snow) & (tbINN.BackColor == Color.Snow))
+                {
+                    btnLogin.BackColor = Color.DodgerBlue;
+                    btnLogin.Text = "LogOut";
+                    tbFIO.ReadOnly = tbINN.ReadOnly = label13.Visible = tbSummAll.Visible = groupBox2.Visible = true;
+                }
+            }
+            else
+            {
+                btnLogin.BackColor = Color.Lime;
+                btnLogin.Text = "Login";
+                tbFIO.ReadOnly = tbINN.ReadOnly = label13.Visible = tbSummAll.Visible = groupBox2.Visible = false;
             }
         }
         private void xотчетToolStripMenuItem_Click(object sender, EventArgs e) //Снять Х-Отчет
