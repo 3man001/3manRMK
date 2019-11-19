@@ -80,6 +80,8 @@
             this.label14 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.label17 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
             this.maskTBPhone = new System.Windows.Forms.MaskedTextBox();
             this.tbEmail = new System.Windows.Forms.TextBox();
             this.tbChange = new System.Windows.Forms.TextBox();
@@ -88,18 +90,17 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.tbINN = new System.Windows.Forms.MaskedTextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label19 = new System.Windows.Forms.Label();
             this.bAdd = new System.Windows.Forms.Button();
             this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.button11 = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.label18 = new System.Windows.Forms.Label();
-            this.label16 = new System.Windows.Forms.Label();
-            this.label17 = new System.Windows.Forms.Label();
-            this.label19 = new System.Windows.Forms.Label();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.toolTip2 = new System.Windows.Forms.ToolTip(this.components);
             this.toolTip3 = new System.Windows.Forms.ToolTip(this.components);
+            this.button5 = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -140,7 +141,7 @@
             this.оПрограммеToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(875, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(892, 24);
             this.menuStrip1.TabIndex = 5;
             this.menuStrip1.Text = "Меню";
             // 
@@ -252,7 +253,7 @@
             this.toolStripStatusLabel2});
             this.statusStrip1.Location = new System.Drawing.Point(0, 610);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(875, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(892, 22);
             this.statusStrip1.TabIndex = 6;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -619,6 +620,24 @@
             this.groupBox3.Text = "Оплата";
             this.groupBox3.Visible = false;
             // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(3, 102);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(35, 13);
+            this.label17.TabIndex = 77;
+            this.label17.Text = "E-mail";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(40, 76);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(29, 13);
+            this.label16.TabIndex = 76;
+            this.label16.Text = "Тел.";
+            // 
             // maskTBPhone
             // 
             this.maskTBPhone.BackColor = System.Drawing.SystemColors.Window;
@@ -710,6 +729,7 @@
             // 
             this.groupBox2.AutoSize = true;
             this.groupBox2.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.groupBox2.Controls.Add(this.button5);
             this.groupBox2.Controls.Add(this.label19);
             this.groupBox2.Controls.Add(this.bAdd);
             this.groupBox2.Controls.Add(this.checkBox2);
@@ -739,6 +759,16 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Регистрация позиций";
             this.groupBox2.Visible = false;
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label19.Location = new System.Drawing.Point(132, 11);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(90, 20);
+            this.label19.TabIndex = 75;
+            this.label19.Text = "ПРОДАЖА";
             // 
             // bAdd
             // 
@@ -806,33 +836,15 @@
             this.label18.TabIndex = 0;
             this.label18.Text = "Идет Работат с ККТ, подождите";
             // 
-            // label16
+            // button5
             // 
-            this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(40, 76);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(29, 13);
-            this.label16.TabIndex = 76;
-            this.label16.Text = "Тел.";
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(3, 102);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(35, 13);
-            this.label17.TabIndex = 77;
-            this.label17.Text = "E-mail";
-            // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label19.Location = new System.Drawing.Point(132, 11);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(90, 20);
-            this.label19.TabIndex = 75;
-            this.label19.Text = "ПРОДАЖА";
+            this.button5.Location = new System.Drawing.Point(299, 20);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(75, 23);
+            this.button5.TabIndex = 76;
+            this.button5.Text = "button5";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // Form1
             // 
@@ -840,7 +852,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.ClientSize = new System.Drawing.Size(892, 631);
+            this.ClientSize = new System.Drawing.Size(909, 631);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.statusStrip1);
@@ -940,6 +952,7 @@
         private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.ToolTip toolTip2;
         private System.Windows.Forms.ToolTip toolTip3;
+        private System.Windows.Forms.Button button5;
     }
 }
 

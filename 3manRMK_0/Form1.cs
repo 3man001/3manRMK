@@ -14,27 +14,18 @@ namespace _3manRMK_0
             InitializeComponent();
             Drv = new DrvFR();
             Size = new Size(873, 300);// 871;670
-            //groupBox2.Size = new Size(857,180);
             groupBox3.Location = new Point(0, 65);
             groupBox4.Location = new Point(0, 65);
-            
-            Array.Resize(ref CBox, 1);
+            InitialArrays();
             CBox[0] = checkBox2;
-            Array.Resize(ref sLabel, 1);
             sLabel[0] = label15;
-            Array.Resize(ref PaymentItemSign, 1);
             PaymentItemSign[0] = cbPaymentItemSign_1;
                 PaymentItemSign[0].Items.CopyTo(PaymentItemSignItems, 0);
-            Array.Resize(ref NameProduct, 1);
             NameProduct[0] = tbNameProduct_1;
-            Array.Resize(ref Price, 1);
             Price[0] = tbPrice_1;
-            Array.Resize(ref Quantity, 1);
             Quantity[0] = tbQuantity_1;
-            Array.Resize(ref Tax, 1);
             Tax[0] = cbTax1_1;
                 Tax[0].Items.CopyTo(TaxItems, 0);
-            Array.Resize(ref Summ, 1);
             Summ[0] = tbSumm1_1;
         }
         DrvFR Drv; //Создание обьекта драйвера ФР
@@ -291,6 +282,31 @@ namespace _3manRMK_0
                     Drv.FNSendTag();
                 }
             }
+        }
+        private void InitialArrays()
+        {
+            for (int i=1; i<CBox.Length; i++)
+            {
+                CBox[i].Dispose();
+                sLabel[i].Dispose();
+                PaymentItemSign[i].Dispose();
+                NameProduct[i].Dispose();
+                Price[i].Dispose();
+                Quantity[i].Dispose();
+                Tax[i].Dispose();
+                Summ[i].Dispose();
+            }
+            //Array.Clear(CBox, 1, CBox.Length - 1);
+            Array.Resize(ref CBox, 1);
+            Array.Resize(ref sLabel, 1);
+            Array.Resize(ref PaymentItemSign, 1);
+            Array.Resize(ref NameProduct, 1);
+            Array.Resize(ref Price, 1);
+            Array.Resize(ref Quantity, 1);
+            Array.Resize(ref Tax, 1);
+            Array.Resize(ref Summ, 1);
+            bAdd.Location = new Point(6, 116);
+            groupBox2.Size = new Size(860, 180);
         }
         //////Начало Блока триггер виджета/////////
         private void tbFIO_TextChanged(object sender, EventArgs e)
@@ -552,6 +568,7 @@ namespace _3manRMK_0
                 CloseChek(); // Формирует закрытие чека
                 tbSumm1.Text = "0,00";
                 tbSumm2.Text = "0,00";
+                InitialArrays();
                 tbSumm1.Visible = false;
                 tbSumm2.Visible = false;
                 groupBox2.Visible = true;
@@ -711,6 +728,11 @@ namespace _3manRMK_0
             ResumeLayout(false);
             PerformLayout();
             bAdd.Location = new Point(bAdd.Location.X, bAdd.Location.Y+30);
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            InitialArrays();
         }
     }
 }
