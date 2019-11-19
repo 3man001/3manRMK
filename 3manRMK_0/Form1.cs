@@ -13,31 +13,26 @@ namespace _3manRMK_0
         {
             InitializeComponent();
             Drv = new DrvFR();
-            this.Size = new Size(875, 300);
+            Size = new Size(873, 300);// 871;670
             groupBox3.Location = new Point(0, 65);
             groupBox4.Location = new Point(0, 65);
-            
-            Array.Resize(ref CBox, 1);
+            InitialArrays();
             CBox[0] = checkBox2;
-            Array.Resize(ref sLabel, 1);
             sLabel[0] = label15;
-            Array.Resize(ref PaymentItemSign, 1);
             PaymentItemSign[0] = cbPaymentItemSign_1;
                 PaymentItemSign[0].Items.CopyTo(PaymentItemSignItems, 0);
-            Array.Resize(ref NameProduct, 1);
             NameProduct[0] = tbNameProduct_1;
-            Array.Resize(ref Price, 1);
             Price[0] = tbPrice_1;
-            Array.Resize(ref Quantity, 1);
             Quantity[0] = tbQuantity_1;
-            Array.Resize(ref Tax, 1);
             Tax[0] = cbTax1_1;
                 Tax[0].Items.CopyTo(TaxItems, 0);
-            Array.Resize(ref Summ, 1);
             Summ[0] = tbSumm1_1;
+            XY = new int[] {CBox[0].Location.X, sLabel[0].Location.X, PaymentItemSign[0].Location.X, NameProduct[0].Location.X,
+                            Price[0].Location.X, Quantity[0].Location.X, Tax[0].Location.X, Summ[0].Location.X};
         }
         DrvFR Drv; //Создание обьекта драйвера ФР
 
+        int[] XY;
         CheckBox[] CBox = new CheckBox [] {};
         Label[] sLabel = new Label[] { };
         ComboBox[] PaymentItemSign = new ComboBox[] { };
@@ -290,6 +285,32 @@ namespace _3manRMK_0
                     Drv.FNSendTag();
                 }
             }
+        }
+        private void InitialArrays()
+        {
+            for (int i=1; i<CBox.Length; i++)
+            {
+                CBox[i].Dispose();
+                sLabel[i].Dispose();
+                PaymentItemSign[i].Dispose();
+                NameProduct[i].Dispose();
+                Price[i].Dispose();
+                Quantity[i].Dispose();
+                Tax[i].Dispose();
+                Summ[i].Dispose();
+            }
+            //Array.Clear(CBox, 1, CBox.Length - 1);
+            Array.Resize(ref CBox, 1);
+            Array.Resize(ref sLabel, 1);
+            Array.Resize(ref PaymentItemSign, 1);
+            Array.Resize(ref NameProduct, 1);
+            Array.Resize(ref Price, 1);
+            Array.Resize(ref Quantity, 1);
+            Array.Resize(ref Tax, 1);
+            Array.Resize(ref Summ, 1);
+            bAdd.Location = new Point(6, 116);
+            bAdd.Visible = true;
+            groupBox2.Size = new Size(860, 180);
         }
         //////Начало Блока триггер виджета/////////
         private void tbFIO_TextChanged(object sender, EventArgs e)
@@ -551,38 +572,31 @@ namespace _3manRMK_0
                 CloseChek(); // Формирует закрытие чека
                 tbSumm1.Text = "0,00";
                 tbSumm2.Text = "0,00";
+                InitialArrays();
                 tbSumm1.Visible = false;
                 tbSumm2.Visible = false;
                 groupBox2.Visible = true;
                 groupBox4.Visible = false;
             }
         }
-        private void btnLogOut_Click(object sender, EventArgs e) //Регистрация кассира
+        private void btnLogin_Click(object sender, EventArgs e) //Регистрация кассира
         {
-            btnLogOut.Visible = false;
-            btnLogin.Visible = true;
-            tbFIO.ReadOnly = false;
-            tbINN.ReadOnly = false;
-            label13.Visible = false;
-            tbSummAll.Visible = false;
-            groupBox2.Visible = false;
-            groupBox3.Visible = false;
-        }
-        private void btnLogin_Click(object sender, EventArgs e) //Отключение кассира
-        {
-            tbFIO_TextChanged(sender, e);
-            tbINN_TextChanged(sender, e);
-            if ((tbFIO.BackColor == Color.Snow) & (tbINN.BackColor == Color.Snow))
+            if (btnLogin.BackColor == Color.Lime)
             {
-                btnLogOut.Visible = true;
-                btnLogin.Visible = false;
-                tbFIO.ReadOnly = true;
-                tbINN.ReadOnly = true;
-
-                //InitialRMK();
-                label13.Visible = true;
-                tbSummAll.Visible = true;
-                groupBox2.Visible = true;
+                tbFIO_TextChanged(sender, e);
+                tbINN_TextChanged(sender, e);
+                if ((tbFIO.BackColor == Color.Snow) & (tbINN.BackColor == Color.Snow))
+                {
+                    btnLogin.BackColor = Color.DodgerBlue;
+                    btnLogin.Text = "LogOut";
+                    tbFIO.ReadOnly = tbINN.ReadOnly = label13.Visible = tbSummAll.Visible = groupBox2.Visible = true;
+                }
+            }
+            else
+            {
+                btnLogin.BackColor = Color.Lime;
+                btnLogin.Text = "Login";
+                tbFIO.ReadOnly = tbINN.ReadOnly = label13.Visible = tbSummAll.Visible = groupBox2.Visible = false;
             }
         }
         private void xотчетToolStripMenuItem_Click(object sender, EventArgs e) //Снять Х-Отчет
@@ -658,43 +672,50 @@ namespace _3manRMK_0
 
         private void bAdd_Click(object sender, EventArgs e)
         {
+            
             int Poz = CBox.Length;
+            if (Poz >= 50)
+            {
+                bAdd.Visible = false;
+            }
+            int Y = bAdd.Location.Y;
             Array.Resize(ref CBox, Poz + 1);
+            Array.Resize(ref sLabel, Poz + 1);
+            Array.Resize(ref PaymentItemSign, Poz + 1);
+            Array.Resize(ref NameProduct, Poz + 1);
+            Array.Resize(ref Price, Poz + 1);
+            Array.Resize(ref Quantity, Poz + 1);
+            Array.Resize(ref Tax, Poz + 1);
+            Array.Resize(ref Summ, Poz + 1);
             CBox[Poz] = new CheckBox {Size = CBox[0].Size, 
                                       Checked = true, 
-                                      Location = new Point(CBox[0].Location.X, bAdd.Location.Y) };
-            Array.Resize(ref sLabel, Poz + 1);
+                                      Location = new Point(XY[0], Y) };
             sLabel[Poz] = new Label {Size = sLabel[0].Size,
                                     Text = Convert.ToString(Poz+1)+'.',
-                                    Location = new Point(sLabel[0].Location.X, bAdd.Location.Y) };
-            Array.Resize(ref PaymentItemSign, Poz + 1);
+                                    Location = new Point(XY[1], Y) };
             PaymentItemSign[Poz] = new ComboBox { Size = PaymentItemSign[0].Size,
-                                                  Location = new Point(PaymentItemSign[0].Location.X, bAdd.Location.Y),
+                                                  Location = new Point(XY[2], Y),
                                                   Text = PaymentItemSign[0].Text };
                 PaymentItemSign[Poz].Items.AddRange(PaymentItemSignItems);
-            Array.Resize(ref NameProduct, Poz + 1);
             NameProduct[Poz] = new TextBox {Size = NameProduct[0].Size,
-                                            Location = new Point(NameProduct[0].Location.X, bAdd.Location.Y)};
-            Array.Resize(ref Price, Poz + 1);
+                                            Location = new Point(XY[3], Y),
+                                            Text = Convert.ToString(Poz)+". "+NameProduct[0].Text};
             Price[Poz] = new TextBox {Size = Price[0].Size,
-                                      Location = new Point(Price[0].Location.X, bAdd.Location.Y),
-                                      Text = "0,00"};
+                                      Location = new Point(XY[4], Y),
+                                      Text = Price[0].Text};
             Price[Poz].TextChanged += new EventHandler(tbPrice_TextChanged);
-            Array.Resize(ref Quantity, Poz + 1);
             Quantity[Poz] = new TextBox {Size = Quantity[0].Size,
-                                        Location = new Point(Quantity[0].Location.X, bAdd.Location.Y),
-                                        Text = "0,000"};
+                                        Location = new Point(XY[5], Y),
+                                        Text = Quantity[0].Text};
             Quantity[Poz].TextChanged += new EventHandler(tbQuantity_TextChanged);
-            Array.Resize(ref Tax, Poz + 1);
             Tax[Poz] = new ComboBox {Size = Tax[0].Size,
-                                    Location = new Point(Tax[0].Location.X, bAdd.Location.Y),
+                                    Location = new Point(XY[6], Y),
                                     Text = Tax[0].Text};
                 Tax[Poz].Items.AddRange(TaxItems);
-            Array.Resize(ref Summ, Poz + 1);
             Summ[Poz] = new TextBox {Size = Summ[0].Size,
-                                    Location = new Point(Summ[0].Location.X, bAdd.Location.Y),
+                                    Location = new Point(XY[7], Y),
                                     ReadOnly = true,
-                                    Text = "0,00"};
+                                    Text = Summ[0].Text};
             Summ[Poz].TextChanged += new EventHandler(tbSumm_TextChanged);
 
             SuspendLayout();
