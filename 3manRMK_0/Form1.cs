@@ -672,7 +672,6 @@ namespace _3manRMK_0
 
         private void bAdd_Click(object sender, EventArgs e)
         {
-            
             int Poz = CBox.Length;
             if (Poz >= 50)
             {
