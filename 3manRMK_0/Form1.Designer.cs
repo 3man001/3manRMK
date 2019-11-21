@@ -333,6 +333,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.label3.Location = new System.Drawing.Point(407, 65);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(76, 13);

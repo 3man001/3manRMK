@@ -341,6 +341,8 @@ namespace _3manRMK_0
         }
         private void tbPrice_TextChanged(object sender, EventArgs e) //Изменение строки с ценой
         {
+            int error = 0;
+            label3.BackColor = SystemColors.InactiveCaption;
             for (int i=0; i<CBox.Length; i++)
             {
                 if (CBox[i].Checked)
@@ -349,17 +351,28 @@ namespace _3manRMK_0
                     {
                         Price[i].BackColor = Color.Snow;
                         Price[i].Text = Convert.ToString(Math.Round(Convert.ToDecimal(Price[i].Text) * 1.000m, 2));
-                        Summ[i].Text = Convert.ToString(Math.Round(Convert.ToDecimal(Price[i].Text) * Convert.ToDecimal(Quantity[i].Text), 2));
+                        Summ[i].Text = "0,00";
+                        if (Quantity[i].BackColor != Color.LightCoral)
+                        {
+                            Summ[i].Text = Convert.ToString(Math.Round(Convert.ToDecimal(Price[i].Text) * Convert.ToDecimal(Quantity[i].Text), 2));
+                        }
                     }
                     else
                     {
+                        error++;
                         Price[i].BackColor = Color.LightCoral;
                     }
                 }
             }
+            if (error > 0)
+            {
+                label3.BackColor = Color.LightCoral;
+            }
         }
         private void tbQuantity_TextChanged(object sender, EventArgs e) //Измениение строки с кол-вом
         {
+            int error = 0;
+            label5.BackColor = SystemColors.InactiveCaption;
             for (int i = 0; i < CBox.Length; i++)
             {
                 if (CBox[i].Checked)
@@ -368,23 +381,39 @@ namespace _3manRMK_0
                     {
                         Quantity[i].BackColor = Color.Snow;
                         Quantity[i].Text = Convert.ToString(Math.Round(Convert.ToDecimal(Quantity[i].Text) * 1.0000m, 3));
-                        Summ[i].Text = Convert.ToString(Math.Round(Convert.ToDecimal(Price[i].Text) * Convert.ToDecimal(Quantity[i].Text), 2));
+                        Summ[i].Text = "0,00";
+                        if (Price[i].BackColor != Color.LightCoral)
+                        {
+                            Summ[i].Text = Convert.ToString(Math.Round(Convert.ToDecimal(Price[i].Text) * Convert.ToDecimal(Quantity[i].Text), 2));
+                        }
                     }
                     else
                     {
+                        error++;
                         Quantity[i].BackColor = Color.LightCoral;
                     }
                 }
-            }       
+            }
+            if (error > 0)
+            {
+                label5.BackColor = Color.LightCoral;
+            }
         }
-        private void tbSumm_TextChanged(object sender, EventArgs e)
+        private void tbSumm_TextChanged(object sender, EventArgs e) //Сумма товара
         {
             decimal S = 0.00m;
-            for (int i = 0; i < Summ.Length; i++)
+            if ((label3.BackColor != Color.LightCoral)&(label5.BackColor != Color.LightCoral))
             {
-                S = S + Convert.ToDecimal(Summ[i].Text);
+                for (int i = 0; i < Summ.Length; i++)
+                {
+                    S = S + Convert.ToDecimal(Summ[i].Text);
+                }
+                tbSummAll.Text = Convert.ToString(S);
             }
-            tbSummAll.Text = Convert.ToString(S); //tbSumm1_1.Text;
+            else
+            {
+                tbSummAll.Text = "Error";
+            }
         }
         private void tbSumm1_TextChanged(object sender, EventArgs e)
         {
@@ -653,8 +682,14 @@ namespace _3manRMK_0
         }
         private void button11_Click(object sender, EventArgs e) //Перейти к оплате
         {
-            groupBox3.Visible = true;
-            groupBox2.Visible = false;
+            tbPrice_TextChanged(sender, e);
+            tbQuantity_TextChanged(sender, e);
+            tbSumm_TextChanged(sender, e);
+            if (tbSummAll.Text != "Error")
+            {
+                groupBox3.Visible = true;
+                groupBox2.Visible = false;
+            }
         }
         private void button12_Click(object sender, EventArgs e) //Перейти к позициям
         {
@@ -701,11 +736,11 @@ namespace _3manRMK_0
                                             Text = Convert.ToString(Poz)+". "+NameProduct[0].Text};
             Price[Poz] = new TextBox {Size = Price[0].Size,
                                       Location = new Point(XY[4], Y),
-                                      Text = Price[0].Text};
+                                      Text = "1,00"};
             Price[Poz].TextChanged += new EventHandler(tbPrice_TextChanged);
             Quantity[Poz] = new TextBox {Size = Quantity[0].Size,
                                         Location = new Point(XY[5], Y),
-                                        Text = Quantity[0].Text};
+                                        Text = "1,000"};
             Quantity[Poz].TextChanged += new EventHandler(tbQuantity_TextChanged);
             Tax[Poz] = new ComboBox {Size = Tax[0].Size,
                                     Location = new Point(XY[6], Y),
@@ -714,7 +749,7 @@ namespace _3manRMK_0
             Summ[Poz] = new TextBox {Size = Summ[0].Size,
                                     Location = new Point(XY[7], Y),
                                     ReadOnly = true,
-                                    Text = Summ[0].Text};
+                                    Text = "1,00"};
             Summ[Poz].TextChanged += new EventHandler(tbSumm_TextChanged);
 
             SuspendLayout();
