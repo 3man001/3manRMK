@@ -417,20 +417,17 @@ namespace _3manRMK_0
         }
         private void tbSumm1_TextChanged(object sender, EventArgs e)
         {
-            string c = CheckNumber(tbSumm1.Text, 2);
-            if (c == "")
-            { 
-                tbSumm1.BackColor = Color.LightCoral;
-                tbChange.Visible = false;
-                button4.Visible = false;
+            if (CheckSimbols(tbSumm1.Text, "Число"))
+            {
+                tbSumm1.BackColor = Color.Snow;
+                tbSumm1.Text = Convert.ToString(Math.Round(Convert.ToDecimal(tbSumm1.Text)*1.000m,2));
+                tbChange.Text = Convert.ToString((Convert.ToDecimal(tbSummAll.Text) - Convert.ToDecimal(tbSumm2.Text) - Convert.ToDecimal(tbSumm1.Text)) * -1);
+                tbChange.Visible = true;
             }
             else
             {
-                tbSumm1.BackColor = Color.Snow;
-                tbSumm1.Text = c;
-                decimal Change = Convert.ToDecimal(tbSummAll.Text) - Convert.ToDecimal(tbSumm2.Text) - Convert.ToDecimal(tbSumm1.Text);
-                tbChange.Text = Convert.ToString(Change*-1);
-                tbChange.Visible = true;
+                tbSumm1.BackColor = Color.LightCoral;
+                tbChange.Visible = button4.Visible = false;
             }
         }
         private void tbSumm2_TextChanged(object sender, EventArgs e) //Контроль ввода безналичной оплаты
@@ -439,8 +436,7 @@ namespace _3manRMK_0
             if (c == "")
             {
                 tbSumm2.BackColor = Color.LightCoral;
-                tbChange.Visible = false;
-                button4.Visible = false;
+                tbChange.Visible = button4.Visible = false;
             }
             else
             {
@@ -466,7 +462,6 @@ namespace _3manRMK_0
             }
             else
             {
-
                 button4.Visible = false;
             }
         }
@@ -696,7 +691,6 @@ namespace _3manRMK_0
             groupBox3.Visible = false;
             groupBox2.Visible = true;
         }
-
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
             for (int i = 0; i< CBox.Length; i++)
@@ -704,7 +698,6 @@ namespace _3manRMK_0
                 CBox[i].Checked = checkBox1.Checked;
             }
         }
-
         private void bAdd_Click(object sender, EventArgs e)
         {
             int Poz = CBox.Length;
