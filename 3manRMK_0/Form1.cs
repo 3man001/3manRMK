@@ -60,29 +60,11 @@ namespace _3manRMK_0
             FileOperation("ИНН=" + Drv.INN +
                             "\nСНО=" + Convert.ToString(Drv.TaxType, 2), "aboutkkt.ini");
         }
+        private decimal ToDecimal (string s)
+        { return Convert.ToDecimal(s); }
         static void FileOperation(string InText, string NameFile) //Работа с файлами
         {
             File.WriteAllText(NameFile, InText);
-        }
-        private string CheckNumber(string Str, int ndp) //Проверка строкии с числом
-        {
-            if (Str == "")
-            { return ""; }
-            string simbols = "1234567890,";
-            int k = 0;
-            for (int i = 0; i < Str.Length; i++) // проверка на посторонние символы
-            {
-                if (simbols.IndexOf(Str[i]) < 0)
-                { return ""; }
-                if (Str[i] == ',')
-                    { k++; }
-                if (k > 1)
-                { return ""; }
-            }
-            try
-                { return Math.Round(Convert.ToDecimal(Str) * 1.000000m, ndp).ToString(); }
-            catch
-                { return ""; }
         }
         private bool CheckSimbols(string ChSimbol, string typeSim)  //Проверка строки
         {
@@ -239,8 +221,8 @@ namespace _3manRMK_0
         }
         private void CloseChek() // Формируем закрытие чека
         {
-            Drv.Summ1 = Convert.ToDecimal(tbSumm1.Text); // Наличные
-            Drv.Summ2 = Convert.ToDecimal(tbSumm2.Text); // Остальные типы оплаты нулевые, но их необходимо заполнить
+            Drv.Summ1 = ToDecimal(tbSumm1.Text); // Наличные
+            Drv.Summ2 = ToDecimal(tbSumm2.Text); // Остальные типы оплаты нулевые, но их необходимо заполнить
             Drv.Summ3 = 0;
             Drv.Summ4 = 0;
             Drv.Summ5 = 0;
@@ -351,11 +333,11 @@ namespace _3manRMK_0
                     if (CheckSimbols(Price[i].Text, "Число"))
                     {
                         Price[i].BackColor = Color.Snow;
-                        Price[i].Text = Convert.ToString(Math.Round(Convert.ToDecimal(Price[i].Text) * 1.000m, 2));
+                        Price[i].Text = Convert.ToString(Math.Round(ToDecimal(Price[i].Text) * 1.000m, 2));
                         Summ[i].Text = "0,00";
                         if (Quantity[i].BackColor != Color.LightCoral)
                         {
-                            Summ[i].Text = Convert.ToString(Math.Round(Convert.ToDecimal(Price[i].Text) * Convert.ToDecimal(Quantity[i].Text), 2));
+                            Summ[i].Text = Convert.ToString(Math.Round(ToDecimal(Price[i].Text) * ToDecimal(Quantity[i].Text), 2));
                         }
                     }
                     else
@@ -381,11 +363,11 @@ namespace _3manRMK_0
                     if (CheckSimbols(Quantity[i].Text, "Число"))
                     {
                         Quantity[i].BackColor = Color.Snow;
-                        Quantity[i].Text = Convert.ToString(Math.Round(Convert.ToDecimal(Quantity[i].Text) * 1.0000m, 3));
+                        Quantity[i].Text = Convert.ToString(Math.Round(ToDecimal(Quantity[i].Text) * 1.0000m, 3));
                         Summ[i].Text = "0,00";
                         if (Price[i].BackColor != Color.LightCoral)
                         {
-                            Summ[i].Text = Convert.ToString(Math.Round(Convert.ToDecimal(Price[i].Text) * Convert.ToDecimal(Quantity[i].Text), 2));
+                            Summ[i].Text = Convert.ToString(Math.Round(ToDecimal(Price[i].Text) * ToDecimal(Quantity[i].Text), 2));
                         }
                     }
                     else
@@ -407,7 +389,7 @@ namespace _3manRMK_0
             {
                 for (int i = 0; i < Summ.Length; i++)
                 {
-                    S = S + Convert.ToDecimal(Summ[i].Text);
+                    S = S + ToDecimal(Summ[i].Text);
                 }
                 tbSummAll.Text = Convert.ToString(S);
             }
@@ -421,9 +403,12 @@ namespace _3manRMK_0
             if (CheckSimbols(tbSumm1.Text, "Число"))
             {
                 tbSumm1.BackColor = Color.Snow;
-                tbSumm1.Text = Convert.ToString(Math.Round(Convert.ToDecimal(tbSumm1.Text)*1.000m,2));
-                tbChange.Text = Convert.ToString((Convert.ToDecimal(tbSummAll.Text) - Convert.ToDecimal(tbSumm2.Text) - Convert.ToDecimal(tbSumm1.Text)) * -1);
-                tbChange.Visible = true;
+                tbSumm1.Text = Convert.ToString(Math.Round(ToDecimal(tbSumm1.Text)*1.000m,2));
+                if (tbSumm2.BackColor != Color.LightCoral)
+                {
+                    tbChange.Text = Convert.ToString((ToDecimal(tbSummAll.Text) - ToDecimal(tbSumm2.Text) - ToDecimal(tbSumm1.Text)) * -1);
+                    tbChange.Visible = true;
+                }
             }
             else
             {
@@ -433,38 +418,36 @@ namespace _3manRMK_0
         }
         private void tbSumm2_TextChanged(object sender, EventArgs e) //Контроль ввода безналичной оплаты
         {
-            string c = CheckNumber(tbSumm2.Text, 2);
-            if (c == "")
+            if (CheckSimbols(tbSumm2.Text, "Число"))
+            {
+                if (ToDecimal(tbSumm2.Text) > ToDecimal(tbSummAll.Text))
+                {
+                    tbSumm2.BackColor = Color.LightCoral;
+                    tbChange.Visible = button4.Visible = false;
+                }
+                else
+                {
+                    tbSumm2.BackColor = Color.Snow;
+                    tbSumm2.Text = Math.Round(ToDecimal(tbSumm2.Text) * 1.000m, 2).ToString();
+                    if (tbSumm1.BackColor != Color.LightCoral)
+                    {
+                        tbChange.Text = Convert.ToString((ToDecimal(tbSummAll.Text) - ToDecimal(tbSumm2.Text) - ToDecimal(tbSumm1.Text)) * -1);
+                        tbChange.Visible = true;
+                    }
+                }
+            }
+            else
             {
                 tbSumm2.BackColor = Color.LightCoral;
                 tbChange.Visible = button4.Visible = false;
             }
-            else
-            {
-                tbSumm2.BackColor = Color.Snow;
-                decimal Change = Convert.ToDecimal(tbSummAll.Text) - Convert.ToDecimal(tbSumm2.Text) - Convert.ToDecimal(tbSumm1.Text);
-                tbChange.Text = Convert.ToString(Change * -1);
-                tbChange.Visible = true;
-                tbSumm2.Text = c;
-                if (Convert.ToDecimal(tbSumm2.Text) > Convert.ToDecimal(tbSummAll.Text))
-                {
-                    tbSumm2.BackColor = Color.LightCoral;
-                    tbChange.Visible = false;
-                    button4.Visible = false;
-                }
-            }
-
         }
-        private void tbChange_TextChanged(object sender, EventArgs e)
+        private void tbChange_TextChanged(object sender, EventArgs e) //Расчет суммы сдачи
         {
-            if (Convert.ToDecimal(tbChange.Text) >= 0)
-            {
-                button4.Visible = true;
-            }
+            if (ToDecimal(tbChange.Text) >= 0)
+            { button4.Visible = true; }
             else
-            {
-                button4.Visible = false;
-            }
+            { button4.Visible = false; }
         }
         private void maskTBPhone_MaskInputRejected(object sender, EventArgs e) //Проверка тел. на корректность
         {
@@ -538,7 +521,7 @@ namespace _3manRMK_0
         ////////////Конец Блок МЕНЮ////////////////
         private void button4_Click(object sender, EventArgs e) //Продажа тестового товара
         {
-            if (Convert.ToDecimal(tbSumm2.Text) > Convert.ToDecimal(tbSummAll.Text))
+            if (ToDecimal(tbSumm2.Text) > ToDecimal(tbSummAll.Text))
             {
                 tbSumm2.BackColor = Color.LightCoral;
             }
@@ -546,9 +529,9 @@ namespace _3manRMK_0
             {
                 int CheckType = 1; //Операция приход(1-продажа, 3-возвр продажи)
                 string NameProduct0 = tbNameProduct_1.Text; //Наименование товара
-                Decimal Price0 = Math.Round(Convert.ToDecimal(tbPrice_1.Text), 2); //Цена за еденицу товара с учетом скидки
+                Decimal Price0 = Math.Round(ToDecimal(tbPrice_1.Text), 2); //Цена за еденицу товара с учетом скидки
                 Double Quantity0 = Math.Round(Convert.ToDouble(tbQuantity_1.Text), 3); //Кол-во (Диапазон 0,001 до 9.999.999,999)
-                Decimal Summ10 = Convert.ToDecimal(tbSumm1_1.Text); //Сумма позиции
+                Decimal Summ10 = ToDecimal(tbSumm1_1.Text); //Сумма позиции
                 int Tax10 = EnterItems(cbTax1_1.Text); //Налоговая ставка 0..6 (0-БезНДС)
                 int PaymentItemSign0 = EnterItems(cbPaymentItemSign_1.Text); // Признак предмета расчета 1..19 (1-Товар)
 
@@ -571,9 +554,9 @@ namespace _3manRMK_0
                     if (CBox[i].Checked)
                     {
                         NameProduct0 = NameProduct[i].Text; //Наименование товара
-                        Price0 = Math.Round(Convert.ToDecimal(Price[i].Text), 2); //Цена за еденицу товара с учетом скидки
+                        Price0 = Math.Round(ToDecimal(Price[i].Text), 2); //Цена за еденицу товара с учетом скидки
                         Quantity0 = Math.Round(Convert.ToDouble(Quantity[i].Text), 3); //Кол-во (Диапазон 0,001 до 9.999.999,999)
-                        Summ10 = Convert.ToDecimal(Summ[i].Text); //Сумма позиции
+                        Summ10 = ToDecimal(Summ[i].Text); //Сумма позиции
                         Tax10 = EnterItems(Tax[i].Text); //Налоговая ставка 0..6 (0-БезНДС)
                         PaymentItemSign0 = EnterItems(PaymentItemSign[i].Text); // Признак предмета расчета 1..19 (1-Товар)
 
