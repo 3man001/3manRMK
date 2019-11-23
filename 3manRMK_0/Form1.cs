@@ -21,11 +21,13 @@ namespace _3manRMK_0
             sLabel[0] = label15;
             PaymentItemSign[0] = cbPaymentItemSign_1;
                 PaymentItemSign[0].Items.CopyTo(PaymentItemSignItems, 0);
+                PaymentItemSign[0].SelectedIndex = 0;
             NameProduct[0] = tbNameProduct_1;
             Price[0] = tbPrice_1;
             Quantity[0] = tbQuantity_1;
             Tax[0] = cbTax1_1;
                 Tax[0].Items.CopyTo(TaxItems, 0);
+                Tax[0].SelectedIndex = 0;
             Summ[0] = tbSumm1_1;
             XY = new int[] {CBox[0].Location.X, sLabel[0].Location.X, PaymentItemSign[0].Location.X, NameProduct[0].Location.X,
                             Price[0].Location.X, Quantity[0].Location.X, Tax[0].Location.X, Summ[0].Location.X};
@@ -295,6 +297,20 @@ namespace _3manRMK_0
             bAdd.Visible = true;
             groupBox2.Size = new Size(860, 180);
         }
+        private void ChangePoz(int i, bool State)
+        {
+            Font newFont = new Font(PaymentItemSign[i].Font, FontStyle.Strikeout);
+            if (State)
+            {
+                newFont = new Font(PaymentItemSign[i].Font, FontStyle.Regular);
+            }
+            PaymentItemSign[i].Font = newFont;
+            NameProduct[i].Font = newFont;
+            Price[i].Font = newFont;
+            Quantity[i].Font = newFont;
+            Tax[i].Font = newFont;
+            Summ[i].Font = newFont;
+        }
         //////Начало Блока триггер виджета/////////
         private void tbFIO_TextChanged(object sender, EventArgs e)
         {
@@ -320,6 +336,40 @@ namespace _3manRMK_0
                 {
                     tbINN.BackColor = Color.Snow;
                 }
+            }
+        }
+        private void CBox_ChekedChanged(object sender, EventArgs e) //Проверка Чекбоксов
+        {
+            int State = 0;
+            for (int i = 0; i < CBox.Length; i++)
+            {
+                if (CBox[i].Checked)
+                {
+                    State++;
+                    ChangePoz(i, true);
+                }
+                else
+                {
+                    ChangePoz(i, false);
+                }
+            }
+            if (State == 0)
+            { checkBox1.CheckState = CheckState.Unchecked; }
+            else
+            {
+                if (State == CBox.Length)
+                { checkBox1.CheckState = CheckState.Checked; }
+                else
+                { checkBox1.CheckState = CheckState.Indeterminate; }
+            }
+        }
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            bool Check = checkBox1.Checked;
+            if (checkBox1.CheckState != CheckState.Indeterminate)
+            {
+                for (int i = 0; i < CBox.Length; i++)
+                { CBox[i].Checked = Check; }
             }
         }
         private void tbPrice_TextChanged(object sender, EventArgs e) //Изменение строки с ценой
@@ -674,13 +724,7 @@ namespace _3manRMK_0
             groupBox3.Visible = false;
             groupBox2.Visible = true;
         }
-        private void checkBox1_CheckedChanged(object sender, EventArgs e)
-        {
-            for (int i = 0; i< CBox.Length; i++)
-            {
-                CBox[i].Checked = checkBox1.Checked;
-            }
-        }
+        
         private void bAdd_Click(object sender, EventArgs e)
         {
             int Poz = CBox.Length;
@@ -700,6 +744,7 @@ namespace _3manRMK_0
             CBox[Poz] = new CheckBox {Size = CBox[0].Size, 
                                       Checked = true, 
                                       Location = new Point(XY[0], Y) };
+            CBox[Poz].CheckedChanged += new EventHandler(CBox_ChekedChanged);
             sLabel[Poz] = new Label {Size = sLabel[0].Size,
                                     Text = Convert.ToString(Poz+1)+'.',
                                     Location = new Point(XY[1], Y) };
@@ -707,6 +752,8 @@ namespace _3manRMK_0
                                                   Location = new Point(XY[2], Y),
                                                   Text = PaymentItemSign[0].Text };
                 PaymentItemSign[Poz].Items.AddRange(PaymentItemSignItems);
+                PaymentItemSign[Poz].SelectedIndex = 0;
+                PaymentItemSign[Poz].DropDownStyle = ComboBoxStyle.DropDownList;
             NameProduct[Poz] = new TextBox {Size = NameProduct[0].Size,
                                             Location = new Point(XY[3], Y),
                                             Text = Convert.ToString(Poz)+". "+NameProduct[0].Text};
@@ -722,6 +769,8 @@ namespace _3manRMK_0
                                     Location = new Point(XY[6], Y),
                                     Text = Tax[0].Text};
                 Tax[Poz].Items.AddRange(TaxItems);
+                Tax[Poz].SelectedIndex = 0;
+                Tax[Poz].DropDownStyle = ComboBoxStyle.DropDownList;
             Summ[Poz] = new TextBox {Size = Summ[0].Size,
                                     Location = new Point(XY[7], Y),
                                     ReadOnly = true,
@@ -741,5 +790,6 @@ namespace _3manRMK_0
             PerformLayout();
             bAdd.Location = new Point(bAdd.Location.X, bAdd.Location.Y+30);
         }
+        
     }
 }

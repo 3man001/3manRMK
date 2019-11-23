@@ -99,6 +99,7 @@
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.toolTip2 = new System.Windows.Forms.ToolTip(this.components);
             this.toolTip3 = new System.Windows.Forms.ToolTip(this.components);
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -139,7 +140,7 @@
             this.оПрограммеToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(875, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1059, 24);
             this.menuStrip1.TabIndex = 5;
             this.menuStrip1.Text = "Меню";
             // 
@@ -249,9 +250,9 @@
             this.toolStripStatusLabel3,
             this.toolStripStatusLabel4,
             this.toolStripStatusLabel2});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 610);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 609);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(875, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(1059, 22);
             this.statusStrip1.TabIndex = 6;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -293,6 +294,7 @@
             // 
             // tbNameProduct_1
             // 
+            this.tbNameProduct_1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.tbNameProduct_1.Location = new System.Drawing.Point(133, 85);
             this.tbNameProduct_1.MaxLength = 128;
             this.tbNameProduct_1.Name = "tbNameProduct_1";
@@ -407,6 +409,7 @@
             // 
             // cbTax1_1
             // 
+            this.cbTax1_1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbTax1_1.Items.AddRange(new object[] {
             "Без НДС",
             "НДС 0%",
@@ -418,7 +421,6 @@
             this.cbTax1_1.Name = "cbTax1_1";
             this.cbTax1_1.Size = new System.Drawing.Size(105, 21);
             this.cbTax1_1.TabIndex = 27;
-            this.cbTax1_1.Text = "Без НДС";
             // 
             // label9
             // 
@@ -449,7 +451,7 @@
             // 
             // cbPaymentItemSign_1
             // 
-            this.cbPaymentItemSign_1.FormattingEnabled = true;
+            this.cbPaymentItemSign_1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbPaymentItemSign_1.Items.AddRange(new object[] {
             "Товар",
             "Работа",
@@ -458,7 +460,6 @@
             this.cbPaymentItemSign_1.Name = "cbPaymentItemSign_1";
             this.cbPaymentItemSign_1.Size = new System.Drawing.Size(75, 21);
             this.cbPaymentItemSign_1.TabIndex = 34;
-            this.cbPaymentItemSign_1.Text = "Товар";
             // 
             // tbSumm1_1
             // 
@@ -776,6 +777,7 @@
             this.checkBox2.Size = new System.Drawing.Size(15, 14);
             this.checkBox2.TabIndex = 73;
             this.checkBox2.UseVisualStyleBackColor = true;
+            this.checkBox2.CheckedChanged += new System.EventHandler(this.CBox_ChekedChanged);
             // 
             // checkBox1
             // 
@@ -820,13 +822,22 @@
             this.label18.TabIndex = 0;
             this.label18.Text = "Идет Работат с ККТ, подождите";
             // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(881, 34);
+            this.textBox1.Multiline = true;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(169, 296);
+            this.textBox1.TabIndex = 72;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.ClientSize = new System.Drawing.Size(892, 631);
+            this.ClientSize = new System.Drawing.Size(1059, 631);
+            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.statusStrip1);
@@ -925,6 +936,7 @@
         private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.ToolTip toolTip2;
         private System.Windows.Forms.ToolTip toolTip3;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }
 
