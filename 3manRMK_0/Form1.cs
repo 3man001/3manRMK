@@ -389,14 +389,13 @@ namespace _3manRMK_0
             {
                 for (int i = 0; i < Summ.Length; i++)
                 {
-                    S = S + ToDecimal(Summ[i].Text);
+                    if (CBox[i].Checked)
+                    { S = S + ToDecimal(Summ[i].Text); }
                 }
                 tbSummAll.Text = Convert.ToString(S);
             }
             else
-            {
-                tbSummAll.Text = "Error";
-            }
+            { tbSummAll.Text = "Error"; }
         }
         private void tbSumm1_TextChanged(object sender, EventArgs e)
         {
