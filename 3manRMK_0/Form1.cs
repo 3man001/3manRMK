@@ -101,8 +101,9 @@ namespace _3manRMK_0
                     if (I > 0)
                     {
                         ChSimbol = ChSimbol.Substring(0, I) + ChSimbol.Substring(I + 1, L - I - 1);
+                        L--;
                     }
-                    for (int i = 0; i < L-1; i++)
+                    for (int i = 0; i < L; i++)
                     {
                         if (DataSimbol.IndexOf(ChSimbol[i]) < 0)
                         { return false; }
