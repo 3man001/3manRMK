@@ -387,7 +387,14 @@ namespace _3manRMK_0
                         Summ[i].Text = "0,00";
                         if (Quantity[i].BackColor != Color.LightCoral)
                         {
-                            Summ[i].Text = Convert.ToString(Math.Round(ToDecimal(Price[i].Text) * ToDecimal(Quantity[i].Text), 2));
+                            try
+                            {
+                                Summ[i].Text = Convert.ToString(Math.Round(ToDecimal(Price[i].Text) * ToDecimal(Quantity[i].Text), 2));
+                            }
+                            catch
+                            {
+                                Quantity[i].BackColor = Color.LightCoral;
+                            }
                         }
                     }
                     else
@@ -417,7 +424,14 @@ namespace _3manRMK_0
                         Summ[i].Text = "0,00";
                         if (Price[i].BackColor != Color.LightCoral)
                         {
-                            Summ[i].Text = Convert.ToString(Math.Round(ToDecimal(Price[i].Text) * ToDecimal(Quantity[i].Text), 2));
+                            try
+                            {
+                                Summ[i].Text = Convert.ToString(Math.Round(ToDecimal(Price[i].Text) * ToDecimal(Quantity[i].Text), 2));
+                            }
+                            catch
+                            {
+                                Price[i].BackColor = Color.LightCoral;
+                            }
                         }
                     }
                     else
@@ -724,7 +738,6 @@ namespace _3manRMK_0
             groupBox3.Visible = false;
             panel2.Visible = true;
         }
-        
         private void bAdd_Click(object sender, EventArgs e)
         {
             int Poz = CBox.Length;
@@ -790,7 +803,6 @@ namespace _3manRMK_0
             PerformLayout();
             bAdd.Location = new Point(bAdd.Location.X, bAdd.Location.Y+30);
         }
-
         private void Form1_SizeChanged(object sender, EventArgs e)
         {
             //Width = 878 без полсы прокрутки
