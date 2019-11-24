@@ -13,9 +13,9 @@ namespace _3manRMK_0
         {
             InitializeComponent();
             Drv = new DrvFR();
-            Size = new Size(873, 300);// 871;670
-            groupBox3.Location = new Point(0, 65);
-            groupBox4.Location = new Point(0, 65);
+            Size = new Size(878, 300);
+            groupBox3.Location = new Point(1, 66);
+            groupBox4.Location = new Point(1, 66);
             InitialArrays();
             CBox[0] = checkBox2;
             sLabel[0] = label15;
@@ -295,7 +295,7 @@ namespace _3manRMK_0
             Array.Resize(ref Summ, 1);
             bAdd.Location = new Point(6, 116);
             bAdd.Visible = true;
-            groupBox2.Size = new Size(860, 180);
+            panel2.Size = new Size(860, 180);
         }
         private void ChangePoz(int i, bool State)
         {
@@ -632,7 +632,7 @@ namespace _3manRMK_0
                 InitialArrays();
                 tbSumm1.Visible = false;
                 tbSumm2.Visible = false;
-                groupBox2.Visible = true;
+                panel2.Visible = true;
                 groupBox4.Visible = false;
             }
         }
@@ -646,14 +646,14 @@ namespace _3manRMK_0
                 {
                     btnLogin.BackColor = Color.DodgerBlue;
                     btnLogin.Text = "LogOut";
-                    tbFIO.ReadOnly = tbINN.ReadOnly = label13.Visible = tbSummAll.Visible = groupBox2.Visible = true;
+                    tbFIO.ReadOnly = tbINN.ReadOnly = label13.Visible = tbSummAll.Visible = panel2.Visible = true;
                 }
             }
             else
             {
                 btnLogin.BackColor = Color.Lime;
                 btnLogin.Text = "Login";
-                tbFIO.ReadOnly = tbINN.ReadOnly = label13.Visible = tbSummAll.Visible = groupBox2.Visible = false;
+                tbFIO.ReadOnly = tbINN.ReadOnly = label13.Visible = tbSummAll.Visible = panel2.Visible = false;
             }
         }
         private void xотчетToolStripMenuItem_Click(object sender, EventArgs e) //Снять Х-Отчет
@@ -716,13 +716,13 @@ namespace _3manRMK_0
             if (tbSummAll.Text != "Error")
             {
                 groupBox3.Visible = true;
-                groupBox2.Visible = false;
+                panel2.Visible = false;
             }
         }
         private void button12_Click(object sender, EventArgs e) //Перейти к позициям
         {
             groupBox3.Visible = false;
-            groupBox2.Visible = true;
+            panel2.Visible = true;
         }
         
         private void bAdd_Click(object sender, EventArgs e)
@@ -778,18 +778,35 @@ namespace _3manRMK_0
             Summ[Poz].TextChanged += new EventHandler(tbSumm_TextChanged);
 
             SuspendLayout();
-            groupBox2.Controls.Add(CBox[Poz]);
-            groupBox2.Controls.Add(sLabel[Poz]);
-            groupBox2.Controls.Add(PaymentItemSign[Poz]);
-            groupBox2.Controls.Add(NameProduct[Poz]);
-            groupBox2.Controls.Add(Price[Poz]);
-            groupBox2.Controls.Add(Quantity[Poz]);
-            groupBox2.Controls.Add(Tax[Poz]);
-            groupBox2.Controls.Add(Summ[Poz]);
+            panel2.Controls.Add(CBox[Poz]);
+            panel2.Controls.Add(sLabel[Poz]);
+            panel2.Controls.Add(PaymentItemSign[Poz]);
+            panel2.Controls.Add(NameProduct[Poz]);
+            panel2.Controls.Add(Price[Poz]);
+            panel2.Controls.Add(Quantity[Poz]);
+            panel2.Controls.Add(Tax[Poz]);
+            panel2.Controls.Add(Summ[Poz]);
             ResumeLayout(false);
             PerformLayout();
             bAdd.Location = new Point(bAdd.Location.X, bAdd.Location.Y+30);
         }
-        
+
+        private void Form1_SizeChanged(object sender, EventArgs e)
+        {
+            //Width = 878 без полсы прокрутки
+            int W = Size.Width;
+            int H = Size.Height;
+            if (W >= 878)
+            {
+                int newW = 1 + (W - 878) / 2;
+                groupBox1.Location = new Point(newW, 25);
+                panel2.Location = groupBox3.Location = groupBox4.Location = new Point(newW, 66);
+                //Heiht = 310
+                if (H >= 310)
+                {
+                    panel2.Size = new Size (860, H - 130);
+                }
+            } 
+        }
     }
 }
