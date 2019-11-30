@@ -18,7 +18,6 @@ namespace _3manRMK_0
             groupBox4.Location = new Point(1, 66);
             InitialArrays();
             CBox[0] = checkBox2;
-            sLabel[0] = label15;
             PaymentItemSign[0] = cbPaymentItemSign_1;
                 PaymentItemSign[0].Items.CopyTo(PaymentItemSignItems, 0);
                 PaymentItemSign[0].SelectedIndex = 0;
@@ -29,14 +28,13 @@ namespace _3manRMK_0
                 Tax[0].Items.CopyTo(TaxItems, 0);
                 Tax[0].SelectedIndex = 0;
             Summ[0] = tbSumm1_1;
-            XY = new int[] {CBox[0].Location.X, sLabel[0].Location.X, PaymentItemSign[0].Location.X, NameProduct[0].Location.X,
+            XY = new int[] {CBox[0].Location.X, PaymentItemSign[0].Location.X, NameProduct[0].Location.X,
                             Price[0].Location.X, Quantity[0].Location.X, Tax[0].Location.X, Summ[0].Location.X};
         }
         DrvFR Drv; //Создание обьекта драйвера ФР
 
         int[] XY;
         CheckBox[] CBox = new CheckBox [] {};
-        Label[] sLabel = new Label[] { };
         ComboBox[] PaymentItemSign = new ComboBox[] { };
             Object[] PaymentItemSignItems = new Object[3];
         TextBox[] NameProduct = new TextBox[] { };
@@ -276,7 +274,6 @@ namespace _3manRMK_0
             for (int i=1; i<CBox.Length; i++)
             {
                 CBox[i].Dispose();
-                sLabel[i].Dispose();
                 PaymentItemSign[i].Dispose();
                 NameProduct[i].Dispose();
                 Price[i].Dispose();
@@ -286,7 +283,6 @@ namespace _3manRMK_0
             }
             //Array.Clear(CBox, 1, CBox.Length - 1);
             Array.Resize(ref CBox, 1);
-            Array.Resize(ref sLabel, 1);
             Array.Resize(ref PaymentItemSign, 1);
             Array.Resize(ref NameProduct, 1);
             Array.Resize(ref Price, 1);
@@ -747,52 +743,47 @@ namespace _3manRMK_0
             }
             int Y = bAdd.Location.Y;
             Array.Resize(ref CBox, Poz + 1);
-            Array.Resize(ref sLabel, Poz + 1);
             Array.Resize(ref PaymentItemSign, Poz + 1);
             Array.Resize(ref NameProduct, Poz + 1);
             Array.Resize(ref Price, Poz + 1);
             Array.Resize(ref Quantity, Poz + 1);
             Array.Resize(ref Tax, Poz + 1);
             Array.Resize(ref Summ, Poz + 1);
-            CBox[Poz] = new CheckBox {Size = CBox[0].Size, 
+            CBox[Poz] = new CheckBox {Size = CBox[0].Size, Text = Convert.ToString(Poz + 1) + '.', 
                                       Checked = true, 
                                       Location = new Point(XY[0], Y) };
             CBox[Poz].CheckedChanged += new EventHandler(CBox_ChekedChanged);
-            sLabel[Poz] = new Label {Size = sLabel[0].Size,
-                                    Text = Convert.ToString(Poz+1)+'.',
-                                    Location = new Point(XY[1], Y) };
             PaymentItemSign[Poz] = new ComboBox { Size = PaymentItemSign[0].Size,
-                                                  Location = new Point(XY[2], Y),
+                                                  Location = new Point(XY[1], Y),
                                                   Text = PaymentItemSign[0].Text };
                 PaymentItemSign[Poz].Items.AddRange(PaymentItemSignItems);
                 PaymentItemSign[Poz].SelectedIndex = 0;
                 PaymentItemSign[Poz].DropDownStyle = ComboBoxStyle.DropDownList;
             NameProduct[Poz] = new TextBox {Size = NameProduct[0].Size,
-                                            Location = new Point(XY[3], Y),
+                                            Location = new Point(XY[2], Y),
                                             Text = Convert.ToString(Poz)+". "+NameProduct[0].Text};
             Price[Poz] = new TextBox {Size = Price[0].Size,
-                                      Location = new Point(XY[4], Y),
+                                      Location = new Point(XY[3], Y),
                                       Text = "1,00"};
             Price[Poz].TextChanged += new EventHandler(tbPrice_TextChanged);
             Quantity[Poz] = new TextBox {Size = Quantity[0].Size,
-                                        Location = new Point(XY[5], Y),
+                                        Location = new Point(XY[4], Y),
                                         Text = "1,000"};
             Quantity[Poz].TextChanged += new EventHandler(tbQuantity_TextChanged);
             Tax[Poz] = new ComboBox {Size = Tax[0].Size,
-                                    Location = new Point(XY[6], Y),
+                                    Location = new Point(XY[5], Y),
                                     Text = Tax[0].Text};
                 Tax[Poz].Items.AddRange(TaxItems);
                 Tax[Poz].SelectedIndex = 0;
                 Tax[Poz].DropDownStyle = ComboBoxStyle.DropDownList;
             Summ[Poz] = new TextBox {Size = Summ[0].Size,
-                                    Location = new Point(XY[7], Y),
+                                    Location = new Point(XY[6], Y),
                                     ReadOnly = true,
                                     Text = "1,00"};
             Summ[Poz].TextChanged += new EventHandler(tbSumm_TextChanged);
 
             SuspendLayout();
             panel2.Controls.Add(CBox[Poz]);
-            panel2.Controls.Add(sLabel[Poz]);
             panel2.Controls.Add(PaymentItemSign[Poz]);
             panel2.Controls.Add(NameProduct[Poz]);
             panel2.Controls.Add(Price[Poz]);
