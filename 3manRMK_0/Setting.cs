@@ -14,7 +14,52 @@ namespace _3manRMK_0
         public Setting()
         {
             InitializeComponent();
+            CB_PaymentItemSign0[0] = checkBox1;
+            CB_PaymentItemSign0[1] = chB_0_0;
+            CB_PaymentItemSign0[2] = chB_0_1;
+            CB_PaymentItemSign0[3] = chB_0_2;
+            CB_PaymentItemSign0[4] = chB_0_3;
+            CB_PaymentItemSign0[5] = chB_0_4;
+            CB_PaymentItemSign0[6] = chB_0_5;
+            CB_PaymentItemSign0[7] = chB_0_6;
+            CB_PaymentItemSign0[8] = chB_0_7;
+            CB_PaymentItemSign0[9] = chB_0_8;
+            CB_PaymentItemSign0[10] = chB_0_9;
+            CB_PaymentItemSign0[11] = chB_0_10;
+            CB_PaymentItemSign0[12] = chB_0_11;
+            CB_PaymentItemSign0[13] = chB_0_12;
+            CB_PaymentItemSign0[14] = chB_0_13;
+            CB_PaymentItemSign0[15] = chB_0_14;
+            CB_PaymentItemSign0[16] = chB_0_15;
+            CB_PaymentItemSign0[17] = chB_0_16;
+            CB_PaymentItemSign0[18] = chB_0_17;
+
+            CB_PaymentTypeSign[0] = checkBox2;
+            CB_PaymentTypeSign[1] = chB_1_0;
+            CB_PaymentTypeSign[2] = chB_1_1;
+            CB_PaymentTypeSign[3] = chB_1_2;
+            CB_PaymentTypeSign[4] = chB_1_3;
+            CB_PaymentTypeSign[5] = chB_1_4;
+            CB_PaymentTypeSign[6] = chB_1_5;
+            CB_PaymentTypeSign[7] = chB_1_6;
+
+            CB_Tax[0] = checkBox3;
+            CB_Tax[1] = chB_2_0;
+            CB_Tax[2] = chB_2_1;
+            CB_Tax[3] = chB_2_2;
+            CB_Tax[4] = chB_2_3;
+            CB_Tax[5] = chB_2_4;
+            CB_Tax[6] = chB_2_5;
+            //for (int i=2; i<CB_Tax.Length; i++)
+            //{
+            //   CB_Tax[i].CheckedChanged += new EventHandler ();
+            //}
+
         }
+
+        CheckBox[] CB_PaymentItemSign0 = new CheckBox[19];
+        CheckBox[] CB_PaymentTypeSign = new CheckBox[8];
+        CheckBox[] CB_Tax = new CheckBox[7];
         private CheckBox[] NewMass(int i)
         {
             if (i == 1)
