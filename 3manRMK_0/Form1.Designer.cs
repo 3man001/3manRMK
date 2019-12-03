@@ -112,7 +112,7 @@
             this.tbFIO.MaxLength = 64;
             this.tbFIO.Name = "tbFIO";
             this.tbFIO.Size = new System.Drawing.Size(250, 22);
-            this.tbFIO.TabIndex = 3;
+            this.tbFIO.TabIndex = 0;
             this.tbFIO.Text = "Тестировщик Иванов";
             this.tbFIO.TextChanged += new System.EventHandler(this.tbFIO_TextChanged);
             // 
@@ -122,7 +122,7 @@
             this.button4.Location = new System.Drawing.Point(280, 10);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(205, 25);
-            this.button4.TabIndex = 4;
+            this.button4.TabIndex = 6;
             this.button4.Text = "Оформить продажу";
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Visible = false;
@@ -247,7 +247,7 @@
             this.toolStripStatusLabel3,
             this.toolStripStatusLabel4,
             this.toolStripStatusLabel2});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 249);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 500);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(862, 22);
             this.statusStrip1.TabIndex = 6;
@@ -317,7 +317,7 @@
             this.tbSumm1.MaxLength = 11;
             this.tbSumm1.Name = "tbSumm1";
             this.tbSumm1.Size = new System.Drawing.Size(95, 23);
-            this.tbSumm1.TabIndex = 24;
+            this.tbSumm1.TabIndex = 9;
             this.tbSumm1.Text = "0,00";
             this.tbSumm1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.tbSumm1.Visible = false;
@@ -330,7 +330,7 @@
             this.tbSumm2.MaxLength = 11;
             this.tbSumm2.Name = "tbSumm2";
             this.tbSumm2.Size = new System.Drawing.Size(95, 23);
-            this.tbSumm2.TabIndex = 25;
+            this.tbSumm2.TabIndex = 10;
             this.tbSumm2.Text = "0,00";
             this.tbSumm2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.tbSumm2.Visible = false;
@@ -354,7 +354,7 @@
             this.tbSummAll.Name = "tbSummAll";
             this.tbSummAll.ReadOnly = true;
             this.tbSummAll.Size = new System.Drawing.Size(110, 26);
-            this.tbSummAll.TabIndex = 37;
+            this.tbSummAll.TabIndex = 4;
             this.tbSummAll.Text = "1,00";
             this.tbSummAll.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.tbSummAll.Visible = false;
@@ -366,7 +366,7 @@
             this.btnLogin.Location = new System.Drawing.Point(539, 11);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(75, 25);
-            this.btnLogin.TabIndex = 39;
+            this.btnLogin.TabIndex = 3;
             this.btnLogin.Text = "Login";
             this.btnLogin.UseVisualStyleBackColor = false;
             this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
@@ -377,7 +377,7 @@
             this.button1.Location = new System.Drawing.Point(280, 97);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(95, 23);
-            this.button1.TabIndex = 42;
+            this.button1.TabIndex = 12;
             this.button1.Text = "ОплатаНал";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
@@ -388,7 +388,7 @@
             this.button2.Location = new System.Drawing.Point(390, 97);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(95, 23);
-            this.button2.TabIndex = 43;
+            this.button2.TabIndex = 13;
             this.button2.Text = "ОплБезНал";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
@@ -399,7 +399,7 @@
             this.button3.Location = new System.Drawing.Point(335, 127);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(93, 23);
-            this.button3.TabIndex = 44;
+            this.button3.TabIndex = 14;
             this.button3.Text = "СмешОпл";
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
@@ -468,7 +468,7 @@
             this.maskTBPhone.Mask = "+7(000) 000-00-00";
             this.maskTBPhone.Name = "maskTBPhone";
             this.maskTBPhone.Size = new System.Drawing.Size(143, 23);
-            this.maskTBPhone.TabIndex = 75;
+            this.maskTBPhone.TabIndex = 8;
             this.maskTBPhone.TextChanged += new System.EventHandler(this.maskTBPhone_MaskInputRejected);
             // 
             // tbEmail
@@ -479,7 +479,7 @@
             this.tbEmail.MaxLength = 254;
             this.tbEmail.Name = "tbEmail";
             this.tbEmail.Size = new System.Drawing.Size(180, 23);
-            this.tbEmail.TabIndex = 74;
+            this.tbEmail.TabIndex = 11;
             this.tbEmail.TextChanged += new System.EventHandler(this.tbEmail_TextChanged);
             // 
             // tbChange
@@ -491,7 +491,7 @@
             this.tbChange.Name = "tbChange";
             this.tbChange.ReadOnly = true;
             this.tbChange.Size = new System.Drawing.Size(110, 26);
-            this.tbChange.TabIndex = 46;
+            this.tbChange.TabIndex = 5;
             this.tbChange.Text = "0,00";
             this.tbChange.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.tbChange.TextChanged += new System.EventHandler(this.tbChange_TextChanged);
@@ -502,7 +502,7 @@
             this.button12.Location = new System.Drawing.Point(728, 10);
             this.button12.Name = "button12";
             this.button12.Size = new System.Drawing.Size(108, 37);
-            this.button12.TabIndex = 72;
+            this.button12.TabIndex = 7;
             this.button12.Text = "Позиции";
             this.button12.UseVisualStyleBackColor = true;
             this.button12.Click += new System.EventHandler(this.button12_Click);
@@ -543,7 +543,7 @@
             this.tbINN.Name = "tbINN";
             this.tbINN.PromptChar = '-';
             this.tbINN.Size = new System.Drawing.Size(105, 23);
-            this.tbINN.TabIndex = 72;
+            this.tbINN.TabIndex = 2;
             this.tbINN.TextChanged += new System.EventHandler(this.tbINN_TextChanged);
             // 
             // groupBox4
@@ -624,7 +624,7 @@
             this.bAdd.Location = new System.Drawing.Point(6, 116);
             this.bAdd.Name = "bAdd";
             this.bAdd.Size = new System.Drawing.Size(41, 25);
-            this.bAdd.TabIndex = 74;
+            this.bAdd.TabIndex = 7;
             this.bAdd.Text = "Add";
             this.bAdd.UseVisualStyleBackColor = false;
             this.bAdd.Click += new System.EventHandler(this.bAdd_Click);
@@ -638,7 +638,7 @@
             this.comboBox1.Location = new System.Drawing.Point(1, 31);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(121, 24);
-            this.comboBox1.TabIndex = 38;
+            this.comboBox1.TabIndex = 5;
             // 
             // checkBox2
             // 
@@ -648,7 +648,7 @@
             this.checkBox2.Location = new System.Drawing.Point(6, 85);
             this.checkBox2.Name = "checkBox2";
             this.checkBox2.Size = new System.Drawing.Size(41, 17);
-            this.checkBox2.TabIndex = 73;
+            this.checkBox2.TabIndex = 9;
             this.checkBox2.Text = "1.  ";
             this.checkBox2.UseVisualStyleBackColor = true;
             this.checkBox2.CheckedChanged += new System.EventHandler(this.CBox_ChekedChanged);
@@ -656,11 +656,11 @@
             // tbSumm1_1
             // 
             this.tbSumm1_1.Location = new System.Drawing.Point(695, 85);
-            this.tbSumm1_1.MaxLength = 11;
+            this.tbSumm1_1.MaxLength = 15;
             this.tbSumm1_1.Name = "tbSumm1_1";
             this.tbSumm1_1.ReadOnly = true;
             this.tbSumm1_1.Size = new System.Drawing.Size(95, 20);
-            this.tbSumm1_1.TabIndex = 35;
+            this.tbSumm1_1.TabIndex = 19;
             this.tbSumm1_1.Text = "1,00";
             this.tbSumm1_1.TextChanged += new System.EventHandler(this.tbSumm_TextChanged);
             // 
@@ -670,7 +670,7 @@
             this.checkBox1.Location = new System.Drawing.Point(6, 65);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(37, 17);
-            this.checkBox1.TabIndex = 72;
+            this.checkBox1.TabIndex = 8;
             this.checkBox1.Text = "№";
             this.checkBox1.UseVisualStyleBackColor = true;
             this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
@@ -685,7 +685,7 @@
             this.cbPaymentItemSign_1.Location = new System.Drawing.Point(55, 85);
             this.cbPaymentItemSign_1.Name = "cbPaymentItemSign_1";
             this.cbPaymentItemSign_1.Size = new System.Drawing.Size(75, 21);
-            this.cbPaymentItemSign_1.TabIndex = 34;
+            this.cbPaymentItemSign_1.TabIndex = 10;
             // 
             // button11
             // 
@@ -693,7 +693,7 @@
             this.button11.Location = new System.Drawing.Point(744, 11);
             this.button11.Name = "button11";
             this.button11.Size = new System.Drawing.Size(92, 32);
-            this.button11.TabIndex = 71;
+            this.button11.TabIndex = 6;
             this.button11.Text = "Оплата";
             this.button11.UseVisualStyleBackColor = true;
             this.button11.Click += new System.EventHandler(this.button11_Click);
@@ -723,7 +723,7 @@
             this.tbNameProduct_1.MaxLength = 128;
             this.tbNameProduct_1.Name = "tbNameProduct_1";
             this.tbNameProduct_1.Size = new System.Drawing.Size(271, 20);
-            this.tbNameProduct_1.TabIndex = 16;
+            this.tbNameProduct_1.TabIndex = 11;
             this.tbNameProduct_1.Text = "Офисный принтер Панасоник RGB 15";
             // 
             // cbTax1_1
@@ -739,7 +739,7 @@
             this.cbTax1_1.Location = new System.Drawing.Point(586, 85);
             this.cbTax1_1.Name = "cbTax1_1";
             this.cbTax1_1.Size = new System.Drawing.Size(105, 21);
-            this.cbTax1_1.TabIndex = 27;
+            this.cbTax1_1.TabIndex = 14;
             // 
             // tbPrice_1
             // 
@@ -748,7 +748,7 @@
             this.tbPrice_1.MaxLength = 11;
             this.tbPrice_1.Name = "tbPrice_1";
             this.tbPrice_1.Size = new System.Drawing.Size(95, 20);
-            this.tbPrice_1.TabIndex = 11;
+            this.tbPrice_1.TabIndex = 12;
             this.tbPrice_1.Text = "1,00";
             this.tbPrice_1.TextChanged += new System.EventHandler(this.tbPrice_TextChanged);
             // 
@@ -758,7 +758,7 @@
             this.tbQuantity_1.MaxLength = 9;
             this.tbQuantity_1.Name = "tbQuantity_1";
             this.tbQuantity_1.Size = new System.Drawing.Size(75, 20);
-            this.tbQuantity_1.TabIndex = 18;
+            this.tbQuantity_1.TabIndex = 13;
             this.tbQuantity_1.Text = "1,000";
             this.tbQuantity_1.TextChanged += new System.EventHandler(this.tbQuantity_TextChanged);
             // 
@@ -804,7 +804,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(862, 271);
+            this.ClientSize = new System.Drawing.Size(862, 522);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.groupBox4);
