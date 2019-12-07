@@ -198,6 +198,11 @@ namespace _3manRMK_0
             Items.Add("Без НДС", 4);
             Items.Add("НДС 20/120", 5);
             Items.Add("НДС 10/110", 6);
+
+            Items.Add("Приход", 1);
+            Items.Add("Возврат прихода", 2);
+            Items.Add("Расход", 3);
+            Items.Add("Возврат расхода", 4);
             return Items[Item];
         }
         private void RegPosition(int CheckType, string NameProduct, Decimal Price, Double Quantity,
@@ -559,6 +564,22 @@ namespace _3manRMK_0
             catch
             { UpdateResult(); }
         }
+        private void приходToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            labelCheckType.Text = "Приход";
+        }
+        private void возвратПриходаToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            labelCheckType.Text = "Возврат прихода";
+        }
+        private void расходToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            labelCheckType.Text = "Расход";
+        }
+        private void возвратРасходаToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            labelCheckType.Text = "Возврат расхода";
+        }
         private void отменаЧекаToolStripMenuItem_Click(object sender, EventArgs e) //Отмена чека в ККТ
         {
             try
@@ -586,13 +607,13 @@ namespace _3manRMK_0
             }
             else
             {
-                int CheckType = 1; //Операция приход(1-продажа, 3-возвр продажи)
-                string NameProduct0 = tbNameProduct_1.Text; //Наименование товара
-                Decimal Price0 = Math.Round(ToDecimal(tbPrice_1.Text), 2); //Цена за еденицу товара с учетом скидки
-                Double Quantity0 = Math.Round(Convert.ToDouble(tbQuantity_1.Text), 3); //Кол-во (Диапазон 0,001 до 9.999.999,999)
-                Decimal Summ10 = ToDecimal(tbSumm1_1.Text); //Сумма позиции
-                int Tax10 = EnterItems(cbTax1_1.Text); //Налоговая ставка 0..6 (0-БезНДС)
-                int PaymentItemSign0 = EnterItems(cbPaymentItemSign_1.Text); // Признак предмета расчета 1..19 (1-Товар)
+                int CheckType = EnterItems(labelCheckType.Text); //Операция приход((1 - Приход, 2 - Возврат прихода 3 - расход, 4 - возврат расхода)
+                string NameProduct0; //Наименование товара
+                Decimal Price0; //Цена за еденицу товара с учетом скидки
+                Double Quantity0; //Кол-во (Диапазон 0,001 до 9.999.999,999)
+                Decimal Summ10; //Сумма позиции
+                int Tax10; //Налоговая ставка 0..6 (0-БезНДС)
+                int PaymentItemSign0; // Признак предмета расчета 1..19 (1-Товар)
 
                 try
                 {

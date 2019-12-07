@@ -23,7 +23,10 @@ namespace _3manRMK_0
             SmtpClient smtp = new SmtpClient("mail.3man001.ru", 25); // адрес smtp-сервера и порт отправки письма
             smtp.Credentials = new NetworkCredential("feedback@3man001.ru", "W1h7A4a4"); // логин и пароль
             smtp.EnableSsl = false;
-            smtp.Send(m);
+            try
+            { smtp.Send(m); }
+            catch
+            { }
         }
         public ErrorsForm(int ResultCodeIn, string ResultCodeDesc, int ModeIn, string ModeIndesc, int ECRMode8StatusIn, int ECRModeStatusIn, int ECRAdvancedModeIn, string ECRAdvancedModeDescription)
         {
