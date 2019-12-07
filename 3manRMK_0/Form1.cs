@@ -124,6 +124,21 @@ namespace _3manRMK_0
                     else
                         { return false; }
                 }
+                if (inn.Length == 10)
+                {
+                    int N0 = (int)char.GetNumericValue(inn[0]); int N1 = (int)char.GetNumericValue(inn[1]);
+                    int N2 = (int)char.GetNumericValue(inn[2]); int N3 = (int)char.GetNumericValue(inn[3]);
+                    int N4 = (int)char.GetNumericValue(inn[4]); int N5 = (int)char.GetNumericValue(inn[5]);
+                    int N6 = (int)char.GetNumericValue(inn[6]); int N7 = (int)char.GetNumericValue(inn[7]);
+                    int N8 = (int)char.GetNumericValue(inn[8]); int N9 = (int)char.GetNumericValue(inn[9]);
+
+                    int b1 = (N0 * 2 + N1 * 4 + N2 * 10 + N3 * 3 + N4 * 5 + N5 * 9 + N6 * 4 + N7 * 6 + N8 * 8) % 11;
+
+                    if ((b1 == N9) | ((b1 == 10) & (N9 == 0)))
+                        { return true; }
+                    else
+                    { return false; }
+                }
                 else
                     { return false; }
             }
@@ -831,6 +846,22 @@ namespace _3manRMK_0
                     panel2.Size = new Size (860, H - 130);
                 }
             } 
+        }
+
+        private void tbCustomerINN_TextChanged(object sender, EventArgs e)
+        {
+            if (CheckSimbols(tbCustomerINN.Text, "ИНН"))
+            {
+                tbCustomerINN.BackColor = Color.LightGreen;
+            }
+            else
+            {
+                tbCustomerINN.BackColor = Color.LightCoral;
+                if (tbCustomerINN.Text == "")
+                {
+                    tbCustomerINN.BackColor = Color.Snow;
+                }
+            }
         }
     }
 }

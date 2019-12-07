@@ -35,7 +35,6 @@
             this.сервисToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.подключитьФРToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.закрытьСменуToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.возвратToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.кассовыеОперацииToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.внесениеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.отменаЧекаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -102,6 +101,8 @@
             this.открытьСменуToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.отчетыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.xотчетToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.tbCustomerINN = new System.Windows.Forms.MaskedTextBox();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -151,7 +152,6 @@
             this.сервисToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.подключитьФРToolStripMenuItem,
             this.закрытьСменуToolStripMenuItem,
-            this.возвратToolStripMenuItem,
             this.кассовыеОперацииToolStripMenuItem,
             this.настройкиToolStripMenuItem});
             this.сервисToolStripMenuItem.Name = "сервисToolStripMenuItem";
@@ -171,12 +171,6 @@
             this.закрытьСменуToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
             this.закрытьСменуToolStripMenuItem.Text = "Закрыть смену";
             this.закрытьСменуToolStripMenuItem.Click += new System.EventHandler(this.закрытьСменуToolStripMenuItem_Click);
-            // 
-            // возвратToolStripMenuItem
-            // 
-            this.возвратToolStripMenuItem.Name = "возвратToolStripMenuItem";
-            this.возвратToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
-            this.возвратToolStripMenuItem.Text = "Оформить возврат";
             // 
             // кассовыеОперацииToolStripMenuItem
             // 
@@ -442,6 +436,8 @@
             // 
             this.groupBox3.AccessibleRole = System.Windows.Forms.AccessibleRole.Table;
             this.groupBox3.BackColor = System.Drawing.SystemColors.Window;
+            this.groupBox3.Controls.Add(this.tbCustomerINN);
+            this.groupBox3.Controls.Add(this.textBox1);
             this.groupBox3.Controls.Add(this.label17);
             this.groupBox3.Controls.Add(this.label16);
             this.groupBox3.Controls.Add(this.maskTBPhone);
@@ -468,7 +464,7 @@
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(3, 102);
+            this.label17.Location = new System.Drawing.Point(3, 91);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(35, 13);
             this.label17.TabIndex = 77;
@@ -477,7 +473,7 @@
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(40, 76);
+            this.label16.Location = new System.Drawing.Point(40, 65);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(29, 13);
             this.label16.TabIndex = 76;
@@ -487,7 +483,7 @@
             // 
             this.maskTBPhone.BackColor = System.Drawing.SystemColors.Window;
             this.maskTBPhone.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.maskTBPhone.Location = new System.Drawing.Point(75, 71);
+            this.maskTBPhone.Location = new System.Drawing.Point(75, 60);
             this.maskTBPhone.Mask = "+7(000) 000-00-00";
             this.maskTBPhone.Name = "maskTBPhone";
             this.maskTBPhone.Size = new System.Drawing.Size(143, 23);
@@ -498,7 +494,7 @@
             // 
             this.tbEmail.AccessibleDescription = "";
             this.tbEmail.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.tbEmail.Location = new System.Drawing.Point(38, 97);
+            this.tbEmail.Location = new System.Drawing.Point(38, 86);
             this.tbEmail.MaxLength = 254;
             this.tbEmail.Name = "tbEmail";
             this.tbEmail.Size = new System.Drawing.Size(180, 23);
@@ -842,6 +838,27 @@
             this.xотчетToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.xотчетToolStripMenuItem.Text = "Дневной X - отчет";
             // 
+            // textBox1
+            // 
+            this.textBox1.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textBox1.Location = new System.Drawing.Point(18, 120);
+            this.textBox1.MaxLength = 256;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(200, 22);
+            this.textBox1.TabIndex = 78;
+            this.textBox1.Text = "Иванов Иван Иванович";
+            // 
+            // tbCustomerINN
+            // 
+            this.tbCustomerINN.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.tbCustomerINN.Location = new System.Drawing.Point(113, 145);
+            this.tbCustomerINN.Mask = "000000000000";
+            this.tbCustomerINN.Name = "tbCustomerINN";
+            this.tbCustomerINN.PromptChar = '-';
+            this.tbCustomerINN.Size = new System.Drawing.Size(105, 23);
+            this.tbCustomerINN.TabIndex = 79;
+            this.tbCustomerINN.TextChanged += new System.EventHandler(this.tbCustomerINN_TextChanged);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -895,7 +912,6 @@
         private System.Windows.Forms.TextBox tbSumm1;
         private System.Windows.Forms.ToolStripMenuItem подключитьФРToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem закрытьСменуToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem возвратToolStripMenuItem;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.ToolStripMenuItem кассовыеОперацииToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem внесениеToolStripMenuItem;
@@ -952,6 +968,8 @@
         private System.Windows.Forms.ToolStripMenuItem открытьСменуToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem отчетыToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem xотчетToolStripMenuItem;
+        private System.Windows.Forms.MaskedTextBox tbCustomerINN;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }
 
