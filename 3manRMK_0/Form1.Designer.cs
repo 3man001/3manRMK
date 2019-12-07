@@ -101,7 +101,7 @@
             this.открытьСменуToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.отчетыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.xотчетToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.tbCustomer = new System.Windows.Forms.TextBox();
             this.tbCustomerINN = new System.Windows.Forms.MaskedTextBox();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
@@ -437,7 +437,7 @@
             this.groupBox3.AccessibleRole = System.Windows.Forms.AccessibleRole.Table;
             this.groupBox3.BackColor = System.Drawing.SystemColors.Window;
             this.groupBox3.Controls.Add(this.tbCustomerINN);
-            this.groupBox3.Controls.Add(this.textBox1);
+            this.groupBox3.Controls.Add(this.tbCustomer);
             this.groupBox3.Controls.Add(this.label17);
             this.groupBox3.Controls.Add(this.label16);
             this.groupBox3.Controls.Add(this.maskTBPhone);
@@ -838,15 +838,16 @@
             this.xотчетToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.xотчетToolStripMenuItem.Text = "Дневной X - отчет";
             // 
-            // textBox1
+            // tbCustomer
             // 
-            this.textBox1.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox1.Location = new System.Drawing.Point(18, 120);
-            this.textBox1.MaxLength = 256;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(200, 22);
-            this.textBox1.TabIndex = 78;
-            this.textBox1.Text = "Иванов Иван Иванович";
+            this.tbCustomer.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.tbCustomer.Location = new System.Drawing.Point(18, 120);
+            this.tbCustomer.MaxLength = 256;
+            this.tbCustomer.Name = "tbCustomer";
+            this.tbCustomer.Size = new System.Drawing.Size(200, 22);
+            this.tbCustomer.TabIndex = 78;
+            this.tbCustomer.Text = "Иванов Иван Иванович";
+            this.tbCustomer.TextChanged += new System.EventHandler(this.tbCustomer_TextChanged);
             // 
             // tbCustomerINN
             // 
@@ -969,7 +970,7 @@
         private System.Windows.Forms.ToolStripMenuItem отчетыToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem xотчетToolStripMenuItem;
         private System.Windows.Forms.MaskedTextBox tbCustomerINN;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox tbCustomer;
     }
 }
 

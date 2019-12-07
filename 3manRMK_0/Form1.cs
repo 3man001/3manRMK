@@ -93,6 +93,39 @@ namespace _3manRMK_0
                     return true;
                 }
             }
+            if (typeSim == "Email")
+            {
+                DataSimbol = "1234567890qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM.-";
+                int I = ChSimbol.IndexOf('@');
+                int L = ChSimbol.Length;
+                if ((I <= 0) | (L < 3) | (I + 1 == L))
+                { return false; }
+                else
+                {
+                    ChSimbol = ChSimbol.Substring(0, I) + ChSimbol.Substring(I + 1, L - I - 1);
+                    for (int i = 0; i < L - 1; i++)
+                    {
+                        if (DataSimbol.IndexOf(ChSimbol[i]) < 0)
+                        { return false; }
+                    }
+                    return true;
+                }
+            }
+            if (typeSim == "Phone")
+            {
+                string s = ChSimbol;
+                int L = ChSimbol.Length;
+                if (L == 17)
+                {
+                    int sI = (s.Substring(0, 2) + s.Substring(3, 3) + s.Substring(8, 3) + s.Substring(12, 2) + s.Substring(15, 2)).IndexOf(' ');
+                    if (sI > 0)
+                    { return false; }
+                    else
+                    { return true; }
+                }
+                else
+                { return false; }
+            }
             if (typeSim == "ФИО")
             {
                 if (ChSimbol[0] == ' ')
@@ -141,45 +174,19 @@ namespace _3manRMK_0
                 }
                 else
                     { return false; }
-            }
-            if (typeSim == "Email")
+            } 
+            if (typeSim == "Покупатель")
             {
-                DataSimbol = "1234567890qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM.-";
-                int I = ChSimbol.IndexOf('@');
-                int L = ChSimbol.Length;
-                if ((I <= 0) | (L < 3) | (I+1 == L))
-                    { return false; }
-                else
-                {
-                    ChSimbol = ChSimbol.Substring(0,I) + ChSimbol.Substring(I+1, L-I-1);
-                    for (int i = 0; i < L-1; i++)
-                    {
-                        if (DataSimbol.IndexOf(ChSimbol[i]) < 0)
-                        { return false; }
-                    }
-                    return true;
-                }
-            }
-            if (typeSim == "Phone")
-            {
-                string s = ChSimbol;
-                int L = ChSimbol.Length;
-                if (L == 17)
-                {
-                    int sI = (s.Substring(0, 2) + s.Substring(3, 3) + s.Substring(8, 3) + s.Substring(12, 2) + s.Substring(15, 2)).IndexOf(' ');
-                    if (sI > 0)
-                        { return false; }
-                    else
-                        { return true; }
-                }
-                else
-                    { return false; }
+                if (ChSimbol[0] == ' ')
+                { return false; }
+                DataSimbol = " ёйцукенгшщзхъфывапролджэячсмитьбюЁЙЦУКЕНГШЩЗХЪФЫВАПРОЛДЖЭЯЧСМИТЬБЮ1234567890"+'"';
             }
             for (int i = 0; i < ChSimbol.Length; i++)
             {
                 if (DataSimbol.IndexOf(ChSimbol[i]) < 0)
                     { return false; }
             }
+            
             return true;
         }
         private void UpdateResult() //Проверка состояния ККТ
@@ -616,7 +623,7 @@ namespace _3manRMK_0
         ////////////Конец Блок МЕНЮ////////////////
         private void button4_Click(object sender, EventArgs e) //Продажа тестового товара
         {
-            if (ToDecimal(tbSumm2.Text) > ToDecimal(tbSummAll.Text))
+            if (ToDecimal(tbSumm2.Text) > ToDecimal(tbSummAll.Text)) //Если сумма безнала больше суммы чека то ошибка
             {
                 tbSumm2.BackColor = Color.LightCoral;
             }
@@ -630,7 +637,7 @@ namespace _3manRMK_0
                 int Tax10; //Налоговая ставка 0..6 (0-БезНДС)
                 int PaymentItemSign0; // Признак предмета расчета 1..19 (1-Товар)
 
-                try
+                try //Если смена закрыта то Открыть как положено
                 {
                     Drv.Connect();
                     Drv.GetShortECRStatus();
@@ -644,7 +651,7 @@ namespace _3manRMK_0
 
                 groupBox3.Visible = false;
                 groupBox4.Visible = true;
-                for (int i=0; i<CBox.Length; i++)
+                for (int i=0; i<CBox.Length; i++) //Регистрация позиций в чеке
                 {
                     if (CBox[i].Checked)
                     {
@@ -672,6 +679,21 @@ namespace _3manRMK_0
                     Drv.CustomerEmail = tbEmail.Text;
                     Drv.FNSendCustomerEmail();
                 }
+                if (tbCustomer.BackColor == Color.LightGreen & tbCustomerINN.BackColor == Color.LightGreen) //Регистрация покупателя
+                {
+                    Drv.TagNumber = 1227; //Отправка Должности и Фамилии кассира
+                    Drv.TagType = 7;
+                    Drv.TagValueStr = tbCustomer.Text;
+                    Drv.FNSendTag();
+                    Drv.TagNumber = 1228; //Отправка Должности и Фамилии кассира
+                    Drv.TagType = 7;
+                    Drv.TagValueStr = tbCustomerINN.Text;
+                    if (Drv.TagValueStr.Length == 10)
+                    {  Drv.TagValueStr = Drv.TagValueStr + "00"; }
+                    Drv.FNSendTag();
+                }
+                
+
                 CloseChek(); // Формирует закрытие чека
                 tbSumm1.Text = "0,00";
                 tbSumm2.Text = "0,00";
@@ -860,6 +882,22 @@ namespace _3manRMK_0
                 if (tbCustomerINN.Text == "")
                 {
                     tbCustomerINN.BackColor = Color.Snow;
+                }
+            }
+        }
+
+        private void tbCustomer_TextChanged(object sender, EventArgs e)
+        {
+            if (CheckSimbols(tbCustomer.Text, "Покупатель"))
+            {
+                tbCustomer.BackColor = Color.LightGreen;
+            }
+            else
+            {
+                tbCustomer.BackColor = Color.LightCoral;
+                if (tbCustomer.Text == "")
+                {
+                    tbCustomer.BackColor = Color.Snow;
                 }
             }
         }
