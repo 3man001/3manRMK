@@ -335,6 +335,23 @@ namespace _3manRMK_0
             Summ[i].Font = newFont;
         }
         //////Начало Блока триггер виджета/////////
+        private void Form1_SizeChanged(object sender, EventArgs e)
+        {
+            //Width = 878 без полсы прокрутки
+            int W = Size.Width;
+            int H = Size.Height;
+            if (W >= 878)
+            {
+                int newW = 1 + (W - 878) / 2;
+                groupBox1.Location = new Point(newW, 25);
+                panel2.Location = groupBox3.Location = groupBox4.Location = new Point(newW, 66);
+                //Heiht = 310
+                if (H >= 310)
+                {
+                    panel2.Size = new Size(860, H - 130);
+                }
+            }
+        }
         private void tbFIO_TextChanged(object sender, EventArgs e)
         {
             if (CheckSimbols(tbFIO.Text, "ФИО"))
@@ -555,6 +572,36 @@ namespace _3manRMK_0
             { tbEmail.BackColor = Color.LightCoral; }
             if (tbEmail.Text == "")
             { tbEmail.BackColor = Color.Snow; }
+        }
+        private void tbCustomerINN_TextChanged(object sender, EventArgs e)
+        {
+            if (CheckSimbols(tbCustomerINN.Text, "ИНН"))
+            {
+                tbCustomerINN.BackColor = Color.LightGreen;
+            }
+            else
+            {
+                tbCustomerINN.BackColor = Color.LightCoral;
+                if (tbCustomerINN.Text == "")
+                {
+                    tbCustomerINN.BackColor = Color.Snow;
+                }
+            }
+        }
+        private void tbCustomer_TextChanged(object sender, EventArgs e)
+        {
+            if (CheckSimbols(tbCustomer.Text, "Покупатель"))
+            {
+                tbCustomer.BackColor = Color.LightGreen;
+            }
+            else
+            {
+                tbCustomer.BackColor = Color.LightCoral;
+                if (tbCustomer.Text == "")
+                {
+                    tbCustomer.BackColor = Color.Snow;
+                }
+            }
         }
         ///////////Начало Блок МЕНЮ////////////////
         private void подключитьФРToolStripMenuItem_Click(object sender, EventArgs e) //Показать свойство оборуования
@@ -851,55 +898,6 @@ namespace _3manRMK_0
             ResumeLayout(false);
             PerformLayout();
             bAdd.Location = new Point(bAdd.Location.X, bAdd.Location.Y+30);
-        }
-        private void Form1_SizeChanged(object sender, EventArgs e)
-        {
-            //Width = 878 без полсы прокрутки
-            int W = Size.Width;
-            int H = Size.Height;
-            if (W >= 878)
-            {
-                int newW = 1 + (W - 878) / 2;
-                groupBox1.Location = new Point(newW, 25);
-                panel2.Location = groupBox3.Location = groupBox4.Location = new Point(newW, 66);
-                //Heiht = 310
-                if (H >= 310)
-                {
-                    panel2.Size = new Size (860, H - 130);
-                }
-            } 
-        }
-
-        private void tbCustomerINN_TextChanged(object sender, EventArgs e)
-        {
-            if (CheckSimbols(tbCustomerINN.Text, "ИНН"))
-            {
-                tbCustomerINN.BackColor = Color.LightGreen;
-            }
-            else
-            {
-                tbCustomerINN.BackColor = Color.LightCoral;
-                if (tbCustomerINN.Text == "")
-                {
-                    tbCustomerINN.BackColor = Color.Snow;
-                }
-            }
-        }
-
-        private void tbCustomer_TextChanged(object sender, EventArgs e)
-        {
-            if (CheckSimbols(tbCustomer.Text, "Покупатель"))
-            {
-                tbCustomer.BackColor = Color.LightGreen;
-            }
-            else
-            {
-                tbCustomer.BackColor = Color.LightCoral;
-                if (tbCustomer.Text == "")
-                {
-                    tbCustomer.BackColor = Color.Snow;
-                }
-            }
         }
     }
 }
