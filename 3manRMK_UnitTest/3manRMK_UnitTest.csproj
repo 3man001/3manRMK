@@ -5,11 +5,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{DB97D465-07E6-42FF-BFBE-B222EA5A2029}</ProjectGuid>
+    <ProjectGuid>{475161C2-6149-4437-B25D-277117332301}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>UnitTest_3manRMK</RootNamespace>
-    <AssemblyName>UnitTest_3manRMK</AssemblyName>
+    <RootNamespace>_3manRMK_UnitTest</RootNamespace>
+    <AssemblyName>3manRMK_UnitTest</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>

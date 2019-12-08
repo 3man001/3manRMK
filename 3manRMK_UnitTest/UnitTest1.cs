@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace UnitTest_3manRMK
+namespace _3manRMK_UnitTest
 {
     [TestClass]
     public class UnitTest1
