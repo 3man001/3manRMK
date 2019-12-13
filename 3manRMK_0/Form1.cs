@@ -60,13 +60,13 @@ namespace _3manRMK_0
             FileOperation("ИНН=" + Drv.INN +
                             "\nСНО=" + Convert.ToString(Drv.TaxType, 2), "aboutkkt.ini");
         }
-        private decimal ToDecimal (string s)
+        public decimal ToDecimal (string s)
         { return Convert.ToDecimal(s); }
         static void FileOperation(string InText, string NameFile) //Работа с файлами
         {
             File.WriteAllText(NameFile, InText);
         }
-        private bool CheckSimbols(string ChSimbol, string typeSim)  //Проверка строки
+        public bool CheckSimbols(string ChSimbol, string typeSim)  //Проверка строки
         {
             if (ChSimbol == "")
                 { return false; }
