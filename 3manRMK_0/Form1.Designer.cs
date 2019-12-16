@@ -37,12 +37,15 @@
             this.закрытьСменуToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.кассовыеОперацииToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.внесениеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.открытьСменуToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.отменаЧекаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.отчетыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.xотчетToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.типЧекаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.приходToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.возвратПриходаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.расходToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.возвратРасходаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.приходToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.настройкиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.обратнаяСвязьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.оПрограммеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -64,6 +67,8 @@
             this.button3 = new System.Windows.Forms.Button();
             this.label13 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.tbCustomerINN = new System.Windows.Forms.MaskedTextBox();
+            this.tbCustomer = new System.Windows.Forms.TextBox();
             this.label17 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.maskTBPhone = new System.Windows.Forms.MaskedTextBox();
@@ -98,11 +103,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.открытьСменуToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.отчетыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.xотчетToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.tbCustomer = new System.Windows.Forms.TextBox();
-            this.tbCustomerINN = new System.Windows.Forms.MaskedTextBox();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -143,7 +143,7 @@
             this.оПрограммеToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(862, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(861, 24);
             this.menuStrip1.TabIndex = 5;
             this.menuStrip1.Text = "Меню";
             // 
@@ -187,15 +187,35 @@
             // внесениеToolStripMenuItem
             // 
             this.внесениеToolStripMenuItem.Name = "внесениеToolStripMenuItem";
-            this.внесениеToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.внесениеToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
             this.внесениеToolStripMenuItem.Text = "Внесение";
+            // 
+            // открытьСменуToolStripMenuItem
+            // 
+            this.открытьСменуToolStripMenuItem.Name = "открытьСменуToolStripMenuItem";
+            this.открытьСменуToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
+            this.открытьСменуToolStripMenuItem.Text = "Открыть смену";
             // 
             // отменаЧекаToolStripMenuItem
             // 
             this.отменаЧекаToolStripMenuItem.Name = "отменаЧекаToolStripMenuItem";
-            this.отменаЧекаToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.отменаЧекаToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
             this.отменаЧекаToolStripMenuItem.Text = "Отмена чека";
             this.отменаЧекаToolStripMenuItem.Click += new System.EventHandler(this.отменаЧекаToolStripMenuItem_Click);
+            // 
+            // отчетыToolStripMenuItem
+            // 
+            this.отчетыToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.xотчетToolStripMenuItem});
+            this.отчетыToolStripMenuItem.Name = "отчетыToolStripMenuItem";
+            this.отчетыToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
+            this.отчетыToolStripMenuItem.Text = "Отчеты";
+            // 
+            // xотчетToolStripMenuItem
+            // 
+            this.xотчетToolStripMenuItem.Name = "xотчетToolStripMenuItem";
+            this.xотчетToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
+            this.xотчетToolStripMenuItem.Text = "Дневной X - отчет";
             // 
             // типЧекаToolStripMenuItem
             // 
@@ -205,36 +225,36 @@
             this.расходToolStripMenuItem,
             this.возвратРасходаToolStripMenuItem});
             this.типЧекаToolStripMenuItem.Name = "типЧекаToolStripMenuItem";
-            this.типЧекаToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.типЧекаToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
             this.типЧекаToolStripMenuItem.Text = "Тип операции чека";
+            // 
+            // приходToolStripMenuItem
+            // 
+            this.приходToolStripMenuItem.Name = "приходToolStripMenuItem";
+            this.приходToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
+            this.приходToolStripMenuItem.Text = "Приход";
+            this.приходToolStripMenuItem.Click += new System.EventHandler(this.приходToolStripMenuItem_Click);
             // 
             // возвратПриходаToolStripMenuItem
             // 
             this.возвратПриходаToolStripMenuItem.Name = "возвратПриходаToolStripMenuItem";
-            this.возвратПриходаToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.возвратПриходаToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
             this.возвратПриходаToolStripMenuItem.Text = "Возврат прихода";
             this.возвратПриходаToolStripMenuItem.Click += new System.EventHandler(this.возвратПриходаToolStripMenuItem_Click);
             // 
             // расходToolStripMenuItem
             // 
             this.расходToolStripMenuItem.Name = "расходToolStripMenuItem";
-            this.расходToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.расходToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
             this.расходToolStripMenuItem.Text = "Расход";
             this.расходToolStripMenuItem.Click += new System.EventHandler(this.расходToolStripMenuItem_Click);
             // 
             // возвратРасходаToolStripMenuItem
             // 
             this.возвратРасходаToolStripMenuItem.Name = "возвратРасходаToolStripMenuItem";
-            this.возвратРасходаToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.возвратРасходаToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
             this.возвратРасходаToolStripMenuItem.Text = "Возврат расхода";
             this.возвратРасходаToolStripMenuItem.Click += new System.EventHandler(this.возвратРасходаToolStripMenuItem_Click);
-            // 
-            // приходToolStripMenuItem
-            // 
-            this.приходToolStripMenuItem.Name = "приходToolStripMenuItem";
-            this.приходToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.приходToolStripMenuItem.Text = "Приход";
-            this.приходToolStripMenuItem.Click += new System.EventHandler(this.приходToolStripMenuItem_Click);
             // 
             // настройкиToolStripMenuItem
             // 
@@ -264,9 +284,9 @@
             this.toolStripStatusLabel3,
             this.toolStripStatusLabel4,
             this.toolStripStatusLabel2});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 500);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 608);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(862, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(861, 22);
             this.statusStrip1.TabIndex = 6;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -460,6 +480,28 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Оплата";
             this.groupBox3.Visible = false;
+            // 
+            // tbCustomerINN
+            // 
+            this.tbCustomerINN.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.tbCustomerINN.Location = new System.Drawing.Point(113, 145);
+            this.tbCustomerINN.Mask = "000000000000";
+            this.tbCustomerINN.Name = "tbCustomerINN";
+            this.tbCustomerINN.PromptChar = '-';
+            this.tbCustomerINN.Size = new System.Drawing.Size(105, 23);
+            this.tbCustomerINN.TabIndex = 79;
+            this.tbCustomerINN.TextChanged += new System.EventHandler(this.tbCustomerINN_TextChanged);
+            // 
+            // tbCustomer
+            // 
+            this.tbCustomer.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.tbCustomer.Location = new System.Drawing.Point(18, 120);
+            this.tbCustomer.MaxLength = 256;
+            this.tbCustomer.Name = "tbCustomer";
+            this.tbCustomer.Size = new System.Drawing.Size(200, 22);
+            this.tbCustomer.TabIndex = 78;
+            this.tbCustomer.Text = "Иванов Иван Иванович";
+            this.tbCustomer.TextChanged += new System.EventHandler(this.tbCustomer_TextChanged);
             // 
             // label17
             // 
@@ -818,52 +860,11 @@
             this.label5.TabIndex = 21;
             this.label5.Text = "Кол-во ед.";
             // 
-            // открытьСменуToolStripMenuItem
-            // 
-            this.открытьСменуToolStripMenuItem.Name = "открытьСменуToolStripMenuItem";
-            this.открытьСменуToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.открытьСменуToolStripMenuItem.Text = "Открыть смену";
-            // 
-            // отчетыToolStripMenuItem
-            // 
-            this.отчетыToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.xотчетToolStripMenuItem});
-            this.отчетыToolStripMenuItem.Name = "отчетыToolStripMenuItem";
-            this.отчетыToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.отчетыToolStripMenuItem.Text = "Отчеты";
-            // 
-            // xотчетToolStripMenuItem
-            // 
-            this.xотчетToolStripMenuItem.Name = "xотчетToolStripMenuItem";
-            this.xотчетToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.xотчетToolStripMenuItem.Text = "Дневной X - отчет";
-            // 
-            // tbCustomer
-            // 
-            this.tbCustomer.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.tbCustomer.Location = new System.Drawing.Point(18, 120);
-            this.tbCustomer.MaxLength = 256;
-            this.tbCustomer.Name = "tbCustomer";
-            this.tbCustomer.Size = new System.Drawing.Size(200, 22);
-            this.tbCustomer.TabIndex = 78;
-            this.tbCustomer.Text = "Иванов Иван Иванович";
-            this.tbCustomer.TextChanged += new System.EventHandler(this.tbCustomer_TextChanged);
-            // 
-            // tbCustomerINN
-            // 
-            this.tbCustomerINN.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.tbCustomerINN.Location = new System.Drawing.Point(113, 145);
-            this.tbCustomerINN.Mask = "000000000000";
-            this.tbCustomerINN.Name = "tbCustomerINN";
-            this.tbCustomerINN.PromptChar = '-';
-            this.tbCustomerINN.Size = new System.Drawing.Size(105, 23);
-            this.tbCustomerINN.TabIndex = 79;
-            this.tbCustomerINN.TextChanged += new System.EventHandler(this.tbCustomerINN_TextChanged);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(862, 522);
             this.Controls.Add(this.panel2);
@@ -874,8 +875,7 @@
             this.Controls.Add(this.groupBox3);
             this.ForeColor = System.Drawing.SystemColors.ControlText;
             this.MainMenuStrip = this.menuStrip1;
-            this.MaximumSize = new System.Drawing.Size(878, 800);
-            this.MinimumSize = new System.Drawing.Size(878, 310);
+            this.MinimumSize = new System.Drawing.Size(800, 310);
             this.Name = "Form1";
             this.Text = "3mannRMK_00";
             this.SizeChanged += new System.EventHandler(this.Form1_SizeChanged);

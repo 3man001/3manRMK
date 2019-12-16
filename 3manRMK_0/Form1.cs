@@ -340,9 +340,10 @@ namespace _3manRMK_0
             //Width = 878 без полсы прокрутки
             int W = Size.Width;
             int H = Size.Height;
-            if (W >= 878)
+            if (W >= 800)
             {
                 int newW = 1 + (W - 878) / 2;
+                if (W <= 878) { newW = 1; }
                 groupBox1.Location = new Point(newW, 25);
                 panel2.Location = groupBox3.Location = groupBox4.Location = new Point(newW, 66);
                 //Heiht = 310
