@@ -617,6 +617,7 @@ namespace _3manRMK_0
                 Drv.FNBeginOpenSession();
                 SendFIO();
                 Drv.FNOpenSession();
+                System.Threading.Thread.Sleep(2000);
             }
             catch
             { UpdateResult(); }
@@ -745,6 +746,10 @@ namespace _3manRMK_0
                 CloseChek(); // Формирует закрытие чека
                 tbSumm1.Text = "0,00";
                 tbSumm2.Text = "0,00";
+                maskTBPhone.Text = "";
+                tbEmail.Text = "";
+                tbCustomer.Text = "";
+                tbCustomerINN.Text = "";
                 InitialArrays();
                 tbSumm1.Visible = false;
                 tbSumm2.Visible = false;
