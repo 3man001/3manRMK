@@ -60,6 +60,73 @@ namespace _3manRMK_0
             FileOperation("ИНН=" + Drv.INN +
                             "\nСНО=" + Convert.ToString(Drv.TaxType, 2), "aboutkkt.ini");
         }
+        private void KKT_StatusCheck() //проверяет статус ОФД и ФН приотткрытии и закрытии смены
+        {
+            Drv.FNGetStatus(); //Запрос Статуса ФН
+            textBox1.Text = textBox1.Text + "Запрос Статуса ФН : " + "\n";
+            string q = Convert.ToString(Drv.FNWarningFlags,2); //ФНФлагиПредупреждения
+            q = new string('0', 4-q.Length) + q;
+            textBox1.Text = textBox1.Text + "ФНФлагиПредупреждения = " + q + "\n";
+
+            if (q == "0000") //Все хорошо
+            {
+                toolStripStatus_FN.BackColor = Color.LightGreen;
+            }
+            else
+            {
+                if (q[q.Length - 1] == '1') //Срояная замена ФН осталось 3 дня 
+                {
+                    toolStripStatus_FN.BackColor = Color.Red;
+                }
+                if (q[q.Length - 2] == '1') //До замены ФН 30 дней
+                {
+                    toolStripStatus_FN.BackColor = Color.Yellow;
+                    Drv.FNGetExpirationTime(); //ФНЗапросСрокаДействия
+                    textBox1.Text = textBox1.Text + "ФНЗапросСрокаДействия : " + "\n";
+                    DateTime e = Drv.Date; //Дата
+                    textBox1.Text = textBox1.Text + "Дата = " + Convert.ToString(e) + "\n";
+                }
+                if (q[q.Length - 3] == '1') //ФН заполнен на 90%
+                {
+                    toolStripStatus_FN.BackColor = Color.Red;
+                }
+                if (q[q.Length - 4] == '1') //Превышено время ожидания ответа ОФД
+                {
+                    toolStripStatus_FN.BackColor = Color.Yellow;
+                }
+            }
+
+            Drv.FNGetInfoExchangeStatus(); //Статус обмена с ОФД
+            textBox1.Text = textBox1.Text + "Статус обмена с ОФД : " + "\n";
+            string r = Convert.ToString(Drv.InfoExchangeStatus,2); //СтатусИнфОбмена
+            r = new string('0', 5 - r.Length) + r;
+            textBox1.Text = textBox1.Text + "СтатусИнфОбмена = " + Convert.ToString(r) + "\n";
+            if (r[1] == 1)
+            {
+                int t = Drv.MessageCount; //КоличествоСообщений
+                textBox1.Text = textBox1.Text + "КоличествоСообщений = " + Convert.ToString(t) + "\n";
+                DateTime y = Drv.Date; //Дата
+                textBox1.Text = textBox1.Text + "Дата = " + Convert.ToString(y) + "\n";
+            }
+            else
+            {
+                toolStripStatus_OFD.BackColor = Color.LightGreen;
+            }
+
+            Drv.GetECRStatus(); //ПолучитьСостояниеККМ
+            textBox1.Text = textBox1.Text + "ПолучитьСостояниеККМ : " + "\n";
+            DateTime u = Drv.Date; //Внутренняя дата ККМ
+            textBox1.Text = textBox1.Text + "Внутренняя дата ККМ = " + Convert.ToString(u) + "\n";
+            DateTime i = Drv.Time; //Внутренне время ККМ
+            textBox1.Text = textBox1.Text + "Внутренне время ККМ = " + Convert.ToString(i) + "\n";
+
+            textBox1.Text = textBox1.Text + "Время на ПК = " + Convert.ToString(DateTime.Now) + "\n";
+
+            textBox1.Text = textBox1.Text + "Время на ПК - Внутренняя дата ККМ = " + Convert.ToString(DateTime.Now - u) + "\n";
+
+
+
+        }
         public decimal ToDecimal (string s)
         { return Convert.ToDecimal(s); }
         static void FileOperation(string InText, string NameFile) //Работа с файлами
@@ -759,6 +826,7 @@ namespace _3manRMK_0
         }
         private void btnLogin_Click(object sender, EventArgs e) //Регистрация кассира
         {
+            KKT_StatusCheck();
             if (btnLogin.BackColor == Color.Lime)
             {
                 tbFIO_TextChanged(sender, e);
@@ -774,7 +842,8 @@ namespace _3manRMK_0
             {
                 btnLogin.BackColor = Color.Lime;
                 btnLogin.Text = "Login";
-                tbFIO.ReadOnly = tbINN.ReadOnly = label13.Visible = tbSummAll.Visible = panel2.Visible = false;
+                tbFIO.ReadOnly = tbINN.ReadOnly = label13.Visible = tbSummAll.Visible = 
+                    groupBox3.Visible = groupBox4.Visible = panel2.Visible = false;
             }
         }
         private void xотчетToolStripMenuItem_Click(object sender, EventArgs e) //Снять Х-Отчет
@@ -904,6 +973,11 @@ namespace _3manRMK_0
             ResumeLayout(false);
             PerformLayout();
             bAdd.Location = new Point(bAdd.Location.X, bAdd.Location.Y+30);
+        }
+
+        private void toolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

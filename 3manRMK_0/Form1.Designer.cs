@@ -103,6 +103,9 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.toolStripStatus_OFD = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatus_FN = new System.Windows.Forms.ToolStripStatusLabel();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -137,13 +140,14 @@
             // menuStrip1
             // 
             this.menuStrip1.AllowMerge = false;
+            this.menuStrip1.BackColor = System.Drawing.Color.White;
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.сервисToolStripMenuItem,
             this.обратнаяСвязьToolStripMenuItem,
             this.оПрограммеToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(861, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1012, 24);
             this.menuStrip1.TabIndex = 5;
             this.menuStrip1.Text = "Меню";
             // 
@@ -279,14 +283,17 @@
             // 
             // statusStrip1
             // 
+            this.statusStrip1.BackColor = System.Drawing.Color.White;
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabel1,
             this.toolStripStatusLabel3,
             this.toolStripStatusLabel4,
-            this.toolStripStatusLabel2});
+            this.toolStripStatusLabel2,
+            this.toolStripStatus_OFD,
+            this.toolStripStatus_FN});
             this.statusStrip1.Location = new System.Drawing.Point(0, 608);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(861, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(1012, 23);
             this.statusStrip1.TabIndex = 6;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -294,13 +301,13 @@
             // 
             this.toolStripStatusLabel1.AutoSize = false;
             this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            this.toolStripStatusLabel1.Size = new System.Drawing.Size(450, 17);
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(300, 18);
             this.toolStripStatusLabel1.Text = "Текушее состояние";
             // 
             // toolStripStatusLabel3
             // 
             this.toolStripStatusLabel3.Name = "toolStripStatusLabel3";
-            this.toolStripStatusLabel3.Size = new System.Drawing.Size(74, 17);
+            this.toolStripStatusLabel3.Size = new System.Drawing.Size(74, 18);
             this.toolStripStatusLabel3.Text = "В ДЯ = 1 00р";
             // 
             // toolStripStatusLabel4
@@ -308,13 +315,14 @@
             this.toolStripStatusLabel4.AutoSize = false;
             this.toolStripStatusLabel4.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.toolStripStatusLabel4.Name = "toolStripStatusLabel4";
-            this.toolStripStatusLabel4.Size = new System.Drawing.Size(180, 17);
+            this.toolStripStatusLabel4.Size = new System.Drawing.Size(300, 18);
             this.toolStripStatusLabel4.Text = "Не отправлено документов = *";
             // 
             // toolStripStatusLabel2
             // 
+            this.toolStripStatusLabel2.BackColor = System.Drawing.Color.White;
             this.toolStripStatusLabel2.Name = "toolStripStatusLabel2";
-            this.toolStripStatusLabel2.Size = new System.Drawing.Size(81, 17);
+            this.toolStripStatusLabel2.Size = new System.Drawing.Size(81, 18);
             this.toolStripStatusLabel2.Text = "**:**:****_**:**";
             // 
             // label4
@@ -860,13 +868,38 @@
             this.label5.TabIndex = 21;
             this.label5.Text = "Кол-во ед.";
             // 
+            // textBox1
+            // 
+            this.textBox1.Dock = System.Windows.Forms.DockStyle.Right;
+            this.textBox1.Location = new System.Drawing.Point(935, 24);
+            this.textBox1.Multiline = true;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(77, 584);
+            this.textBox1.TabIndex = 73;
+            // 
+            // toolStripStatus_OFD
+            // 
+            this.toolStripStatus_OFD.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.toolStripStatus_OFD.Name = "toolStripStatus_OFD";
+            this.toolStripStatus_OFD.Size = new System.Drawing.Size(46, 18);
+            this.toolStripStatus_OFD.Text = "ОФД";
+            // 
+            // toolStripStatus_FN
+            // 
+            this.toolStripStatus_FN.ActiveLinkColor = System.Drawing.Color.Red;
+            this.toolStripStatus_FN.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.toolStripStatus_FN.Name = "toolStripStatus_FN";
+            this.toolStripStatus_FN.Size = new System.Drawing.Size(33, 18);
+            this.toolStripStatus_FN.Text = "ФН";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(862, 522);
+            this.ClientSize = new System.Drawing.Size(1029, 496);
+            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.groupBox4);
@@ -971,6 +1004,9 @@
         private System.Windows.Forms.ToolStripMenuItem xотчетToolStripMenuItem;
         private System.Windows.Forms.MaskedTextBox tbCustomerINN;
         private System.Windows.Forms.TextBox tbCustomer;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatus_OFD;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatus_FN;
     }
 }
 
