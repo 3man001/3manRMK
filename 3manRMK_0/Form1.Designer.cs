@@ -54,6 +54,8 @@
             this.toolStripStatusLabel3 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel4 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatus_OFD = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatus_FN = new System.Windows.Forms.ToolStripStatusLabel();
             this.label4 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
@@ -104,8 +106,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.toolStripStatus_OFD = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStripStatus_FN = new System.Windows.Forms.ToolStripStatusLabel();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -324,6 +324,21 @@
             this.toolStripStatusLabel2.Name = "toolStripStatusLabel2";
             this.toolStripStatusLabel2.Size = new System.Drawing.Size(81, 18);
             this.toolStripStatusLabel2.Text = "**:**:****_**:**";
+            // 
+            // toolStripStatus_OFD
+            // 
+            this.toolStripStatus_OFD.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.toolStripStatus_OFD.Name = "toolStripStatus_OFD";
+            this.toolStripStatus_OFD.Size = new System.Drawing.Size(46, 18);
+            this.toolStripStatus_OFD.Text = "ОФД";
+            // 
+            // toolStripStatus_FN
+            // 
+            this.toolStripStatus_FN.ActiveLinkColor = System.Drawing.Color.Red;
+            this.toolStripStatus_FN.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.toolStripStatus_FN.Name = "toolStripStatus_FN";
+            this.toolStripStatus_FN.Size = new System.Drawing.Size(33, 18);
+            this.toolStripStatus_FN.Text = "ФН";
             // 
             // label4
             // 
@@ -876,21 +891,6 @@
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(77, 584);
             this.textBox1.TabIndex = 73;
-            // 
-            // toolStripStatus_OFD
-            // 
-            this.toolStripStatus_OFD.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.toolStripStatus_OFD.Name = "toolStripStatus_OFD";
-            this.toolStripStatus_OFD.Size = new System.Drawing.Size(46, 18);
-            this.toolStripStatus_OFD.Text = "ОФД";
-            // 
-            // toolStripStatus_FN
-            // 
-            this.toolStripStatus_FN.ActiveLinkColor = System.Drawing.Color.Red;
-            this.toolStripStatus_FN.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.toolStripStatus_FN.Name = "toolStripStatus_FN";
-            this.toolStripStatus_FN.Size = new System.Drawing.Size(33, 18);
-            this.toolStripStatus_FN.Text = "ФН";
             // 
             // Form1
             // 

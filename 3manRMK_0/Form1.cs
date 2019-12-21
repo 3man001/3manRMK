@@ -62,37 +62,37 @@ namespace _3manRMK_0
         }
         private void KKT_StatusCheck() //проверяет статус ОФД и ФН приотткрытии и закрытии смены
         {
+            DateTime Date_Now = DateTime.Today;
             Drv.FNGetStatus(); //Запрос Статуса ФН
-            textBox1.Text = textBox1.Text + "Запрос Статуса ФН : " + "\n";
             string q = Convert.ToString(Drv.FNWarningFlags,2); //ФНФлагиПредупреждения
             q = new string('0', 4-q.Length) + q;
-            textBox1.Text = textBox1.Text + "ФНФлагиПредупреждения = " + q + "\n";
-
             if (q == "0000") //Все хорошо
             {
                 toolStripStatus_FN.BackColor = Color.LightGreen;
             }
             else
             {
-                if (q[q.Length - 1] == '1') //Срояная замена ФН осталось 3 дня 
+                if (q[0] == '1') //Превышено время ожидания ответа ОФД
                 {
-                    toolStripStatus_FN.BackColor = Color.Red;
+                    toolStripStatus_FN.BackColor = Color.Yellow;
                 }
-                if (q[q.Length - 2] == '1') //До замены ФН 30 дней
+                if (q[2] == '1') //До замены ФН 30 дней
                 {
                     toolStripStatus_FN.BackColor = Color.Yellow;
                     Drv.FNGetExpirationTime(); //ФНЗапросСрокаДействия
-                    textBox1.Text = textBox1.Text + "ФНЗапросСрокаДействия : " + "\n";
-                    DateTime e = Drv.Date; //Дата
-                    textBox1.Text = textBox1.Text + "Дата = " + Convert.ToString(e) + "\n";
+                    DateTime FN_ExpirationDate = Drv.Date; //Дата
+                    toolStripStatus_FN.Text = "ФН " + LeftDate(Date_Now, FN_ExpirationDate);
                 }
-                if (q[q.Length - 3] == '1') //ФН заполнен на 90%
+                if (q[3] == '1') //Срояная замена ФН осталось 3 дня 
                 {
                     toolStripStatus_FN.BackColor = Color.Red;
+                    Drv.FNGetExpirationTime(); //ФНЗапросСрокаДействия
+                    DateTime FN_ExpirationDate = Drv.Date; //Дата
+                    toolStripStatus_FN.Text = "ФН " + LeftDate(Date_Now, FN_ExpirationDate);
                 }
-                if (q[q.Length - 4] == '1') //Превышено время ожидания ответа ОФД
+                if (q[1] == '1') //ФН заполнен на 90%
                 {
-                    toolStripStatus_FN.BackColor = Color.Yellow;
+                    toolStripStatus_FN.BackColor = Color.Red;
                 }
             }
 
@@ -126,6 +126,19 @@ namespace _3manRMK_0
 
 
 
+        }
+        private string LeftDate(DateTime date_now, DateTime date_1)
+        {
+            if (DateTime.Compare(date_1, date_now) == 1)
+            {
+                string diff = Convert.ToString(date_1 - date_now);
+                diff = diff.Substring(0, diff.IndexOf('.'));
+                return "дней до Блок " + diff;
+            }
+            else
+            {
+                return "Истёк";
+            }
         }
         public decimal ToDecimal (string s)
         { return Convert.ToDecimal(s); }
