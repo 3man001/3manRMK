@@ -80,15 +80,27 @@ namespace _3manRMK_0
                 {
                     toolStripStatus_FN.BackColor = Color.Yellow;
                     Drv.FNGetExpirationTime(); //ФНЗапросСрокаДействия
-                    DateTime FN_ExpirationDate = Drv.Date; //Дата
-                    toolStripStatus_FN.Text = "ФН " + LeftDate(Date_Now, FN_ExpirationDate);
+                    if ((Drv.Date - Date_Now).Days > 0)
+                    {
+                        toolStripStatus_FN.Text = "ФН < " + (Drv.Date - Date_Now).Days + "д.";
+                    }
+                    else
+                    {
+                        toolStripStatus_FN.Text = "ФН истёк";
+                    }       
                 }
                 if (q[3] == '1') //Срояная замена ФН осталось 3 дня 
                 {
                     toolStripStatus_FN.BackColor = Color.Red;
                     Drv.FNGetExpirationTime(); //ФНЗапросСрокаДействия
-                    DateTime FN_ExpirationDate = Drv.Date; //Дата
-                    toolStripStatus_FN.Text = "ФН " + LeftDate(Date_Now, FN_ExpirationDate);
+                    if ((Drv.Date - Date_Now).Days > 0)
+                    {
+                        toolStripStatus_FN.Text = "ФН < " + (Drv.Date - Date_Now).Days + "д.";
+                    }
+                    else
+                    {
+                        toolStripStatus_FN.Text = "ФН истёк";
+                    }
                 }
                 if (q[1] == '1') //ФН заполнен на 90%
                 {
@@ -97,16 +109,20 @@ namespace _3manRMK_0
             }
 
             Drv.FNGetInfoExchangeStatus(); //Статус обмена с ОФД
-            textBox1.Text = textBox1.Text + "Статус обмена с ОФД : " + "\n";
-            string r = Convert.ToString(Drv.InfoExchangeStatus,2); //СтатусИнфОбмена
-            r = new string('0', 5 - r.Length) + r;
-            textBox1.Text = textBox1.Text + "СтатусИнфОбмена = " + Convert.ToString(r) + "\n";
-            if (r[1] == 1)
+            string ExchangeStatus = Convert.ToString(Drv.InfoExchangeStatus,2); //СтатусИнфОбмена
+            ExchangeStatus = new string('0', 5 - ExchangeStatus.Length) + ExchangeStatus;
+            if (ExchangeStatus[1] == 1)
             {
-                int t = Drv.MessageCount; //КоличествоСообщений
-                textBox1.Text = textBox1.Text + "КоличествоСообщений = " + Convert.ToString(t) + "\n";
-                DateTime y = Drv.Date; //Дата
-                textBox1.Text = textBox1.Text + "Дата = " + Convert.ToString(y) + "\n";
+                int MessageCount = Drv.MessageCount; //КоличествоСообщений
+                try
+                {
+                    int OFD_Day = Convert.ToInt32((Date_Now - Drv.Date).Days); //Прошло дней до блок
+
+                }
+                catch
+                {
+                    toolStripStatus_OFD.BackColor = Color.Red;
+                }
             }
             else
             {
@@ -126,19 +142,6 @@ namespace _3manRMK_0
 
 
 
-        }
-        private string LeftDate(DateTime date_now, DateTime date_1)
-        {
-            if (DateTime.Compare(date_1, date_now) == 1)
-            {
-                string diff = Convert.ToString(date_1 - date_now);
-                diff = diff.Substring(0, diff.IndexOf('.'));
-                return "дней до Блок " + diff;
-            }
-            else
-            {
-                return "Истёк";
-            }
         }
         public decimal ToDecimal (string s)
         { return Convert.ToDecimal(s); }
