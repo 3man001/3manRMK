@@ -53,7 +53,7 @@
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel3 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel4 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatus_TimeKKT = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatus_OFD = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatus_FN = new System.Windows.Forms.ToolStripStatusLabel();
             this.label4 = new System.Windows.Forms.Label();
@@ -105,7 +105,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -288,7 +287,7 @@
             this.toolStripStatusLabel1,
             this.toolStripStatusLabel3,
             this.toolStripStatusLabel4,
-            this.toolStripStatusLabel2,
+            this.toolStripStatus_TimeKKT,
             this.toolStripStatus_OFD,
             this.toolStripStatus_FN});
             this.statusStrip1.Location = new System.Drawing.Point(0, 608);
@@ -318,12 +317,13 @@
             this.toolStripStatusLabel4.Size = new System.Drawing.Size(300, 18);
             this.toolStripStatusLabel4.Text = "Не отправлено документов = *";
             // 
-            // toolStripStatusLabel2
+            // toolStripStatus_TimeKKT
             // 
-            this.toolStripStatusLabel2.BackColor = System.Drawing.Color.White;
-            this.toolStripStatusLabel2.Name = "toolStripStatusLabel2";
-            this.toolStripStatusLabel2.Size = new System.Drawing.Size(81, 18);
-            this.toolStripStatusLabel2.Text = "**:**:****_**:**";
+            this.toolStripStatus_TimeKKT.BackColor = System.Drawing.Color.White;
+            this.toolStripStatus_TimeKKT.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.toolStripStatus_TimeKKT.Name = "toolStripStatus_TimeKKT";
+            this.toolStripStatus_TimeKKT.Size = new System.Drawing.Size(48, 18);
+            this.toolStripStatus_TimeKKT.Text = "Time";
             // 
             // toolStripStatus_OFD
             // 
@@ -883,15 +883,6 @@
             this.label5.TabIndex = 21;
             this.label5.Text = "Кол-во ед.";
             // 
-            // textBox1
-            // 
-            this.textBox1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.textBox1.Location = new System.Drawing.Point(935, 24);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(77, 584);
-            this.textBox1.TabIndex = 73;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -899,7 +890,6 @@
             this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(1029, 496);
-            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.groupBox4);
@@ -957,7 +947,7 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel2;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatus_TimeKKT;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button button12;
@@ -1004,7 +994,6 @@
         private System.Windows.Forms.ToolStripMenuItem xотчетToolStripMenuItem;
         private System.Windows.Forms.MaskedTextBox tbCustomerINN;
         private System.Windows.Forms.TextBox tbCustomer;
-        private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatus_OFD;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatus_FN;
     }

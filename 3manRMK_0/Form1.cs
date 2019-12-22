@@ -114,22 +114,22 @@ namespace _3manRMK_0
             if (ExchangeStatus[1] == 1)
             {
                 int MessageCount = Drv.MessageCount; //КоличествоСообщений
-                int Interval = (Date_Now - Drv.Date).Days;
-                if (0 <= Interval & Interval < 5)
+                int Interval_Days = (Date_Now - Drv.Date).Days;
+                if (0 <= Interval_Days & Interval_Days < 5)
                 {
                     toolStripStatus_OFD.BackColor = Color.LightGreen;
                 }
                 else
                 {
-                    if (Interval < 0)
+                    if (Interval_Days < 0)
                     {
                         toolStripStatus_OFD.BackColor = Color.Red;
                     }
-                    if (5 <= Interval & Interval < 15)
+                    if (5 <= Interval_Days & Interval_Days < 15)
                     {
                         toolStripStatus_OFD.BackColor = Color.Yellow;
                     }
-                    if (Interval > 15)
+                    if (Interval_Days > 15)
                     {
                         toolStripStatus_OFD.BackColor = Color.Red;
                     }
@@ -140,19 +140,37 @@ namespace _3manRMK_0
                 toolStripStatus_OFD.BackColor = Color.LightGreen;
             }
 
+            Date_Now = DateTime.Now; //Текущее время на ПК
             Drv.GetECRStatus(); //ПолучитьСостояниеККМ
-            textBox1.Text = textBox1.Text + "ПолучитьСостояниеККМ : " + "\n";
-            DateTime u = Drv.Date; //Внутренняя дата ККМ
-            textBox1.Text = textBox1.Text + "Внутренняя дата ККМ = " + Convert.ToString(u) + "\n";
-            DateTime i = Drv.Time; //Внутренне время ККМ
-            textBox1.Text = textBox1.Text + "Внутренне время ККМ = " + Convert.ToString(i) + "\n";
-
-            textBox1.Text = textBox1.Text + "Время на ПК = " + Convert.ToString(DateTime.Now) + "\n";
-
-            textBox1.Text = textBox1.Text + "Время на ПК - Внутренняя дата ККМ = " + Convert.ToString(DateTime.Now - u) + "\n";
-
-
-
+            DateTime DateTime_KKT = DateTime.Parse(Drv.Date.Day + "." + Drv.Date.Month + "." + Drv.Date.Year +" "
+                + Drv.Time.Hour +":"+ Drv.Time.Minute + ":" + Drv.Time.Second); //Внутренняя дата время ККМ
+            TimeSpan Interval = Date_Now - DateTime_KKT;
+            if ( Interval.Days == 0 )
+            {
+                if (Interval.Hours == 0)
+                {
+                    if (-5 <= Interval.Minutes & Interval.Minutes <= 5)
+                    {
+                        toolStripStatus_TimeKKT.BackColor = Color.Yellow; //Обратить внимание
+                    }
+                    if (-3 <= Interval.Minutes & Interval.Minutes <= 3)
+                    {
+                        toolStripStatus_TimeKKT.BackColor = Color.LightGreen; //Не значительное расхождение
+                    }
+                    if (-5 > Interval.Minutes | Interval.Minutes > 5)
+                    {
+                        toolStripStatus_TimeKKT.BackColor = Color.Red; //Расхождение более 5 мин
+                    }
+                }
+                else
+                {
+                    toolStripStatus_TimeKKT.BackColor = Color.Red; //Расхождение более 5 мин
+                }
+            }
+            else
+            {
+                toolStripStatus_TimeKKT.BackColor = Color.Red; //Расхождение более 5 мин
+            }
         }
         public decimal ToDecimal (string s)
         { return Convert.ToDecimal(s); }
@@ -296,9 +314,6 @@ namespace _3manRMK_0
                 ErorrsformP.ShowDialog(this);
                 ErorrsformP.Dispose();
             }
-            Drv.FNGetInfoExchangeStatus();
-            toolStripStatusLabel4.Text = "Не отправлено документов = " + Convert.ToString(Drv.MessageCount);
-            toolStripStatusLabel2.Text = "||" + Convert.ToString(Drv.Date);
         }
         private int EnterItems(string Item) //Проверка выбираемых значений
         {
