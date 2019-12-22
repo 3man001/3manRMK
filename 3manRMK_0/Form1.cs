@@ -114,14 +114,25 @@ namespace _3manRMK_0
             if (ExchangeStatus[1] == 1)
             {
                 int MessageCount = Drv.MessageCount; //КоличествоСообщений
-                try
+                int Interval = (Date_Now - Drv.Date).Days;
+                if (0 <= Interval & Interval < 5)
                 {
-                    int OFD_Day = Convert.ToInt32((Date_Now - Drv.Date).Days); //Прошло дней до блок
-
+                    toolStripStatus_OFD.BackColor = Color.LightGreen;
                 }
-                catch
+                else
                 {
-                    toolStripStatus_OFD.BackColor = Color.Red;
+                    if (Interval < 0)
+                    {
+                        toolStripStatus_OFD.BackColor = Color.Red;
+                    }
+                    if (5 <= Interval & Interval < 15)
+                    {
+                        toolStripStatus_OFD.BackColor = Color.Yellow;
+                    }
+                    if (Interval > 15)
+                    {
+                        toolStripStatus_OFD.BackColor = Color.Red;
+                    }
                 }
             }
             else
