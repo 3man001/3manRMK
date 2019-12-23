@@ -14,8 +14,8 @@ namespace _3manRMK_0
             InitializeComponent();
             Drv = new DrvFR();
             Size = new Size(878, 300);
-            groupBox3.Location = new Point(1, 66);
-            groupBox4.Location = new Point(1, 66);
+            groupBox3.Location = new Point(0, 40);
+            groupBox4.Location = new Point(0, 40);
             InitialArrays();
             CBox[0] = checkBox2;
             PaymentItemSign[0] = cbPaymentItemSign_1;
@@ -451,15 +451,14 @@ namespace _3manRMK_0
             int H = Size.Height;
             if (W >= 800)
             {
-                int newW = 1 + (W - 878) / 2;
-                if (W <= 878) { newW = 1; }
-                groupBox1.Location = new Point(newW, 25);
-                panel2.Location = groupBox3.Location = groupBox4.Location = new Point(newW, 66);
-                //Heiht = 310
-                if (H >= 310)
-                {
-                    panel2.Size = new Size(860, H - 130);
-                }
+                int newX = 0;
+                int newWidth = 860;
+                if (W > 878) { newX =  (W - 878) / 2; }
+                else
+                { newWidth = W - 18; }
+                panel0.Location = new Point(newX, 25);
+                panel0.Size = new Size(newWidth, H - 90);
+                panel2.Size = new Size(860, H - 130);
             }
         }
         private void tbFIO_TextChanged(object sender, EventArgs e)

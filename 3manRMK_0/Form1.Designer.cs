@@ -105,12 +105,14 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
+            this.panel0 = new System.Windows.Forms.Panel();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.panel2.SuspendLayout();
+            this.panel0.SuspendLayout();
             this.SuspendLayout();
             // 
             // tbFIO
@@ -146,7 +148,7 @@
             this.оПрограммеToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1012, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(915, 24);
             this.menuStrip1.TabIndex = 5;
             this.menuStrip1.Text = "Меню";
             // 
@@ -290,9 +292,9 @@
             this.toolStripStatus_TimeKKT,
             this.toolStripStatus_OFD,
             this.toolStripStatus_FN});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 608);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 614);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(1012, 23);
+            this.statusStrip1.Size = new System.Drawing.Size(915, 23);
             this.statusStrip1.TabIndex = 6;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -496,7 +498,7 @@
             this.groupBox3.Controls.Add(this.button1);
             this.groupBox3.Controls.Add(this.button2);
             this.groupBox3.Controls.Add(this.button3);
-            this.groupBox3.Location = new System.Drawing.Point(1, 247);
+            this.groupBox3.Location = new System.Drawing.Point(0, 220);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(860, 180);
             this.groupBox3.TabIndex = 68;
@@ -612,7 +614,7 @@
             this.groupBox1.Controls.Add(this.btnLogin);
             this.groupBox1.Controls.Add(this.tbSummAll);
             this.groupBox1.Controls.Add(this.label13);
-            this.groupBox1.Location = new System.Drawing.Point(1, 25);
+            this.groupBox1.Location = new System.Drawing.Point(0, 0);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(860, 40);
             this.groupBox1.TabIndex = 69;
@@ -634,7 +636,7 @@
             // 
             this.groupBox4.BackColor = System.Drawing.Color.Orange;
             this.groupBox4.Controls.Add(this.label18);
-            this.groupBox4.Location = new System.Drawing.Point(1, 428);
+            this.groupBox4.Location = new System.Drawing.Point(0, 400);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(860, 180);
             this.groupBox4.TabIndex = 71;
@@ -654,7 +656,6 @@
             // 
             // panel2
             // 
-            this.panel2.AutoScroll = true;
             this.panel2.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.panel2.Controls.Add(this.labelCheckType);
             this.panel2.Controls.Add(this.label1);
@@ -675,7 +676,7 @@
             this.panel2.Controls.Add(this.label2);
             this.panel2.Controls.Add(this.label3);
             this.panel2.Controls.Add(this.label5);
-            this.panel2.Location = new System.Drawing.Point(1, 66);
+            this.panel2.Location = new System.Drawing.Point(0, 40);
             this.panel2.MinimumSize = new System.Drawing.Size(860, 180);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(860, 180);
@@ -883,19 +884,28 @@
             this.label5.TabIndex = 21;
             this.label5.Text = "Кол-во ед.";
             // 
+            // panel0
+            // 
+            this.panel0.AutoScroll = true;
+            this.panel0.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.panel0.Controls.Add(this.panel2);
+            this.panel0.Controls.Add(this.groupBox4);
+            this.panel0.Controls.Add(this.groupBox1);
+            this.panel0.Controls.Add(this.groupBox3);
+            this.panel0.Location = new System.Drawing.Point(0, 25);
+            this.panel0.Name = "panel0";
+            this.panel0.Size = new System.Drawing.Size(880, 583);
+            this.panel0.TabIndex = 73;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(1029, 496);
-            this.Controls.Add(this.panel2);
+            this.ClientSize = new System.Drawing.Size(915, 637);
             this.Controls.Add(this.menuStrip1);
-            this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.statusStrip1);
-            this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.groupBox3);
+            this.Controls.Add(this.panel0);
             this.ForeColor = System.Drawing.SystemColors.ControlText;
             this.MainMenuStrip = this.menuStrip1;
             this.MinimumSize = new System.Drawing.Size(800, 310);
@@ -914,6 +924,7 @@
             this.groupBox4.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            this.panel0.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -996,6 +1007,7 @@
         private System.Windows.Forms.TextBox tbCustomer;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatus_OFD;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatus_FN;
+        private System.Windows.Forms.Panel panel0;
     }
 }
 
