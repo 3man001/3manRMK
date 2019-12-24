@@ -452,13 +452,21 @@ namespace _3manRMK_0
             if (W >= 800)
             {
                 int newX = 0;
-                int newWidth = 860;
+                int newWidth = 880;
                 if (W > 878) { newX =  (W - 878) / 2; }
                 else
                 { newWidth = W - 18; }
                 panel0.Location = new Point(newX, 25);
                 panel0.Size = new Size(newWidth, H - 90);
-                panel2.Size = new Size(860, H - 130);
+                if (bAdd.Location.Y+64 > H - 130)
+                {
+                    panel2.Size = new Size(860, bAdd.Location.Y + 64);
+                }
+                else
+                {
+                    panel2.Size = new Size(860, H - 130);
+                }
+                
             }
         }
         private void tbFIO_TextChanged(object sender, EventArgs e)
@@ -1014,6 +1022,10 @@ namespace _3manRMK_0
             ResumeLayout(false);
             PerformLayout();
             bAdd.Location = new Point(bAdd.Location.X, bAdd.Location.Y+30);
+            if (bAdd.Location.Y + 64 > panel2.Size.Height)
+            {
+                panel2.Size = new Size(panel2.Size.Width, panel2.Size.Height + 30);
+            }
         }
 
         private void toolStripMenuItem1_Click(object sender, EventArgs e)

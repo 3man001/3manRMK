@@ -148,7 +148,7 @@
             this.оПрограммеToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(915, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(879, 24);
             this.menuStrip1.TabIndex = 5;
             this.menuStrip1.Text = "Меню";
             // 
@@ -294,7 +294,7 @@
             this.toolStripStatus_FN});
             this.statusStrip1.Location = new System.Drawing.Point(0, 614);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(915, 23);
+            this.statusStrip1.Size = new System.Drawing.Size(879, 23);
             this.statusStrip1.TabIndex = 6;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -894,7 +894,7 @@
             this.panel0.Controls.Add(this.groupBox3);
             this.panel0.Location = new System.Drawing.Point(0, 25);
             this.panel0.Name = "panel0";
-            this.panel0.Size = new System.Drawing.Size(880, 583);
+            this.panel0.Size = new System.Drawing.Size(878, 583);
             this.panel0.TabIndex = 73;
             // 
             // Form1
@@ -902,7 +902,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(915, 637);
+            this.ClientSize = new System.Drawing.Size(879, 637);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.panel0);
