@@ -57,6 +57,10 @@ namespace _3manRMK_0
             }
             if (ResultCode == 115)
             {
+                if (Mode == 3)
+                {
+                    return "В кассовом аппарате смена первысили 24 часа, для перехода в рабочий режим её нужно закрыть";
+                }
                 if (Mode == 4)
                 {
                     return "В кассовом аппарате закрыта смена, для перехода в рабочий режим её нужно открыть.";
@@ -71,7 +75,7 @@ namespace _3manRMK_0
         private void button1_Click(object sender, EventArgs e)
         {
             SendMail(LAllCode.Text);
-            this.Close();
+            Close();
         }
     }
 }

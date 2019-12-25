@@ -89,7 +89,7 @@
             this.labelCheckType = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.bAdd = new System.Windows.Forms.Button();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.cB_FN_TaxType = new System.Windows.Forms.ComboBox();
             this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.tbSumm1_1 = new System.Windows.Forms.TextBox();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
@@ -660,7 +660,7 @@
             this.panel2.Controls.Add(this.labelCheckType);
             this.panel2.Controls.Add(this.label1);
             this.panel2.Controls.Add(this.bAdd);
-            this.panel2.Controls.Add(this.comboBox1);
+            this.panel2.Controls.Add(this.cB_FN_TaxType);
             this.panel2.Controls.Add(this.checkBox2);
             this.panel2.Controls.Add(this.tbSumm1_1);
             this.panel2.Controls.Add(this.checkBox1);
@@ -714,16 +714,15 @@
             this.bAdd.UseVisualStyleBackColor = false;
             this.bAdd.Click += new System.EventHandler(this.bAdd_Click);
             // 
-            // comboBox1
+            // cB_FN_TaxType
             // 
-            this.comboBox1.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
-            "вавыаыва"});
-            this.comboBox1.Location = new System.Drawing.Point(1, 31);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 24);
-            this.comboBox1.TabIndex = 5;
+            this.cB_FN_TaxType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cB_FN_TaxType.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cB_FN_TaxType.FormattingEnabled = true;
+            this.cB_FN_TaxType.Location = new System.Drawing.Point(1, 31);
+            this.cB_FN_TaxType.Name = "cB_FN_TaxType";
+            this.cB_FN_TaxType.Size = new System.Drawing.Size(121, 24);
+            this.cB_FN_TaxType.TabIndex = 5;
             // 
             // checkBox2
             // 
@@ -910,7 +909,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.MinimumSize = new System.Drawing.Size(800, 310);
             this.Name = "Form1";
-            this.Text = "3mannRMK_00";
+            this.Text = "3mannRMK d1.0.50";
             this.SizeChanged += new System.EventHandler(this.Form1_SizeChanged);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
@@ -979,7 +978,7 @@
         private System.Windows.Forms.Label labelCheckType;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button bAdd;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox cB_FN_TaxType;
         private System.Windows.Forms.CheckBox checkBox2;
         private System.Windows.Forms.TextBox tbSumm1_1;
         private System.Windows.Forms.CheckBox checkBox1;

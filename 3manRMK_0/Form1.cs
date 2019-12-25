@@ -171,6 +171,26 @@ namespace _3manRMK_0
             {
                 toolStripStatus_TimeKKT.BackColor = Color.Red; //Расхождение более 5 мин
             }
+
+            Drv.FNGetFiscalizationResult(); //Полусить итоги фискализации
+            string FN_TaxType = Convert.ToString(Drv.TaxType, 2); //Получить Ситемы налогообложения
+            FN_TaxType = new string('0', 6 - FN_TaxType.Length) + FN_TaxType;
+            if (FN_TaxType[5] == '1')
+            { cB_FN_TaxType.Items.Add("Основная"); }
+            if (FN_TaxType[4] == '1')
+            { cB_FN_TaxType.Items.Add("УСН доходы"); }
+            if (FN_TaxType[3] == '1')
+            { cB_FN_TaxType.Items.Add("УСН доходы-расходы"); }
+            if (FN_TaxType[2] == '1')
+            { cB_FN_TaxType.Items.Add("ЕНВД"); }
+            if (FN_TaxType[1] == '1')
+            { cB_FN_TaxType.Items.Add("ЕСН"); }
+            if (FN_TaxType[0] == '1')
+            { cB_FN_TaxType.Items.Add("ПСН"); }
+            if (cB_FN_TaxType.Items.Count == 1)
+            {
+               // cB_FN_TaxType.Text = cB_FN_TaxType[;
+            }
         }
         public decimal ToDecimal (string s)
         { return Convert.ToDecimal(s); }
@@ -336,7 +356,7 @@ namespace _3manRMK_0
             Items.Add("Возврат расхода", 4);
             return Items[Item];
         }
-        private void RegPosition(int CheckType, string NameProduct, Decimal Price, Double Quantity,
+        private bool RegPosition(int CheckType, string NameProduct, Decimal Price, Double Quantity,
             Decimal Summ1, int Tax1, int PaymentItemSign) //Регистрация позиции в чеке
         {
             Drv.CheckType = CheckType;
@@ -353,9 +373,10 @@ namespace _3manRMK_0
             try
             { Drv.FNOperation(); } // Пробиваем позицию
             catch
-            { UpdateResult(); }
+            { return false; }
+            return true;
         }
-        private void CloseChek() // Формируем закрытие чека
+        private bool CloseChek(int TaxType = 1) // Формируем закрытие чека
         {
             Drv.Summ1 = ToDecimal(tbSumm1.Text); // Наличные
             Drv.Summ2 = ToDecimal(tbSumm2.Text); // Остальные типы оплаты нулевые, но их необходимо заполнить
@@ -380,13 +401,24 @@ namespace _3manRMK_0
             Drv.TaxValue4 = 0;
             Drv.TaxValue5 = 0;
             Drv.TaxValue6 = 0;
-            Drv.TaxType = 1; // Основная система налогообложения
+            Drv.TaxType = TaxType; //1 - Основная система налогообложения
             Drv.StringForPrinting = "";
             try
-            { Drv.FNCloseCheckEx(); } //Закрытие чека
+            {
+                Drv.FNCloseCheckEx(); //Закрытие чека
+            }
             catch
-            { UpdateResult(); }
-            UpdateResult();
+            {
+                return false;
+            }
+            if (Drv.ResultCode == 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
         private void SendFIO() //Указывает Зарегестрированного кассира в документах
         {
@@ -802,7 +834,7 @@ namespace _3manRMK_0
                 int Tax10; //Налоговая ставка 0..6 (0-БезНДС)
                 int PaymentItemSign0; // Признак предмета расчета 1..19 (1-Товар)
 
-                try //Если смена закрыта то Открыть как положено
+                try
                 {
                     Drv.Connect();
                     Drv.GetShortECRStatus();
@@ -812,10 +844,11 @@ namespace _3manRMK_0
                     }
                 }
                 catch
-                { UpdateResult(); }
+                { UpdateResult(); } //Если смена закрыта то Открыть как положено
 
                 groupBox3.Visible = false;
                 groupBox4.Visible = true;
+
                 for (int i=0; i<CBox.Length; i++) //Регистрация позиций в чеке
                 {
                     if (CBox[i].Checked)
@@ -827,48 +860,65 @@ namespace _3manRMK_0
                         Tax10 = EnterItems(Tax[i].Text); //Налоговая ставка 0..6 (0-БезНДС)
                         PaymentItemSign0 = EnterItems(PaymentItemSign[i].Text); // Признак предмета расчета 1..19 (1-Товар)
 
-                        RegPosition(CheckType, NameProduct0, Price0, Quantity0, Summ10, Tax10, PaymentItemSign0); //Регистрация позиции
+                        if (!RegPosition(CheckType, NameProduct0, Price0, Quantity0, Summ10, Tax10, PaymentItemSign0)) //Регистрация позиции
+                        { break; } 
                     }
                 }
-                SendFIO();
-                
-                if (maskTBPhone.BackColor == Color.LightGreen) //Отправка чека СМС если есть номер
+                if (Drv.ResultCode == 0) //Если позиции пробитилсь то идем дальше
                 {
-                    string s = maskTBPhone.Text;
-                    s = s.Substring(0, 2) + s.Substring(3, 3) + s.Substring(8, 3) + s.Substring(12, 2) + s.Substring(15, 2);
-                    Drv.CustomerEmail = s;
-                    Drv.FNSendCustomerEmail();
-                }
-                if (tbEmail.BackColor == Color.LightGreen) //Отправка чека на Email если введен адрес
-                {
-                    Drv.CustomerEmail = tbEmail.Text;
-                    Drv.FNSendCustomerEmail();
-                }
-                if (tbCustomer.BackColor == Color.LightGreen & tbCustomerINN.BackColor == Color.LightGreen) //Регистрация покупателя
-                {
-                    Drv.TagNumber = 1227; //Отправка Должности и Фамилии кассира
-                    Drv.TagType = 7;
-                    Drv.TagValueStr = tbCustomer.Text;
-                    Drv.FNSendTag();
-                    Drv.TagNumber = 1228; //Отправка Должности и Фамилии кассира
-                    Drv.TagType = 7;
-                    Drv.TagValueStr = tbCustomerINN.Text;
-                    if (Drv.TagValueStr.Length == 10)
-                    {  Drv.TagValueStr = Drv.TagValueStr + "00"; }
-                    Drv.FNSendTag();
-                }
-                
+                    SendFIO(); //Регистрация кассира в чеке
 
-                CloseChek(); // Формирует закрытие чека
-                tbSumm1.Text = "0,00";
-                tbSumm2.Text = "0,00";
-                maskTBPhone.Text = "";
-                tbEmail.Text = "";
-                tbCustomer.Text = "";
-                tbCustomerINN.Text = "";
-                InitialArrays();
-                tbSumm1.Visible = false;
-                tbSumm2.Visible = false;
+                    if (maskTBPhone.BackColor == Color.LightGreen) //Отправка чека СМС если есть номер
+                    {
+                        string s = maskTBPhone.Text;
+                        s = s.Substring(0, 2) + s.Substring(3, 3) + s.Substring(8, 3) + s.Substring(12, 2) + s.Substring(15, 2);
+                        Drv.CustomerEmail = s;
+                        Drv.FNSendCustomerEmail();
+                    }
+                    else
+                    {
+                        if (tbEmail.BackColor == Color.LightGreen) //Отправка чека на Email если введен адрес
+                        {
+                            Drv.CustomerEmail = tbEmail.Text;
+                            Drv.FNSendCustomerEmail();
+                        }
+                    }
+                    
+                    if (tbCustomer.BackColor == Color.LightGreen & tbCustomerINN.BackColor == Color.LightGreen) //Регистрация покупателя
+                    {
+                        Drv.TagNumber = 1227; //Отправка Должности и Фамилии кассира
+                        Drv.TagType = 7;
+                        Drv.TagValueStr = tbCustomer.Text;
+                        Drv.FNSendTag();
+                        Drv.TagNumber = 1228; //Отправка Должности и Фамилии кассира
+                        Drv.TagType = 7;
+                        Drv.TagValueStr = tbCustomerINN.Text;
+                        if (Drv.TagValueStr.Length == 10)
+                        { Drv.TagValueStr = Drv.TagValueStr + "00"; }
+                        Drv.FNSendTag();
+                    }
+
+                    if (CloseChek()) // Формирует закрытие чека
+                    {
+                        tbSumm1.Text = "0,00";
+                        tbSumm2.Text = "0,00";
+                        maskTBPhone.Text = "";
+                        tbEmail.Text = "";
+                        tbCustomer.Text = "";
+                        tbCustomerINN.Text = "";
+                        InitialArrays();
+                        tbSumm1.Visible = false;
+                        tbSumm2.Visible = false;
+                    }
+                    else
+                    {
+                        UpdateResult();
+                    }
+                }
+                else
+                {
+                    UpdateResult();
+                }
                 panel2.Visible = true;
                 groupBox4.Visible = false;
             }
