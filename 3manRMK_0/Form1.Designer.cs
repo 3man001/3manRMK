@@ -686,19 +686,20 @@
             // labelCheckType
             // 
             this.labelCheckType.AutoSize = true;
-            this.labelCheckType.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelCheckType.Location = new System.Drawing.Point(132, 11);
+            this.labelCheckType.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelCheckType.Location = new System.Drawing.Point(140, 11);
             this.labelCheckType.Name = "labelCheckType";
-            this.labelCheckType.Size = new System.Drawing.Size(66, 20);
+            this.labelCheckType.Size = new System.Drawing.Size(78, 24);
             this.labelCheckType.TabIndex = 75;
             this.labelCheckType.Text = "Приход";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 16);
+            this.label1.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label1.Location = new System.Drawing.Point(6, 15);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(52, 13);
+            this.label1.Size = new System.Drawing.Size(62, 14);
             this.label1.TabIndex = 41;
             this.label1.Text = "Тип СНО";
             // 
@@ -721,8 +722,9 @@
             this.cB_FN_TaxType.FormattingEnabled = true;
             this.cB_FN_TaxType.Location = new System.Drawing.Point(1, 31);
             this.cB_FN_TaxType.Name = "cB_FN_TaxType";
-            this.cB_FN_TaxType.Size = new System.Drawing.Size(121, 24);
+            this.cB_FN_TaxType.Size = new System.Drawing.Size(140, 24);
             this.cB_FN_TaxType.TabIndex = 5;
+            this.cB_FN_TaxType.TextChanged += new System.EventHandler(this.cB_FN_TaxType_TextChanged);
             // 
             // checkBox2
             // 

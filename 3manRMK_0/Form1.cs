@@ -178,15 +178,15 @@ namespace _3manRMK_0
             if (FN_TaxType[5] == '1')
             { cB_FN_TaxType.Items.Add("Основная"); }
             if (FN_TaxType[4] == '1')
-            { cB_FN_TaxType.Items.Add("УСН доходы"); }
+            { cB_FN_TaxType.Items.Add("УСН доход"); }
             if (FN_TaxType[3] == '1')
-            { cB_FN_TaxType.Items.Add("УСН доходы-расходы"); }
+            { cB_FN_TaxType.Items.Add("УСН доход-расход"); }
             if (FN_TaxType[2] == '1')
             { cB_FN_TaxType.Items.Add("ЕНВД"); }
             if (FN_TaxType[1] == '1')
-            { cB_FN_TaxType.Items.Add("ЕСН"); }
+            { cB_FN_TaxType.Items.Add("ЕСХН"); }
             if (FN_TaxType[0] == '1')
-            { cB_FN_TaxType.Items.Add("ПСН"); }
+            { cB_FN_TaxType.Items.Add("Патент"); }
             if (cB_FN_TaxType.Items.Count == 1)
             {
                // cB_FN_TaxType.Text = cB_FN_TaxType[;
@@ -354,6 +354,13 @@ namespace _3manRMK_0
             Items.Add("Возврат прихода", 2);
             Items.Add("Расход", 3);
             Items.Add("Возврат расхода", 4);
+
+            Items.Add("Основная", 1);
+            Items.Add("УСН доход", 2);
+            Items.Add("УСН доход-расход", 4);
+            Items.Add("ЕНВД", 8);
+            Items.Add("ЕСХН", 16);
+            Items.Add("Патент", 32);
             return Items[Item];
         }
         private bool RegPosition(int CheckType, string NameProduct, Decimal Price, Double Quantity,
@@ -376,7 +383,7 @@ namespace _3manRMK_0
             { return false; }
             return true;
         }
-        private bool CloseChek(int TaxType = 1) // Формируем закрытие чека
+        private bool CloseChek(int TaxType = 2) // Формируем закрытие чека
         {
             Drv.Summ1 = ToDecimal(tbSumm1.Text); // Наличные
             Drv.Summ2 = ToDecimal(tbSumm2.Text); // Остальные типы оплаты нулевые, но их необходимо заполнить
@@ -897,8 +904,8 @@ namespace _3manRMK_0
                         { Drv.TagValueStr = Drv.TagValueStr + "00"; }
                         Drv.FNSendTag();
                     }
-
-                    if (CloseChek()) // Формирует закрытие чека
+            
+                    if (CloseChek(EnterItems(cB_FN_TaxType.Text))) // Формирует закрытие чека нужной СНО
                     {
                         tbSumm1.Text = "0,00";
                         tbSumm2.Text = "0,00";
@@ -1002,7 +1009,8 @@ namespace _3manRMK_0
             tbPrice_TextChanged(sender, e);
             tbQuantity_TextChanged(sender, e);
             tbSumm_TextChanged(sender, e);
-            if (tbSummAll.Text != "Error")
+            cB_FN_TaxType_TextChanged(sender, e);
+            if (tbSummAll.Text != "Error" & cB_FN_TaxType.Text != "")
             {
                 groupBox3.Visible = true;
                 panel2.Visible = false;
@@ -1081,6 +1089,17 @@ namespace _3manRMK_0
         private void toolStripMenuItem1_Click(object sender, EventArgs e)
         {
 
+        }
+        private void cB_FN_TaxType_TextChanged(object sender, EventArgs e)
+        {
+            if (cB_FN_TaxType.Text != "")
+            {
+                label1.BackColor = Color.LightGreen; 
+            }
+            else
+            {
+                label1.BackColor = Color.LightCoral;
+            }
         }
     }
 }
