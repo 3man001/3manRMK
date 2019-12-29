@@ -580,7 +580,9 @@
             this.tbChange.TabIndex = 5;
             this.tbChange.Text = "0,00";
             this.tbChange.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.tbChange.Visible = false;
             this.tbChange.TextChanged += new System.EventHandler(this.tbChange_TextChanged);
+            this.tbChange.VisibleChanged += new System.EventHandler(this.tbChange_TextChanged);
             // 
             // button12
             // 
