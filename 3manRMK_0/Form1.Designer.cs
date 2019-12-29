@@ -106,6 +106,8 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.panel0 = new System.Windows.Forms.Panel();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -129,7 +131,7 @@
             // button4
             // 
             this.button4.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.Location = new System.Drawing.Point(280, 10);
+            this.button4.Location = new System.Drawing.Point(333, 10);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(205, 25);
             this.button4.TabIndex = 6;
@@ -354,7 +356,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(285, 42);
+            this.label6.Location = new System.Drawing.Point(338, 42);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(58, 13);
             this.label6.TabIndex = 22;
@@ -364,7 +366,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(390, 42);
+            this.label7.Location = new System.Drawing.Point(443, 42);
             this.label7.Name = "label7";
             this.label7.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.label7.Size = new System.Drawing.Size(83, 13);
@@ -375,7 +377,7 @@
             // tbSumm1
             // 
             this.tbSumm1.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.tbSumm1.Location = new System.Drawing.Point(280, 62);
+            this.tbSumm1.Location = new System.Drawing.Point(333, 62);
             this.tbSumm1.MaxLength = 11;
             this.tbSumm1.Name = "tbSumm1";
             this.tbSumm1.Size = new System.Drawing.Size(95, 23);
@@ -388,7 +390,7 @@
             // tbSumm2
             // 
             this.tbSumm2.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.tbSumm2.Location = new System.Drawing.Point(390, 62);
+            this.tbSumm2.Location = new System.Drawing.Point(443, 62);
             this.tbSumm2.MaxLength = 11;
             this.tbSumm2.Name = "tbSumm2";
             this.tbSumm2.Size = new System.Drawing.Size(95, 23);
@@ -436,7 +438,7 @@
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button1.Location = new System.Drawing.Point(280, 97);
+            this.button1.Location = new System.Drawing.Point(333, 97);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(95, 23);
             this.button1.TabIndex = 12;
@@ -447,7 +449,7 @@
             // button2
             // 
             this.button2.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button2.Location = new System.Drawing.Point(390, 97);
+            this.button2.Location = new System.Drawing.Point(443, 97);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(95, 23);
             this.button2.TabIndex = 13;
@@ -458,7 +460,7 @@
             // button3
             // 
             this.button3.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button3.Location = new System.Drawing.Point(335, 127);
+            this.button3.Location = new System.Drawing.Point(388, 127);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(93, 23);
             this.button3.TabIndex = 14;
@@ -481,6 +483,8 @@
             // 
             this.groupBox3.AccessibleRole = System.Windows.Forms.AccessibleRole.Table;
             this.groupBox3.BackColor = System.Drawing.SystemColors.Window;
+            this.groupBox3.Controls.Add(this.label15);
+            this.groupBox3.Controls.Add(this.label14);
             this.groupBox3.Controls.Add(this.tbCustomerINN);
             this.groupBox3.Controls.Add(this.tbCustomer);
             this.groupBox3.Controls.Add(this.label17);
@@ -525,13 +529,13 @@
             this.tbCustomer.Name = "tbCustomer";
             this.tbCustomer.Size = new System.Drawing.Size(200, 22);
             this.tbCustomer.TabIndex = 78;
-            this.tbCustomer.Text = "Иванов Иван Иванович";
+            this.tbCustomer.Text = "ООО Ромашка";
             this.tbCustomer.TextChanged += new System.EventHandler(this.tbCustomer_TextChanged);
             // 
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(3, 91);
+            this.label17.Location = new System.Drawing.Point(3, 81);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(35, 13);
             this.label17.TabIndex = 77;
@@ -540,7 +544,7 @@
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(40, 65);
+            this.label16.Location = new System.Drawing.Point(40, 55);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(29, 13);
             this.label16.TabIndex = 76;
@@ -550,7 +554,7 @@
             // 
             this.maskTBPhone.BackColor = System.Drawing.SystemColors.Window;
             this.maskTBPhone.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.maskTBPhone.Location = new System.Drawing.Point(75, 60);
+            this.maskTBPhone.Location = new System.Drawing.Point(75, 50);
             this.maskTBPhone.Mask = "+7(000) 000-00-00";
             this.maskTBPhone.Name = "maskTBPhone";
             this.maskTBPhone.Size = new System.Drawing.Size(143, 23);
@@ -561,7 +565,7 @@
             // 
             this.tbEmail.AccessibleDescription = "";
             this.tbEmail.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.tbEmail.Location = new System.Drawing.Point(38, 86);
+            this.tbEmail.Location = new System.Drawing.Point(38, 76);
             this.tbEmail.MaxLength = 254;
             this.tbEmail.Name = "tbEmail";
             this.tbEmail.Size = new System.Drawing.Size(180, 23);
@@ -572,7 +576,7 @@
             // 
             this.tbChange.BackColor = System.Drawing.SystemColors.Window;
             this.tbChange.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.tbChange.Location = new System.Drawing.Point(108, 14);
+            this.tbChange.Location = new System.Drawing.Point(108, 10);
             this.tbChange.MaxLength = 11;
             this.tbChange.Name = "tbChange";
             this.tbChange.ReadOnly = true;
@@ -599,7 +603,7 @@
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label11.Location = new System.Drawing.Point(38, 19);
+            this.label11.Location = new System.Drawing.Point(38, 14);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(61, 18);
             this.label11.TabIndex = 47;
@@ -900,6 +904,24 @@
             this.panel0.Size = new System.Drawing.Size(878, 583);
             this.panel0.TabIndex = 73;
             // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(32, 152);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(76, 13);
+            this.label14.TabIndex = 80;
+            this.label14.Text = "ИНН Клиента";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(0, 104);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(284, 13);
+            this.label15.TabIndex = 81;
+            this.label15.Text = "Наименование\\ФИО, номер, серия паспорта Клиента";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1011,6 +1033,8 @@
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatus_OFD;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatus_FN;
         private System.Windows.Forms.Panel panel0;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label label14;
     }
 }
 
