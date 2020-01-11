@@ -322,7 +322,7 @@ namespace _3manRMK_0
             
             return true;
         }
-        private void UpdateResult() //Проверка состояния ККТ
+        private bool UpdateResult() //Проверка состояния ККТ
         {
             int ResultCode = Drv.ResultCode;
             string ResultCodeDesc = Drv.ResultCodeDescription;
@@ -334,6 +334,11 @@ namespace _3manRMK_0
                 ErrorsForm ErorrsformP = new ErrorsForm(ResultCode, ResultCodeDesc, Drv.ECRMode, Drv.ECRModeDescription, Drv.ECRMode8Status, Drv.ECRModeStatus, Drv.ECRAdvancedMode, Drv.ECRAdvancedModeDescription);
                 ErorrsformP.ShowDialog(this);
                 ErorrsformP.Dispose();
+                return false;
+            }
+            else
+            {
+                return true;
             }
         }
         private int EnterItems(string Item) //Проверка выбираемых значений
@@ -933,17 +938,20 @@ namespace _3manRMK_0
             }
         }
         private void btnLogin_Click(object sender, EventArgs e) //Регистрация кассира
-        {
-            KKT_StatusCheck();
+        {            
             if (btnLogin.BackColor == Color.Lime)
             {
-                tbFIO_TextChanged(sender, e);
-                tbINN_TextChanged(sender, e);
-                if ((tbFIO.BackColor == Color.Snow) & (tbINN.BackColor == Color.Snow))
+                if (UpdateResult()) //Если ККТ готова к работе то Авторизуемся
                 {
-                    btnLogin.BackColor = Color.DodgerBlue;
-                    btnLogin.Text = "LogOut";
-                    tbFIO.ReadOnly = tbINN.ReadOnly = label13.Visible = tbSummAll.Visible = panel2.Visible = true;
+                    KKT_StatusCheck();
+                    tbFIO_TextChanged(sender, e);
+                    tbINN_TextChanged(sender, e);
+                    if ((tbFIO.BackColor == Color.Snow) & (tbINN.BackColor == Color.Snow))
+                    {
+                        btnLogin.BackColor = Color.DodgerBlue;
+                        btnLogin.Text = "LogOut";
+                        tbFIO.ReadOnly = tbINN.ReadOnly = label13.Visible = tbSummAll.Visible = panel2.Visible = true;
+                    }
                 }
             }
             else
