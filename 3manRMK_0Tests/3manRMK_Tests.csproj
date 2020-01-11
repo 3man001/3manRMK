@@ -60,9 +60,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\3manRMK_0\3manRMK_0.csproj">
+    <ProjectReference Include="..\3manRMK_0\3manRMK.csproj">
       <Project>{E4AC78CE-746B-4A94-9A7D-12D74762EA76}</Project>
-      <Name>3manRMK_0</Name>
+      <Name>3manRMK</Name>
     </ProjectReference>
   </ItemGroup>
   <Choose>

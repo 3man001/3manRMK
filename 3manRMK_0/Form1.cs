@@ -62,102 +62,109 @@ namespace _3manRMK_0
         }
         private void KKT_StatusCheck() //проверяет статус ОФД и ФН приотткрытии и закрытии смены
         {
-            DateTime Date_Now = DateTime.Today;
-            Drv.FNGetStatus(); //Запрос Статуса ФН
-            string q = Convert.ToString(Drv.FNWarningFlags,2); //ФНФлагиПредупреждения
-            q = new string('0', 4-q.Length) + q;
-            if (q == "0000") //Все хорошо
+            if (UpdateResult())
             {
-                toolStripStatus_FN.BackColor = Color.LightGreen;
-            }
-            else
-            {
-                if (q[0] == '1') //Превышено время ожидания ответа ОФД
+                DateTime Date_Now = DateTime.Today;
+                Drv.FNGetStatus(); //Запрос Статуса ФН
+                string q = Convert.ToString(Drv.FNWarningFlags, 2); //ФНФлагиПредупреждения
+                q = new string('0', 4 - q.Length) + q;
+                if (q == "0000") //Все хорошо
                 {
-                    toolStripStatus_FN.BackColor = Color.Yellow;
-                }
-                if (q[2] == '1') //До замены ФН 30 дней
-                {
-                    toolStripStatus_FN.BackColor = Color.Yellow;
-                    Drv.FNGetExpirationTime(); //ФНЗапросСрокаДействия
-                    if ((Drv.Date - Date_Now).Days > 0)
-                    {
-                        toolStripStatus_FN.Text = "ФН < " + (Drv.Date - Date_Now).Days + "д.";
-                    }
-                    else
-                    {
-                        toolStripStatus_FN.Text = "ФН истёк";
-                    }       
-                }
-                if (q[3] == '1') //Срояная замена ФН осталось 3 дня 
-                {
-                    toolStripStatus_FN.BackColor = Color.Red;
-                    Drv.FNGetExpirationTime(); //ФНЗапросСрокаДействия
-                    if ((Drv.Date - Date_Now).Days > 0)
-                    {
-                        toolStripStatus_FN.Text = "ФН < " + (Drv.Date - Date_Now).Days + "д.";
-                    }
-                    else
-                    {
-                        toolStripStatus_FN.Text = "ФН истёк";
-                    }
-                }
-                if (q[1] == '1') //ФН заполнен на 90%
-                {
-                    toolStripStatus_FN.BackColor = Color.Red;
-                }
-            }
-
-            Drv.FNGetInfoExchangeStatus(); //Статус обмена с ОФД
-            string ExchangeStatus = Convert.ToString(Drv.InfoExchangeStatus,2); //СтатусИнфОбмена
-            ExchangeStatus = new string('0', 5 - ExchangeStatus.Length) + ExchangeStatus;
-            if (ExchangeStatus[1] == 1)
-            {
-                int MessageCount = Drv.MessageCount; //КоличествоСообщений
-                int Interval_Days = (Date_Now - Drv.Date).Days;
-                if (0 <= Interval_Days & Interval_Days < 5)
-                {
-                    toolStripStatus_OFD.BackColor = Color.LightGreen;
+                    toolStripStatus_FN.BackColor = Color.LightGreen;
                 }
                 else
                 {
-                    if (Interval_Days < 0)
+                    if (q[0] == '1') //Превышено время ожидания ответа ОФД
                     {
-                        toolStripStatus_OFD.BackColor = Color.Red;
+                        toolStripStatus_FN.BackColor = Color.Yellow;
                     }
-                    if (5 <= Interval_Days & Interval_Days < 15)
+                    if (q[2] == '1') //До замены ФН 30 дней
                     {
-                        toolStripStatus_OFD.BackColor = Color.Yellow;
+                        toolStripStatus_FN.BackColor = Color.Yellow;
+                        Drv.FNGetExpirationTime(); //ФНЗапросСрокаДействия
+                        if ((Drv.Date - Date_Now).Days > 0)
+                        {
+                            toolStripStatus_FN.Text = "ФН < " + (Drv.Date - Date_Now).Days + "д.";
+                        }
+                        else
+                        {
+                            toolStripStatus_FN.Text = "ФН истёк";
+                        }
                     }
-                    if (Interval_Days > 15)
+                    if (q[3] == '1') //Срояная замена ФН осталось 3 дня 
                     {
-                        toolStripStatus_OFD.BackColor = Color.Red;
+                        toolStripStatus_FN.BackColor = Color.Red;
+                        Drv.FNGetExpirationTime(); //ФНЗапросСрокаДействия
+                        if ((Drv.Date - Date_Now).Days > 0)
+                        {
+                            toolStripStatus_FN.Text = "ФН < " + (Drv.Date - Date_Now).Days + "д.";
+                        }
+                        else
+                        {
+                            toolStripStatus_FN.Text = "ФН истёк";
+                        }
+                    }
+                    if (q[1] == '1') //ФН заполнен на 90%
+                    {
+                        toolStripStatus_FN.BackColor = Color.Red;
                     }
                 }
-            }
-            else
-            {
-                toolStripStatus_OFD.BackColor = Color.LightGreen;
-            }
 
-            Date_Now = DateTime.Now; //Текущее время на ПК
-            Drv.GetECRStatus(); //ПолучитьСостояниеККМ
-            DateTime DateTime_KKT = DateTime.Parse(Drv.Date.Day + "." + Drv.Date.Month + "." + Drv.Date.Year +" "
-                + Drv.Time.Hour +":"+ Drv.Time.Minute + ":" + Drv.Time.Second); //Внутренняя дата время ККМ
-            TimeSpan Interval = Date_Now - DateTime_KKT;
-            if ( Interval.Days == 0 )
-            {
-                if (Interval.Hours == 0)
+                Drv.FNGetInfoExchangeStatus(); //Статус обмена с ОФД
+                string ExchangeStatus = Convert.ToString(Drv.InfoExchangeStatus, 2); //СтатусИнфОбмена
+                ExchangeStatus = new string('0', 5 - ExchangeStatus.Length) + ExchangeStatus;
+                if (ExchangeStatus[1] == 1)
                 {
-                    if (-5 <= Interval.Minutes & Interval.Minutes <= 5)
+                    int MessageCount = Drv.MessageCount; //КоличествоСообщений
+                    int Interval_Days = (Date_Now - Drv.Date).Days;
+                    if (0 <= Interval_Days & Interval_Days < 5)
                     {
-                        toolStripStatus_TimeKKT.BackColor = Color.Yellow; //Обратить внимание
+                        toolStripStatus_OFD.BackColor = Color.LightGreen;
                     }
-                    if (-3 <= Interval.Minutes & Interval.Minutes <= 3)
+                    else
                     {
-                        toolStripStatus_TimeKKT.BackColor = Color.LightGreen; //Не значительное расхождение
+                        if (Interval_Days < 0)
+                        {
+                            toolStripStatus_OFD.BackColor = Color.Red;
+                        }
+                        if (5 <= Interval_Days & Interval_Days < 15)
+                        {
+                            toolStripStatus_OFD.BackColor = Color.Yellow;
+                        }
+                        if (Interval_Days > 15)
+                        {
+                            toolStripStatus_OFD.BackColor = Color.Red;
+                        }
                     }
-                    if (-5 > Interval.Minutes | Interval.Minutes > 5)
+                }
+                else
+                {
+                    toolStripStatus_OFD.BackColor = Color.LightGreen;
+                }
+
+                Date_Now = DateTime.Now; //Текущее время на ПК
+                Drv.GetECRStatus(); //ПолучитьСостояниеККМ
+                DateTime DateTime_KKT = DateTime.Parse(Drv.Date.Day + "." + Drv.Date.Month + "." + Drv.Date.Year + " "
+                    + Drv.Time.Hour + ":" + Drv.Time.Minute + ":" + Drv.Time.Second); //Внутренняя дата время ККМ
+                TimeSpan Interval = Date_Now - DateTime_KKT;
+                if (Interval.Days == 0)
+                {
+                    if (Interval.Hours == 0)
+                    {
+                        if (-5 <= Interval.Minutes & Interval.Minutes <= 5)
+                        {
+                            toolStripStatus_TimeKKT.BackColor = Color.Yellow; //Обратить внимание
+                        }
+                        if (-3 <= Interval.Minutes & Interval.Minutes <= 3)
+                        {
+                            toolStripStatus_TimeKKT.BackColor = Color.LightGreen; //Не значительное расхождение
+                        }
+                        if (-5 > Interval.Minutes | Interval.Minutes > 5)
+                        {
+                            toolStripStatus_TimeKKT.BackColor = Color.Red; //Расхождение более 5 мин
+                        }
+                    }
+                    else
                     {
                         toolStripStatus_TimeKKT.BackColor = Color.Red; //Расхождение более 5 мин
                     }
@@ -166,31 +173,27 @@ namespace _3manRMK_0
                 {
                     toolStripStatus_TimeKKT.BackColor = Color.Red; //Расхождение более 5 мин
                 }
-            }
-            else
-            {
-                toolStripStatus_TimeKKT.BackColor = Color.Red; //Расхождение более 5 мин
-            }
 
-            Drv.FNGetFiscalizationResult(); //Полусить итоги фискализации
-            string FN_TaxType = Convert.ToString(Drv.TaxType, 2); //Получить Ситемы налогообложения
-            FN_TaxType = new string('0', 6 - FN_TaxType.Length) + FN_TaxType;
-            //FN_TaxType = "111111";
-            if (FN_TaxType[5] == '1')
-            { cB_FN_TaxType.Items.Add("Основная"); }
-            if (FN_TaxType[4] == '1')
-            { cB_FN_TaxType.Items.Add("УСН доход"); }
-            if (FN_TaxType[3] == '1')
-            { cB_FN_TaxType.Items.Add("УСН доход-расход"); }
-            if (FN_TaxType[2] == '1')
-            { cB_FN_TaxType.Items.Add("ЕНВД"); }
-            if (FN_TaxType[1] == '1')
-            { cB_FN_TaxType.Items.Add("ЕСХН"); }
-            if (FN_TaxType[0] == '1')
-            { cB_FN_TaxType.Items.Add("Патент"); }
-            if (cB_FN_TaxType.Items.Count == 1)
-            {
-               // cB_FN_TaxType.Text = cB_FN_TaxType[;
+                Drv.FNGetFiscalizationResult(); //Полусить итоги фискализации
+                string FN_TaxType = Convert.ToString(Drv.TaxType, 2); //Получить Ситемы налогообложения
+                FN_TaxType = new string('0', 6 - FN_TaxType.Length) + FN_TaxType;
+                //FN_TaxType = "111111";
+                if (FN_TaxType[5] == '1')
+                { cB_FN_TaxType.Items.Add("Основная"); }
+                if (FN_TaxType[4] == '1')
+                { cB_FN_TaxType.Items.Add("УСН доход"); }
+                if (FN_TaxType[3] == '1')
+                { cB_FN_TaxType.Items.Add("УСН доход-расход"); }
+                if (FN_TaxType[2] == '1')
+                { cB_FN_TaxType.Items.Add("ЕНВД"); }
+                if (FN_TaxType[1] == '1')
+                { cB_FN_TaxType.Items.Add("ЕСХН"); }
+                if (FN_TaxType[0] == '1')
+                { cB_FN_TaxType.Items.Add("Патент"); }
+                if (cB_FN_TaxType.Items.Count == 1)
+                {
+                    // cB_FN_TaxType.Text = cB_FN_TaxType[;
+                }
             }
         }
         public decimal ToDecimal (string s)
