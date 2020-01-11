@@ -1050,14 +1050,14 @@ namespace _3manRMK_0
                 PaymentItemSign[Poz].DropDownStyle = ComboBoxStyle.DropDownList;
             NameProduct[Poz] = new TextBox {Size = NameProduct[0].Size,
                                             Location = new Point(XY[2], Y),
-                                            Text = Convert.ToString(Poz)+". "+NameProduct[0].Text};
+                                            Text = ""};
             Price[Poz] = new TextBox {Size = Price[0].Size,
                                       Location = new Point(XY[3], Y),
-                                      Text = "1,00"};
+                                      Text = ""};
             Price[Poz].TextChanged += new EventHandler(tbPrice_TextChanged);
             Quantity[Poz] = new TextBox {Size = Quantity[0].Size,
                                         Location = new Point(XY[4], Y),
-                                        Text = "1,000"};
+                                        Text = ""};
             Quantity[Poz].TextChanged += new EventHandler(tbQuantity_TextChanged);
             Tax[Poz] = new ComboBox {Size = Tax[0].Size,
                                     Location = new Point(XY[5], Y),
@@ -1068,7 +1068,7 @@ namespace _3manRMK_0
             Summ[Poz] = new TextBox {Size = Summ[0].Size,
                                     Location = new Point(XY[6], Y),
                                     ReadOnly = true,
-                                    Text = "1,00"};
+                                    Text = "0,00"};
             Summ[Poz].TextChanged += new EventHandler(tbSumm_TextChanged);
 
             SuspendLayout();

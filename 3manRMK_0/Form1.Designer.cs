@@ -69,6 +69,8 @@
             this.button3 = new System.Windows.Forms.Button();
             this.label13 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
             this.tbCustomerINN = new System.Windows.Forms.MaskedTextBox();
             this.tbCustomer = new System.Windows.Forms.TextBox();
             this.label17 = new System.Windows.Forms.Label();
@@ -106,8 +108,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.panel0 = new System.Windows.Forms.Panel();
-            this.label14 = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -125,7 +125,6 @@
             this.tbFIO.Name = "tbFIO";
             this.tbFIO.Size = new System.Drawing.Size(250, 22);
             this.tbFIO.TabIndex = 0;
-            this.tbFIO.Text = "Тестировщик Иванов";
             this.tbFIO.TextChanged += new System.EventHandler(this.tbFIO_TextChanged);
             // 
             // button4
@@ -419,7 +418,7 @@
             this.tbSummAll.ReadOnly = true;
             this.tbSummAll.Size = new System.Drawing.Size(110, 26);
             this.tbSummAll.TabIndex = 4;
-            this.tbSummAll.Text = "1,00";
+            this.tbSummAll.Text = "0,00";
             this.tbSummAll.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.tbSummAll.Visible = false;
             // 
@@ -510,6 +509,24 @@
             this.groupBox3.Text = "Оплата";
             this.groupBox3.Visible = false;
             // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(0, 104);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(284, 13);
+            this.label15.TabIndex = 81;
+            this.label15.Text = "Наименование\\ФИО, номер, серия паспорта Клиента";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(32, 152);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(76, 13);
+            this.label14.TabIndex = 80;
+            this.label14.Text = "ИНН Клиента";
+            // 
             // tbCustomerINN
             // 
             this.tbCustomerINN.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -529,7 +546,6 @@
             this.tbCustomer.Name = "tbCustomer";
             this.tbCustomer.Size = new System.Drawing.Size(200, 22);
             this.tbCustomer.TabIndex = 78;
-            this.tbCustomer.Text = "ООО Ромашка";
             this.tbCustomer.TextChanged += new System.EventHandler(this.tbCustomer_TextChanged);
             // 
             // label17
@@ -753,7 +769,7 @@
             this.tbSumm1_1.ReadOnly = true;
             this.tbSumm1_1.Size = new System.Drawing.Size(95, 20);
             this.tbSumm1_1.TabIndex = 19;
-            this.tbSumm1_1.Text = "1,00";
+            this.tbSumm1_1.Text = "0,00";
             this.tbSumm1_1.TextChanged += new System.EventHandler(this.tbSumm_TextChanged);
             // 
             // checkBox1
@@ -816,7 +832,6 @@
             this.tbNameProduct_1.Name = "tbNameProduct_1";
             this.tbNameProduct_1.Size = new System.Drawing.Size(271, 20);
             this.tbNameProduct_1.TabIndex = 11;
-            this.tbNameProduct_1.Text = "Офисный принтер Панасоник RGB 15";
             // 
             // cbTax1_1
             // 
@@ -841,7 +856,6 @@
             this.tbPrice_1.Name = "tbPrice_1";
             this.tbPrice_1.Size = new System.Drawing.Size(95, 20);
             this.tbPrice_1.TabIndex = 12;
-            this.tbPrice_1.Text = "1,00";
             this.tbPrice_1.TextChanged += new System.EventHandler(this.tbPrice_TextChanged);
             // 
             // tbQuantity_1
@@ -851,7 +865,6 @@
             this.tbQuantity_1.Name = "tbQuantity_1";
             this.tbQuantity_1.Size = new System.Drawing.Size(75, 20);
             this.tbQuantity_1.TabIndex = 13;
-            this.tbQuantity_1.Text = "1,000";
             this.tbQuantity_1.TextChanged += new System.EventHandler(this.tbQuantity_TextChanged);
             // 
             // label8
@@ -903,24 +916,6 @@
             this.panel0.Name = "panel0";
             this.panel0.Size = new System.Drawing.Size(878, 583);
             this.panel0.TabIndex = 73;
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(32, 152);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(76, 13);
-            this.label14.TabIndex = 80;
-            this.label14.Text = "ИНН Клиента";
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(0, 104);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(284, 13);
-            this.label15.TabIndex = 81;
-            this.label15.Text = "Наименование\\ФИО, номер, серия паспорта Клиента";
             // 
             // Form1
             // 
