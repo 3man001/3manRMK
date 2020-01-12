@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;  //Подключение библиотек
+using _3manRMK;
 
 namespace _3manRMK_0
 {
@@ -31,6 +32,7 @@ namespace _3manRMK_0
             XY = new int[] {CBox[0].Location.X, PaymentItemSign[0].Location.X, NameProduct[0].Location.X,
                             Price[0].Location.X, Quantity[0].Location.X, Tax[0].Location.X, Summ[0].Location.X};
         }
+
         DrvFR Drv; //Создание обьекта драйвера ФР
 
         int[] XY;
@@ -190,9 +192,9 @@ namespace _3manRMK_0
                 { cB_FN_TaxType.Items.Add("ЕСХН"); }
                 if (FN_TaxType[0] == '1')
                 { cB_FN_TaxType.Items.Add("Патент"); }
-                if (cB_FN_TaxType.Items.Count == 1)
+                if (cB_FN_TaxType.Items.Count == 0)
                 {
-                    // cB_FN_TaxType.Text = cB_FN_TaxType[;
+                    cB_FN_TaxType.Items.Add("ЕРРОР");
                 }
             }
         }
@@ -209,120 +211,33 @@ namespace _3manRMK_0
             string DataSimbol = "";
             if (typeSim == "Число")
             {
-                DataSimbol = "1234567890";
-                int I = ChSimbol.IndexOf(',');
-                int L = ChSimbol.Length;
-                if (I == 0)
-                    { return false; }
-                else
-                {
-                    if (I > 0)
-                    {
-                        ChSimbol = ChSimbol.Substring(0, I) + ChSimbol.Substring(I + 1, L - I - 1);
-                        L--;
-                    }
-                    for (int i = 0; i < L; i++)
-                    {
-                        if (DataSimbol.IndexOf(ChSimbol[i]) < 0)
-                        { return false; }
-                    }
-                    return true;
-                }
+                return MainMethods.CheckSimbols.Numbers(ChSimbol);
             }
             if (typeSim == "Email")
             {
-                DataSimbol = "1234567890qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM.-";
-                int I = ChSimbol.IndexOf('@');
-                int L = ChSimbol.Length;
-                if ((I <= 0) | (L < 3) | (I + 1 == L))
-                { return false; }
-                else
-                {
-                    ChSimbol = ChSimbol.Substring(0, I) + ChSimbol.Substring(I + 1, L - I - 1);
-                    for (int i = 0; i < L - 1; i++)
-                    {
-                        if (DataSimbol.IndexOf(ChSimbol[i]) < 0)
-                        { return false; }
-                    }
-                    return true;
-                }
+                return MainMethods.CheckSimbols.Email(ChSimbol);
             }
             if (typeSim == "Phone")
             {
-                string s = ChSimbol;
-                int L = ChSimbol.Length;
-                if (L == 17)
-                {
-                    int sI = (s.Substring(0, 2) + s.Substring(3, 3) + s.Substring(8, 3) + s.Substring(12, 2) + s.Substring(15, 2)).IndexOf(' ');
-                    if (sI > 0)
-                    { return false; }
-                    else
-                    { return true; }
-                }
-                else
-                { return false; }
+                return MainMethods.CheckSimbols.Phone(ChSimbol);
             }
             if (typeSim == "ФИО")
             {
-                if (ChSimbol[0] == ' ')
-                    { return false; }
-                DataSimbol = " ёйцукенгшщзхъфывапролджэячсмитьбюЁЙЦУКЕНГШЩЗХЪФЫВАПРОЛДЖЭЯЧСМИТЬБЮ";
+                return MainMethods.CheckSimbols.FullName(ChSimbol);
             }
             if (typeSim == "ИНН")   //Проверка ИНН Физ.Лица на корректность
             {
-                string inn = ChSimbol;
-                if (inn.Length == 12)
-                {
-                    int N0 = (int)char.GetNumericValue(inn[0]); int N1 = (int)char.GetNumericValue(inn[1]);
-                    int N2 = (int)char.GetNumericValue(inn[2]); int N3 = (int)char.GetNumericValue(inn[3]);
-                    int N4 = (int)char.GetNumericValue(inn[4]); int N5 = (int)char.GetNumericValue(inn[5]);
-                    int N6 = (int)char.GetNumericValue(inn[6]); int N7 = (int)char.GetNumericValue(inn[7]);
-                    int N8 = (int)char.GetNumericValue(inn[8]); int N9 = (int)char.GetNumericValue(inn[9]);
-                    int N10 = (int)char.GetNumericValue(inn[10]);   int N11 = (int)char.GetNumericValue(inn[11]);
-
-                    int b2 = (N0*7 + N1*2 + N2*4 + N3*10 + N4*3 + N5*5 + N6*9 + N7*4 + N8*6 + N9*8) % 11;
-                    int b1 = (N0*3 + N1*7 + N2*2 + N3*4 + N4*10 + N5*3 + N6*5 + N7*9 + N8*4 + N9*6 + N10*8) % 11;
-
-                    if ((b2 == N10) | ((b2 == 10) & (N10 == 0)))
-                    {
-                        if ((b1 == N11) | ((b1 == 10) & (N11 == 0)))
-                            { return true; }
-                        else
-                            { return false; }
-                    }
-                    else
-                        { return false; }
-                }
-                if (inn.Length == 10)
-                {
-                    int N0 = (int)char.GetNumericValue(inn[0]); int N1 = (int)char.GetNumericValue(inn[1]);
-                    int N2 = (int)char.GetNumericValue(inn[2]); int N3 = (int)char.GetNumericValue(inn[3]);
-                    int N4 = (int)char.GetNumericValue(inn[4]); int N5 = (int)char.GetNumericValue(inn[5]);
-                    int N6 = (int)char.GetNumericValue(inn[6]); int N7 = (int)char.GetNumericValue(inn[7]);
-                    int N8 = (int)char.GetNumericValue(inn[8]); int N9 = (int)char.GetNumericValue(inn[9]);
-
-                    int b1 = (N0 * 2 + N1 * 4 + N2 * 10 + N3 * 3 + N4 * 5 + N5 * 9 + N6 * 4 + N7 * 6 + N8 * 8) % 11;
-
-                    if ((b1 == N9) | ((b1 == 10) & (N9 == 0)))
-                        { return true; }
-                    else
-                    { return false; }
-                }
-                else
-                    { return false; }
+                return MainMethods.CheckSimbols.TaxpayerIdentificationNumber(ChSimbol);
             } 
             if (typeSim == "Покупатель")
             {
-                if (ChSimbol[0] == ' ')
-                { return false; }
-                DataSimbol = " ёйцукенгшщзхъфывапролджэячсмитьбюЁЙЦУКЕНГШЩЗХЪФЫВАПРОЛДЖЭЯЧСМИТЬБЮ1234567890"+'"';
+                return MainMethods.CheckSimbols.Buyer(ChSimbol);
             }
             for (int i = 0; i < ChSimbol.Length; i++)
             {
                 if (DataSimbol.IndexOf(ChSimbol[i]) < 0)
                     { return false; }
             }
-            
             return true;
         }
         private bool UpdateResult() //Проверка состояния ККТ
@@ -887,9 +802,7 @@ namespace _3manRMK_0
 
                     if (maskTBPhone.BackColor == Color.LightGreen) //Отправка чека СМС если есть номер
                     {
-                        string s = maskTBPhone.Text;
-                        s = s.Substring(0, 2) + s.Substring(3, 3) + s.Substring(8, 3) + s.Substring(12, 2) + s.Substring(15, 2);
-                        Drv.CustomerEmail = s;
+                        Drv.CustomerEmail = maskTBPhone.Text.Replace("(", "").Replace(")", "").Replace("-", "").Replace(" ", "");
                         Drv.FNSendCustomerEmail();
                     }
                     else
@@ -944,17 +857,14 @@ namespace _3manRMK_0
         {            
             if (btnLogin.BackColor == Color.Lime)
             {
-                if (UpdateResult()) //Если ККТ готова к работе то Авторизуемся
+                tbFIO_TextChanged(sender, e);
+                tbINN_TextChanged(sender, e);
+                if ((tbFIO.BackColor == Color.Snow) & (tbINN.BackColor == Color.Snow))
                 {
                     KKT_StatusCheck();
-                    tbFIO_TextChanged(sender, e);
-                    tbINN_TextChanged(sender, e);
-                    if ((tbFIO.BackColor == Color.Snow) & (tbINN.BackColor == Color.Snow))
-                    {
-                        btnLogin.BackColor = Color.DodgerBlue;
-                        btnLogin.Text = "LogOut";
-                        tbFIO.ReadOnly = tbINN.ReadOnly = label13.Visible = tbSummAll.Visible = panel2.Visible = true;
-                    }
+                    btnLogin.BackColor = Color.DodgerBlue;
+                    btnLogin.Text = "LogOut";
+                    tbFIO.ReadOnly = tbINN.ReadOnly = label13.Visible = tbSummAll.Visible = panel2.Visible = true;
                 }
             }
             else

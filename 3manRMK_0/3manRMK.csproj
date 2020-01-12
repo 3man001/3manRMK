@@ -84,6 +84,8 @@
     <Compile Include="AboutBox1.Designer.cs">
       <DependentUpon>AboutBox1.cs</DependentUpon>
     </Compile>
+    <Compile Include="ClassMainMethods.cs" />
+    <Compile Include="ClassWorkWithDKKT.cs" />
     <Compile Include="ErrorsForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -156,9 +158,6 @@
       <Isolated>False</Isolated>
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </COMReference>
-  </ItemGroup>
-  <ItemGroup>
-    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="ZUseResurse.txt" />
