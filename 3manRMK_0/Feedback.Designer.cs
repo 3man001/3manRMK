@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.tbSubject = new System.Windows.Forms.TextBox();
+            this.tbMessage = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.SuspendLayout();
@@ -45,22 +45,22 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Тема";
             // 
-            // textBox1
+            // tbSubject
             // 
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox1.Location = new System.Drawing.Point(15, 30);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(300, 24);
-            this.textBox1.TabIndex = 1;
+            this.tbSubject.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.tbSubject.Location = new System.Drawing.Point(15, 30);
+            this.tbSubject.Name = "tbSubject";
+            this.tbSubject.Size = new System.Drawing.Size(300, 24);
+            this.tbSubject.TabIndex = 1;
             // 
-            // textBox2
+            // tbMessage
             // 
-            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox2.Location = new System.Drawing.Point(15, 80);
-            this.textBox2.Multiline = true;
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(300, 100);
-            this.textBox2.TabIndex = 2;
+            this.tbMessage.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.tbMessage.Location = new System.Drawing.Point(15, 80);
+            this.tbMessage.Multiline = true;
+            this.tbMessage.Name = "tbMessage";
+            this.tbMessage.Size = new System.Drawing.Size(300, 100);
+            this.tbMessage.TabIndex = 2;
             // 
             // button1
             // 
@@ -90,13 +90,13 @@
             this.ClientSize = new System.Drawing.Size(334, 231);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.tbMessage);
+            this.Controls.Add(this.tbSubject);
             this.Controls.Add(this.label1);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Feedback";
-            this.Text = "Оратная связь";
+            this.Text = "Обратная связь";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -105,8 +105,8 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox tbSubject;
+        private System.Windows.Forms.TextBox tbMessage;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label2;
     }
