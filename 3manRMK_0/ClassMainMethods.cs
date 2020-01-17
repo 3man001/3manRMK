@@ -95,7 +95,8 @@ namespace _3manRMK
             /// </summary>
             public static bool FullName (string CheckString)
             {
-                if ((CheckString[0] == ' ') | (CheckString.Length < 3))
+                CheckString = CheckString.Trim(' ');
+                if (CheckString.Length < 3)
                 {
                     return false;
                 }
@@ -114,7 +115,8 @@ namespace _3manRMK
             /// </summary>
             public static bool Buyer(string CheckString)
             {
-                if ((CheckString[0] == ' ') | (CheckString.Length < 3))
+                CheckString = CheckString.Trim(' ');
+                if (CheckString.Length < 3)
                 {
                     return false;
                 }

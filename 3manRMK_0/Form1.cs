@@ -203,42 +203,6 @@ namespace _3manRMK
         {
             File.WriteAllText(NameFile, InText);
         }
-        public bool CheckSimbols(string ChSimbol, string typeSim)  //Проверка строки
-        {
-            if (ChSimbol == "")
-                { return false; }
-            string DataSimbol = "";
-            if (typeSim == "Число")
-            {
-                return MainMethods.CheckSimbols.Numbers(ChSimbol);
-            }
-            if (typeSim == "Email")
-            {
-                return MainMethods.CheckSimbols.Email(ChSimbol);
-            }
-            if (typeSim == "Phone")
-            {
-                return MainMethods.CheckSimbols.Phone(ChSimbol);
-            }
-            if (typeSim == "ФИО")
-            {
-                return MainMethods.CheckSimbols.FullName(ChSimbol);
-            }
-            if (typeSim == "ИНН")   //Проверка ИНН Физ.Лица на корректность
-            {
-                return MainMethods.CheckSimbols.TaxpayerIdentificationNumber(ChSimbol);
-            } 
-            if (typeSim == "Покупатель")
-            {
-                return MainMethods.CheckSimbols.Buyer(ChSimbol);
-            }
-            for (int i = 0; i < ChSimbol.Length; i++)
-            {
-                if (DataSimbol.IndexOf(ChSimbol[i]) < 0)
-                    { return false; }
-            }
-            return true;
-        }
         private bool UpdateResult() //Проверка состояния ККТ
         {
             int ResultCode = Drv.ResultCode;
@@ -433,7 +397,7 @@ namespace _3manRMK
         }
         private void tbFIO_TextChanged(object sender, EventArgs e)
         {
-            if (CheckSimbols(tbFIO.Text, "ФИО"))
+            if (MainMethods.CheckSimbols.FullName(tbFIO.Text))
             {
                 tbFIO.BackColor = Color.Snow;
             }
@@ -444,7 +408,7 @@ namespace _3manRMK
         }
         private void tbINN_TextChanged(object sender, EventArgs e)
         {
-            if (CheckSimbols(tbINN.Text, "ИНН"))
+            if (MainMethods.CheckSimbols.TaxpayerIdentificationNumber(tbINN.Text))
             {
                 tbINN.BackColor = Color.LightGreen;
             }
@@ -499,7 +463,7 @@ namespace _3manRMK
             {
                 if (CBox[i].Checked)
                 {
-                    if (CheckSimbols(Price[i].Text, "Число"))
+                    if (MainMethods.CheckSimbols.Numbers(Price[i].Text))
                     {
                         Price[i].BackColor = Color.Snow;
                         Price[i].Text = Convert.ToString(Math.Round(ToDecimal(Price[i].Text) * 1.000m, 2));
@@ -536,7 +500,7 @@ namespace _3manRMK
             {
                 if (CBox[i].Checked)
                 {
-                    if (CheckSimbols(Quantity[i].Text, "Число"))
+                    if (MainMethods.CheckSimbols.Numbers(Quantity[i].Text))
                     {
                         Quantity[i].BackColor = Color.Snow;
                         Quantity[i].Text = Convert.ToString(Math.Round(ToDecimal(Quantity[i].Text) * 1.0000m, 3));
@@ -582,7 +546,7 @@ namespace _3manRMK
         }
         private void tbSumm1_TextChanged(object sender, EventArgs e)
         {
-            if (CheckSimbols(tbSumm1.Text, "Число"))
+            if (MainMethods.CheckSimbols.Numbers(tbSumm1.Text))
             {
                 tbSumm1.BackColor = Color.Snow;
                 tbSumm1.Text = Convert.ToString(Math.Round(ToDecimal(tbSumm1.Text)*1.000m,2));
@@ -600,7 +564,7 @@ namespace _3manRMK
         }
         private void tbSumm2_TextChanged(object sender, EventArgs e) //Контроль ввода безналичной оплаты
         {
-            if (CheckSimbols(tbSumm2.Text, "Число"))
+            if (MainMethods.CheckSimbols.Numbers(tbSumm2.Text))
             {
                 if (ToDecimal(tbSumm2.Text) > ToDecimal(tbSummAll.Text))
                 {
@@ -634,19 +598,18 @@ namespace _3manRMK
         }
         private void maskTBPhone_MaskInputRejected(object sender, EventArgs e) //Проверка тел. на корректность
         {
-            string s = maskTBPhone.Text;
-            if (CheckSimbols(maskTBPhone.Text, "Phone"))
+            if (MainMethods.CheckSimbols.Phone(maskTBPhone.Text))
             { maskTBPhone.BackColor = Color.LightGreen; }
             else
             {
                 maskTBPhone.BackColor = Color.LightCoral;
-                if ((maskTBPhone.Text.Length == 15) & ((s.Substring(3, 3) + s.Substring(8, 3) + s.Substring(12, 2)).Trim() == ""))
+                if (maskTBPhone.Text.Replace("+7(", "").Replace(")", "").Replace("-", "").Replace(" ", "") == "")
                 { maskTBPhone.BackColor = Color.Snow; }
             }
         }
         private void tbEmail_TextChanged(object sender, EventArgs e) //Проверка Email на корректность
         {
-            if (CheckSimbols(tbEmail.Text, "Email"))
+            if (MainMethods.CheckSimbols.Email(tbEmail.Text))
             { tbEmail.BackColor = Color.LightGreen; }
             else
             { tbEmail.BackColor = Color.LightCoral; }
@@ -655,7 +618,7 @@ namespace _3manRMK
         }
         private void tbCustomerINN_TextChanged(object sender, EventArgs e)
         {
-            if (CheckSimbols(tbCustomerINN.Text, "ИНН"))
+            if (MainMethods.CheckSimbols.TaxpayerIdentificationNumber(tbCustomerINN.Text))
             {
                 tbCustomerINN.BackColor = Color.LightGreen;
             }
@@ -670,7 +633,7 @@ namespace _3manRMK
         }
         private void tbCustomer_TextChanged(object sender, EventArgs e)
         {
-            if (CheckSimbols(tbCustomer.Text, "Покупатель"))
+            if (MainMethods.CheckSimbols.Buyer(tbCustomer.Text))
             {
                 tbCustomer.BackColor = Color.LightGreen;
             }
