@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 
-namespace _3manRMK_0
+namespace _3manRMK
 {
     static class Program
     {

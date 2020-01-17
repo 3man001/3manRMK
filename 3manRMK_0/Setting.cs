@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace _3manRMK_0
+namespace _3manRMK
 {
     public partial class Setting : Form
     {

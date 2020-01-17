@@ -1,4 +1,4 @@
-﻿namespace _3manRMK_0
+﻿namespace _3manRMK
 {
     partial class AboutBox1
     {

@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
-using _3manRMK;
 
-namespace _3manRMK_0
+namespace _3manRMK
 {
     public partial class ErrorsForm : Form
     {

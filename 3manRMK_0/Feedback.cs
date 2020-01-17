@@ -3,7 +3,7 @@ using System.Net;
 using System.Net.Mail;
 using System.Windows.Forms;
 
-namespace _3manRMK_0
+namespace _3manRMK
 {
     public partial class Feedback : Form
     {

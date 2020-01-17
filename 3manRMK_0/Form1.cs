@@ -4,9 +4,8 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;  //Подключение библиотек
-using _3manRMK;
 
-namespace _3manRMK_0
+namespace _3manRMK
 {
     public partial class Form1 : Form
     {
