@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Net;
+using System.Net.Mail;
 
 namespace _3manRMK
 {
@@ -183,6 +185,35 @@ namespace _3manRMK
                 {
                     return false;
                 }
+            }
+        }
+        public static class Email
+        {
+            public static bool SendMail(string subject, string message)
+            {
+                string fromAddress = "feedback@3man001.ru";
+                string fromName = "3manRMK";
+                string toAddress = "igor-viv001@yandex.ru";
+
+                MailAddress from = new MailAddress(fromAddress, fromName); //Отправитель - Адресс и отображаемое Имя
+                MailAddress to = new MailAddress(toAddress); //Адрес получателя
+                MailMessage m = new MailMessage(from, to); // создаем объект сообщения
+
+                m.Subject = subject; // тема письма
+                m.Body = "<h2> " + message.Replace("\n", "<br>") + " </h2>"; // текст письма
+                m.IsBodyHtml = true; // письмо представляет код html
+                SmtpClient smtp = new SmtpClient("mail.3man001.ru", 25); // адрес smtp-сервера и порт отправки письма
+                smtp.Credentials = new NetworkCredential("feedback@3man001.ru", "W1h7A4a4"); // логин и пароль
+                smtp.EnableSsl = false;
+                try
+                { 
+                    smtp.Send(m);
+                }
+                catch
+                {
+                    return false; //Не удалось отправить письмо
+                }
+                return true; //Письмо отправилось
             }
         }
     }
