@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29411.108
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "3manRMK", "3manRMK_0\3manRMK.csproj", "{E4AC78CE-746B-4A94-9A7D-12D74762EA76}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "3manRMK", "3manRMK\3manRMK.csproj", "{E4AC78CE-746B-4A94-9A7D-12D74762EA76}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "3manRMK_Tests", "3manRMK_0Tests\3manRMK_Tests.csproj", "{6B2C59D0-1964-4D08-AAAD-16BF4DF4711F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "3manRMK_Tests", "3manRMK_Tests\3manRMK_Tests.csproj", "{6B2C59D0-1964-4D08-AAAD-16BF4DF4711F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
