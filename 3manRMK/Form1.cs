@@ -821,7 +821,7 @@ namespace _3manRMK
             {
                 tbFIO_TextChanged(sender, e);
                 tbINN_TextChanged(sender, e);
-                if ((tbFIO.BackColor == Color.Snow) & (tbINN.BackColor == Color.Snow))
+                if ((tbFIO.BackColor == Color.Snow) & (tbINN.BackColor != Color.LightCoral))
                 {
                     KKT_StatusCheck();
                     btnLogin.BackColor = Color.DodgerBlue;
