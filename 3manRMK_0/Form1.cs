@@ -970,7 +970,6 @@ namespace _3manRMK
                 panel2.Size = new Size(panel2.Size.Width, panel2.Size.Height + 30);
             }
         }
-
         private void toolStripMenuItem1_Click(object sender, EventArgs e)
         {
 
