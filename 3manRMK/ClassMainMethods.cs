@@ -23,7 +23,7 @@ namespace _3manRMK
             public static bool Numbers (string CheckString)
             {
                 int index = CheckString.IndexOf(',');
-                if (index == 0)
+                if (index == 0 | CheckString == "")
                 {
                     return false;
                 }
