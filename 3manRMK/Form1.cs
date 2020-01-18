@@ -348,6 +348,20 @@ namespace _3manRMK
             Array.Resize(ref Quantity, 1);
             Array.Resize(ref Tax, 1);
             Array.Resize(ref Summ, 1);
+
+            try
+            {
+                CBox[0].Checked = true;
+                PaymentItemSign[0].SelectedIndex = 0;
+                NameProduct[0].Text = "";
+                Price[0].Text = "";
+                Quantity[0].Text = "";
+                Tax[0].SelectedIndex = 0;
+                Summ[0].Text = "0,00";
+            }
+            catch
+            { }
+
             bAdd.Location = new Point(6, 116);
             bAdd.Visible = true;
             panel2.Size = new Size(860, 180);
@@ -709,7 +723,7 @@ namespace _3manRMK
             AboutBox.Dispose();
         }
         ////////////Конец Блок МЕНЮ////////////////
-        private void button4_Click(object sender, EventArgs e) //Продажа тестового товара
+        private void button4_Click(object sender, EventArgs e) //Продажа товара
         {
             if (ToDecimal(tbSumm2.Text) > ToDecimal(tbSummAll.Text)) //Если сумма безнала больше суммы чека то ошибка
             {
@@ -796,6 +810,7 @@ namespace _3manRMK
                         tbCustomer.Text = "";
                         tbCustomerINN.Text = "";
                         InitialArrays();
+                        labelCheckType.Text = "Приход";
                         tbSumm1.Visible = false;
                         tbSumm2.Visible = false;
                     }
