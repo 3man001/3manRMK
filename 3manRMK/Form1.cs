@@ -65,6 +65,7 @@ namespace _3manRMK
         {
             if (UpdateResult())
             {
+                GetCashReg();
                 DateTime Date_Now = DateTime.Today;
                 Drv.FNGetStatus(); //Запрос Статуса ФН
                 string q = Convert.ToString(Drv.FNWarningFlags, 2); //ФНФлагиПредупреждения
@@ -218,6 +219,13 @@ namespace _3manRMK
             {
                 return true;
             }
+        }
+        private void GetCashReg() //Запрашивает сумму наличности из ККТ
+        {
+            Drv.RegisterNumber = 241; //Накопление наличности в кассе.Вохможно другое значение у другой модели
+            Drv.GetCashReg();
+            label18.Text = "Сумма в денежном ящике = " + Drv.ContentsOfCashRegister + " ₽";
+            toolStripStatusLabel3.Text = "ДЯ = " + Drv.ContentsOfCashRegister + " ₽";
         }
         private int EnterItems(string Item) //Проверка выбираемых значений
         {
@@ -752,7 +760,6 @@ namespace _3manRMK
                 { UpdateResult(); } //Если смена закрыта то Открыть как положено
 
                 groupBox3.Visible = false;
-                groupBox4.Visible = true;
 
                 for (int i=0; i<CBox.Length; i++) //Регистрация позиций в чеке
                 {
@@ -813,6 +820,7 @@ namespace _3manRMK
                         labelCheckType.Text = "Приход";
                         tbSumm1.Visible = false;
                         tbSumm2.Visible = false;
+                        GetCashReg();
                     }
                     else
                     {
@@ -824,7 +832,6 @@ namespace _3manRMK
                     UpdateResult();
                 }
                 panel2.Visible = true;
-                groupBox4.Visible = false;
             }
         }
         private void btnLogin_Click(object sender, EventArgs e) //Регистрация кассира
@@ -839,6 +846,7 @@ namespace _3manRMK
                     btnLogin.BackColor = Color.DodgerBlue;
                     btnLogin.Text = "LogOut";
                     tbFIO.ReadOnly = tbINN.ReadOnly = label13.Visible = tbSummAll.Visible = panel2.Visible = true;
+                    groupBox4.Visible = false;
                 }
             }
             else
@@ -996,6 +1004,58 @@ namespace _3manRMK
             {
                 label1.BackColor = Color.LightCoral;
             }
+        }
+
+        private void tbCash_In_Outcome_TextChanged(object sender, EventArgs e)
+        {
+            if (MainMethods.CheckSimbols.Numbers(tbCash_In_Outcome.Text))
+            {
+                tbCash_In_Outcome.BackColor = Color.Snow;
+                tbCash_In_Outcome.Text = Convert.ToString(Math.Round(ToDecimal(tbCash_In_Outcome.Text) * 1.000m, 2));
+                buttonCash_In_Outcome.Visible = true;
+            }
+            else
+            {
+                tbCash_In_Outcome.BackColor = Color.LightCoral;
+                buttonCash_In_Outcome.Visible = false;
+            }
+        }
+
+        private void buttonCash_In_Outcome_Click(object sender, EventArgs e)
+        {
+            cB_In_OutCash.BackColor = Color.LightCoral;
+            if (cB_In_OutCash.Text == "Внесение")
+            {
+                cB_In_OutCash.BackColor = Color.Snow;
+                Drv.Summ1 = Math.Round(ToDecimal(tbCash_In_Outcome.Text) * 1.000m, 2);
+                Drv.CashIncome();
+                tbCash_In_Outcome.Text = cB_In_OutCash.Text = "";
+                GetCashReg();
+            }
+            if (cB_In_OutCash.Text == "Выплата")
+            {
+                cB_In_OutCash.BackColor = Color.Snow;
+                Drv.Summ1 = Math.Round(ToDecimal(tbCash_In_Outcome.Text) * 1.000m, 2);
+                Drv.CashOutcome();
+                tbCash_In_Outcome.Text = cB_In_OutCash.Text = "";
+                GetCashReg();
+            }
+        }
+
+        private void внесениеToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            btnLogin.BackColor = Color.Lime;
+            btnLogin.Text = "Login";
+            tbFIO.ReadOnly = tbINN.ReadOnly = label13.Visible = tbSummAll.Visible =
+                groupBox3.Visible = panel2.Visible = false;
+
+            groupBox4.Visible = true;
+            GetCashReg();
+        }
+
+        private void cB_In_OutCash_TextChanged(object sender, EventArgs e)
+        {
+            buttonCash_In_Outcome.Text = cB_In_OutCash.Text;
         }
     }
 }
