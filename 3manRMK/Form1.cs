@@ -179,6 +179,7 @@ namespace _3manRMK
                 string FN_TaxType = Convert.ToString(Drv.TaxType, 2); //Получить Ситемы налогообложения
                 FN_TaxType = new string('0', 6 - FN_TaxType.Length) + FN_TaxType;
                 //FN_TaxType = "111111";
+                cB_FN_TaxType.Items.Clear();
                 if (FN_TaxType[5] == '1')
                 { cB_FN_TaxType.Items.Add("Основная"); }
                 if (FN_TaxType[4] == '1')
@@ -191,10 +192,6 @@ namespace _3manRMK
                 { cB_FN_TaxType.Items.Add("ЕСХН"); }
                 if (FN_TaxType[0] == '1')
                 { cB_FN_TaxType.Items.Add("Патент"); }
-                if (cB_FN_TaxType.Items.Count == 0)
-                {
-                    cB_FN_TaxType.Items.Add("ЕРРОР");
-                }
             }
         }
         public decimal ToDecimal (string s)

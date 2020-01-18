@@ -193,19 +193,20 @@
             // внесениеToolStripMenuItem
             // 
             this.внесениеToolStripMenuItem.Name = "внесениеToolStripMenuItem";
-            this.внесениеToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
+            this.внесениеToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.внесениеToolStripMenuItem.Text = "Внесение";
+            this.внесениеToolStripMenuItem.Visible = false;
             // 
             // открытьСменуToolStripMenuItem
             // 
             this.открытьСменуToolStripMenuItem.Name = "открытьСменуToolStripMenuItem";
-            this.открытьСменуToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
+            this.открытьСменуToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.открытьСменуToolStripMenuItem.Text = "Открыть смену";
             // 
             // отменаЧекаToolStripMenuItem
             // 
             this.отменаЧекаToolStripMenuItem.Name = "отменаЧекаToolStripMenuItem";
-            this.отменаЧекаToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
+            this.отменаЧекаToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.отменаЧекаToolStripMenuItem.Text = "Отмена чека";
             this.отменаЧекаToolStripMenuItem.Click += new System.EventHandler(this.отменаЧекаToolStripMenuItem_Click);
             // 
@@ -214,13 +215,13 @@
             this.отчетыToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.xотчетToolStripMenuItem});
             this.отчетыToolStripMenuItem.Name = "отчетыToolStripMenuItem";
-            this.отчетыToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
+            this.отчетыToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.отчетыToolStripMenuItem.Text = "Отчеты";
             // 
             // xотчетToolStripMenuItem
             // 
             this.xотчетToolStripMenuItem.Name = "xотчетToolStripMenuItem";
-            this.xотчетToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
+            this.xотчетToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.xотчетToolStripMenuItem.Text = "Дневной X - отчет";
             // 
             // типЧекаToolStripMenuItem
@@ -231,34 +232,34 @@
             this.расходToolStripMenuItem,
             this.возвратРасходаToolStripMenuItem});
             this.типЧекаToolStripMenuItem.Name = "типЧекаToolStripMenuItem";
-            this.типЧекаToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
+            this.типЧекаToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.типЧекаToolStripMenuItem.Text = "Тип операции чека";
             // 
             // приходToolStripMenuItem
             // 
             this.приходToolStripMenuItem.Name = "приходToolStripMenuItem";
-            this.приходToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
+            this.приходToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.приходToolStripMenuItem.Text = "Приход";
             this.приходToolStripMenuItem.Click += new System.EventHandler(this.приходToolStripMenuItem_Click);
             // 
             // возвратПриходаToolStripMenuItem
             // 
             this.возвратПриходаToolStripMenuItem.Name = "возвратПриходаToolStripMenuItem";
-            this.возвратПриходаToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
+            this.возвратПриходаToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.возвратПриходаToolStripMenuItem.Text = "Возврат прихода";
             this.возвратПриходаToolStripMenuItem.Click += new System.EventHandler(this.возвратПриходаToolStripMenuItem_Click);
             // 
             // расходToolStripMenuItem
             // 
             this.расходToolStripMenuItem.Name = "расходToolStripMenuItem";
-            this.расходToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
+            this.расходToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.расходToolStripMenuItem.Text = "Расход";
             this.расходToolStripMenuItem.Click += new System.EventHandler(this.расходToolStripMenuItem_Click);
             // 
             // возвратРасходаToolStripMenuItem
             // 
             this.возвратРасходаToolStripMenuItem.Name = "возвратРасходаToolStripMenuItem";
-            this.возвратРасходаToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
+            this.возвратРасходаToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.возвратРасходаToolStripMenuItem.Text = "Возврат расхода";
             this.возвратРасходаToolStripMenuItem.Click += new System.EventHandler(this.возвратРасходаToolStripMenuItem_Click);
             // 
@@ -267,6 +268,7 @@
             this.настройкиToolStripMenuItem.Name = "настройкиToolStripMenuItem";
             this.настройкиToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
             this.настройкиToolStripMenuItem.Text = "Настройки";
+            this.настройкиToolStripMenuItem.Visible = false;
             this.настройкиToolStripMenuItem.Click += new System.EventHandler(this.настройкиToolStripMenuItem_Click);
             // 
             // обратнаяСвязьToolStripMenuItem
@@ -288,9 +290,9 @@
             this.statusStrip1.BackColor = System.Drawing.Color.White;
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabel1,
+            this.toolStripStatus_TimeKKT,
             this.toolStripStatusLabel3,
             this.toolStripStatusLabel4,
-            this.toolStripStatus_TimeKKT,
             this.toolStripStatus_OFD,
             this.toolStripStatus_FN});
             this.statusStrip1.Location = new System.Drawing.Point(0, 614);
@@ -311,6 +313,7 @@
             this.toolStripStatusLabel3.Name = "toolStripStatusLabel3";
             this.toolStripStatusLabel3.Size = new System.Drawing.Size(74, 18);
             this.toolStripStatusLabel3.Text = "В ДЯ = 1 00р";
+            this.toolStripStatusLabel3.Visible = false;
             // 
             // toolStripStatusLabel4
             // 
@@ -319,6 +322,7 @@
             this.toolStripStatusLabel4.Name = "toolStripStatusLabel4";
             this.toolStripStatusLabel4.Size = new System.Drawing.Size(300, 18);
             this.toolStripStatusLabel4.Text = "Не отправлено документов = *";
+            this.toolStripStatusLabel4.Visible = false;
             // 
             // toolStripStatus_TimeKKT
             // 
