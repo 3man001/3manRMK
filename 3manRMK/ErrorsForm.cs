@@ -6,6 +6,7 @@ namespace _3manRMK
     public partial class ErrorsForm : Form
     {
         int ResultCode;
+        string GlobResultCodeDesc;
         int Mode;
         int ECRMode8Status;
         int ECRModeStatus;
@@ -14,6 +15,7 @@ namespace _3manRMK
         {
             InitializeComponent();
             ResultCode = ResultCodeIn; //Код ошибки ниже его расшифровка
+            GlobResultCodeDesc = ResultCodeDesc;
             LTextError.Text = string.Format("Ошибка = {0}, {1}", ResultCode, ResultCodeDesc);
             Mode = ModeIn; //Код режима ниде его расшифровка
             LMode.Text = string.Format("Режим = {0}, {1}", Mode, ModeIndesc);
@@ -49,6 +51,12 @@ namespace _3manRMK
                 }
                 else
                 { return MessageBack; }
+            }
+            if (ResultCode == 6666)
+            {
+                return "ID программы не совпадает с ИНН организации в ФН ККТ.\n" +
+                        "Для продолжения работы Запустите программу с ID = " + GlobResultCodeDesc + ".\n" +
+                        "Либо обратитесь в СТП по e-mail: igor@3man001.ru тел.+7(999)999-99-99";
             }
             else
             { return MessageBack; }

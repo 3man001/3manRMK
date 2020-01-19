@@ -4,7 +4,7 @@ using System.Windows.Forms;
 
 namespace _3manRMK
 {
-    partial class AboutBox1 : Form
+    public partial class AboutBox1 : Form
     {
         public AboutBox1()
         {
@@ -36,7 +36,7 @@ namespace _3manRMK
             }
         }
 
-        public string AssemblyVersion
+        public static string AssemblyVersion
         {
             get
             {
@@ -57,7 +57,7 @@ namespace _3manRMK
             }
         }
 
-        public string AssemblyProduct
+        public static string AssemblyProduct
         {
             get
             {

@@ -9,11 +9,13 @@ namespace _3manRMK
 {
     public partial class Form1 : Form
     {
+        string id = "662400385900";
         public Form1()  //Инициация основоного окна
         {
             InitializeComponent();
             Drv = new DrvFR();
             Size = new Size(878, 300);
+            Text = AboutBox1.AssemblyProduct + String.Format(" v {0}", AboutBox1.AssemblyVersion) + " For id = " + id;
             groupBox3.Location = new Point(0, 40);
             groupBox4.Location = new Point(0, 40);
             InitialArrays();
@@ -60,6 +62,18 @@ namespace _3manRMK
             Drv.FNGetFiscalizationResult();
             FileOperation("ИНН=" + Drv.INN +
                             "\nСНО=" + Convert.ToString(Drv.TaxType, 2), "aboutkkt.ini");
+        }
+        private bool CheckId()
+        {
+            Drv.FNGetFiscalizationResult();
+            if (Drv.INN == id)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
         private void KKT_StatusCheck() //проверяет статус ОФД и ФН приотткрытии и закрытии смены
         {
@@ -835,8 +849,16 @@ namespace _3manRMK
             }
         }
         private void btnLogin_Click(object sender, EventArgs e) //Регистрация кассира
-        {            
-            if (btnLogin.BackColor == Color.Lime)
+        {
+            if (!CheckId())
+            {
+                Drv.GetShortECRStatus(); //Запрос состояния ФР
+                ErrorsForm ErorrsformP = new ErrorsForm(6666, Drv.INN, Drv.ECRMode, Drv.ECRModeDescription, Drv.ECRMode8Status, Drv.ECRModeStatus, Drv.ECRAdvancedMode, Drv.ECRAdvancedModeDescription);
+                ErorrsformP.ShowDialog(this);
+                ErorrsformP.Dispose();
+                return;
+            }
+            if (btnLogin.BackColor == Color.Lime )
             {
                 tbFIO_TextChanged(sender, e);
                 tbINN_TextChanged(sender, e);

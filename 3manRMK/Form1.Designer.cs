@@ -83,6 +83,9 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.tbINN = new System.Windows.Forms.MaskedTextBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.tbCash_In_Outcome = new System.Windows.Forms.TextBox();
+            this.cB_In_OutCash = new System.Windows.Forms.ComboBox();
+            this.buttonCash_In_Outcome = new System.Windows.Forms.Button();
             this.label18 = new System.Windows.Forms.Label();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.toolTip2 = new System.Windows.Forms.ToolTip(this.components);
@@ -108,9 +111,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.panel0 = new System.Windows.Forms.Panel();
-            this.buttonCash_In_Outcome = new System.Windows.Forms.Button();
-            this.cB_In_OutCash = new System.Windows.Forms.ComboBox();
-            this.tbCash_In_Outcome = new System.Windows.Forms.TextBox();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -224,7 +224,7 @@
             // xотчетToolStripMenuItem
             // 
             this.xотчетToolStripMenuItem.Name = "xотчетToolStripMenuItem";
-            this.xотчетToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.xотчетToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
             this.xотчетToolStripMenuItem.Text = "Дневной X - отчет";
             // 
             // типЧекаToolStripMenuItem
@@ -241,28 +241,28 @@
             // приходToolStripMenuItem
             // 
             this.приходToolStripMenuItem.Name = "приходToolStripMenuItem";
-            this.приходToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.приходToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
             this.приходToolStripMenuItem.Text = "Приход";
             this.приходToolStripMenuItem.Click += new System.EventHandler(this.приходToolStripMenuItem_Click);
             // 
             // возвратПриходаToolStripMenuItem
             // 
             this.возвратПриходаToolStripMenuItem.Name = "возвратПриходаToolStripMenuItem";
-            this.возвратПриходаToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.возвратПриходаToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
             this.возвратПриходаToolStripMenuItem.Text = "Возврат прихода";
             this.возвратПриходаToolStripMenuItem.Click += new System.EventHandler(this.возвратПриходаToolStripMenuItem_Click);
             // 
             // расходToolStripMenuItem
             // 
             this.расходToolStripMenuItem.Name = "расходToolStripMenuItem";
-            this.расходToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.расходToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
             this.расходToolStripMenuItem.Text = "Расход";
             this.расходToolStripMenuItem.Click += new System.EventHandler(this.расходToolStripMenuItem_Click);
             // 
             // возвратРасходаToolStripMenuItem
             // 
             this.возвратРасходаToolStripMenuItem.Name = "возвратРасходаToolStripMenuItem";
-            this.возвратРасходаToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.возвратРасходаToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
             this.возвратРасходаToolStripMenuItem.Text = "Возврат расхода";
             this.возвратРасходаToolStripMenuItem.Click += new System.EventHandler(this.возвратРасходаToolStripMenuItem_Click);
             // 
@@ -675,6 +675,43 @@
             this.groupBox4.Text = "Внесение\\Выплата";
             this.groupBox4.Visible = false;
             // 
+            // tbCash_In_Outcome
+            // 
+            this.tbCash_In_Outcome.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.tbCash_In_Outcome.Location = new System.Drawing.Point(443, 63);
+            this.tbCash_In_Outcome.MaxLength = 11;
+            this.tbCash_In_Outcome.Name = "tbCash_In_Outcome";
+            this.tbCash_In_Outcome.Size = new System.Drawing.Size(95, 23);
+            this.tbCash_In_Outcome.TabIndex = 10;
+            this.tbCash_In_Outcome.Text = "0,00";
+            this.tbCash_In_Outcome.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.tbCash_In_Outcome.TextChanged += new System.EventHandler(this.tbCash_In_Outcome_TextChanged);
+            // 
+            // cB_In_OutCash
+            // 
+            this.cB_In_OutCash.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cB_In_OutCash.FormattingEnabled = true;
+            this.cB_In_OutCash.Items.AddRange(new object[] {
+            "Внесение",
+            "Выплата"});
+            this.cB_In_OutCash.Location = new System.Drawing.Point(316, 65);
+            this.cB_In_OutCash.Name = "cB_In_OutCash";
+            this.cB_In_OutCash.Size = new System.Drawing.Size(121, 21);
+            this.cB_In_OutCash.TabIndex = 2;
+            this.cB_In_OutCash.TextChanged += new System.EventHandler(this.cB_In_OutCash_TextChanged);
+            // 
+            // buttonCash_In_Outcome
+            // 
+            this.buttonCash_In_Outcome.Font = new System.Drawing.Font("Verdana", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.buttonCash_In_Outcome.Location = new System.Drawing.Point(367, 103);
+            this.buttonCash_In_Outcome.Name = "buttonCash_In_Outcome";
+            this.buttonCash_In_Outcome.Size = new System.Drawing.Size(148, 54);
+            this.buttonCash_In_Outcome.TabIndex = 1;
+            this.buttonCash_In_Outcome.Text = "button5";
+            this.buttonCash_In_Outcome.UseVisualStyleBackColor = true;
+            this.buttonCash_In_Outcome.Visible = false;
+            this.buttonCash_In_Outcome.Click += new System.EventHandler(this.buttonCash_In_Outcome_Click);
+            // 
             // label18
             // 
             this.label18.AutoSize = true;
@@ -926,43 +963,6 @@
             this.panel0.Size = new System.Drawing.Size(878, 583);
             this.panel0.TabIndex = 73;
             // 
-            // buttonCash_In_Outcome
-            // 
-            this.buttonCash_In_Outcome.Font = new System.Drawing.Font("Verdana", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.buttonCash_In_Outcome.Location = new System.Drawing.Point(367, 103);
-            this.buttonCash_In_Outcome.Name = "buttonCash_In_Outcome";
-            this.buttonCash_In_Outcome.Size = new System.Drawing.Size(148, 54);
-            this.buttonCash_In_Outcome.TabIndex = 1;
-            this.buttonCash_In_Outcome.Text = "button5";
-            this.buttonCash_In_Outcome.UseVisualStyleBackColor = true;
-            this.buttonCash_In_Outcome.Visible = false;
-            this.buttonCash_In_Outcome.Click += new System.EventHandler(this.buttonCash_In_Outcome_Click);
-            // 
-            // cB_In_OutCash
-            // 
-            this.cB_In_OutCash.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cB_In_OutCash.FormattingEnabled = true;
-            this.cB_In_OutCash.Items.AddRange(new object[] {
-            "Внесение",
-            "Выплата"});
-            this.cB_In_OutCash.Location = new System.Drawing.Point(316, 65);
-            this.cB_In_OutCash.Name = "cB_In_OutCash";
-            this.cB_In_OutCash.Size = new System.Drawing.Size(121, 21);
-            this.cB_In_OutCash.TabIndex = 2;
-            this.cB_In_OutCash.TextChanged += new System.EventHandler(this.cB_In_OutCash_TextChanged);
-            // 
-            // tbCash_In_Outcome
-            // 
-            this.tbCash_In_Outcome.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.tbCash_In_Outcome.Location = new System.Drawing.Point(443, 63);
-            this.tbCash_In_Outcome.MaxLength = 11;
-            this.tbCash_In_Outcome.Name = "tbCash_In_Outcome";
-            this.tbCash_In_Outcome.Size = new System.Drawing.Size(95, 23);
-            this.tbCash_In_Outcome.TabIndex = 10;
-            this.tbCash_In_Outcome.Text = "0,00";
-            this.tbCash_In_Outcome.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.tbCash_In_Outcome.TextChanged += new System.EventHandler(this.tbCash_In_Outcome_TextChanged);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -976,7 +976,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.MinimumSize = new System.Drawing.Size(800, 310);
             this.Name = "Form1";
-            this.Text = "3mannRMK d1.0.50";
+            this.Text = "3manRMK Debug_x86";
             this.SizeChanged += new System.EventHandler(this.Form1_SizeChanged);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();

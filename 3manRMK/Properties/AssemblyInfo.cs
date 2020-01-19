@@ -4,7 +4,7 @@ using System.Runtime.InteropServices;
 // Общие сведения об этой сборке предоставляются следующим набором
 // набора атрибутов. Измените значения этих атрибутов, чтобы изменить сведения,
 // связанные со сборкой.
-[assembly: AssemblyTitle("3manRMK")]
+[assembly: AssemblyTitle("3manRMK Debug_x86")]
 [assembly: AssemblyDescription("Программа для регистрации фискальных чеков на олайн кассах производства АО ШТРИХ-М. Программа поставляется по принципу AS IS (как есть).")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
@@ -31,5 +31,5 @@ using System.Runtime.InteropServices;
 // Можно задать все значения или принять номер сборки и номер редакции по умолчанию.
 // используя "*", как показано ниже:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("1.0.0.50")]
-[assembly: AssemblyFileVersion("1.0.0.50")]
+[assembly: AssemblyVersion("1.0.0.79")]
+[assembly: AssemblyFileVersion("1.0.0.79")]
