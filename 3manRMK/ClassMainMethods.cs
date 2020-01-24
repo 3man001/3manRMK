@@ -24,9 +24,7 @@ namespace _3manRMK
             {
                 int index = CheckString.IndexOf(',');
                 if (index == 0 || CheckString == "")
-                {
                     return false;
-                }
                 else
                 {
                     int lenght = CheckString.Length;
@@ -39,9 +37,7 @@ namespace _3manRMK
                     for (int i = 0; i < lenght; i++)
                     {
                         if (DataSimbol.IndexOf(CheckString[i]) < 0)
-                        {
                             return false;
-                        }
                     }
                     return true;
                 }
@@ -54,9 +50,7 @@ namespace _3manRMK
                 int index = CheckString.IndexOf('@');
                 int lenght = CheckString.Length;
                 if ((index < 3) || (index + 1 == lenght))
-                {
                     return false;
-                }
                 else
                 {
                     string DataSimbol = "1234567890qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM.-";
@@ -64,9 +58,7 @@ namespace _3manRMK
                     for (int i = 0; i < lenght - 1; i++)
                     {
                         if (DataSimbol.IndexOf(CheckString[i]) < 0)
-                        {
                             return false;
-                        }
                     }
                     return true;
                 }
@@ -77,18 +69,12 @@ namespace _3manRMK
             public static bool Phone(string CheckString)
             {
                 if (CheckString.Length != 17)
-                {
                     return false;
-                }
                 CheckString = CheckString.Replace("(", "").Replace(")","").Replace("-","").Replace(" ","");
                 if (CheckString.Length == 12)
-                {
                     return true;
-                }
                 else
-                {
                     return false;
-                }
             }
             /// <summary>
             /// Проверка введенного ФИО на отсутствие посторонних символов
@@ -97,16 +83,12 @@ namespace _3manRMK
             {
                 CheckString = CheckString.Trim(' ');
                 if (CheckString.Length < 3)
-                {
                     return false;
-                }
                 string DataSimbol = " ёйцукенгшщзхъфывапролджэячсмитьбюЁЙЦУКЕНГШЩЗХЪФЫВАПРОЛДЖЭЯЧСМИТЬБЮ";
                 for (int i = 0; i < CheckString.Length; i++)
                 {
                     if (DataSimbol.IndexOf(CheckString[i]) < 0)
-                    {
                         return false;
-                    }
                 }
                 return true;
             }
@@ -117,16 +99,12 @@ namespace _3manRMK
             {
                 CheckString = CheckString.Trim(' ');
                 if (CheckString.Length < 3)
-                {
                     return false;
-                }
                 string DataSimbol = " ёйцукенгшщзхъфывапролджэячсмитьбюЁЙЦУКЕНГШЩЗХЪФЫВАПРОЛДЖЭЯЧСМИТЬБЮ1234567890" + '"';
                 for (int i = 0; i < CheckString.Length; i++)
                 {
                     if (DataSimbol.IndexOf(CheckString[i]) < 0)
-                    {
                         return false;
-                    }
                 }
                 return true;
             }
@@ -151,20 +129,14 @@ namespace _3manRMK
                     if ((b2 == N10) || ((b2 == 10) && (N10 == 0)))
                     {
                         if ((b1 == N11) || ((b1 == 10) && (N11 == 0)))
-                        {
                             return true;
-                        }
                         else
-                        {
                             return false;
-                        }
                     }
                     else
-                    {
                         return false;
-                    }
                 }
-                if (inn.Length == 10)
+                else if (inn.Length == 10)
                 {
                     int N0 = (int)char.GetNumericValue(inn[0]); int N1 = (int)char.GetNumericValue(inn[1]);
                     int N2 = (int)char.GetNumericValue(inn[2]); int N3 = (int)char.GetNumericValue(inn[3]);
@@ -175,18 +147,12 @@ namespace _3manRMK
                     int b1 = (N0 * 2 + N1 * 4 + N2 * 10 + N3 * 3 + N4 * 5 + N5 * 9 + N6 * 4 + N7 * 6 + N8 * 8) % 11;
 
                     if ((b1 == N9) || ((b1 == 10) && (N9 == 0)))
-                    {
                         return true;
-                    }
                     else
-                    {
                         return false;
-                    }
                 }
                 else
-                {
                     return false;
-                }
             }
         }
         public static class Email

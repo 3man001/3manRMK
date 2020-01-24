@@ -34,32 +34,32 @@ namespace _3manRMK
             {
                 return "Ошибок нет, все хорошо :)";
             }
-            if (ResultCode == -8)
+            else if (ResultCode == -8)
             {
                 return "Нет связи с ККТ проверьте его питание и подключение к ПК,\n" +
                     "либо нажмите Сервис => подключить ФР";
             }
-            if (ResultCode == 115)
+            else if (ResultCode == 115)
             {
                 if (Mode == 3)
                 {
                     return "В кассовом аппарате смена первысили 24 часа, для перехода в рабочий режим её нужно закрыть";
                 }
-                if (Mode == 4)
+                else if (Mode == 4)
                 {
                     return "В кассовом аппарате закрыта смена, для перехода в рабочий режим её нужно открыть.";
                 }
                 else
-                { return MessageBack; }
+                    return MessageBack;
             }
-            if (ResultCode == 6666)
+            else if (ResultCode == 6666)
             {
                 return "ID программы не совпадает с ИНН организации в ФН ККТ.\n" +
                         "Для продолжения работы Запустите программу с ID = " + GlobResultCodeDesc + ".\n" +
                         "Либо обратитесь в СТП по e-mail: igor@3man001.ru тел.+7(999)999-99-99";
             }
             else
-            { return MessageBack; }
+                return MessageBack;
         }
 
         private void button1_Click(object sender, EventArgs e)
