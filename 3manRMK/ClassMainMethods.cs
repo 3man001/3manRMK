@@ -23,7 +23,7 @@ namespace _3manRMK
             public static bool Numbers (string CheckString)
             {
                 int index = CheckString.IndexOf(',');
-                if (index == 0 | CheckString == "")
+                if (index == 0 || CheckString == "")
                 {
                     return false;
                 }
@@ -53,7 +53,7 @@ namespace _3manRMK
             {
                 int index = CheckString.IndexOf('@');
                 int lenght = CheckString.Length;
-                if ((index < 3) | (index + 1 == lenght))
+                if ((index < 3) || (index + 1 == lenght))
                 {
                     return false;
                 }
@@ -148,9 +148,9 @@ namespace _3manRMK
                     int b2 = (N0 * 7 + N1 * 2 + N2 * 4 + N3 * 10 + N4 * 3 + N5 * 5 + N6 * 9 + N7 * 4 + N8 * 6 + N9 * 8) % 11;
                     int b1 = (N0 * 3 + N1 * 7 + N2 * 2 + N3 * 4 + N4 * 10 + N5 * 3 + N6 * 5 + N7 * 9 + N8 * 4 + N9 * 6 + N10 * 8) % 11;
 
-                    if ((b2 == N10) | ((b2 == 10) & (N10 == 0)))
+                    if ((b2 == N10) || ((b2 == 10) && (N10 == 0)))
                     {
-                        if ((b1 == N11) | ((b1 == 10) & (N11 == 0)))
+                        if ((b1 == N11) || ((b1 == 10) && (N11 == 0)))
                         {
                             return true;
                         }
@@ -174,7 +174,7 @@ namespace _3manRMK
 
                     int b1 = (N0 * 2 + N1 * 4 + N2 * 10 + N3 * 3 + N4 * 5 + N5 * 9 + N6 * 4 + N7 * 6 + N8 * 8) % 11;
 
-                    if ((b1 == N9) | ((b1 == 10) & (N9 == 0)))
+                    if ((b1 == N9) || ((b1 == 10) && (N9 == 0)))
                     {
                         return true;
                     }

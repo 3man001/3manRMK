@@ -19,6 +19,7 @@ namespace _3manRMK
             groupBox3.Location = new Point(0, 40);
             groupBox4.Location = new Point(0, 40);
             InitialArrays();
+            //Setting. ;  //cB_FN_TaxType_Save;
             CBox[0] = checkBox2;
             PaymentItemSign[0] = cbPaymentItemSign_1;
                 PaymentItemSign[0].Items.CopyTo(PaymentItemSignItems, 0);
@@ -133,7 +134,7 @@ namespace _3manRMK
                 {
                     int MessageCount = Drv.MessageCount; //КоличествоСообщений
                     int Interval_Days = (Date_Now - Drv.Date).Days;
-                    if (0 <= Interval_Days & Interval_Days < 5)
+                    if (0 <= Interval_Days && Interval_Days < 5)
                     {
                         toolStripStatus_OFD.BackColor = Color.LightGreen;
                     }
@@ -143,7 +144,7 @@ namespace _3manRMK
                         {
                             toolStripStatus_OFD.BackColor = Color.Red;
                         }
-                        if (5 <= Interval_Days & Interval_Days < 15)
+                        if (5 <= Interval_Days && Interval_Days < 15)
                         {
                             toolStripStatus_OFD.BackColor = Color.Yellow;
                         }
@@ -167,15 +168,15 @@ namespace _3manRMK
                 {
                     if (Interval.Hours == 0)
                     {
-                        if (-5 <= Interval.Minutes & Interval.Minutes <= 5)
+                        if (-5 <= Interval.Minutes && Interval.Minutes <= 5)
                         {
                             toolStripStatus_TimeKKT.BackColor = Color.Yellow; //Обратить внимание
                         }
-                        if (-3 <= Interval.Minutes & Interval.Minutes <= 3)
+                        if (-3 <= Interval.Minutes && Interval.Minutes <= 3)
                         {
                             toolStripStatus_TimeKKT.BackColor = Color.LightGreen; //Не значительное расхождение
                         }
-                        if (-5 > Interval.Minutes | Interval.Minutes > 5)
+                        if (-5 > Interval.Minutes || Interval.Minutes > 5)
                         {
                             toolStripStatus_TimeKKT.BackColor = Color.Red; //Расхождение более 5 мин
                         }
@@ -565,7 +566,7 @@ namespace _3manRMK
         private void tbSumm_TextChanged(object sender, EventArgs e) //Сумма товара
         {
             decimal S = 0.00m;
-            if ((label3.BackColor != Color.LightCoral)&(label5.BackColor != Color.LightCoral))
+            if ((label3.BackColor != Color.LightCoral)&&(label5.BackColor != Color.LightCoral))
             {
                 for (int i = 0; i < Summ.Length; i++)
                 {
@@ -808,7 +809,7 @@ namespace _3manRMK
                         }
                     }
                     
-                    if (tbCustomer.BackColor == Color.LightGreen & tbCustomerINN.BackColor == Color.LightGreen) //Регистрация покупателя
+                    if (tbCustomer.BackColor == Color.LightGreen && tbCustomerINN.BackColor == Color.LightGreen) //Регистрация покупателя
                     {
                         Drv.TagNumber = 1227; //Отправка Должности и Фамилии кассира
                         Drv.TagType = 7;
@@ -862,7 +863,7 @@ namespace _3manRMK
             {
                 tbFIO_TextChanged(sender, e);
                 tbINN_TextChanged(sender, e);
-                if ((tbFIO.BackColor == Color.Snow) & (tbINN.BackColor != Color.LightCoral))
+                if ((tbFIO.BackColor == Color.Snow) && (tbINN.BackColor != Color.LightCoral))
                 {
                     KKT_StatusCheck();
                     btnLogin.BackColor = Color.DodgerBlue;
@@ -937,7 +938,7 @@ namespace _3manRMK
             tbQuantity_TextChanged(sender, e);
             tbSumm_TextChanged(sender, e);
             cB_FN_TaxType_TextChanged(sender, e);
-            if (tbSummAll.Text != "Error" & cB_FN_TaxType.Text != "")
+            if (tbSummAll.Text != "Error" && cB_FN_TaxType.Text != "")
             {
                 groupBox3.Visible = true;
                 panel2.Visible = false;
