@@ -68,13 +68,9 @@ namespace _3manRMK
         {
             Drv.FNGetFiscalizationResult();
             if (Drv.INN == id)
-            {
                 return true;
-            }
             else
-            {
                 return false;
-            }
         }
         private void KKT_StatusCheck() //проверяет статус ОФД и ФН приотткрытии и закрытии смены
         {
@@ -86,45 +82,31 @@ namespace _3manRMK
                 string q = Convert.ToString(Drv.FNWarningFlags, 2); //ФНФлагиПредупреждения
                 q = new string('0', 4 - q.Length) + q;
                 if (q == "0000") //Все хорошо
-                {
                     toolStripStatus_FN.BackColor = Color.LightGreen;
-                }
                 else
                 {
                     if (q[0] == '1') //Превышено время ожидания ответа ОФД
-                    {
                         toolStripStatus_FN.BackColor = Color.Yellow;
-                    }
                     if (q[2] == '1') //До замены ФН 30 дней
                     {
                         toolStripStatus_FN.BackColor = Color.Yellow;
                         Drv.FNGetExpirationTime(); //ФНЗапросСрокаДействия
                         if ((Drv.Date - Date_Now).Days > 0)
-                        {
                             toolStripStatus_FN.Text = "ФН < " + (Drv.Date - Date_Now).Days + "д.";
-                        }
                         else
-                        {
                             toolStripStatus_FN.Text = "ФН истёк";
-                        }
                     }
                     if (q[3] == '1') //Срояная замена ФН осталось 3 дня 
                     {
                         toolStripStatus_FN.BackColor = Color.Red;
                         Drv.FNGetExpirationTime(); //ФНЗапросСрокаДействия
                         if ((Drv.Date - Date_Now).Days > 0)
-                        {
                             toolStripStatus_FN.Text = "ФН < " + (Drv.Date - Date_Now).Days + "д.";
-                        }
                         else
-                        {
                             toolStripStatus_FN.Text = "ФН истёк";
-                        }
                     }
                     if (q[1] == '1') //ФН заполнен на 90%
-                    {
                         toolStripStatus_FN.BackColor = Color.Red;
-                    }
                 }
 
                 Drv.FNGetInfoExchangeStatus(); //Статус обмена с ОФД
@@ -138,20 +120,17 @@ namespace _3manRMK
                     {
                         toolStripStatus_OFD.BackColor = Color.LightGreen;
                     }
-                    else
+                    else if (Interval_Days < 0)
                     {
-                        if (Interval_Days < 0)
-                        {
-                            toolStripStatus_OFD.BackColor = Color.Red;
-                        }
-                        if (5 <= Interval_Days && Interval_Days < 15)
-                        {
-                            toolStripStatus_OFD.BackColor = Color.Yellow;
-                        }
-                        if (Interval_Days > 15)
-                        {
-                            toolStripStatus_OFD.BackColor = Color.Red;
-                        }
+                        toolStripStatus_OFD.BackColor = Color.Red;
+                    }
+                    else if (5 <= Interval_Days && Interval_Days < 15)
+                    {
+                        toolStripStatus_OFD.BackColor = Color.Yellow;
+                    }
+                    else if (Interval_Days > 15)
+                    {
+                        toolStripStatus_OFD.BackColor = Color.Red;
                     }
                 }
                 else
@@ -168,15 +147,15 @@ namespace _3manRMK
                 {
                     if (Interval.Hours == 0)
                     {
-                        if (-5 <= Interval.Minutes && Interval.Minutes <= 5)
-                        {
-                            toolStripStatus_TimeKKT.BackColor = Color.Yellow; //Обратить внимание
-                        }
                         if (-3 <= Interval.Minutes && Interval.Minutes <= 3)
                         {
                             toolStripStatus_TimeKKT.BackColor = Color.LightGreen; //Не значительное расхождение
                         }
-                        if (-5 > Interval.Minutes || Interval.Minutes > 5)
+                        else if (-5 <= Interval.Minutes && Interval.Minutes <= 5)
+                        {
+                            toolStripStatus_TimeKKT.BackColor = Color.Yellow; //Обратить внимание
+                        }
+                        else if (-5 > Interval.Minutes || Interval.Minutes > 5)
                         {
                             toolStripStatus_TimeKKT.BackColor = Color.Red; //Расхождение более 5 мин
                         }
@@ -413,9 +392,10 @@ namespace _3manRMK
             {
                 int newX = 0;
                 int newWidth = 880;
-                if (W > 878) { newX =  (W - 878) / 2; }
+                if (W > 878)
+                    newX =  (W - 878) / 2;
                 else
-                { newWidth = W - 18; }
+                    newWidth = W - 18;
                 panel0.Location = new Point(newX, 25);
                 panel0.Size = new Size(newWidth, H - 90);
                 if (bAdd.Location.Y+64 > H - 130)
@@ -471,14 +451,11 @@ namespace _3manRMK
                 }
             }
             if (State == 0)
-            { checkBox1.CheckState = CheckState.Unchecked; }
+                checkBox1.CheckState = CheckState.Unchecked;
+            else if(State == CBox.Length)
+                checkBox1.CheckState = CheckState.Checked;
             else
-            {
-                if (State == CBox.Length)
-                { checkBox1.CheckState = CheckState.Checked; }
-                else
-                { checkBox1.CheckState = CheckState.Indeterminate; }
-            }
+                checkBox1.CheckState = CheckState.Indeterminate;
         }
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
@@ -522,9 +499,7 @@ namespace _3manRMK
                 }
             }
             if (error > 0)
-            {
                 label3.BackColor = Color.LightCoral;
-            }
         }
         private void tbQuantity_TextChanged(object sender, EventArgs e) //Измениение строки с кол-вом
         {
@@ -559,9 +534,7 @@ namespace _3manRMK
                 }
             }
             if (error > 0)
-            {
                 label5.BackColor = Color.LightCoral;
-            }
         }
         private void tbSumm_TextChanged(object sender, EventArgs e) //Сумма товара
         {
@@ -571,12 +544,12 @@ namespace _3manRMK
                 for (int i = 0; i < Summ.Length; i++)
                 {
                     if (CBox[i].Checked)
-                    { S = S + ToDecimal(Summ[i].Text); }
+                        S = S + ToDecimal(Summ[i].Text);
                 }
                 tbSummAll.Text = Convert.ToString(S);
             }
             else
-            { tbSummAll.Text = "Error"; }
+                tbSummAll.Text = "Error";
         }
         private void tbSumm1_TextChanged(object sender, EventArgs e)
         {
@@ -625,60 +598,47 @@ namespace _3manRMK
         private void tbChange_TextChanged(object sender, EventArgs e) //Расчет суммы сдачи
         {
             if (ToDecimal(tbChange.Text) >= 0)
-            { button4.Visible = true; }
+                button4.Visible = true;
             else
-            { button4.Visible = false; }
-            if (!tbChange.Visible) { button4.Visible = false; }
+                button4.Visible = false;
+            if (!tbChange.Visible)
+                button4.Visible = false;
         }
         private void maskTBPhone_MaskInputRejected(object sender, EventArgs e) //Проверка тел. на корректность
         {
             if (MainMethods.CheckSimbols.Phone(maskTBPhone.Text))
-            { maskTBPhone.BackColor = Color.LightGreen; }
+                maskTBPhone.BackColor = Color.LightGreen;
+            else if (maskTBPhone.Text.Replace("+7(", "").Replace(")", "").Replace("-", "").Replace(" ", "") == "")
+                maskTBPhone.BackColor = Color.Snow;
             else
-            {
                 maskTBPhone.BackColor = Color.LightCoral;
-                if (maskTBPhone.Text.Replace("+7(", "").Replace(")", "").Replace("-", "").Replace(" ", "") == "")
-                { maskTBPhone.BackColor = Color.Snow; }
-            }
         }
         private void tbEmail_TextChanged(object sender, EventArgs e) //Проверка Email на корректность
         {
-            if (MainMethods.CheckSimbols.Email(tbEmail.Text))
-            { tbEmail.BackColor = Color.LightGreen; }
-            else
-            { tbEmail.BackColor = Color.LightCoral; }
             if (tbEmail.Text == "")
-            { tbEmail.BackColor = Color.Snow; }
+                tbEmail.BackColor = Color.Snow;
+            else if (MainMethods.CheckSimbols.Email(tbEmail.Text))
+                tbEmail.BackColor = Color.LightGreen;
+            else
+                tbEmail.BackColor = Color.LightCoral;
         }
         private void tbCustomerINN_TextChanged(object sender, EventArgs e)
         {
-            if (MainMethods.CheckSimbols.TaxpayerIdentificationNumber(tbCustomerINN.Text))
-            {
+            if (tbCustomerINN.Text == "")
+                tbCustomerINN.BackColor = Color.Snow;
+            else if (MainMethods.CheckSimbols.TaxpayerIdentificationNumber(tbCustomerINN.Text))
                 tbCustomerINN.BackColor = Color.LightGreen;
-            }
             else
-            {
                 tbCustomerINN.BackColor = Color.LightCoral;
-                if (tbCustomerINN.Text == "")
-                {
-                    tbCustomerINN.BackColor = Color.Snow;
-                }
-            }
         }
         private void tbCustomer_TextChanged(object sender, EventArgs e)
         {
-            if (MainMethods.CheckSimbols.Buyer(tbCustomer.Text))
-            {
+            if (tbCustomer.Text == "")
+                tbCustomer.BackColor = Color.Snow;
+            else if (MainMethods.CheckSimbols.Buyer(tbCustomer.Text))
                 tbCustomer.BackColor = Color.LightGreen;
-            }
             else
-            {
                 tbCustomer.BackColor = Color.LightCoral;
-                if (tbCustomer.Text == "")
-                {
-                    tbCustomer.BackColor = Color.Snow;
-                }
-            }
         }
         ///////////Начало Блок МЕНЮ////////////////
         private void подключитьФРToolStripMenuItem_Click(object sender, EventArgs e) //Показать свойство оборуования
@@ -767,9 +727,7 @@ namespace _3manRMK
                     Drv.Connect();
                     Drv.GetShortECRStatus();
                     if (Drv.ECRMode == 4)
-                    {
                         открытьСменуToolStripMenuItem_Click(sender, e);
-                    }
                 }
                 catch
                 { UpdateResult(); } //Если смена закрыта то Открыть как положено
@@ -788,7 +746,7 @@ namespace _3manRMK
                         PaymentItemSign0 = EnterItems(PaymentItemSign[i].Text); // Признак предмета расчета 1..19 (1-Товар)
 
                         if (!RegPosition(CheckType, NameProduct0, Price0, Quantity0, Summ10, Tax10, PaymentItemSign0)) //Регистрация позиции
-                        { break; } 
+                            break;
                     }
                 }
                 if (Drv.ResultCode == 0) //Если позиции пробитилсь то идем дальше
@@ -800,13 +758,10 @@ namespace _3manRMK
                         Drv.CustomerEmail = maskTBPhone.Text.Replace("(", "").Replace(")", "").Replace("-", "").Replace(" ", "");
                         Drv.FNSendCustomerEmail();
                     }
-                    else
+                    else if (tbEmail.BackColor == Color.LightGreen) //Отправка чека на Email если введен адрес
                     {
-                        if (tbEmail.BackColor == Color.LightGreen) //Отправка чека на Email если введен адрес
-                        {
-                            Drv.CustomerEmail = tbEmail.Text;
-                            Drv.FNSendCustomerEmail();
-                        }
+                        Drv.CustomerEmail = tbEmail.Text;
+                        Drv.FNSendCustomerEmail();
                     }
                     
                     if (tbCustomer.BackColor == Color.LightGreen && tbCustomerINN.BackColor == Color.LightGreen) //Регистрация покупателя
@@ -819,7 +774,7 @@ namespace _3manRMK
                         Drv.TagType = 7;
                         Drv.TagValueStr = tbCustomerINN.Text;
                         if (Drv.TagValueStr.Length == 10)
-                        { Drv.TagValueStr = Drv.TagValueStr + "00"; }
+                            Drv.TagValueStr = Drv.TagValueStr + "00";
                         Drv.FNSendTag();
                     }
             
@@ -838,9 +793,7 @@ namespace _3manRMK
                         GetCashReg();
                     }
                     else
-                    {
                         UpdateResult();
-                    }
                 }
                 else
                 {
@@ -953,9 +906,7 @@ namespace _3manRMK
         {
             int Poz = CBox.Length;
             if (Poz >= 50)
-            {
                 bAdd.Visible = false;
-            }
             int Y = bAdd.Location.Y;
             Array.Resize(ref CBox, Poz + 1);
             Array.Resize(ref PaymentItemSign, Poz + 1);
@@ -1009,9 +960,7 @@ namespace _3manRMK
             PerformLayout();
             bAdd.Location = new Point(bAdd.Location.X, bAdd.Location.Y+30);
             if (bAdd.Location.Y + 64 > panel2.Size.Height)
-            {
                 panel2.Size = new Size(panel2.Size.Width, panel2.Size.Height + 30);
-            }
         }
         private void toolStripMenuItem1_Click(object sender, EventArgs e)
         {
@@ -1020,15 +969,10 @@ namespace _3manRMK
         private void cB_FN_TaxType_TextChanged(object sender, EventArgs e)
         {
             if (cB_FN_TaxType.Text != "")
-            {
-                label1.BackColor = Color.LightGreen; 
-            }
+                label1.BackColor = Color.LightGreen;
             else
-            {
                 label1.BackColor = Color.LightCoral;
-            }
         }
-
         private void tbCash_In_Outcome_TextChanged(object sender, EventArgs e)
         {
             if (MainMethods.CheckSimbols.Numbers(tbCash_In_Outcome.Text))
@@ -1043,10 +987,8 @@ namespace _3manRMK
                 buttonCash_In_Outcome.Visible = false;
             }
         }
-
         private void buttonCash_In_Outcome_Click(object sender, EventArgs e)
         {
-            cB_In_OutCash.BackColor = Color.LightCoral;
             if (cB_In_OutCash.Text == "Внесение")
             {
                 cB_In_OutCash.BackColor = Color.Snow;
@@ -1055,7 +997,7 @@ namespace _3manRMK
                 tbCash_In_Outcome.Text = cB_In_OutCash.Text = "";
                 GetCashReg();
             }
-            if (cB_In_OutCash.Text == "Выплата")
+            else if (cB_In_OutCash.Text == "Выплата")
             {
                 cB_In_OutCash.BackColor = Color.Snow;
                 Drv.Summ1 = Math.Round(ToDecimal(tbCash_In_Outcome.Text) * 1.000m, 2);
@@ -1063,8 +1005,9 @@ namespace _3manRMK
                 tbCash_In_Outcome.Text = cB_In_OutCash.Text = "";
                 GetCashReg();
             }
+            else
+                cB_In_OutCash.BackColor = Color.LightCoral;
         }
-
         private void внесениеToolStripMenuItem_Click(object sender, EventArgs e)
         {
             btnLogin.BackColor = Color.Lime;
@@ -1075,7 +1018,6 @@ namespace _3manRMK
             groupBox4.Visible = true;
             GetCashReg();
         }
-
         private void cB_In_OutCash_TextChanged(object sender, EventArgs e)
         {
             buttonCash_In_Outcome.Text = cB_In_OutCash.Text;
