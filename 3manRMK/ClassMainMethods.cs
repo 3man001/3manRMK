@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Net;
 using System.Net.Mail;
+using System.Drawing;
 
 namespace _3manRMK
 {
@@ -153,6 +154,15 @@ namespace _3manRMK
                 }
                 else
                     return false;
+            }
+            public static Color GetColorAfterCheckINN (string INN)
+            {
+                if (INN == "")
+                    return Color.Snow;
+                else if (TaxpayerIdentificationNumber(INN))
+                   return Color.LightGreen;
+                else
+                    return Color.LightCoral;
             }
         }
         public static class Email

@@ -23,11 +23,27 @@ namespace _3manRMK.Properties {
             }
         }
         
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        public global::System.Windows.Forms.ComboBox cB_FN_TaxType_Save {
+        [global::System.Configuration.DefaultSettingValueAttribute("Стажёр Иванов")]
+        public string userFIO {
             get {
-                return ((global::System.Windows.Forms.ComboBox)(this["cB_FN_TaxType_Save"]));
+                return ((string)(this["userFIO"]));
+            }
+            set {
+                this["userFIO"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("000000000000")]
+        public string userINN {
+            get {
+                return ((string)(this["userINN"]));
+            }
+            set {
+                this["userINN"] = value;
             }
         }
     }

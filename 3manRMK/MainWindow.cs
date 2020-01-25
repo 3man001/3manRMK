@@ -15,10 +15,9 @@ namespace _3manRMK
             InitializeComponent();
             Size = new Size(878, 300);
             Text = AboutBox1.AssemblyProduct + String.Format(" v {0}", AboutBox1.AssemblyVersion) + " For id = " + Id;
-            groupBox3.Location = new Point(0, 40);
-            groupBox4.Location = new Point(0, 40);
+            groupBox3.Location = groupBox4.Location = new Point(0, 40);
+            InitialRMK();
             InitialArrays();
-            //Setting. ;  //cB_FN_TaxType_Save;
             CBox[0] = checkBox2;
             PaymentItemSign[0] = cbPaymentItemSign_1;
                 PaymentItemSign[0].Items.CopyTo(PaymentItemSignItems, 0);
@@ -52,18 +51,20 @@ namespace _3manRMK
         ////////////Блок Функций/////////////
         private void InitialRMK()
         {
-            FileOperation("ComNumber=" + Drv.ComNumber +
-                            "\nBaudRate=" + Drv.BaudRate +
-                            "\nTimeout=" + Drv.Timeout +
-                            "\nComputerName=" + Drv.ComputerName +
-                            "\nProtocolType=" + Drv.ProtocolType +
-                            "\nConnectionType=" + Drv.ConnectionType +
-                            "\nTCPPort=" + Drv.TCPPort +
-                            "\nIPAddress=" + Drv.IPAddress +
-                            "\nUseIPAddress=" + Drv.UseIPAddress, "connect.ini");
-            Drv.FNGetFiscalizationResult();
-            FileOperation("ИНН=" + Drv.INN +
-                            "\nСНО=" + Convert.ToString(Drv.TaxType, 2), "aboutkkt.ini");
+            //FileOperation("ComNumber=" + Drv.ComNumber +
+            //                "\nBaudRate=" + Drv.BaudRate +
+            //                "\nTimeout=" + Drv.Timeout +
+            //                "\nComputerName=" + Drv.ComputerName +
+            //                "\nProtocolType=" + Drv.ProtocolType +
+            //                "\nConnectionType=" + Drv.ConnectionType +
+            //                "\nTCPPort=" + Drv.TCPPort +
+            //                "\nIPAddress=" + Drv.IPAddress +
+            //               "\nUseIPAddress=" + Drv.UseIPAddress, "connect.ini");
+            //Drv.FNGetFiscalizationResult();
+            //FileOperation("ИНН=" + Drv.INN +
+            //                "\nСНО=" + Convert.ToString(Drv.TaxType, 2), "aboutkkt.ini");
+            tbFIO.Text = Properties.Settings.Default.userFIO;
+            tbINN.Text = Properties.Settings.Default.userINN;
         }
         private bool CheckId()
         {
@@ -229,13 +230,9 @@ namespace _3manRMK
                 return false;
             }
             if (Drv.ResultCode == 0)
-            {
                 return true;
-            }
             else
-            {
                 return false;
-            }
         }
         private void SendFIO() //Указывает Зарегестрированного кассира в документах
         {
@@ -292,72 +289,52 @@ namespace _3manRMK
             bAdd.Visible = true;
             panel2.Size = new Size(860, 180);
         }
-        private void ChangePoz(int i, bool State)
+        private void ChangePoz(int index, bool stateCheckBox)
         {
-            Font newFont = new Font(PaymentItemSign[i].Font, FontStyle.Strikeout);
-            if (State)
-            {
-                newFont = new Font(PaymentItemSign[i].Font, FontStyle.Regular);
-            }
-            PaymentItemSign[i].Font = newFont;
-            NameProduct[i].Font = newFont;
-            Price[i].Font = newFont;
-            Quantity[i].Font = newFont;
-            Tax[i].Font = newFont;
-            Summ[i].Font = newFont;
+            Font newFont;
+            if (stateCheckBox)
+                newFont = new Font(PaymentItemSign[index].Font, FontStyle.Regular);
+            else
+                newFont = new Font(PaymentItemSign[index].Font, FontStyle.Strikeout);
+            PaymentItemSign[index].Font = 
+                NameProduct[index].Font = 
+                Price[index].Font = 
+                Quantity[index].Font = 
+                Tax[index].Font = 
+                Summ[index].Font = newFont;
         }
         //////Начало Блока триггер виджета/////////
-        private void Form1_SizeChanged(object sender, EventArgs e)
+        private void MainWindowSizeChanged(object sender, EventArgs e)
         {
             //Width = 878 без полсы прокрутки
-            int W = Size.Width;
-            int H = Size.Height;
-            if (W >= 800)
+            int width = Size.Width;
+            int height = Size.Height;
+            if (width >= 800)
             {
                 int newX = 0;
                 int newWidth = 880;
-                if (W > 878)
-                    newX =  (W - 878) / 2;
+                if (width > 878)
+                    newX =  (width - 878) / 2;
                 else
-                    newWidth = W - 18;
+                    newWidth = width - 18;
                 panel0.Location = new Point(newX, 25);
-                panel0.Size = new Size(newWidth, H - 90);
-                if (bAdd.Location.Y+64 > H - 130)
-                {
+                panel0.Size = new Size(newWidth, height - 90);
+                if (bAdd.Location.Y+64 > height - 130)
                     panel2.Size = new Size(860, bAdd.Location.Y + 64);
-                }
                 else
-                {
-                    panel2.Size = new Size(860, H - 130);
-                }
-                
+                    panel2.Size = new Size(860, height - 130);
             }
         }
         private void tbFIO_TextChanged(object sender, EventArgs e)
         {
             if (MainMethods.CheckSimbols.FullName(tbFIO.Text))
-            {
                 tbFIO.BackColor = Color.Snow;
-            }
             else
-            {
                 tbFIO.BackColor = Color.LightCoral;
-            }
         }
         private void tbINN_TextChanged(object sender, EventArgs e)
         {
-            if (MainMethods.CheckSimbols.TaxpayerIdentificationNumber(tbINN.Text))
-            {
-                tbINN.BackColor = Color.LightGreen;
-            }
-            else
-            {
-                tbINN.BackColor = Color.LightCoral;
-                if (tbINN.Text == "")
-                {
-                    tbINN.BackColor = Color.Snow;
-                }
-            }
+            tbINN.BackColor = MainMethods.CheckSimbols.GetColorAfterCheckINN(tbINN.Text);
         }
         private void CBox_ChekedChanged(object sender, EventArgs e) //Проверка Чекбоксов
         {
@@ -548,12 +525,7 @@ namespace _3manRMK
         }
         private void tbCustomerINN_TextChanged(object sender, EventArgs e)
         {
-            if (tbCustomerINN.Text == "")
-                tbCustomerINN.BackColor = Color.Snow;
-            else if (MainMethods.CheckSimbols.TaxpayerIdentificationNumber(tbCustomerINN.Text))
-                tbCustomerINN.BackColor = Color.LightGreen;
-            else
-                tbCustomerINN.BackColor = Color.LightCoral;
+            tbCustomerINN.BackColor = MainMethods.CheckSimbols.GetColorAfterCheckINN(tbCustomerINN.Text);
         }
         private void tbCustomer_TextChanged(object sender, EventArgs e)
         {

@@ -977,7 +977,7 @@
             this.MinimumSize = new System.Drawing.Size(800, 310);
             this.Name = "Form1";
             this.Text = "3manRMK Debug_x86";
-            this.SizeChanged += new System.EventHandler(this.Form1_SizeChanged);
+            this.SizeChanged += new System.EventHandler(this.MainWindowSizeChanged);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.statusStrip1.ResumeLayout(false);
