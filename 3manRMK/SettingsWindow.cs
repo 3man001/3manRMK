@@ -9,9 +9,9 @@ using System.Windows.Forms;
 
 namespace _3manRMK
 {
-    public partial class Setting : Form
+    public partial class SettingsWindow : Form
     {
-        public Setting()
+        public SettingsWindow()
         {
             InitializeComponent();
             CB_PaymentItemSign0[0] = checkBox1;

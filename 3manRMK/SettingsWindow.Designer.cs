@@ -1,6 +1,6 @@
 ﻿namespace _3manRMK
 {
-    partial class Setting
+    partial class SettingsWindow
     {
         /// <summary>
         /// Required designer variable.

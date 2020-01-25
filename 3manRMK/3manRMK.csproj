@@ -85,30 +85,30 @@
       <DependentUpon>AboutBox1.cs</DependentUpon>
     </Compile>
     <Compile Include="ClassMainMethods.cs" />
-    <Compile Include="ClassWorkWithDKKT.cs" />
+    <Compile Include="WorkWithDKKT.cs" />
     <Compile Include="ErrorsForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="ErrorsForm.Designer.cs">
       <DependentUpon>ErrorsForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Feedback.cs">
+    <Compile Include="FeedbackWindows.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Feedback.Designer.cs">
-      <DependentUpon>Feedback.cs</DependentUpon>
+    <Compile Include="FeedbackWindows.Designer.cs">
+      <DependentUpon>FeedbackWindows.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form1.cs">
+    <Compile Include="MainWindow.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="MainWindow.Designer.cs">
+      <DependentUpon>MainWindow.cs</DependentUpon>
     </Compile>
-    <Compile Include="Setting.cs">
+    <Compile Include="SettingsWindow.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Setting.Designer.cs">
-      <DependentUpon>Setting.cs</DependentUpon>
+    <Compile Include="SettingsWindow.Designer.cs">
+      <DependentUpon>SettingsWindow.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -119,11 +119,11 @@
     <EmbeddedResource Include="ErrorsForm.resx">
       <DependentUpon>ErrorsForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Feedback.resx">
-      <DependentUpon>Feedback.cs</DependentUpon>
+    <EmbeddedResource Include="FeedbackWindows.resx">
+      <DependentUpon>FeedbackWindows.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="MainWindow.resx">
+      <DependentUpon>MainWindow.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -135,8 +135,8 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="Setting.resx">
-      <DependentUpon>Setting.cs</DependentUpon>
+    <EmbeddedResource Include="SettingsWindow.resx">
+      <DependentUpon>SettingsWindow.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.config" />
     <None Include="Properties\Settings.settings">

@@ -1,6 +1,6 @@
 ﻿namespace _3manRMK
 {
-    partial class Feedback
+    partial class FeedbackWindows
     {
         /// <summary>
         /// Required designer variable.

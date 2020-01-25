@@ -7,15 +7,14 @@ using System.Windows.Forms;  //Подключение библиотек
 
 namespace _3manRMK
 {
-    public partial class Form1 : Form
+    public partial class MainWindow : Form
     {
-        string id = "662400385900";
-        public Form1()  //Инициация основоного окна
+        const string Id = "662400385900";
+        public MainWindow()  //Инициация основоного окна
         {
             InitializeComponent();
-            Drv = new DrvFR();
             Size = new Size(878, 300);
-            Text = AboutBox1.AssemblyProduct + String.Format(" v {0}", AboutBox1.AssemblyVersion) + " For id = " + id;
+            Text = AboutBox1.AssemblyProduct + String.Format(" v {0}", AboutBox1.AssemblyVersion) + " For id = " + Id;
             groupBox3.Location = new Point(0, 40);
             groupBox4.Location = new Point(0, 40);
             InitialArrays();
@@ -33,6 +32,8 @@ namespace _3manRMK
             Summ[0] = tbSumm1_1;
             XY = new int[] {CBox[0].Location.X, PaymentItemSign[0].Location.X, NameProduct[0].Location.X,
                             Price[0].Location.X, Quantity[0].Location.X, Tax[0].Location.X, Summ[0].Location.X};
+
+            Drv = new DrvFR();
         }
 
         DrvFR Drv; //Создание обьекта драйвера ФР
@@ -67,7 +68,7 @@ namespace _3manRMK
         private bool CheckId()
         {
             Drv.FNGetFiscalizationResult();
-            if (Drv.INN == id)
+            if (Drv.INN == Id)
                 return true;
             else
                 return false;
@@ -77,98 +78,21 @@ namespace _3manRMK
             if (UpdateResult())
             {
                 GetCashReg();
-                DateTime Date_Now = DateTime.Today;
+                DateTime dateTimePC = DateTime.Today;
                 Drv.FNGetStatus(); //Запрос Статуса ФН
-                string q = Convert.ToString(Drv.FNWarningFlags, 2); //ФНФлагиПредупреждения
-                q = new string('0', 4 - q.Length) + q;
-                if (q == "0000") //Все хорошо
-                    toolStripStatus_FN.BackColor = Color.LightGreen;
-                else
-                {
-                    if (q[0] == '1') //Превышено время ожидания ответа ОФД
-                        toolStripStatus_FN.BackColor = Color.Yellow;
-                    if (q[2] == '1') //До замены ФН 30 дней
-                    {
-                        toolStripStatus_FN.BackColor = Color.Yellow;
-                        Drv.FNGetExpirationTime(); //ФНЗапросСрокаДействия
-                        if ((Drv.Date - Date_Now).Days > 0)
-                            toolStripStatus_FN.Text = "ФН < " + (Drv.Date - Date_Now).Days + "д.";
-                        else
-                            toolStripStatus_FN.Text = "ФН истёк";
-                    }
-                    if (q[3] == '1') //Срояная замена ФН осталось 3 дня 
-                    {
-                        toolStripStatus_FN.BackColor = Color.Red;
-                        Drv.FNGetExpirationTime(); //ФНЗапросСрокаДействия
-                        if ((Drv.Date - Date_Now).Days > 0)
-                            toolStripStatus_FN.Text = "ФН < " + (Drv.Date - Date_Now).Days + "д.";
-                        else
-                            toolStripStatus_FN.Text = "ФН истёк";
-                    }
-                    if (q[1] == '1') //ФН заполнен на 90%
-                        toolStripStatus_FN.BackColor = Color.Red;
-                }
+                string FNWarningFlags = Convert.ToString(Drv.FNWarningFlags, 2); //ФНФлагиПредупреждения
+                FNWarningFlags = new string('0', 4 - FNWarningFlags.Length) + FNWarningFlags;
+                toolStripStatus_FN.BackColor = WorkWithDKKT.CheckFNStatusInColor(FNWarningFlags);
 
                 Drv.FNGetInfoExchangeStatus(); //Статус обмена с ОФД
                 string ExchangeStatus = Convert.ToString(Drv.InfoExchangeStatus, 2); //СтатусИнфОбмена
                 ExchangeStatus = new string('0', 5 - ExchangeStatus.Length) + ExchangeStatus;
-                if (ExchangeStatus[1] == 1)
-                {
-                    int MessageCount = Drv.MessageCount; //КоличествоСообщений
-                    int Interval_Days = (Date_Now - Drv.Date).Days;
-                    if (0 <= Interval_Days && Interval_Days < 5)
-                    {
-                        toolStripStatus_OFD.BackColor = Color.LightGreen;
-                    }
-                    else if (Interval_Days < 0)
-                    {
-                        toolStripStatus_OFD.BackColor = Color.Red;
-                    }
-                    else if (5 <= Interval_Days && Interval_Days < 15)
-                    {
-                        toolStripStatus_OFD.BackColor = Color.Yellow;
-                    }
-                    else if (Interval_Days > 15)
-                    {
-                        toolStripStatus_OFD.BackColor = Color.Red;
-                    }
-                }
-                else
-                {
-                    toolStripStatus_OFD.BackColor = Color.LightGreen;
-                }
+                toolStripStatus_OFD.BackColor = WorkWithDKKT.CheckOFDStatusInColor(ExchangeStatus, dateTimePC, Drv.Date);
 
-                Date_Now = DateTime.Now; //Текущее время на ПК
                 Drv.GetECRStatus(); //ПолучитьСостояниеККМ
                 DateTime DateTime_KKT = DateTime.Parse(Drv.Date.Day + "." + Drv.Date.Month + "." + Drv.Date.Year + " "
                     + Drv.Time.Hour + ":" + Drv.Time.Minute + ":" + Drv.Time.Second); //Внутренняя дата время ККМ
-                TimeSpan Interval = Date_Now - DateTime_KKT;
-                if (Interval.Days == 0)
-                {
-                    if (Interval.Hours == 0)
-                    {
-                        if (-3 <= Interval.Minutes && Interval.Minutes <= 3)
-                        {
-                            toolStripStatus_TimeKKT.BackColor = Color.LightGreen; //Не значительное расхождение
-                        }
-                        else if (-5 <= Interval.Minutes && Interval.Minutes <= 5)
-                        {
-                            toolStripStatus_TimeKKT.BackColor = Color.Yellow; //Обратить внимание
-                        }
-                        else if (-5 > Interval.Minutes || Interval.Minutes > 5)
-                        {
-                            toolStripStatus_TimeKKT.BackColor = Color.Red; //Расхождение более 5 мин
-                        }
-                    }
-                    else
-                    {
-                        toolStripStatus_TimeKKT.BackColor = Color.Red; //Расхождение более 5 мин
-                    }
-                }
-                else
-                {
-                    toolStripStatus_TimeKKT.BackColor = Color.Red; //Расхождение более 5 мин
-                }
+                toolStripStatus_TimeKKT.BackColor = WorkWithDKKT.CheckTheTimeDiffereceInColor(DateTime.Now, DateTime_KKT);
 
                 Drv.FNGetFiscalizationResult(); //Полусить итоги фискализации
                 string FN_TaxType = Convert.ToString(Drv.TaxType, 2); //Получить Ситемы налогообложения
@@ -176,17 +100,17 @@ namespace _3manRMK
                 //FN_TaxType = "111111";
                 cB_FN_TaxType.Items.Clear();
                 if (FN_TaxType[5] == '1')
-                { cB_FN_TaxType.Items.Add("Основная"); }
+                    cB_FN_TaxType.Items.Add("Основная");
                 if (FN_TaxType[4] == '1')
-                { cB_FN_TaxType.Items.Add("УСН доход"); }
+                    cB_FN_TaxType.Items.Add("УСН доход");
                 if (FN_TaxType[3] == '1')
-                { cB_FN_TaxType.Items.Add("УСН доход-расход"); }
+                    cB_FN_TaxType.Items.Add("УСН доход-расход");
                 if (FN_TaxType[2] == '1')
-                { cB_FN_TaxType.Items.Add("ЕНВД"); }
+                    cB_FN_TaxType.Items.Add("ЕНВД");
                 if (FN_TaxType[1] == '1')
-                { cB_FN_TaxType.Items.Add("ЕСХН"); }
+                    cB_FN_TaxType.Items.Add("ЕСХН");
                 if (FN_TaxType[0] == '1')
-                { cB_FN_TaxType.Items.Add("Патент"); }
+                    cB_FN_TaxType.Items.Add("Патент");
             }
         }
         public decimal ToDecimal (string s)
@@ -847,13 +771,13 @@ namespace _3manRMK
         }
         private void настройкиToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Setting Setting1 = new Setting();
+            SettingsWindow Setting1 = new SettingsWindow();
             Setting1.ShowDialog(this);
             Setting1.Dispose();
         }
         private void обратнаяСвязьToolStripMenuItem_Click(object sender, EventArgs e) //Открыть формк обратной связи
         {
-            Feedback Feedback1 = new Feedback();
+            FeedbackWindows Feedback1 = new FeedbackWindows();
             Feedback1.ShowDialog(this);
             Feedback1.Dispose();
         }
@@ -961,10 +885,6 @@ namespace _3manRMK
             bAdd.Location = new Point(bAdd.Location.X, bAdd.Location.Y+30);
             if (bAdd.Location.Y + 64 > panel2.Size.Height)
                 panel2.Size = new Size(panel2.Size.Width, panel2.Size.Height + 30);
-        }
-        private void toolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-
         }
         private void cB_FN_TaxType_TextChanged(object sender, EventArgs e)
         {
