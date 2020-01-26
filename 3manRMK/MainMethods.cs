@@ -194,5 +194,33 @@ namespace _3manRMK
                 return true; //Письмо отправилось
             }
         }
+        public static class Setting
+        {
+            public static string ConvertItemsToString(System.Windows.Forms.ComboBox.ObjectCollection items)
+            {
+                string str = "";
+                for (int i = 0; i < items.Count; i++)
+                {
+                    str = str + ";" + items[i] + ";";
+                }
+                return str;
+            }
+            public static void ConvertStringToItems(string str, System.Windows.Forms.ComboBox.ObjectCollection items)
+            {
+                items.Clear();
+                int index = str.IndexOf(';');
+                while (index >= 0)
+                {
+                    str = str.Remove(index, 1);
+                    int nextIndex = str.IndexOf(';');
+                    if (nextIndex >= 0)
+                    {
+                        items.Add(str.Substring(index, nextIndex - index));
+                        str = str.Remove(index, nextIndex - index + 1);
+                    }
+                    index = str.IndexOf(';');
+                }
+            }
+        }
     }
 }

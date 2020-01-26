@@ -84,7 +84,7 @@
     <Compile Include="AboutBox1.Designer.cs">
       <DependentUpon>AboutBox1.cs</DependentUpon>
     </Compile>
-    <Compile Include="ClassMainMethods.cs" />
+    <Compile Include="MainMethods.cs" />
     <Compile Include="WorkWithDKKT.cs" />
     <Compile Include="ErrorsForm.cs">
       <SubType>Form</SubType>

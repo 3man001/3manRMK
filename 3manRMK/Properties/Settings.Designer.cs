@@ -46,5 +46,77 @@ namespace _3manRMK.Properties {
                 this["userINN"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("-1")]
+        public int taxItemsDeault {
+            get {
+                return ((int)(this["taxItemsDeault"]));
+            }
+            set {
+                this["taxItemsDeault"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("-1")]
+        public int paymentItemSignDefault {
+            get {
+                return ((int)(this["paymentItemSignDefault"]));
+            }
+            set {
+                this["paymentItemSignDefault"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string taxItems {
+            get {
+                return ((string)(this["taxItems"]));
+            }
+            set {
+                this["taxItems"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string paymentItemsSign {
+            get {
+                return ((string)(this["paymentItemsSign"]));
+            }
+            set {
+                this["paymentItemsSign"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string paymentTypeSign {
+            get {
+                return ((string)(this["paymentTypeSign"]));
+            }
+            set {
+                this["paymentTypeSign"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("-1")]
+        public int paymentTypeSignDefault {
+            get {
+                return ((int)(this["paymentTypeSignDefault"]));
+            }
+            set {
+                this["paymentTypeSignDefault"] = value;
+            }
+        }
     }
 }

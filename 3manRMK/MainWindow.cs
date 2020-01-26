@@ -714,6 +714,9 @@ namespace _3manRMK
                 tbINN_TextChanged(sender, e);
                 if ((tbFIO.BackColor == Color.Snow) && (tbINN.BackColor != Color.LightCoral))
                 {
+                    Properties.Settings.Default.userFIO = tbFIO.Text;
+                    Properties.Settings.Default.userINN = tbINN.Text;
+                    Properties.Settings.Default.Save();
                     KKT_StatusCheck();
                     btnLogin.BackColor = Color.DodgerBlue;
                     btnLogin.Text = "LogOut";

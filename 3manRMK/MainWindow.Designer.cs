@@ -271,7 +271,6 @@
             this.настройкиToolStripMenuItem.Name = "настройкиToolStripMenuItem";
             this.настройкиToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
             this.настройкиToolStripMenuItem.Text = "Настройки";
-            this.настройкиToolStripMenuItem.Visible = false;
             this.настройкиToolStripMenuItem.Click += new System.EventHandler(this.настройкиToolStripMenuItem_Click);
             // 
             // обратнаяСвязьToolStripMenuItem
@@ -313,8 +312,9 @@
             // 
             // toolStripStatusLabel3
             // 
+            this.toolStripStatusLabel3.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.toolStripStatusLabel3.Name = "toolStripStatusLabel3";
-            this.toolStripStatusLabel3.Size = new System.Drawing.Size(58, 18);
+            this.toolStripStatusLabel3.Size = new System.Drawing.Size(92, 18);
             this.toolStripStatusLabel3.Text = "В ДЯ = ?p";
             // 
             // toolStripStatusLabel4
@@ -963,7 +963,7 @@
             this.panel0.Size = new System.Drawing.Size(878, 583);
             this.panel0.TabIndex = 73;
             // 
-            // Form1
+            // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -975,7 +975,7 @@
             this.ForeColor = System.Drawing.SystemColors.ControlText;
             this.MainMenuStrip = this.menuStrip1;
             this.MinimumSize = new System.Drawing.Size(800, 310);
-            this.Name = "Form1";
+            this.Name = "MainWindow";
             this.Text = "3manRMK Debug_x86";
             this.SizeChanged += new System.EventHandler(this.MainWindowSizeChanged);
             this.menuStrip1.ResumeLayout(false);
