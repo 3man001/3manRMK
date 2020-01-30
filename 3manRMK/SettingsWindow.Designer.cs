@@ -29,13 +29,13 @@
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.comBoxPaymentItemSign = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
+            this.comBoxTaxItem = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
@@ -43,6 +43,10 @@
             this.checkBox3 = new System.Windows.Forms.CheckBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.comBoxTaxSystem = new System.Windows.Forms.ComboBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.checkBox4 = new System.Windows.Forms.CheckBox();
+            this.label8 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -54,14 +58,14 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Признак предмета расчета";
             // 
-            // comboBox1
+            // comBoxPaymentItemSign
             // 
-            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(15, 25);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(163, 21);
-            this.comboBox1.TabIndex = 1;
+            this.comBoxPaymentItemSign.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comBoxPaymentItemSign.FormattingEnabled = true;
+            this.comBoxPaymentItemSign.Location = new System.Drawing.Point(15, 25);
+            this.comBoxPaymentItemSign.Name = "comBoxPaymentItemSign";
+            this.comBoxPaymentItemSign.Size = new System.Drawing.Size(163, 21);
+            this.comBoxPaymentItemSign.TabIndex = 1;
             // 
             // label2
             // 
@@ -108,14 +112,14 @@
             this.label5.TabIndex = 33;
             this.label5.Text = "По умолчанию";
             // 
-            // comboBox3
+            // comBoxTaxItem
             // 
-            this.comboBox3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(410, 25);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(121, 21);
-            this.comboBox3.TabIndex = 32;
+            this.comBoxTaxItem.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comBoxTaxItem.FormattingEnabled = true;
+            this.comBoxTaxItem.Location = new System.Drawing.Point(410, 25);
+            this.comBoxTaxItem.Name = "comBoxTaxItem";
+            this.comBoxTaxItem.Size = new System.Drawing.Size(121, 21);
+            this.comBoxTaxItem.TabIndex = 32;
             // 
             // label6
             // 
@@ -128,7 +132,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(554, 9);
+            this.button1.Location = new System.Drawing.Point(691, 11);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(114, 40);
             this.button1.TabIndex = 40;
@@ -138,7 +142,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(554, 59);
+            this.button2.Location = new System.Drawing.Point(691, 61);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(114, 23);
             this.button2.TabIndex = 41;
@@ -171,10 +175,10 @@
             // textBox1
             // 
             this.textBox1.Enabled = false;
-            this.textBox1.Location = new System.Drawing.Point(554, 88);
+            this.textBox1.Location = new System.Drawing.Point(691, 90);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(238, 313);
+            this.textBox1.Size = new System.Drawing.Size(114, 313);
             this.textBox1.TabIndex = 45;
             // 
             // checkBox1
@@ -188,11 +192,52 @@
             this.checkBox1.Visible = false;
             this.checkBox1.CheckedChanged += new System.EventHandler(this.cbPayItemSignZeroCheckedChanged);
             // 
+            // comBoxTaxSystem
+            // 
+            this.comBoxTaxSystem.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comBoxTaxSystem.FormattingEnabled = true;
+            this.comBoxTaxSystem.Location = new System.Drawing.Point(549, 25);
+            this.comBoxTaxSystem.Name = "comBoxTaxSystem";
+            this.comBoxTaxSystem.Size = new System.Drawing.Size(121, 21);
+            this.comBoxTaxSystem.TabIndex = 46;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(546, 9);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(80, 13);
+            this.label7.TabIndex = 47;
+            this.label7.Text = "По умолчанию";
+            // 
+            // checkBox4
+            // 
+            this.checkBox4.AutoSize = true;
+            this.checkBox4.Location = new System.Drawing.Point(550, 67);
+            this.checkBox4.Name = "checkBox4";
+            this.checkBox4.Size = new System.Drawing.Size(15, 14);
+            this.checkBox4.TabIndex = 49;
+            this.checkBox4.UseVisualStyleBackColor = true;
+            this.checkBox4.Visible = false;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(546, 50);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(30, 13);
+            this.label8.TabIndex = 48;
+            this.label8.Text = "СНО";
+            // 
             // SettingsWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(804, 501);
+            this.ClientSize = new System.Drawing.Size(825, 501);
+            this.Controls.Add(this.checkBox4);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.comBoxTaxSystem);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.checkBox3);
             this.Controls.Add(this.checkBox2);
@@ -200,13 +245,13 @@
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.comboBox3);
+            this.Controls.Add(this.comBoxTaxItem);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.comboBox2);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.comBoxPaymentItemSign);
             this.Controls.Add(this.label1);
             this.Name = "SettingsWindow";
             this.Text = "Setting";
@@ -218,13 +263,13 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox comBoxPaymentItemSign;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox comboBox2;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.ComboBox comboBox3;
+        private System.Windows.Forms.ComboBox comBoxTaxItem;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
@@ -232,5 +277,9 @@
         private System.Windows.Forms.CheckBox checkBox3;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.ComboBox comBoxTaxSystem;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.CheckBox checkBox4;
+        private System.Windows.Forms.Label label8;
     }
 }

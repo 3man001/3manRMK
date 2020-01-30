@@ -9,62 +9,83 @@ namespace _3manRMK
 {
     public partial class MainWindow : Form
     {
-        const string Id = "662400385900";
-        public MainWindow()  //Инициация основоного окна
+        public MainWindow()
         {
             InitializeComponent();
-            Size = new Size(878, 300);
-            Text = AboutBox1.AssemblyProduct + String.Format(" v {0}", AboutBox1.AssemblyVersion) + " For id = " + Id;
-            groupBox3.Location = groupBox4.Location = new Point(0, 40);
-            InitialRMK();
             InitialArrays();
-            CBox[0] = checkBox2;
-            PaymentItemSign[0] = cbPaymentItemSign_1;
-                PaymentItemSign[0].Items.CopyTo(PaymentItemSignItems, 0);
-                PaymentItemSign[0].SelectedIndex = 0;
-            NameProduct[0] = tbNameProduct_1;
-            Price[0] = tbPrice_1;
-            Quantity[0] = tbQuantity_1;
-            Tax[0] = cbTax1_1;
-                Tax[0].Items.CopyTo(TaxItems, 0);
-                Tax[0].SelectedIndex = 0;
-            Summ[0] = tbSumm1_1;
-            XY = new int[] {CBox[0].Location.X, PaymentItemSign[0].Location.X, NameProduct[0].Location.X,
-                            Price[0].Location.X, Quantity[0].Location.X, Tax[0].Location.X, Summ[0].Location.X};
-
+            InitialRMK();
             Drv = new DrvFR();
         }
 
-        DrvFR Drv; //Создание обьекта драйвера ФР
-
+        const string Id = "662400385900";
+        DrvFR Drv;
         int[] XY;
-        CheckBox[] CBox = new CheckBox [] {};
-        ComboBox[] PaymentItemSign = new ComboBox[] { };
-            Object[] PaymentItemSignItems = new Object[3];
-        TextBox[] NameProduct = new TextBox[] { };
-        TextBox[] Price = new TextBox[] { };
-        TextBox[] Quantity = new TextBox[] { };
-        ComboBox[] Tax = new ComboBox[] { };
-            Object[] TaxItems = new Object[6];
-        TextBox[] Summ = new TextBox[] { };
+        CheckBox[] arrayCheckBox = new CheckBox [] { };
+        ComboBox[] arrayPaymentItemSign = new ComboBox[] { };
+        TextBox[] arrayNameProduct = new TextBox[] { };
+        TextBox[] arrayPrice = new TextBox[] { };
+        TextBox[] arrayQuantity = new TextBox[] { };
+        ComboBox[] arrayTax = new ComboBox[] { };
+        TextBox[] arraySumm = new TextBox[] { };
 
         ////////////Блок Функций/////////////
         private void InitialRMK()
         {
-            //FileOperation("ComNumber=" + Drv.ComNumber +
-            //                "\nBaudRate=" + Drv.BaudRate +
-            //                "\nTimeout=" + Drv.Timeout +
-            //                "\nComputerName=" + Drv.ComputerName +
-            //                "\nProtocolType=" + Drv.ProtocolType +
-            //                "\nConnectionType=" + Drv.ConnectionType +
-            //                "\nTCPPort=" + Drv.TCPPort +
-            //                "\nIPAddress=" + Drv.IPAddress +
-            //               "\nUseIPAddress=" + Drv.UseIPAddress, "connect.ini");
-            //Drv.FNGetFiscalizationResult();
-            //FileOperation("ИНН=" + Drv.INN +
-            //                "\nСНО=" + Convert.ToString(Drv.TaxType, 2), "aboutkkt.ini");
+            Size = new Size(878, 300);
+            Text = AboutBox1.AssemblyProduct + String.Format(" v {0}", AboutBox1.AssemblyVersion) + " For id = " + Id;
+            groupBox3.Location = groupBox4.Location = new Point(0, 40);
             tbFIO.Text = Properties.Settings.Default.userFIO;
             tbINN.Text = Properties.Settings.Default.userINN;
+
+            arrayCheckBox[0] = checkBox2;
+            arrayPaymentItemSign[0] = cbPaymentItemSign_1;
+            arrayPaymentItemSign[0].Items.Clear();
+            MainMethods.Setting.ConvertStringToItems(Properties.Settings.Default.paymentItemsSign, arrayPaymentItemSign[0].Items);
+            arrayPaymentItemSign[0].SelectedIndex = Properties.Settings.Default.paymentItemSignDefault;
+            arrayNameProduct[0] = tbNameProduct_1;
+            arrayPrice[0] = tbPrice_1;
+            arrayQuantity[0] = tbQuantity_1;
+            arrayTax[0] = cbTax1_1;
+            arrayTax[0].SelectedIndex = 0;
+            arraySumm[0] = tbSumm1_1;
+            XY = new int[] {arrayCheckBox[0].Location.X, arrayPaymentItemSign[0].Location.X, arrayNameProduct[0].Location.X,
+                            arrayPrice[0].Location.X, arrayQuantity[0].Location.X, arrayTax[0].Location.X, arraySumm[0].Location.X};
+        }
+        private void InitialArrays()
+        {
+            for (int i = 1; i < arrayCheckBox.Length; i++)
+            {
+                arrayCheckBox[i].Dispose();
+                arrayPaymentItemSign[i].Dispose();
+                arrayNameProduct[i].Dispose();
+                arrayPrice[i].Dispose();
+                arrayQuantity[i].Dispose();
+                arrayTax[i].Dispose();
+                arraySumm[i].Dispose();
+            }
+            Array.Resize(ref arrayCheckBox, 1);
+            Array.Resize(ref arrayPaymentItemSign, 1);
+            Array.Resize(ref arrayNameProduct, 1);
+            Array.Resize(ref arrayPrice, 1);
+            Array.Resize(ref arrayQuantity, 1);
+            Array.Resize(ref arrayTax, 1);
+            Array.Resize(ref arraySumm, 1);
+            try
+            {
+                arrayCheckBox[0].Checked = true;
+                arrayPaymentItemSign[0].SelectedIndex = 0;
+                arrayNameProduct[0].Text = "";
+                arrayPrice[0].Text = "";
+                arrayQuantity[0].Text = "";
+                arrayTax[0].SelectedIndex = 0;
+                arraySumm[0].Text = "0,00";
+            }
+            catch
+            { }
+
+            bAdd.Location = new Point(6, 116);
+            bAdd.Visible = true;
+            panel2.Size = new Size(860, 180);
         }
         private bool CheckId()
         {
@@ -116,10 +137,6 @@ namespace _3manRMK
         }
         public decimal ToDecimal (string s)
         { return Convert.ToDecimal(s); }
-        static void FileOperation(string InText, string NameFile) //Работа с файлами
-        {
-            File.WriteAllText(NameFile, InText);
-        }
         private bool UpdateResult() //Проверка состояния ККТ
         {
             int ResultCode = Drv.ResultCode;
@@ -251,57 +268,19 @@ namespace _3manRMK
                 }
             }
         }
-        private void InitialArrays()
-        {
-            for (int i=1; i<CBox.Length; i++)
-            {
-                CBox[i].Dispose();
-                PaymentItemSign[i].Dispose();
-                NameProduct[i].Dispose();
-                Price[i].Dispose();
-                Quantity[i].Dispose();
-                Tax[i].Dispose();
-                Summ[i].Dispose();
-            }
-            //Array.Clear(CBox, 1, CBox.Length - 1);
-            Array.Resize(ref CBox, 1);
-            Array.Resize(ref PaymentItemSign, 1);
-            Array.Resize(ref NameProduct, 1);
-            Array.Resize(ref Price, 1);
-            Array.Resize(ref Quantity, 1);
-            Array.Resize(ref Tax, 1);
-            Array.Resize(ref Summ, 1);
-
-            try
-            {
-                CBox[0].Checked = true;
-                PaymentItemSign[0].SelectedIndex = 0;
-                NameProduct[0].Text = "";
-                Price[0].Text = "";
-                Quantity[0].Text = "";
-                Tax[0].SelectedIndex = 0;
-                Summ[0].Text = "0,00";
-            }
-            catch
-            { }
-
-            bAdd.Location = new Point(6, 116);
-            bAdd.Visible = true;
-            panel2.Size = new Size(860, 180);
-        }
         private void ChangePoz(int index, bool stateCheckBox)
         {
             Font newFont;
             if (stateCheckBox)
-                newFont = new Font(PaymentItemSign[index].Font, FontStyle.Regular);
+                newFont = new Font(arrayPaymentItemSign[index].Font, FontStyle.Regular);
             else
-                newFont = new Font(PaymentItemSign[index].Font, FontStyle.Strikeout);
-            PaymentItemSign[index].Font = 
-                NameProduct[index].Font = 
-                Price[index].Font = 
-                Quantity[index].Font = 
-                Tax[index].Font = 
-                Summ[index].Font = newFont;
+                newFont = new Font(arrayPaymentItemSign[index].Font, FontStyle.Strikeout);
+            arrayPaymentItemSign[index].Font = 
+                arrayNameProduct[index].Font = 
+                arrayPrice[index].Font = 
+                arrayQuantity[index].Font = 
+                arrayTax[index].Font = 
+                arraySumm[index].Font = newFont;
         }
         //////Начало Блока триггер виджета/////////
         private void MainWindowSizeChanged(object sender, EventArgs e)
@@ -339,9 +318,9 @@ namespace _3manRMK
         private void CBox_ChekedChanged(object sender, EventArgs e) //Проверка Чекбоксов
         {
             int State = 0;
-            for (int i = 0; i < CBox.Length; i++)
+            for (int i = 0; i < arrayCheckBox.Length; i++)
             {
-                if (CBox[i].Checked)
+                if (arrayCheckBox[i].Checked)
                 {
                     State++;
                     ChangePoz(i, true);
@@ -353,7 +332,7 @@ namespace _3manRMK
             }
             if (State == 0)
                 checkBox1.CheckState = CheckState.Unchecked;
-            else if(State == CBox.Length)
+            else if(State == arrayCheckBox.Length)
                 checkBox1.CheckState = CheckState.Checked;
             else
                 checkBox1.CheckState = CheckState.Indeterminate;
@@ -363,39 +342,39 @@ namespace _3manRMK
             bool Check = checkBox1.Checked;
             if (checkBox1.CheckState != CheckState.Indeterminate)
             {
-                for (int i = 0; i < CBox.Length; i++)
-                { CBox[i].Checked = Check; }
+                for (int i = 0; i < arrayCheckBox.Length; i++)
+                { arrayCheckBox[i].Checked = Check; }
             }
         }
         private void tbPrice_TextChanged(object sender, EventArgs e) //Изменение строки с ценой
         {
             int error = 0;
             label3.BackColor = SystemColors.InactiveCaption;
-            for (int i=0; i<CBox.Length; i++)
+            for (int i=0; i<arrayCheckBox.Length; i++)
             {
-                if (CBox[i].Checked)
+                if (arrayCheckBox[i].Checked)
                 {
-                    if (MainMethods.CheckSimbols.Numbers(Price[i].Text))
+                    if (MainMethods.CheckSimbols.Numbers(arrayPrice[i].Text))
                     {
-                        Price[i].BackColor = Color.Snow;
-                        Price[i].Text = Convert.ToString(Math.Round(ToDecimal(Price[i].Text) * 1.000m, 2));
-                        Summ[i].Text = "0,00";
-                        if (Quantity[i].BackColor != Color.LightCoral)
+                        arrayPrice[i].BackColor = Color.Snow;
+                        arrayPrice[i].Text = Convert.ToString(Math.Round(ToDecimal(arrayPrice[i].Text) * 1.000m, 2));
+                        arraySumm[i].Text = "0,00";
+                        if (arrayQuantity[i].BackColor != Color.LightCoral)
                         {
                             try
                             {
-                                Summ[i].Text = Convert.ToString(Math.Round(ToDecimal(Price[i].Text) * ToDecimal(Quantity[i].Text), 2));
+                                arraySumm[i].Text = Convert.ToString(Math.Round(ToDecimal(arrayPrice[i].Text) * ToDecimal(arrayQuantity[i].Text), 2));
                             }
                             catch
                             {
-                                Quantity[i].BackColor = Color.LightCoral;
+                                arrayQuantity[i].BackColor = Color.LightCoral;
                             }
                         }
                     }
                     else
                     {
                         error++;
-                        Price[i].BackColor = Color.LightCoral;
+                        arrayPrice[i].BackColor = Color.LightCoral;
                     }
                 }
             }
@@ -406,31 +385,31 @@ namespace _3manRMK
         {
             int error = 0;
             label5.BackColor = SystemColors.InactiveCaption;
-            for (int i = 0; i < CBox.Length; i++)
+            for (int i = 0; i < arrayCheckBox.Length; i++)
             {
-                if (CBox[i].Checked)
+                if (arrayCheckBox[i].Checked)
                 {
-                    if (MainMethods.CheckSimbols.Numbers(Quantity[i].Text))
+                    if (MainMethods.CheckSimbols.Numbers(arrayQuantity[i].Text))
                     {
-                        Quantity[i].BackColor = Color.Snow;
-                        Quantity[i].Text = Convert.ToString(Math.Round(ToDecimal(Quantity[i].Text) * 1.0000m, 3));
-                        Summ[i].Text = "0,00";
-                        if (Price[i].BackColor != Color.LightCoral)
+                        arrayQuantity[i].BackColor = Color.Snow;
+                        arrayQuantity[i].Text = Convert.ToString(Math.Round(ToDecimal(arrayQuantity[i].Text) * 1.0000m, 3));
+                        arraySumm[i].Text = "0,00";
+                        if (arrayPrice[i].BackColor != Color.LightCoral)
                         {
                             try
                             {
-                                Summ[i].Text = Convert.ToString(Math.Round(ToDecimal(Price[i].Text) * ToDecimal(Quantity[i].Text), 2));
+                                arraySumm[i].Text = Convert.ToString(Math.Round(ToDecimal(arrayPrice[i].Text) * ToDecimal(arrayQuantity[i].Text), 2));
                             }
                             catch
                             {
-                                Price[i].BackColor = Color.LightCoral;
+                                arrayPrice[i].BackColor = Color.LightCoral;
                             }
                         }
                     }
                     else
                     {
                         error++;
-                        Quantity[i].BackColor = Color.LightCoral;
+                        arrayQuantity[i].BackColor = Color.LightCoral;
                     }
                 }
             }
@@ -442,10 +421,10 @@ namespace _3manRMK
             decimal S = 0.00m;
             if ((label3.BackColor != Color.LightCoral)&&(label5.BackColor != Color.LightCoral))
             {
-                for (int i = 0; i < Summ.Length; i++)
+                for (int i = 0; i < arraySumm.Length; i++)
                 {
-                    if (CBox[i].Checked)
-                        S = S + ToDecimal(Summ[i].Text);
+                    if (arrayCheckBox[i].Checked)
+                        S = S + ToDecimal(arraySumm[i].Text);
                 }
                 tbSummAll.Text = Convert.ToString(S);
             }
@@ -630,16 +609,16 @@ namespace _3manRMK
 
                 groupBox3.Visible = false;
 
-                for (int i=0; i<CBox.Length; i++) //Регистрация позиций в чеке
+                for (int i=0; i<arrayCheckBox.Length; i++) //Регистрация позиций в чеке
                 {
-                    if (CBox[i].Checked)
+                    if (arrayCheckBox[i].Checked)
                     {
-                        NameProduct0 = NameProduct[i].Text; //Наименование товара
-                        Price0 = Math.Round(ToDecimal(Price[i].Text), 2); //Цена за еденицу товара с учетом скидки
-                        Quantity0 = Math.Round(Convert.ToDouble(Quantity[i].Text), 3); //Кол-во (Диапазон 0,001 до 9.999.999,999)
-                        Summ10 = ToDecimal(Summ[i].Text); //Сумма позиции
-                        Tax10 = EnterItems(Tax[i].Text); //Налоговая ставка 0..6 (0-БезНДС)
-                        PaymentItemSign0 = EnterItems(PaymentItemSign[i].Text); // Признак предмета расчета 1..19 (1-Товар)
+                        NameProduct0 = arrayNameProduct[i].Text; //Наименование товара
+                        Price0 = Math.Round(ToDecimal(arrayPrice[i].Text), 2); //Цена за еденицу товара с учетом скидки
+                        Quantity0 = Math.Round(Convert.ToDouble(arrayQuantity[i].Text), 3); //Кол-во (Диапазон 0,001 до 9.999.999,999)
+                        Summ10 = ToDecimal(arraySumm[i].Text); //Сумма позиции
+                        Tax10 = EnterItems(arrayTax[i].Text); //Налоговая ставка 0..6 (0-БезНДС)
+                        PaymentItemSign0 = EnterItems(arrayPaymentItemSign[i].Text); // Признак предмета расчета 1..19 (1-Товар)
 
                         if (!RegPosition(CheckType, NameProduct0, Price0, Quantity0, Summ10, Tax10, PaymentItemSign0)) //Регистрация позиции
                             break;
@@ -801,60 +780,64 @@ namespace _3manRMK
             groupBox3.Visible = false;
             panel2.Visible = true;
         }
+        private void CopyToFromObjectCollection (ComboBox.ObjectCollection fromItems, ComboBox.ObjectCollection toItems)
+        {
+            toItems.Clear();
+            for (int i = 0; i < fromItems.Count; i++)
+                toItems.Add(fromItems[i]);
+        }
         private void bAdd_Click(object sender, EventArgs e)
         {
-            int Poz = CBox.Length;
+            int Poz = arrayCheckBox.Length;
             if (Poz >= 50)
                 bAdd.Visible = false;
             int Y = bAdd.Location.Y;
-            Array.Resize(ref CBox, Poz + 1);
-            Array.Resize(ref PaymentItemSign, Poz + 1);
-            Array.Resize(ref NameProduct, Poz + 1);
-            Array.Resize(ref Price, Poz + 1);
-            Array.Resize(ref Quantity, Poz + 1);
-            Array.Resize(ref Tax, Poz + 1);
-            Array.Resize(ref Summ, Poz + 1);
-            CBox[Poz] = new CheckBox {Size = CBox[0].Size, Text = Convert.ToString(Poz + 1) + '.', 
+            Array.Resize(ref arrayCheckBox, Poz + 1);
+            Array.Resize(ref arrayPaymentItemSign, Poz + 1);
+            Array.Resize(ref arrayNameProduct, Poz + 1);
+            Array.Resize(ref arrayPrice, Poz + 1);
+            Array.Resize(ref arrayQuantity, Poz + 1);
+            Array.Resize(ref arrayTax, Poz + 1);
+            Array.Resize(ref arraySumm, Poz + 1);
+            arrayCheckBox[Poz] = new CheckBox {Size = arrayCheckBox[0].Size, Text = Convert.ToString(Poz + 1) + '.', 
                                       Checked = true, 
                                       Location = new Point(XY[0], Y) };
-            CBox[Poz].CheckedChanged += new EventHandler(CBox_ChekedChanged);
-            PaymentItemSign[Poz] = new ComboBox { Size = PaymentItemSign[0].Size,
-                                                  Location = new Point(XY[1], Y),
-                                                  Text = PaymentItemSign[0].Text };
-                PaymentItemSign[Poz].Items.AddRange(PaymentItemSignItems);
-                PaymentItemSign[Poz].SelectedIndex = 0;
-                PaymentItemSign[Poz].DropDownStyle = ComboBoxStyle.DropDownList;
-            NameProduct[Poz] = new TextBox {Size = NameProduct[0].Size,
+            arrayCheckBox[Poz].CheckedChanged += new EventHandler(CBox_ChekedChanged);
+            arrayPaymentItemSign[Poz] = new ComboBox { Size = arrayPaymentItemSign[0].Size,
+                Location = new Point(XY[1], Y),
+                DropDownStyle = ComboBoxStyle.DropDownList};
+                CopyToFromObjectCollection(arrayPaymentItemSign[0].Items, arrayPaymentItemSign[Poz].Items);
+                arrayPaymentItemSign[Poz].SelectedIndex = arrayPaymentItemSign[0].SelectedIndex;
+            arrayNameProduct[Poz] = new TextBox {Size = arrayNameProduct[0].Size,
                                             Location = new Point(XY[2], Y),
                                             Text = ""};
-            Price[Poz] = new TextBox {Size = Price[0].Size,
+            arrayPrice[Poz] = new TextBox {Size = arrayPrice[0].Size,
                                       Location = new Point(XY[3], Y),
                                       Text = ""};
-            Price[Poz].TextChanged += new EventHandler(tbPrice_TextChanged);
-            Quantity[Poz] = new TextBox {Size = Quantity[0].Size,
+            arrayPrice[Poz].TextChanged += new EventHandler(tbPrice_TextChanged);
+            arrayQuantity[Poz] = new TextBox {Size = arrayQuantity[0].Size,
                                         Location = new Point(XY[4], Y),
                                         Text = ""};
-            Quantity[Poz].TextChanged += new EventHandler(tbQuantity_TextChanged);
-            Tax[Poz] = new ComboBox {Size = Tax[0].Size,
+            arrayQuantity[Poz].TextChanged += new EventHandler(tbQuantity_TextChanged);
+            arrayTax[Poz] = new ComboBox {Size = arrayTax[0].Size,
                                     Location = new Point(XY[5], Y),
-                                    Text = Tax[0].Text};
-                Tax[Poz].Items.AddRange(TaxItems);
-                Tax[Poz].SelectedIndex = 0;
-                Tax[Poz].DropDownStyle = ComboBoxStyle.DropDownList;
-            Summ[Poz] = new TextBox {Size = Summ[0].Size,
+                                    DropDownStyle = ComboBoxStyle.DropDownList};
+                CopyToFromObjectCollection(arrayTax[0].Items, arrayTax[Poz].Items);
+                arrayTax[Poz].SelectedIndex = arrayTax[0].SelectedIndex;
+            arraySumm[Poz] = new TextBox {Size = arraySumm[0].Size,
                                     Location = new Point(XY[6], Y),
                                     ReadOnly = true,
                                     Text = "0,00"};
-            Summ[Poz].TextChanged += new EventHandler(tbSumm_TextChanged);
+            arraySumm[Poz].TextChanged += new EventHandler(tbSumm_TextChanged);
 
             SuspendLayout();
-            panel2.Controls.Add(CBox[Poz]);
-            panel2.Controls.Add(PaymentItemSign[Poz]);
-            panel2.Controls.Add(NameProduct[Poz]);
-            panel2.Controls.Add(Price[Poz]);
-            panel2.Controls.Add(Quantity[Poz]);
-            panel2.Controls.Add(Tax[Poz]);
-            panel2.Controls.Add(Summ[Poz]);
+            panel2.Controls.Add(arrayCheckBox[Poz]);
+            panel2.Controls.Add(arrayPaymentItemSign[Poz]);
+            panel2.Controls.Add(arrayNameProduct[Poz]);
+            panel2.Controls.Add(arrayPrice[Poz]);
+            panel2.Controls.Add(arrayQuantity[Poz]);
+            panel2.Controls.Add(arrayTax[Poz]);
+            panel2.Controls.Add(arraySumm[Poz]);
             ResumeLayout(false);
             PerformLayout();
             bAdd.Location = new Point(bAdd.Location.X, bAdd.Location.Y+30);

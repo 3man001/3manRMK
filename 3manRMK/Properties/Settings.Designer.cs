@@ -118,5 +118,29 @@ namespace _3manRMK.Properties {
                 this["paymentTypeSignDefault"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("-1")]
+        public int taxSystemDeault {
+            get {
+                return ((int)(this["taxSystemDeault"]));
+            }
+            set {
+                this["taxSystemDeault"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string taxSystem {
+            get {
+                return ((string)(this["taxSystem"]));
+            }
+            set {
+                this["taxSystem"] = value;
+            }
+        }
     }
 }
