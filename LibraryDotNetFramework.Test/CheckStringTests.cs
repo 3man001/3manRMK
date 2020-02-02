@@ -46,5 +46,23 @@ namespace LibraryDotNetFramework.Tests
                 Assert.AreEqual(testINN[element], actual, "Строка на входе = \"" + element + "\"");
             }
         }
+
+        [TestMethod()]
+        public void PhoneTest()
+        {
+            bool actual;
+            Dictionary<string, bool> testPhone = new Dictionary<string, bool>();
+            testPhone.Add("", false);
+            testPhone.Add("qwahfynfjndy", false);
+            testPhone.Add("3664069395", false);
+            testPhone.Add("+7(909) 176-92-36", true);
+            testPhone.Add("+7(909) 176-92-3 ", false);
+            testPhone.Add("+7(909) 176-92-  ", false);
+            foreach (string element in testPhone.Keys)
+            {
+                actual = CheckString.Phone(element);
+                Assert.AreEqual(testPhone[element], actual, "Строка на входе = \"" + element + "\"");
+            }
+        }
     }
 }
