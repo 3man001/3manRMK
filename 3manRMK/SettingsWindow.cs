@@ -15,6 +15,8 @@ namespace _3manRMK
         public SettingsWindow()
         {
             InitializeComponent();
+            
+            Test();            
             LoadDefaultSettings();
             CreateWindjetsOnWindow();
         }
@@ -29,6 +31,12 @@ namespace _3manRMK
                     "Иной предмет расчета", "Имущественное право",
                     "Внереализационный доход", "Страховые взносы",
                     "Торговый сбор", "Курортный сбор"};
+        
+        private void Test()
+        {
+            Array.Resize(ref arrayPaimentItemSign, 1);
+            arrayPaimentItemSign = MainMethods.Setting.AddDictToArray(WorkWithDKKT.DicItems.getDicPaimentItemSign(), arrayPaimentItemSign);
+        }
         string[] arrayPaymentTypeSign =
             new string[8] { "",
                     "Предоплата 100%", "Частичная предоплата",

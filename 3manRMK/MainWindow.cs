@@ -2,7 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.Drawing;
-using System.IO;
 using System.Windows.Forms;  //Подключение библиотек
 
 namespace _3manRMK
@@ -18,6 +17,7 @@ namespace _3manRMK
         }
 
         const string Id = "662400385900";
+        const int NumberOfPosition = 1000;
         DrvFR Drv;
         int[] XY;
         CheckBox[] arrayCheckBox = new CheckBox [] { };
@@ -145,16 +145,15 @@ namespace _3manRMK
             toolStripStatusLabel1.Text = string.Format("Результат: {0}, {1}", ResultCode, ResultCodeDesc);
             if (ResultCode != 0)
             {
-                Drv.GetShortECRStatus(); //Запрос состояния ФР
-                ErrorsForm ErorrsformP = new ErrorsForm(ResultCode, ResultCodeDesc, Drv.ECRMode, Drv.ECRModeDescription, Drv.ECRMode8Status, Drv.ECRModeStatus, Drv.ECRAdvancedMode, Drv.ECRAdvancedModeDescription);
+                Drv.GetShortECRStatus();
+                ErrorsForm ErorrsformP = 
+                    new ErrorsForm(ResultCode, ResultCodeDesc, Drv.ECRMode, Drv.ECRModeDescription, Drv.ECRMode8Status, Drv.ECRModeStatus, Drv.ECRAdvancedMode, Drv.ECRAdvancedModeDescription);
                 ErorrsformP.ShowDialog(this);
                 ErorrsformP.Dispose();
                 return false;
             }
             else
-            {
                 return true;
-            }
         }
         private void GetCashReg() //Запрашивает сумму наличности из ККТ
         {
@@ -170,7 +169,6 @@ namespace _3manRMK
             Items.Add("Работа", 3);
             Items.Add("Услуга", 4);
 
-            //Items.Add("Без НДС", 0);
             Items.Add("НДС 20%", 1);
             Items.Add("НДС 10%", 2);
             Items.Add("НДС 0%", 3);
@@ -789,7 +787,7 @@ namespace _3manRMK
         private void bAdd_Click(object sender, EventArgs e)
         {
             int Poz = arrayCheckBox.Length;
-            if (Poz >= 50)
+            if (Poz >= NumberOfPosition)
                 bAdd.Visible = false;
             int Y = bAdd.Location.Y;
             Array.Resize(ref arrayCheckBox, Poz + 1);

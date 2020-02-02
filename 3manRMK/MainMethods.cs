@@ -221,6 +221,17 @@ namespace _3manRMK
                     index = str.IndexOf(';');
                 }
             }
+            public static string[] AddDictToArray (Dictionary<string, int> dict, string[] array)
+            {
+                int lenght = array.Length;
+                foreach (string element in dict.Keys)
+                {
+                    Array.Resize(ref array, lenght + 1);
+                    array[lenght] = element;
+                    lenght++;
+                }
+                return array;
+            }
         }
     }
 }
