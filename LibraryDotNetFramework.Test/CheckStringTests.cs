@@ -9,6 +9,14 @@ namespace LibraryDotNetFramework.Tests
     public class CheckStringTests
     {
         [TestMethod()]
+        public void GetColorAfterCheckStringTest()
+        {
+            Assert.AreEqual(Color.Snow, CheckString.GetColorAfterCheckString("", false));
+            Assert.AreEqual(Color.LightGreen, CheckString.GetColorAfterCheckString("1qe1", true));
+            Assert.AreEqual(Color.LightCoral, CheckString.GetColorAfterCheckString("1qe1", false));
+        }
+
+        [TestMethod()]
         public void TaxpayerIdentificationNumberTest()
         {
             bool actual;
@@ -33,21 +41,6 @@ namespace LibraryDotNetFramework.Tests
         }
 
         [TestMethod()]
-        public void GetColorAfterCheckINNTest()
-        {
-            Color actual;
-            Dictionary<string, Color> testINN = new Dictionary<string, Color>();
-            testINN.Add("", Color.Snow);
-            testINN.Add("526317984689", Color.LightGreen);
-            testINN.Add("526317984686", Color.LightCoral);
-            foreach (string element in testINN.Keys)
-            {
-                actual = CheckString.GetColorAfterCheckINN(element);
-                Assert.AreEqual(testINN[element], actual, "Строка на входе = \"" + element + "\"");
-            }
-        }
-
-        [TestMethod()]
         public void PhoneTest()
         {
             bool actual;
@@ -62,6 +55,75 @@ namespace LibraryDotNetFramework.Tests
             {
                 actual = CheckString.Phone(element);
                 Assert.AreEqual(testPhone[element], actual, "Строка на входе = \"" + element + "\"");
+            }
+        }
+
+        [TestMethod()]
+        public void NumbersTest()
+        {
+            bool actual;
+            Dictionary<string, bool> testNuber = new Dictionary<string, bool>();
+            testNuber.Add("", false);
+            testNuber.Add("qwahfynfjndy", false);
+            testNuber.Add("3664069395", true);
+            testNuber.Add("19234,65656", true);
+            testNuber.Add("19234.65656", false);
+            testNuber.Add(",", false);
+            foreach (string element in testNuber.Keys)
+            {
+                actual = CheckString.Numbers(element);
+                Assert.AreEqual(testNuber[element], actual, "Строка на входе = \"" + element + "\"");
+            }
+        }
+
+        [TestMethod()]
+        public void EmailTest()
+        {
+            bool actual;
+            Dictionary<string, bool> testEmail = new Dictionary<string, bool>();
+            testEmail.Add("", false);
+            testEmail.Add("qwahfynfjndy", false);
+            testEmail.Add("   @   ", false);
+            testEmail.Add("qwefdfdfs@fdsfsdf.erer", true);
+            testEmail.Add("ывфывфы@вывыю.выв", false);
+            testEmail.Add("qew@qww", true);
+            foreach (string element in testEmail.Keys)
+            {
+                actual = CheckString.Email(element);
+                Assert.AreEqual(testEmail[element], actual, "Строка на входе = \"" + element + "\"");
+            }
+        }
+
+        [TestMethod()]
+        public void FullNameTest()
+        {
+            bool actual;
+            Dictionary<string, bool> testFullName = new Dictionary<string, bool>();
+            testFullName.Add("", false);
+            testFullName.Add("qwefdfdfs@fdsfsdf.erer", false);
+            testFullName.Add("ывфывфы@вывыю.выв", false);
+            testFullName.Add("Иванов Иван Иванович", true);
+            foreach (string element in testFullName.Keys)
+            {
+                actual = CheckString.FullName(element);
+                Assert.AreEqual(testFullName[element], actual, "Строка на входе = \"" + element + "\"");
+            }
+        }
+
+        [TestMethod()]
+        public void BuyerTest()
+        {
+            bool actual;
+            Dictionary<string, bool> testByer = new Dictionary<string, bool>();
+            testByer.Add("", false);
+            testByer.Add("qwefdfdfs@fdsfsdf.erer", false);
+            testByer.Add("ывфывфы@вывыю.выв", false);
+            testByer.Add("Иванов Иван Иванович 5465 232323", true);
+            testByer.Add("ООО Ромашка", true);
+            foreach (string element in testByer.Keys)
+            {
+                actual = CheckString.Buyer(element);
+                Assert.AreEqual(testByer[element], actual, "Строка на входе = \"" + element + "\"");
             }
         }
     }

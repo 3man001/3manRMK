@@ -1,4 +1,5 @@
-﻿using System.Drawing;
+﻿using System;
+using System.Drawing;
 
 namespace LibraryDotNetFramework
 {
@@ -7,6 +8,18 @@ namespace LibraryDotNetFramework
     /// </summary>
     public class CheckString
     {
+        /// <summary>
+        /// Возвращает цвет в завимости резултатов проверки строки
+        /// </summary>
+        public static Color GetColorAfterCheckString(string str, bool checkResult)
+        {
+            if (str == "")
+                return Color.Snow;
+            else if (checkResult)
+                return Color.LightGreen;
+            else
+                return Color.LightCoral;
+        }
 
         /// <summary>
         /// Проверка введенного ИНН по контрольным числам
@@ -54,18 +67,21 @@ namespace LibraryDotNetFramework
             else
                 return false;
         }
+
         /// <summary>
-        /// Возвращает цвет в завимости от введенного ИНН
+        /// Проверка введенного номера телефона на корректность
         /// </summary>
-        public static Color GetColorAfterCheckINN(string INN)
+        public static bool Phone(string CheckString)
         {
-            if (INN == "")
-                return Color.Snow;
-            else if (TaxpayerIdentificationNumber(INN))
-                return Color.LightGreen;
+            if (CheckString.Length != 17)
+                return false;
+            CheckString = CheckString.Replace("(", "").Replace(")", "").Replace("-", "").Replace(" ", "");
+            if (CheckString.Length == 12)
+                return true;
             else
-                return Color.LightCoral;
+                return false;
         }
+
         /// <summary>
         /// Проверка введенного числа на отсутствие посторонних символов
         /// </summary>
@@ -91,6 +107,7 @@ namespace LibraryDotNetFramework
                 return true;
             }
         }
+
         /// <summary>
         /// Проверка введенного Email на отсутсвие посторонних символов
         /// </summary>
@@ -112,19 +129,7 @@ namespace LibraryDotNetFramework
                 return true;
             }
         }
-        /// <summary>
-        /// Проверка введенного номера телефона на корректность
-        /// </summary>
-        public static bool Phone(string CheckString)
-        {
-            if (CheckString.Length != 17)
-                return false;
-            CheckString = CheckString.Replace("(", "").Replace(")", "").Replace("-", "").Replace(" ", "");
-            if (CheckString.Length == 12)
-                return true;
-            else
-                return false;
-        }
+
         /// <summary>
         /// Проверка введенного ФИО на отсутствие посторонних символов
         /// </summary>
@@ -141,6 +146,7 @@ namespace LibraryDotNetFramework
             }
             return true;
         }
+
         /// <summary>
         /// Проверка строки с наименованием покупателя на постороннние символы
         /// </summary>
@@ -157,5 +163,6 @@ namespace LibraryDotNetFramework
             }
             return true;
         }
+
     }
 }
