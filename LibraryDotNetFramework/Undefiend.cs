@@ -6,7 +6,7 @@ using System.Windows.Forms;
 
 namespace LibraryDotNetFramework
 {
-    class Undefiend
+    public class Undefiend
     {
         public static bool SendMail(string subject, string message)
         {

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LibraryDotNetFramework;
+using System;
 using System.Windows.Forms;
 
 namespace _3manRMK
@@ -64,7 +65,7 @@ namespace _3manRMK
 
         private void button1_Click(object sender, EventArgs e)
         {
-            MainMethods.Email.SendMail("Ошибка работы", LAllCode.Text);
+            Undefiend.SendMail("Ошибка работы", LAllCode.Text);
             Close();
         }
     }

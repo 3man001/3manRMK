@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LibraryDotNetFramework;
+using System;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -29,7 +30,7 @@ namespace _3manRMK
         private void Test()
         {
             Array.Resize(ref arrayPaimentItemSign, 1);
-            arrayPaimentItemSign = MainMethods.Setting.AddDictToArray(WorkWithDKKT.DicItems.getDicPaimentItemSign(), arrayPaimentItemSign);
+            arrayPaimentItemSign = Undefiend.AddDictToArray(WorkWithDKKT.DicItems.getDicPaimentItemSign(), arrayPaimentItemSign);
         }
         string[] arrayPaymentTypeSign =
             new string[8] { "",
@@ -53,10 +54,11 @@ namespace _3manRMK
         CheckBox[] CB_TaxSystem = new CheckBox[0];
         private void LoadDefaultSettings()
         {
-            MainMethods.Setting.ConvertStringToItems(Properties.Settings.Default.paymentItemsSign, comBoxPaymentItemSign.Items);
-            MainMethods.Setting.ConvertStringToItems(Properties.Settings.Default.paymentTypeSign, comboBox2.Items);
-            MainMethods.Setting.ConvertStringToItems(Properties.Settings.Default.taxItems, comBoxTaxItem.Items);
-            MainMethods.Setting.ConvertStringToItems(Properties.Settings.Default.taxSystem, comBoxTaxSystem.Items);
+
+            Undefiend.ConvertStringToItems(Properties.Settings.Default.paymentItemsSign, comBoxPaymentItemSign.Items);
+            Undefiend.ConvertStringToItems(Properties.Settings.Default.paymentTypeSign, comboBox2.Items);
+            Undefiend.ConvertStringToItems(Properties.Settings.Default.taxItems, comBoxTaxItem.Items);
+            Undefiend.ConvertStringToItems(Properties.Settings.Default.taxSystem, comBoxTaxSystem.Items);
             comBoxPaymentItemSign.SelectedIndex = Properties.Settings.Default.paymentItemSignDefault;
             comboBox2.SelectedIndex = Properties.Settings.Default.paymentTypeSignDefault;
             comBoxTaxItem.SelectedIndex = Properties.Settings.Default.taxItemsDeault;
@@ -197,10 +199,10 @@ namespace _3manRMK
             Properties.Settings.Default.paymentTypeSignDefault = comboBox2.SelectedIndex;
             Properties.Settings.Default.taxItemsDeault = comBoxTaxItem.SelectedIndex;
             Properties.Settings.Default.taxSystemDeault = comBoxTaxSystem.SelectedIndex;
-            Properties.Settings.Default.paymentItemsSign = MainMethods.Setting.ConvertItemsToString(comBoxPaymentItemSign.Items);
-            Properties.Settings.Default.paymentTypeSign = MainMethods.Setting.ConvertItemsToString(comboBox2.Items);
-            Properties.Settings.Default.taxItems = MainMethods.Setting.ConvertItemsToString(comBoxTaxItem.Items);
-            Properties.Settings.Default.taxSystem = MainMethods.Setting.ConvertItemsToString(comBoxTaxSystem.Items);
+            Properties.Settings.Default.paymentItemsSign = Undefiend.ConvertItemsToString(comBoxPaymentItemSign.Items);
+            Properties.Settings.Default.paymentTypeSign = Undefiend.ConvertItemsToString(comboBox2.Items);
+            Properties.Settings.Default.taxItems = Undefiend.ConvertItemsToString(comBoxTaxItem.Items);
+            Properties.Settings.Default.taxSystem = Undefiend.ConvertItemsToString(comBoxTaxSystem.Items);
             Properties.Settings.Default.Save();
         }
         private void button2_Click(object sender, EventArgs e)

@@ -1,4 +1,5 @@
 ﻿using DrvFRLib; //Библиотека ШТРИХ-М подключение
+using LibraryDotNetFramework;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -40,7 +41,7 @@ namespace _3manRMK
             arrayCheckBox[0] = checkBox2;
             arrayPaymentItemSign[0] = cbPaymentItemSign_1;
             arrayPaymentItemSign[0].Items.Clear();
-            MainMethods.Setting.ConvertStringToItems(Properties.Settings.Default.paymentItemsSign, arrayPaymentItemSign[0].Items);
+            Undefiend.ConvertStringToItems(Properties.Settings.Default.paymentItemsSign, arrayPaymentItemSign[0].Items);
             arrayPaymentItemSign[0].SelectedIndex = Properties.Settings.Default.paymentItemSignDefault;
             arrayNameProduct[0] = tbNameProduct_1;
             arrayPrice[0] = tbPrice_1;
@@ -304,14 +305,14 @@ namespace _3manRMK
         }
         private void tbFIO_TextChanged(object sender, EventArgs e)
         {
-            if (MainMethods.CheckSimbols.FullName(tbFIO.Text))
+            if (CheckString.FullName(tbFIO.Text))
                 tbFIO.BackColor = Color.Snow;
             else
                 tbFIO.BackColor = Color.LightCoral;
         }
         private void tbINN_TextChanged(object sender, EventArgs e)
         {
-            tbINN.BackColor = MainMethods.CheckSimbols.GetColorAfterCheckINN(tbINN.Text);
+            tbINN.BackColor = CheckString.GetColorAfterCheckString(tbINN.Text, CheckString.TaxpayerIdentificationNumber(tbINN.Text));
         }
         private void CBox_ChekedChanged(object sender, EventArgs e) //Проверка Чекбоксов
         {
@@ -352,7 +353,7 @@ namespace _3manRMK
             {
                 if (arrayCheckBox[i].Checked)
                 {
-                    if (MainMethods.CheckSimbols.Numbers(arrayPrice[i].Text))
+                    if (CheckString.Numbers(arrayPrice[i].Text))
                     {
                         arrayPrice[i].BackColor = Color.Snow;
                         arrayPrice[i].Text = Convert.ToString(Math.Round(ToDecimal(arrayPrice[i].Text) * 1.000m, 2));
@@ -387,7 +388,7 @@ namespace _3manRMK
             {
                 if (arrayCheckBox[i].Checked)
                 {
-                    if (MainMethods.CheckSimbols.Numbers(arrayQuantity[i].Text))
+                    if (CheckString.Numbers(arrayQuantity[i].Text))
                     {
                         arrayQuantity[i].BackColor = Color.Snow;
                         arrayQuantity[i].Text = Convert.ToString(Math.Round(ToDecimal(arrayQuantity[i].Text) * 1.0000m, 3));
@@ -431,7 +432,8 @@ namespace _3manRMK
         }
         private void tbSumm1_TextChanged(object sender, EventArgs e)
         {
-            if (MainMethods.CheckSimbols.Numbers(tbSumm1.Text))
+            
+            if (CheckString.Numbers(tbSumm1.Text))
             {
                 tbSumm1.BackColor = Color.Snow;
                 tbSumm1.Text = Convert.ToString(Math.Round(ToDecimal(tbSumm1.Text)*1.000m,2));
@@ -449,7 +451,7 @@ namespace _3manRMK
         }
         private void tbSumm2_TextChanged(object sender, EventArgs e) //Контроль ввода безналичной оплаты
         {
-            if (MainMethods.CheckSimbols.Numbers(tbSumm2.Text))
+            if (CheckString.Numbers(tbSumm2.Text))
             {
                 if (ToDecimal(tbSumm2.Text) > ToDecimal(tbSummAll.Text))
                 {
@@ -484,34 +486,24 @@ namespace _3manRMK
         }
         private void maskTBPhone_MaskInputRejected(object sender, EventArgs e) //Проверка тел. на корректность
         {
-            if (MainMethods.CheckSimbols.Phone(maskTBPhone.Text))
+            if (CheckString.Phone(maskTBPhone.Text))
                 maskTBPhone.BackColor = Color.LightGreen;
             else if (maskTBPhone.Text.Replace("+7(", "").Replace(")", "").Replace("-", "").Replace(" ", "") == "")
                 maskTBPhone.BackColor = Color.Snow;
             else
                 maskTBPhone.BackColor = Color.LightCoral;
         }
-        private void tbEmail_TextChanged(object sender, EventArgs e) //Проверка Email на корректность
+        private void tbEmail_TextChanged(object sender, EventArgs e)
         {
-            if (tbEmail.Text == "")
-                tbEmail.BackColor = Color.Snow;
-            else if (MainMethods.CheckSimbols.Email(tbEmail.Text))
-                tbEmail.BackColor = Color.LightGreen;
-            else
-                tbEmail.BackColor = Color.LightCoral;
+            tbEmail.BackColor = CheckString.GetColorAfterCheckString(tbEmail.Text, CheckString.Email(tbEmail.Text));
         }
         private void tbCustomerINN_TextChanged(object sender, EventArgs e)
         {
-            tbCustomerINN.BackColor = MainMethods.CheckSimbols.GetColorAfterCheckINN(tbCustomerINN.Text);
+            tbCustomerINN.BackColor = CheckString.GetColorAfterCheckString(tbCustomerINN.Text, CheckString.TaxpayerIdentificationNumber(tbCustomerINN.Text));
         }
         private void tbCustomer_TextChanged(object sender, EventArgs e)
         {
-            if (tbCustomer.Text == "")
-                tbCustomer.BackColor = Color.Snow;
-            else if (MainMethods.CheckSimbols.Buyer(tbCustomer.Text))
-                tbCustomer.BackColor = Color.LightGreen;
-            else
-                tbCustomer.BackColor = Color.LightCoral;
+            tbCustomer.BackColor =  CheckString.GetColorAfterCheckString(tbCustomer.Text, CheckString.Buyer(tbCustomer.Text));
         }
         ///////////Начало Блок МЕНЮ////////////////
         private void подключитьФРToolStripMenuItem_Click(object sender, EventArgs e) //Показать свойство оборуования
@@ -851,7 +843,7 @@ namespace _3manRMK
         }
         private void tbCash_In_Outcome_TextChanged(object sender, EventArgs e)
         {
-            if (MainMethods.CheckSimbols.Numbers(tbCash_In_Outcome.Text))
+            if (CheckString.Numbers(tbCash_In_Outcome.Text))
             {
                 tbCash_In_Outcome.BackColor = Color.Snow;
                 tbCash_In_Outcome.Text = Convert.ToString(Math.Round(ToDecimal(tbCash_In_Outcome.Text) * 1.000m, 2));
