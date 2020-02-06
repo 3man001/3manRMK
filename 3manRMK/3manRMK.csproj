@@ -164,5 +164,11 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\LibraryDotNetFramework\LibraryDotNetFramework.csproj">
+      <Project>{a008cac5-c365-4a9b-8808-c5cc09027a1c}</Project>
+      <Name>LibraryDotNetFramework</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

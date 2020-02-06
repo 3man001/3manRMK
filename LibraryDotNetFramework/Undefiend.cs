@@ -16,13 +16,12 @@ namespace LibraryDotNetFramework
 
             MailAddress from = new MailAddress(fromAddress, fromName); //Отправитель - Адресс и отображаемое Имя
             MailAddress to = new MailAddress(toAddress); //Адрес получателя
-            MailMessage m = new MailMessage(from, to); // создаем объект сообщения
-
+            MailMessage m = new MailMessage (from, to); // создаем объект сообщения
             m.Subject = subject; // тема письма
             m.Body = "<h2> " + message.Replace("\n", "<br>") + " </h2>"; // текст письма
             m.IsBodyHtml = true; // письмо представляет код html
-            SmtpClient smtp = new SmtpClient("mail.3man001.ru", 25); // адрес smtp-сервера и порт отправки письма
-            smtp.Credentials = new NetworkCredential("feedback@3man001.ru", "W1h7A4a4"); // логин и пароль
+            SmtpClient smtp = new SmtpClient { Host = "mail.3man001.ru", Port = 25 };
+            smtp.Credentials = new NetworkCredential{UserName="feedback@3man001.ru", Password="W1h7A4a4"};
             smtp.EnableSsl = false;
             try
             {

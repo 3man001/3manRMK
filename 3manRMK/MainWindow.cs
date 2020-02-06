@@ -422,7 +422,7 @@ namespace _3manRMK
                 for (int i = 0; i < arraySumm.Length; i++)
                 {
                     if (arrayCheckBox[i].Checked)
-                        S = S + ToDecimal(arraySumm[i].Text);
+                        S += ToDecimal(arraySumm[i].Text);
                 }
                 tbSummAll.Text = Convert.ToString(S);
             }
@@ -647,7 +647,7 @@ namespace _3manRMK
                         Drv.TagType = 7;
                         Drv.TagValueStr = tbCustomerINN.Text;
                         if (Drv.TagValueStr.Length == 10)
-                            Drv.TagValueStr = Drv.TagValueStr + "00";
+                            Drv.TagValueStr += "00";
                         Drv.FNSendTag();
                     }
             
