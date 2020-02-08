@@ -128,7 +128,7 @@
             this.tbFIO.Name = "tbFIO";
             this.tbFIO.Size = new System.Drawing.Size(250, 22);
             this.tbFIO.TabIndex = 0;
-            this.tbFIO.TextChanged += new System.EventHandler(this.tbFIO_TextChanged);
+            this.tbFIO.TextChanged += new System.EventHandler(this.TextBoxFIO_TextChanged);
             // 
             // button4
             // 
@@ -140,7 +140,7 @@
             this.button4.Text = "Оформить продажу";
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Visible = false;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
+            this.button4.Click += new System.EventHandler(this.Button4_Click);
             // 
             // menuStrip1
             // 
@@ -172,14 +172,14 @@
             this.подключитьФРToolStripMenuItem.Name = "подключитьФРToolStripMenuItem";
             this.подключитьФРToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
             this.подключитьФРToolStripMenuItem.Text = "Подключить ФР";
-            this.подключитьФРToolStripMenuItem.Click += new System.EventHandler(this.подключитьФРToolStripMenuItem_Click);
+            this.подключитьФРToolStripMenuItem.Click += new System.EventHandler(this.ПодключитьФРToolStripMenuItem_Click);
             // 
             // закрытьСменуToolStripMenuItem
             // 
             this.закрытьСменуToolStripMenuItem.Name = "закрытьСменуToolStripMenuItem";
             this.закрытьСменуToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
             this.закрытьСменуToolStripMenuItem.Text = "Закрыть смену";
-            this.закрытьСменуToolStripMenuItem.Click += new System.EventHandler(this.закрытьСменуToolStripMenuItem_Click);
+            this.закрытьСменуToolStripMenuItem.Click += new System.EventHandler(this.ЗакрытьСменуToolStripMenuItem_Click);
             // 
             // кассовыеОперацииToolStripMenuItem
             // 
@@ -198,7 +198,7 @@
             this.внесениеToolStripMenuItem.Name = "внесениеToolStripMenuItem";
             this.внесениеToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.внесениеToolStripMenuItem.Text = "Внесение\\Выплата";
-            this.внесениеToolStripMenuItem.Click += new System.EventHandler(this.внесениеToolStripMenuItem_Click);
+            this.внесениеToolStripMenuItem.Click += new System.EventHandler(this.ВнесениеToolStripMenuItem_Click);
             // 
             // открытьСменуToolStripMenuItem
             // 
@@ -211,7 +211,7 @@
             this.отменаЧекаToolStripMenuItem.Name = "отменаЧекаToolStripMenuItem";
             this.отменаЧекаToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.отменаЧекаToolStripMenuItem.Text = "Отмена чека";
-            this.отменаЧекаToolStripMenuItem.Click += new System.EventHandler(this.отменаЧекаToolStripMenuItem_Click);
+            this.отменаЧекаToolStripMenuItem.Click += new System.EventHandler(this.ОтменаЧекаToolStripMenuItem_Click);
             // 
             // отчетыToolStripMenuItem
             // 
@@ -243,49 +243,49 @@
             this.приходToolStripMenuItem.Name = "приходToolStripMenuItem";
             this.приходToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
             this.приходToolStripMenuItem.Text = "Приход";
-            this.приходToolStripMenuItem.Click += new System.EventHandler(this.приходToolStripMenuItem_Click);
+            this.приходToolStripMenuItem.Click += new System.EventHandler(this.ПриходToolStripMenuItem_Click);
             // 
             // возвратПриходаToolStripMenuItem
             // 
             this.возвратПриходаToolStripMenuItem.Name = "возвратПриходаToolStripMenuItem";
             this.возвратПриходаToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
             this.возвратПриходаToolStripMenuItem.Text = "Возврат прихода";
-            this.возвратПриходаToolStripMenuItem.Click += new System.EventHandler(this.возвратПриходаToolStripMenuItem_Click);
+            this.возвратПриходаToolStripMenuItem.Click += new System.EventHandler(this.ВозвратПриходаToolStripMenuItem_Click);
             // 
             // расходToolStripMenuItem
             // 
             this.расходToolStripMenuItem.Name = "расходToolStripMenuItem";
             this.расходToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
             this.расходToolStripMenuItem.Text = "Расход";
-            this.расходToolStripMenuItem.Click += new System.EventHandler(this.расходToolStripMenuItem_Click);
+            this.расходToolStripMenuItem.Click += new System.EventHandler(this.РасходToolStripMenuItem_Click);
             // 
             // возвратРасходаToolStripMenuItem
             // 
             this.возвратРасходаToolStripMenuItem.Name = "возвратРасходаToolStripMenuItem";
             this.возвратРасходаToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
             this.возвратРасходаToolStripMenuItem.Text = "Возврат расхода";
-            this.возвратРасходаToolStripMenuItem.Click += new System.EventHandler(this.возвратРасходаToolStripMenuItem_Click);
+            this.возвратРасходаToolStripMenuItem.Click += new System.EventHandler(this.ВозвратРасходаToolStripMenuItem_Click);
             // 
             // настройкиToolStripMenuItem
             // 
             this.настройкиToolStripMenuItem.Name = "настройкиToolStripMenuItem";
             this.настройкиToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
             this.настройкиToolStripMenuItem.Text = "Настройки";
-            this.настройкиToolStripMenuItem.Click += new System.EventHandler(this.настройкиToolStripMenuItem_Click);
+            this.настройкиToolStripMenuItem.Click += new System.EventHandler(this.НастройкиToolStripMenuItem_Click);
             // 
             // обратнаяСвязьToolStripMenuItem
             // 
             this.обратнаяСвязьToolStripMenuItem.Name = "обратнаяСвязьToolStripMenuItem";
             this.обратнаяСвязьToolStripMenuItem.Size = new System.Drawing.Size(104, 20);
             this.обратнаяСвязьToolStripMenuItem.Text = "Обратная связь";
-            this.обратнаяСвязьToolStripMenuItem.Click += new System.EventHandler(this.обратнаяСвязьToolStripMenuItem_Click);
+            this.обратнаяСвязьToolStripMenuItem.Click += new System.EventHandler(this.ОбратнаяСвязьToolStripMenuItem_Click);
             // 
             // оПрограммеToolStripMenuItem
             // 
             this.оПрограммеToolStripMenuItem.Name = "оПрограммеToolStripMenuItem";
             this.оПрограммеToolStripMenuItem.Size = new System.Drawing.Size(94, 20);
             this.оПрограммеToolStripMenuItem.Text = "О программе";
-            this.оПрограммеToolStripMenuItem.Click += new System.EventHandler(this.оПрограммеToolStripMenuItem_Click);
+            this.оПрограммеToolStripMenuItem.Click += new System.EventHandler(this.ОПрограммеToolStripMenuItem_Click);
             // 
             // statusStrip1
             // 
@@ -390,7 +390,7 @@
             this.tbSumm1.Text = "0,00";
             this.tbSumm1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.tbSumm1.Visible = false;
-            this.tbSumm1.TextChanged += new System.EventHandler(this.tbSumm1_TextChanged);
+            this.tbSumm1.TextChanged += new System.EventHandler(this.TextBoxSumm1_TextChanged);
             // 
             // tbSumm2
             // 
@@ -403,7 +403,7 @@
             this.tbSumm2.Text = "0,00";
             this.tbSumm2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.tbSumm2.Visible = false;
-            this.tbSumm2.TextChanged += new System.EventHandler(this.tbSumm2_TextChanged);
+            this.tbSumm2.TextChanged += new System.EventHandler(this.TextBoxSumm2_TextChanged);
             // 
             // label10
             // 
@@ -438,7 +438,7 @@
             this.btnLogin.TabIndex = 3;
             this.btnLogin.Text = "Login";
             this.btnLogin.UseVisualStyleBackColor = false;
-            this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
+            this.btnLogin.Click += new System.EventHandler(this.BtnLogin_Click);
             // 
             // button1
             // 
@@ -449,7 +449,7 @@
             this.button1.TabIndex = 12;
             this.button1.Text = "ОплатаНал";
             this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.button1.Click += new System.EventHandler(this.Button1_Click);
             // 
             // button2
             // 
@@ -460,7 +460,7 @@
             this.button2.TabIndex = 13;
             this.button2.Text = "ОплБезНал";
             this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.button2.Click += new System.EventHandler(this.Button2_Click);
             // 
             // button3
             // 
@@ -471,7 +471,7 @@
             this.button3.TabIndex = 14;
             this.button3.Text = "СмешОпл";
             this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.button3.Click += new System.EventHandler(this.Button3_Click);
             // 
             // label13
             // 
@@ -542,7 +542,7 @@
             this.tbCustomerINN.PromptChar = '-';
             this.tbCustomerINN.Size = new System.Drawing.Size(105, 23);
             this.tbCustomerINN.TabIndex = 79;
-            this.tbCustomerINN.TextChanged += new System.EventHandler(this.tbCustomerINN_TextChanged);
+            this.tbCustomerINN.TextChanged += new System.EventHandler(this.TextBoxCustomerINN_TextChanged);
             // 
             // tbCustomer
             // 
@@ -552,7 +552,7 @@
             this.tbCustomer.Name = "tbCustomer";
             this.tbCustomer.Size = new System.Drawing.Size(200, 22);
             this.tbCustomer.TabIndex = 78;
-            this.tbCustomer.TextChanged += new System.EventHandler(this.tbCustomer_TextChanged);
+            this.tbCustomer.TextChanged += new System.EventHandler(this.TextBoxCustomer_TextChanged);
             // 
             // label17
             // 
@@ -581,7 +581,7 @@
             this.maskTBPhone.Name = "maskTBPhone";
             this.maskTBPhone.Size = new System.Drawing.Size(143, 23);
             this.maskTBPhone.TabIndex = 8;
-            this.maskTBPhone.TextChanged += new System.EventHandler(this.maskTBPhone_MaskInputRejected);
+            this.maskTBPhone.TextChanged += new System.EventHandler(this.MaskTBPhone_MaskInputRejected);
             // 
             // tbEmail
             // 
@@ -592,7 +592,7 @@
             this.tbEmail.Name = "tbEmail";
             this.tbEmail.Size = new System.Drawing.Size(180, 23);
             this.tbEmail.TabIndex = 11;
-            this.tbEmail.TextChanged += new System.EventHandler(this.tbEmail_TextChanged);
+            this.tbEmail.TextChanged += new System.EventHandler(this.TextBoxEmail_TextChanged);
             // 
             // tbChange
             // 
@@ -607,8 +607,8 @@
             this.tbChange.Text = "0,00";
             this.tbChange.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.tbChange.Visible = false;
-            this.tbChange.TextChanged += new System.EventHandler(this.tbChange_TextChanged);
-            this.tbChange.VisibleChanged += new System.EventHandler(this.tbChange_TextChanged);
+            this.tbChange.TextChanged += new System.EventHandler(this.TextBoxChange_TextChanged);
+            this.tbChange.VisibleChanged += new System.EventHandler(this.TextBoxChange_TextChanged);
             // 
             // button12
             // 
@@ -619,7 +619,7 @@
             this.button12.TabIndex = 7;
             this.button12.Text = "Позиции";
             this.button12.UseVisualStyleBackColor = true;
-            this.button12.Click += new System.EventHandler(this.button12_Click);
+            this.button12.Click += new System.EventHandler(this.Button12_Click);
             // 
             // label11
             // 
@@ -658,7 +658,7 @@
             this.tbINN.PromptChar = '-';
             this.tbINN.Size = new System.Drawing.Size(105, 23);
             this.tbINN.TabIndex = 2;
-            this.tbINN.TextChanged += new System.EventHandler(this.tbINN_TextChanged);
+            this.tbINN.TextChanged += new System.EventHandler(this.TextBoxINN_TextChanged);
             // 
             // groupBox4
             // 
@@ -685,7 +685,7 @@
             this.tbCash_In_Outcome.TabIndex = 10;
             this.tbCash_In_Outcome.Text = "0,00";
             this.tbCash_In_Outcome.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.tbCash_In_Outcome.TextChanged += new System.EventHandler(this.tbCash_In_Outcome_TextChanged);
+            this.tbCash_In_Outcome.TextChanged += new System.EventHandler(this.TextBoxCash_In_Outcome_TextChanged);
             // 
             // cB_In_OutCash
             // 
@@ -698,7 +698,7 @@
             this.cB_In_OutCash.Name = "cB_In_OutCash";
             this.cB_In_OutCash.Size = new System.Drawing.Size(121, 21);
             this.cB_In_OutCash.TabIndex = 2;
-            this.cB_In_OutCash.TextChanged += new System.EventHandler(this.cB_In_OutCash_TextChanged);
+            this.cB_In_OutCash.TextChanged += new System.EventHandler(this.ComBox_In_OutCash_TextChanged);
             // 
             // buttonCash_In_Outcome
             // 
@@ -710,7 +710,7 @@
             this.buttonCash_In_Outcome.Text = "button5";
             this.buttonCash_In_Outcome.UseVisualStyleBackColor = true;
             this.buttonCash_In_Outcome.Visible = false;
-            this.buttonCash_In_Outcome.Click += new System.EventHandler(this.buttonCash_In_Outcome_Click);
+            this.buttonCash_In_Outcome.Click += new System.EventHandler(this.ButtonCash_In_Outcome_Click);
             // 
             // label18
             // 
@@ -781,7 +781,7 @@
             this.bAdd.TabIndex = 7;
             this.bAdd.Text = "Add";
             this.bAdd.UseVisualStyleBackColor = false;
-            this.bAdd.Click += new System.EventHandler(this.bAdd_Click);
+            this.bAdd.Click += new System.EventHandler(this.BtnAdd_Click);
             // 
             // cB_FN_TaxType
             // 
@@ -792,7 +792,7 @@
             this.cB_FN_TaxType.Name = "cB_FN_TaxType";
             this.cB_FN_TaxType.Size = new System.Drawing.Size(140, 24);
             this.cB_FN_TaxType.TabIndex = 5;
-            this.cB_FN_TaxType.TextChanged += new System.EventHandler(this.cB_FN_TaxType_TextChanged);
+            this.cB_FN_TaxType.TextChanged += new System.EventHandler(this.ComBox_FN_TaxType_TextChanged);
             // 
             // checkBox2
             // 
@@ -816,7 +816,7 @@
             this.tbSumm1_1.Size = new System.Drawing.Size(95, 20);
             this.tbSumm1_1.TabIndex = 19;
             this.tbSumm1_1.Text = "0,00";
-            this.tbSumm1_1.TextChanged += new System.EventHandler(this.tbSumm_TextChanged);
+            this.tbSumm1_1.TextChanged += new System.EventHandler(this.TextBoxSumm_TextChanged);
             // 
             // checkBox1
             // 
@@ -827,7 +827,7 @@
             this.checkBox1.TabIndex = 8;
             this.checkBox1.Text = "№";
             this.checkBox1.UseVisualStyleBackColor = true;
-            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            this.checkBox1.CheckedChanged += new System.EventHandler(this.CheckBox1_CheckedChanged);
             // 
             // cbPaymentItemSign_1
             // 
@@ -850,7 +850,7 @@
             this.button11.TabIndex = 6;
             this.button11.Text = "Оплата";
             this.button11.UseVisualStyleBackColor = true;
-            this.button11.Click += new System.EventHandler(this.button11_Click);
+            this.button11.Click += new System.EventHandler(this.Button11_Click);
             // 
             // label12
             // 
@@ -902,7 +902,7 @@
             this.tbPrice_1.Name = "tbPrice_1";
             this.tbPrice_1.Size = new System.Drawing.Size(95, 20);
             this.tbPrice_1.TabIndex = 12;
-            this.tbPrice_1.TextChanged += new System.EventHandler(this.tbPrice_TextChanged);
+            this.tbPrice_1.TextChanged += new System.EventHandler(this.TextBoxPrice_TextChanged);
             // 
             // tbQuantity_1
             // 
@@ -911,7 +911,7 @@
             this.tbQuantity_1.Name = "tbQuantity_1";
             this.tbQuantity_1.Size = new System.Drawing.Size(75, 20);
             this.tbQuantity_1.TabIndex = 13;
-            this.tbQuantity_1.TextChanged += new System.EventHandler(this.tbQuantity_TextChanged);
+            this.tbQuantity_1.TextChanged += new System.EventHandler(this.TextBoxQuantity_TextChanged);
             // 
             // label8
             // 

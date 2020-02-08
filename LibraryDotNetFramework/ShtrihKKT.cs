@@ -7,7 +7,7 @@ using DrvFRLib;
 
 namespace LibraryDotNetFramework
 {
-    class ShtrihKKT
+    public class ShtrihKKT
     {
         /// <summary>
         /// Выводит диалоговое окно подключения к ККТ
@@ -60,7 +60,7 @@ namespace LibraryDotNetFramework
         /// <summary>
         /// Регистрирует позицию в чеке ККТ
         /// </summary>
-        private bool RegPosition(DrvFR Drv, int CheckType, int PaymentItemSign, string NameProduct, Decimal Price, 
+        public static bool RegPosition(DrvFR Drv, int CheckType, int PaymentItemSign, string NameProduct, Decimal Price, 
             Double Quantity, int Tax1, Decimal Summ1) //Регистрация позиции в чеке
         {
             Drv.CheckType = CheckType;
@@ -176,6 +176,8 @@ namespace LibraryDotNetFramework
         /// </summary>
         private static void SendFIO(DrvFR Drv, string FIO, string INN)
         {
+            if (FIO != "")
+            {
                 Drv.TagNumber = 1021; //Отправка Должности и Фамилии кассира
                 Drv.TagType = 7;
                 Drv.TagValueStr = FIO;
@@ -187,6 +189,7 @@ namespace LibraryDotNetFramework
                     Drv.TagValueStr = INN;
                     Drv.FNSendTag();
                 }
+            }
         }
 
         /// <summary>
@@ -259,71 +262,25 @@ namespace LibraryDotNetFramework
             return true;
         }
 
-        private void button4_Click(DrvFR Drv) //Продажа товара
-        {
-         //   }
-         //   else
-         //   {
-         //       int CheckType = EnterItems(labelCheckType.Text); //Операция приход((1 - Приход, 2 - Возврат прихода 3 - расход, 4 - возврат расхода)
-                string NameProduct0; //Наименование товара
-                Decimal Price0; //Цена за еденицу товара с учетом скидки
-                Double Quantity0; //Кол-во (Диапазон 0,001 до 9.999.999,999)
-                Decimal Summ10; //Сумма позиции
-                int Tax10; //Налоговая ставка 0..6 (0-БезНДС)
-                int PaymentItemSign0; // Признак предмета расчета 1..19 (1-Товар)
-
-                try
-                {
-                    Drv.Connect();
-                    Drv.GetShortECRStatus();
-         //           if (Drv.ECRMode == 4)
-         //               открытьСменуToolStripMenuItem_Click(sender, e);
-                }
-                catch
-                {
-         //           UpdateResult();
-                } //Если смена закрыта то Открыть как положено
-
-         //       groupBox3.Visible = false;
-
-                if (Drv.ResultCode == 0) //Если позиции пробитилсь то идем дальше
-                {
-         //           if (maskTBPhone.BackColor == Color.LightGreen) //Отправка чека СМС если есть номер
-         //           {
-         //               Drv.CustomerEmail = maskTBPhone.Text.Replace("(", "").Replace(")", "").Replace("-", "").Replace(" ", "");
-                        Drv.FNSendCustomerEmail();
-         //           }
-         //           else if (tbEmail.BackColor == Color.LightGreen) //Отправка чека на Email если введен адрес
-         //           {
-         //               Drv.CustomerEmail = tbEmail.Text;
-                        Drv.FNSendCustomerEmail();
-         //           }
-                }
-        }
-
         private void KKT_StatusCheck(DrvFR Drv) //проверяет статус ОФД и ФН приотткрытии и закрытии смены
         {
-            //   if (UpdateResult())
-            //   {
-            GetCashReg(Drv);
-
             DateTime dateTimePC = DateTime.Today;
             Drv.FNGetStatus(); //Запрос Статуса ФН
             string FNWarningFlags = Convert.ToString(Drv.FNWarningFlags, 2); //ФНФлагиПредупреждения
             FNWarningFlags = new string('0', 4 - FNWarningFlags.Length) + FNWarningFlags;
             //       toolStripStatus_FN.BackColor = WorkWithDKKT.CheckFNStatusInColor(FNWarningFlags);
 
+
             Drv.FNGetInfoExchangeStatus(); //Статус обмена с ОФД
             string ExchangeStatus = Convert.ToString(Drv.InfoExchangeStatus, 2); //СтатусИнфОбмена
             ExchangeStatus = new string('0', 5 - ExchangeStatus.Length) + ExchangeStatus;
             //       toolStripStatus_OFD.BackColor = WorkWithDKKT.CheckOFDStatusInColor(ExchangeStatus, dateTimePC, Drv.Date);
 
+
             Drv.GetECRStatus(); //ПолучитьСостояниеККМ
             DateTime DateTime_KKT = DateTime.Parse(Drv.Date.Day + "." + Drv.Date.Month + "." + Drv.Date.Year + " "
                 + Drv.Time.Hour + ":" + Drv.Time.Minute + ":" + Drv.Time.Second); //Внутренняя дата время ККМ
-                                                                                  //       toolStripStatus_TimeKKT.BackColor = WorkWithDKKT.CheckTheTimeDiffereceInColor(DateTime.Now, DateTime_KKT);
-            GetTaxType(Drv);
-            //   }
+        //       toolStripStatus_TimeKKT.BackColor = WorkWithDKKT.CheckTheTimeDiffereceInColor(DateTime.Now, DateTime_KKT);
         }
     }
 }

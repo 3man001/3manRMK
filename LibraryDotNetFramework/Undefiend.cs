@@ -69,5 +69,11 @@ namespace LibraryDotNetFramework
                 index = str.IndexOf(';');
             }
         }
+        public static void CopyToFromObjectCollection(ComboBox.ObjectCollection fromItems, ComboBox.ObjectCollection toItems)
+        {
+            toItems.Clear();
+            for (int i = 0; i < fromItems.Count; i++)
+                toItems.Add(fromItems[i]);
+        }
     }
 }
