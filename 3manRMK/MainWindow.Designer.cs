@@ -224,8 +224,9 @@
             // xотчетToolStripMenuItem
             // 
             this.xотчетToolStripMenuItem.Name = "xотчетToolStripMenuItem";
-            this.xотчетToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
+            this.xотчетToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.xотчетToolStripMenuItem.Text = "Дневной X - отчет";
+            this.xотчетToolStripMenuItem.Click += new System.EventHandler(this.XотчетToolStripMenuItem_Click);
             // 
             // типЧекаToolStripMenuItem
             // 

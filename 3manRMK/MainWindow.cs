@@ -20,6 +20,8 @@ namespace _3manRMK
         const string Id = "662400385900";
         const int NumberOfPosition = 1000;
         readonly DrvFR Drv;
+        string fioCasher = "";
+        string innCasher = "";
         int[] XY;
         CheckBox[] arrayCheckBox = new CheckBox [] { };
         ComboBox[] arrayPaymentItemSign = new ComboBox[] { };
@@ -173,29 +175,6 @@ namespace _3manRMK
             Items.Add("Патент", 32);
             return Items[Item];
         }
-        private bool CloseChek(int TaxType = 2) // Формируем закрытие чека
-        {
-            decimal cashPayment = ToDecimal(tbSumm1.Text);
-            decimal electronicPayment = ToDecimal(tbSumm2.Text);
-            return ShtrihKKT.CloseChek(Drv, cashPayment, electronicPayment, TaxType);
-        }
-        private void SendFIO() //Указывает Зарегестрированного кассира в документах
-        {
-            if (tbFIO.ReadOnly)
-            {
-                Drv.TagNumber = 1021; //Отправка Должности и Фамилии кассира
-                Drv.TagType = 7;
-                Drv.TagValueStr = tbFIO.Text;
-                Drv.FNSendTag();
-                if (tbINN.BackColor == Color.LightGreen)
-                {
-                    Drv.TagNumber = 1203; //Отправка ИНН кассира
-                    Drv.TagType = 7;
-                    Drv.TagValueStr = tbINN.Text;
-                    Drv.FNSendTag();
-                }
-            }
-        }
         private void ChangePoz(int index, bool stateCheckBox)
         {
             Font newFont;
@@ -209,6 +188,13 @@ namespace _3manRMK
                 arrayQuantity[index].Font = 
                 arrayTax[index].Font = 
                 arraySumm[index].Font = newFont;
+        }
+        private void ActCashTextBoxs(bool cash, bool electron)
+        {
+            tbSumm1.Text = "0,00";
+            tbSumm1.Visible = label6.Visible = cash;
+            tbSumm2.Text = "0,00";
+            tbSumm2.Visible = label7.Visible = electron;
         }
         //////Начало Блока триггер виджета/////////
         private void MainWindowSizeChanged(object sender, EventArgs e)
@@ -435,38 +421,48 @@ namespace _3manRMK
         {
             tbCustomer.BackColor =  CheckString.GetColorAfterCheckString(tbCustomer.Text, CheckString.Buyer(tbCustomer.Text));
         }
+        private void ComBox_FN_TaxType_TextChanged(object sender, EventArgs e)
+        {
+            if (cB_FN_TaxType.Text != "")
+                label1.BackColor = Color.LightGreen;
+            else
+                label1.BackColor = Color.LightCoral;
+        }
+        private void TextBoxCash_In_Outcome_TextChanged(object sender, EventArgs e)
+        {
+            if (CheckString.Numbers(tbCash_In_Outcome.Text))
+            {
+                tbCash_In_Outcome.BackColor = Color.Snow;
+                tbCash_In_Outcome.Text = Convert.ToString(Math.Round(ToDecimal(tbCash_In_Outcome.Text) * 1.000m, 2));
+                buttonCash_In_Outcome.Visible = true;
+            }
+            else
+            {
+                tbCash_In_Outcome.BackColor = Color.LightCoral;
+                buttonCash_In_Outcome.Visible = false;
+            }
+        }
+        private void ComBox_In_OutCash_TextChanged(object sender, EventArgs e)
+        {
+            buttonCash_In_Outcome.Text = cB_In_OutCash.Text;
+        }
         ///////////Начало Блок МЕНЮ////////////////
-        private void ПодключитьФРToolStripMenuItem_Click(object sender, EventArgs e) //Показать свойство оборуования
+        private void ПодключитьФРToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ShtrihKKT.ConnectToKKT(Drv);
             UpdateResult();
         }
-        private void ОткрытьСменуToolStripMenuItem_Click(object sender, EventArgs e) //Открыть смену в ККТ
+        private void ОткрытьСменуToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            string fio = "";
-            string inn = "";
-            if (tbFIO.ReadOnly)
-            {
-                fio = tbFIO.Text;
-                if (tbINN.BackColor == Color.LightGreen)
-                    inn = tbINN.Text;
-            }
-            ShtrihKKT.OpenShift(Drv, fio, inn);
+            ShtrihKKT.OpenShift(Drv, fioCasher, innCasher);
             UpdateResult();
         }
-        private void ЗакрытьСменуToolStripMenuItem_Click(object sender, EventArgs e) //Снять Z-отчет(Закрыть смену на ФР)
+        private void ЗакрытьСменуToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            string fio = "";
-            string inn = "";
-            if (tbFIO.ReadOnly)
-            {
-                fio = tbFIO.Text;
-                if (tbINN.BackColor == Color.LightGreen)
-                    inn = tbINN.Text;
-            }
-            ShtrihKKT.CloseShift(Drv, fio, inn);
+            ShtrihKKT.CloseShift(Drv, fioCasher, innCasher);
             UpdateResult();
         }
+
         private void ПриходToolStripMenuItem_Click(object sender, EventArgs e)
         {
             labelCheckType.Text = "Приход";
@@ -483,12 +479,40 @@ namespace _3manRMK
         {
             labelCheckType.Text = "Возврат расхода";
         }
-        private void ОтменаЧекаToolStripMenuItem_Click(object sender, EventArgs e) //Отмена чека в ККТ
+
+        private void ОтменаЧекаToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ShtrihKKT.CancelCashReciept(Drv);
             UpdateResult();
         }
-        private void ОПрограммеToolStripMenuItem_Click(object sender, EventArgs e) //Показать информацию о программе
+        private void XотчетToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ShtrihKKT.TakeDalyReport(Drv);
+            UpdateResult();
+        }
+        private void ВнесениеToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            btnLogin.BackColor = Color.Lime;
+            btnLogin.Text = "Login";
+            tbFIO.ReadOnly = tbINN.ReadOnly = label13.Visible = tbSummAll.Visible =
+                groupBox3.Visible = panel2.Visible = false;
+
+            groupBox4.Visible = true;
+            GetCashReg();
+        }
+        private void НастройкиToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SettingsWindow Setting1 = new SettingsWindow();
+            Setting1.ShowDialog(this);
+            Setting1.Dispose();
+        }
+        private void ОбратнаяСвязьToolStripMenuItem_Click(object sender, EventArgs e) //Открыть формк обратной связи
+        {
+            FeedbackWindows Feedback1 = new FeedbackWindows();
+            Feedback1.ShowDialog(this);
+            Feedback1.Dispose();
+        }
+        private void ОПрограммеToolStripMenuItem_Click(object sender, EventArgs e)
         {
             AboutBox1 AboutBox = new AboutBox1();
             AboutBox.ShowDialog(this);
@@ -497,20 +521,10 @@ namespace _3manRMK
         ////////////Конец Блок МЕНЮ////////////////
         private void Button4_Click(object sender, EventArgs e) //Продажа товара
         {
-            if (ToDecimal(tbSumm2.Text) > ToDecimal(tbSummAll.Text)) //Если сумма безнала больше суммы чека то ошибка
-            {
+            if (ToDecimal(tbSumm2.Text) > ToDecimal(tbSummAll.Text))
                 tbSumm2.BackColor = Color.LightCoral;
-            }
             else
             {
-                int CheckType = EnterItems(labelCheckType.Text); //Операция приход((1 - Приход, 2 - Возврат прихода 3 - расход, 4 - возврат расхода)
-                string NameProduct_i; //Наименование товара
-                Decimal Price_i; //Цена за еденицу товара с учетом скидки
-                Double Quantity_i; //Кол-во (Диапазон 0,001 до 9.999.999,999)
-                Decimal Summ1_i; //Сумма позиции
-                int Tax1_i; //Налоговая ставка 0..6 (0-БезНДС)
-                int PaymentItemSign_i; // Признак предмета расчета 1..19 (1-Товар)
-
                 try
                 {
                     Drv.Connect();
@@ -523,51 +537,43 @@ namespace _3manRMK
 
                 groupBox3.Visible = false;
 
+                int CheckType = EnterItems(labelCheckType.Text);
+                int PaymentItemSign_i;
+                string NameProduct_i;
+                decimal Price_i;
+                double Quantity_i;
+                int Tax1_i;
+                decimal Summ1_i;
                 for (int i=0; i<arrayCheckBox.Length; i++) //Регистрация позиций в чеке
                 {
                     if (arrayCheckBox[i].Checked)
                     {
-                        NameProduct_i = arrayNameProduct[i].Text; //Наименование товара
-                        Price_i = Math.Round(ToDecimal(arrayPrice[i].Text), 2); //Цена за еденицу товара с учетом скидки
-                        Quantity_i = Math.Round(Convert.ToDouble(arrayQuantity[i].Text), 3); //Кол-во (Диапазон 0,001 до 9.999.999,999)
-                        Summ1_i = ToDecimal(arraySumm[i].Text); //Сумма позиции
-                        Tax1_i = EnterItems(arrayTax[i].Text); //Налоговая ставка 0..6 (0-БезНДС)
-                        PaymentItemSign_i = EnterItems(arrayPaymentItemSign[i].Text); // Признак предмета расчета 1..19 (1-Товар)
-                        
-                        if (!ShtrihKKT.RegPosition(Drv, CheckType, PaymentItemSign_i, NameProduct_i, Price_i, Quantity_i, Tax1_i, Summ1_i)) //Регистрация позиции
+                        PaymentItemSign_i = EnterItems(arrayPaymentItemSign[i].Text);
+                        NameProduct_i = arrayNameProduct[i].Text;
+                        Price_i = ToDecimal(arrayPrice[i].Text);
+                        Quantity_i = Convert.ToDouble(arrayQuantity[i].Text);
+                        Summ1_i = ToDecimal(arraySumm[i].Text);
+                        Tax1_i = EnterItems(arrayTax[i].Text);
+                        if (!ShtrihKKT.RegPosition(Drv, CheckType, PaymentItemSign_i, NameProduct_i, Price_i, Quantity_i, Tax1_i, Summ1_i))
                             break;
                     }
                 }
                 if (Drv.ResultCode == 0) //Если позиции пробитилсь то идем дальше
                 {
-                    SendFIO(); //Регистрация кассира в чеке
+                    ShtrihKKT.SendFIO(Drv, fioCasher, innCasher);
 
-                    if (maskTBPhone.BackColor == Color.LightGreen) //Отправка чека СМС если есть номер
-                    {
-                        Drv.CustomerEmail = maskTBPhone.Text.Replace("(", "").Replace(")", "").Replace("-", "").Replace(" ", "");
-                        Drv.FNSendCustomerEmail();
-                    }
-                    else if (tbEmail.BackColor == Color.LightGreen) //Отправка чека на Email если введен адрес
-                    {
-                        Drv.CustomerEmail = tbEmail.Text;
-                        Drv.FNSendCustomerEmail();
-                    }
+                    if (maskTBPhone.BackColor == Color.LightGreen)
+                        ShtrihKKT.SendCustomerPhoneOrEmail(Drv, maskTBPhone.Text.Replace("(", "").Replace(")", "").Replace("-", "").Replace(" ", ""));
+                    else if (tbEmail.BackColor == Color.LightGreen)
+                        ShtrihKKT.SendCustomerPhoneOrEmail(Drv, tbEmail.Text);
                     
-                    if (tbCustomer.BackColor == Color.LightGreen && tbCustomerINN.BackColor == Color.LightGreen) //Регистрация покупателя
-                    {
-                        Drv.TagNumber = 1227; //Отправка Должности и Фамилии кассира
-                        Drv.TagType = 7;
-                        Drv.TagValueStr = tbCustomer.Text;
-                        Drv.FNSendTag();
-                        Drv.TagNumber = 1228; //Отправка Должности и Фамилии кассира
-                        Drv.TagType = 7;
-                        Drv.TagValueStr = tbCustomerINN.Text;
-                        if (Drv.TagValueStr.Length == 10)
-                            Drv.TagValueStr += "00";
-                        Drv.FNSendTag();
-                    }
-            
-                    if (CloseChek(EnterItems(cB_FN_TaxType.Text))) // Формирует закрытие чека нужной СНО
+                    if (tbCustomer.BackColor == Color.LightGreen && tbCustomerINN.BackColor == Color.LightGreen)
+                        ShtrihKKT.SendCustomer(Drv, tbCustomer.Text, tbCustomerINN.Text);
+
+                    decimal cashPayment = ToDecimal(tbSumm1.Text);
+                    decimal electronicPayment = ToDecimal(tbSumm2.Text);
+                    int TaxType = EnterItems(cB_FN_TaxType.Text);
+                    if (ShtrihKKT.CloseChek(Drv, cashPayment, electronicPayment, TaxType))
                     {
                         tbSumm1.Text = "0,00";
                         tbSumm2.Text = "0,00";
@@ -585,9 +591,7 @@ namespace _3manRMK
                         UpdateResult();
                 }
                 else
-                {
                     UpdateResult();
-                }
                 panel2.Visible = true;
             }
         }
@@ -624,57 +628,25 @@ namespace _3manRMK
                 tbFIO.ReadOnly = tbINN.ReadOnly = label13.Visible = tbSummAll.Visible = 
                     groupBox3.Visible = groupBox4.Visible = panel2.Visible = false;
             }
-        }
-        private void XотчетToolStripMenuItem_Click(object sender, EventArgs e) //Снять Х-Отчет
-        {
-            try
+            if (tbFIO.ReadOnly)
             {
-                Drv.PrintReportWithoutCleaning(); //Отчет без гашения
-                UpdateResult();
+                fioCasher = tbFIO.Text;
+                innCasher = tbINN.Text;
             }
-            catch
-            {
-                UpdateResult();
-            }
-        }
-        private void НастройкиToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            SettingsWindow Setting1 = new SettingsWindow();
-            Setting1.ShowDialog(this);
-            Setting1.Dispose();
-        }
-        private void ОбратнаяСвязьToolStripMenuItem_Click(object sender, EventArgs e) //Открыть формк обратной связи
-        {
-            FeedbackWindows Feedback1 = new FeedbackWindows();
-            Feedback1.ShowDialog(this);
-            Feedback1.Dispose();
+            else
+                fioCasher = innCasher = "";
         }
         private void Button1_Click(object sender, EventArgs e) //Оплата Наличными
         {
-            tbSumm1.Text = "0,00";
-            tbSumm1.Visible = true;
-            label6.Visible = true;
-            tbSumm2.Text = "0,00";
-            tbSumm2.Visible = false;
-            label7.Visible = false;
+            ActCashTextBoxs(true, false);
         }
         private void Button2_Click(object sender, EventArgs e) //Оплат безналичными
         {
-            tbSumm1.Text = "0,00";
-            tbSumm1.Visible = false;
-            label6.Visible = false;
-            tbSumm2.Text = "0,00";
-            tbSumm2.Visible = true;
-            label7.Visible = true;
+            ActCashTextBoxs(false, true);
         }
         private void Button3_Click(object sender, EventArgs e) //Смешанная оплата
         {
-            tbSumm1.Text = "0,00";
-            tbSumm1.Visible = true;
-            label6.Visible = true;
-            tbSumm2.Text = "0,00";
-            tbSumm2.Visible = true;
-            label7.Visible = true;
+            ActCashTextBoxs(true, true);
         }
         private void Button11_Click(object sender, EventArgs e) //Перейти к оплате
         {
@@ -751,27 +723,6 @@ namespace _3manRMK
             if (bAdd.Location.Y + 64 > panel2.Size.Height)
                 panel2.Size = new Size(panel2.Size.Width, panel2.Size.Height + 30);
         }
-        private void ComBox_FN_TaxType_TextChanged(object sender, EventArgs e)
-        {
-            if (cB_FN_TaxType.Text != "")
-                label1.BackColor = Color.LightGreen;
-            else
-                label1.BackColor = Color.LightCoral;
-        }
-        private void TextBoxCash_In_Outcome_TextChanged(object sender, EventArgs e)
-        {
-            if (CheckString.Numbers(tbCash_In_Outcome.Text))
-            {
-                tbCash_In_Outcome.BackColor = Color.Snow;
-                tbCash_In_Outcome.Text = Convert.ToString(Math.Round(ToDecimal(tbCash_In_Outcome.Text) * 1.000m, 2));
-                buttonCash_In_Outcome.Visible = true;
-            }
-            else
-            {
-                tbCash_In_Outcome.BackColor = Color.LightCoral;
-                buttonCash_In_Outcome.Visible = false;
-            }
-        }
         private void ButtonCash_In_Outcome_Click(object sender, EventArgs e)
         {
             decimal cash = ToDecimal(tbCash_In_Outcome.Text);
@@ -784,20 +735,6 @@ namespace _3manRMK
             }
             else
                 cB_In_OutCash.BackColor = Color.LightCoral;
-        }
-        private void ВнесениеToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            btnLogin.BackColor = Color.Lime;
-            btnLogin.Text = "Login";
-            tbFIO.ReadOnly = tbINN.ReadOnly = label13.Visible = tbSummAll.Visible =
-                groupBox3.Visible = panel2.Visible = false;
-
-            groupBox4.Visible = true;
-            GetCashReg();
-        }
-        private void ComBox_In_OutCash_TextChanged(object sender, EventArgs e)
-        {
-            buttonCash_In_Outcome.Text = cB_In_OutCash.Text;
         }
     }
 }

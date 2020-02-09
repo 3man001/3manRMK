@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using DrvFRLib;
 
 namespace LibraryDotNetFramework
@@ -174,7 +170,7 @@ namespace LibraryDotNetFramework
         /// <summary>
         /// Указывает Зарегестрированного кассира в документах
         /// </summary>
-        private static void SendFIO(DrvFR Drv, string FIO, string INN)
+        public static void SendFIO(DrvFR Drv, string FIO, string INN)
         {
             if (FIO != "")
             {
@@ -195,7 +191,7 @@ namespace LibraryDotNetFramework
         /// <summary>
         /// Указывает данные покупателя в документах
         /// </summary>
-        private static void SendCustomer (DrvFR Drv, string customerName, string customerINN)
+        public static void SendCustomer (DrvFR Drv, string customerName, string customerINN)
         {
             Drv.TagNumber = 1227;
             Drv.TagType = 7;
@@ -262,25 +258,10 @@ namespace LibraryDotNetFramework
             return true;
         }
 
-        private void KKT_StatusCheck(DrvFR Drv) //проверяет статус ОФД и ФН приотткрытии и закрытии смены
+        public static void SendCustomerPhoneOrEmail(DrvFR Drv, string phoneOrEmail)
         {
-            DateTime dateTimePC = DateTime.Today;
-            Drv.FNGetStatus(); //Запрос Статуса ФН
-            string FNWarningFlags = Convert.ToString(Drv.FNWarningFlags, 2); //ФНФлагиПредупреждения
-            FNWarningFlags = new string('0', 4 - FNWarningFlags.Length) + FNWarningFlags;
-            //       toolStripStatus_FN.BackColor = WorkWithDKKT.CheckFNStatusInColor(FNWarningFlags);
-
-
-            Drv.FNGetInfoExchangeStatus(); //Статус обмена с ОФД
-            string ExchangeStatus = Convert.ToString(Drv.InfoExchangeStatus, 2); //СтатусИнфОбмена
-            ExchangeStatus = new string('0', 5 - ExchangeStatus.Length) + ExchangeStatus;
-            //       toolStripStatus_OFD.BackColor = WorkWithDKKT.CheckOFDStatusInColor(ExchangeStatus, dateTimePC, Drv.Date);
-
-
-            Drv.GetECRStatus(); //ПолучитьСостояниеККМ
-            DateTime DateTime_KKT = DateTime.Parse(Drv.Date.Day + "." + Drv.Date.Month + "." + Drv.Date.Year + " "
-                + Drv.Time.Hour + ":" + Drv.Time.Minute + ":" + Drv.Time.Second); //Внутренняя дата время ККМ
-        //       toolStripStatus_TimeKKT.BackColor = WorkWithDKKT.CheckTheTimeDiffereceInColor(DateTime.Now, DateTime_KKT);
+            Drv.CustomerEmail = phoneOrEmail;
+            Drv.FNSendCustomerEmail();
         }
     }
 }
